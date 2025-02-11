@@ -25,62 +25,22 @@ fn main() {
     efuckprint!("Hello, world!\n");
     efuckprint!("The SWF is version {}.\n", swf.header.version());
     efuckprint!("The SWF has {} tags.\n", swf.tags.len());
-    fuckprint!(r"
-#include <assert.h>
-#include <SDL2_gfxPrimitives.h>
-
-#define O(ID) static void o##ID(SDL_Renderer *r, float a, float b, float c, float d, float tx, float ty)
-#define F(ID) static void f##ID(SDL_Renderer *r)
-#define V float x, y, new_x, new_y
-#define E (void)r; (void)a; (void)b; (void)c; (void)d; (void)tx; (void)ty
-#define C(ID) case ID: f##ID(r); break
-#define L(DX, DY) \
-    new_x = x + DX; new_y = y + DY; \
-    aalineRGBA(r, NX(x,y), NY(x,y), NX(new_x,new_y), NY(new_x,new_y), 0, 0, 0, 1); \
-    x = new_x; y = new_y
-#define B(ADX, ADY, CDX, CDY) \
-    new_x = x + ADX + CDX; new_y = y + ADY + CDY; \
-    bezierRGBA( \
-        r, \
-        (Sint16[]){{NX(x,y), NX(x+CDX,y+CDY), NX(new_x,new_y)}}, \
-        (Sint16[]){{NY(x,y), NY(x+CDX,y+CDY), NY(new_x,new_y)}}, \
-        3, 300, 0, 0, 0, 1 \
-    ); \
-    x = new_x; y = new_y
-#define NX(X, Y) ((X)*a + (Y)*c + tx) 
-#define NY(X, Y) ((X)*b + (Y)*d + ty)
-
-");
+    fuckprint!("#include <assert.h>\n#include <string.h>\n#include <plutovg.h>\n\n");
+    fuckprint!("int const there_she_is_framerate = {};\n", swf.header.frame_rate());
+    fuckprint!("int const there_she_is_width = {};\n", (swf.header.stage_size().x_max - swf.header.stage_size().x_min).to_pixels());
+    fuckprint!("int const there_she_is_height = {};\n\n", (swf.header.stage_size().y_max - swf.header.stage_size().y_min).to_pixels());
+    let mut shapes: Vec<swf::Shape> = Vec::new();
+    let mut ignored: Vec<u16> = Vec::new();
     let encoding = swf::SwfStr::encoding_for_version(swf.header.version());
     let mut display_list: Vec<Option<(u16, Option<swf::Matrix>)>> = Vec::new();
+    let mut display_lists: Vec<Vec<Option<(u16, Option<swf::Matrix>)>>> = Vec::new();
     let mut frame_i = 0;
+    let mut n_invisible = 0;
     for tag in swf.tags {
         match tag {
             swf::Tag::ExportAssets(exported_assets) => todo!(),
             swf::Tag::ScriptLimits { max_recursion_depth, timeout_in_seconds } => todo!(),
-            swf::Tag::ShowFrame => {
-                fuckprint!("F({}) {{\n", frame_i);
-                frame_i += 1;
-                for d in display_list.iter() {
-                    match d {
-                        Some((id, m)) => {
-                            let m = m.unwrap_or(swf::Matrix::IDENTITY);
-                            fuckprint!(
-                                "  o{}(r, {}, {}, {}, {}, {}, {});\n",
-                                id,
-                                m.a.to_f64(),
-                                m.b.to_f64(),
-                                m.c.to_f64(),
-                                m.d.to_f64(),
-                                m.tx.to_pixels(),
-                                m.ty.to_pixels(),
-                            );
-                        },
-                        None => (),
-                    }
-                }
-                fuckprint!("}}\n\n");
-            }
+            swf::Tag::ShowFrame => { display_lists.push(display_list.clone()); frame_i += 1; if frame_i >= 5500 { break;} },
             swf::Tag::Protect(None) => efuckprint!("no protect\n"),
             swf::Tag::Protect(Some(swf_str)) => efuckprint!("protect is {}\n", swf_str.to_string_lossy(encoding)),
             swf::Tag::CsmTextSettings(csm_text_settings) => todo!(),
@@ -95,7 +55,7 @@ fn main() {
             },
             swf::Tag::DefineBitsLossless(define_bits_lossless) => todo!(),
             swf::Tag::DefineButton(button) => todo!(),
-            swf::Tag::DefineButton2(button) => fuckprint!("O({}){{E;/*button*/}}\n", button.id),
+            swf::Tag::DefineButton2(button) => ignored.push(button.id),
             swf::Tag::DefineButtonColorTransform(button_color_transform) => todo!(),
             swf::Tag::DefineButtonSound(button_sounds) => todo!(),
             swf::Tag::DefineEditText(edit_text) => todo!(),
@@ -111,41 +71,12 @@ fn main() {
             swf::Tag::DefineFontName { id, name, copyright_info } => todo!(),
             swf::Tag::DefineMorphShape(define_morph_shape) => todo!(),
             swf::Tag::DefineScalingGrid { id, splitter_rect } => todo!(),
-            swf::Tag::DefineShape(shape) => {
-                fuckprint!("O({}){{E;V;\n", shape.id);
-                for sr in shape.shape {
-                    match sr {
-                        swf::ShapeRecord::StyleChange(style_change_data) => {
-                            match style_change_data.move_to {
-                                Some(to) => fuckprint!(" x = {}; y = {};\n", to.x.to_pixels(), to.y.to_pixels()),
-                                None => (),
-                            }
-                        },
-                        swf::ShapeRecord::StraightEdge { delta } => {
-                            fuckprint!(" L({},{});\n", delta.dx.to_pixels(), delta.dy.to_pixels());
-                        },
-                        swf::ShapeRecord::CurvedEdge { control_delta, anchor_delta } => {
-                            fuckprint!(
-                                " B({},{},{},{});\n",
-                                anchor_delta.dx.to_pixels(),
-                                anchor_delta.dy.to_pixels(),
-                                control_delta.dx.to_pixels(),
-                                control_delta.dy.to_pixels()
-                            );
-                        },
-                    }
-                }
-                fuckprint!("}}\n\n");
-            },
+            swf::Tag::DefineShape(shape) => shapes.push(shape),
             swf::Tag::DefineSound(sound) => {
                 efuckprint!("no sound for now\n");
             },
-            swf::Tag::DefineSprite(sprite) => {
-                fuckprint!("O({}){{E;/*sprite with {} frames*/}}\n", sprite.id, sprite.num_frames)
-            },
-            swf::Tag::DefineText(text) => {
-                fuckprint!("O({}){{E;/*text with {} records*/}}\n", text.id, text.records.len());
-            },
+            swf::Tag::DefineSprite(sprite) => ignored.push(sprite.id),
+            swf::Tag::DefineText(text) => ignored.push(text.id),
             swf::Tag::DefineText2(text) => todo!(),
             swf::Tag::DefineVideoStream(define_video_stream) => todo!(),
             swf::Tag::DoAbc(items) => todo!(),
@@ -181,8 +112,10 @@ fn main() {
                         }
                         display_list[place_object.depth as usize] = Some((id, place_object.matrix));
                     },
-                    swf::PlaceObjectAction::Modify => display_list[place_object.depth as usize]
-                    = Some((display_list[place_object.depth as usize].unwrap().0, place_object.matrix)),
+                    swf::PlaceObjectAction::Modify => {
+                        display_list[place_object.depth as usize]
+                        = Some((display_list[place_object.depth as usize].unwrap().0, place_object.matrix))
+                    },
                     swf::PlaceObjectAction::Replace(id) => {
                         display_list[place_object.depth as usize] = Some((id, place_object.matrix));
                     },
@@ -201,21 +134,142 @@ fn main() {
             swf::Tag::Unknown { tag_code, data } => todo!(),
         }
     }
-    fuckprint!("void there_she_is_render(SDL_Renderer *r, int frame) {{\n");
-    fuckprint!(" switch (frame) {{");
-    for i in 0..swf.header.num_frames() {
-        fuckprint!("  C({});\n", i);
-    }
-    fuckprint!("  default: assert(!\"No such frame\"); break;\n");
-    fuckprint!(" }}\n}}\n");
 
-    fuckprint!("\nint const there_she_is_framerate = {};\n", swf.header.frame_rate());
-    fuckprint!("\nint const there_she_is_n_frame = {};\n", swf.header.num_frames());
-    fuckprint!("\nint const there_she_is_width = {};\n", (swf.header.stage_size().x_max - swf.header.stage_size().x_min).to_pixels());
-    fuckprint!("\nint const there_she_is_height = {};\n", (swf.header.stage_size().y_max - swf.header.stage_size().y_min).to_pixels());
+    //assert!(swf.header.num_frames() as usize == display_lists.len());
+
+    fuckprint!("static plutovg_surface_t *s;\n");
+    fuckprint!("static plutovg_canvas_t *c;\n\n");
+
+    for s in shapes.iter() {
+        fuckprint!("static plutovg_path_t *o{};\n", s.id);
+    }
+    for i in ignored.iter() {
+        fuckprint!("static plutovg_path_t *o{};\n", i);
+    }
+
+    fuckprint!("\nvoid there_she_is_init(void) {{\n");
+    fuckprint!(" s = plutovg_surface_create(there_she_is_width, there_she_is_height);\n");
+    fuckprint!(" c = plutovg_canvas_create(s);\n");
+    fuckprint!(" plutovg_canvas_set_line_width(c, 1);\n");
+    fuckprint!(" plutovg_canvas_set_rgb(c, 0,0,0);\n");
+    for i in ignored.iter() {
+        fuckprint!(" o{} = \n", i)
+    }
+    if ignored.len() > 0 {
+        fuckprint!(" plutovg_path_create();\n");
+    }
+    fuckprint!(r" #define V(ID, COUNT) \
+     p = plutovg_path_create(); \
+     plutovg_path_reserve(p, (COUNT)); \
+     o##ID = p
+
+ #define M(X, Y) plutovg_path_move_to(p, x=(X), y=(Y))
+ 
+ #define L(DX, DY) \
+     x = new_x = x+(DX); y = new_y = y+(DY); \
+     plutovg_path_line_to(p, new_x, new_y);
+ 
+ #define B(ADX, ADY, CDX, CDY) \
+     new_x = x+(ADX)+(CDX); new_y = y+(ADY)+(CDY); \
+     plutovg_path_quad_to(p, x+(CDX), y+(CDY), new_x, new_y); \
+     x = new_x; y = new_y
+
+ float x, y, new_x, new_y;
+ plutovg_path_t *p;
+
+ #pragma omp sections private(x,y,new_x,new_y,p)
+ {{
+");
+    for s in shapes.iter() {
+        fuckprint!("  #pragma omp section\n  {{\n   V({},{});\n", s.id, s.shape.len());
+        for sr in s.shape.iter() {
+            match sr {
+                swf::ShapeRecord::StyleChange(style_change_data) => {
+                    match style_change_data.move_to {
+                        Some(to) => fuckprint!("   M({},{});\n", to.x.to_pixels(), to.y.to_pixels()),
+                        None => (),
+                    }
+                },
+                swf::ShapeRecord::StraightEdge { delta } => {
+                    fuckprint!("   L({},{});\n", delta.dx.to_pixels(), delta.dy.to_pixels());
+                },
+                swf::ShapeRecord::CurvedEdge { control_delta, anchor_delta } => {
+                    fuckprint!(
+                        "   B({},{},{},{});\n",
+                        anchor_delta.dx.to_pixels(),
+                        anchor_delta.dy.to_pixels(),
+                        control_delta.dx.to_pixels(),
+                        control_delta.dy.to_pixels()
+                    );
+                },
+            }
+        }
+        fuckprint!("  }}\n");
+    }
+    fuckprint!(" }}\n}}\n\n");
+
+    fuckprint!("void there_she_is_free(void) {{\n");
+    fuckprint!(" #define D(ID) plutovg_path_destroy(o##ID)\n");
+    for s in shapes.iter() {
+        fuckprint!(" D({});\n", s.id);
+    }
+    if ignored.len() > 0 {
+        fuckprint!(" D({});\n", ignored[0]);
+    }
+    fuckprint!(" plutovg_canvas_destroy(c);\n");
+    fuckprint!(" plutovg_surface_destroy(s);\n");
+    fuckprint!("}}\n\n");
+
+    fuckprint!(r"void there_she_is_render(void *pixels, int pitch, int frame) {{
+ switch (frame) {{
+  #define P(ID, A, B, C, D, TX, TY) \
+      assert(c != NULL); \
+      assert(o##ID != NULL); \
+      plutovg_canvas_set_matrix(c, &PLUTOVG_MAKE_MATRIX(A, B, C, D, TX, TY)); \
+      plutovg_canvas_stroke_path(c, o##ID)
+
+");
+    for (i, dl) in display_lists.iter().enumerate() {
+        fuckprint!("  case {}:\n", i);
+        for d in dl.iter() {
+            match d {
+                Some((id, m)) => {
+                    let m = m.unwrap_or(swf::Matrix::IDENTITY);
+                    fuckprint!(
+                        "   P({}, {}, {}, {}, {}, {}, {});\n",
+                        id,
+                        m.a.to_f64(),
+                        m.b.to_f64(),
+                        m.c.to_f64(),
+                        m.d.to_f64(),
+                        m.tx.to_pixels(),
+                        m.ty.to_pixels(),
+                    );
+                },
+                None => (),
+            }
+        }
+        fuckprint!("  break;\n");
+    }
+    fuckprint!(r#"  default: assert(!"No such frame"); break;
+ }}
+ int stride = plutovg_surface_get_stride(s);
+ unsigned char *data = plutovg_surface_get_data(s);
+ if (stride == pitch) {{
+  memcpy(pixels, data, 4 * there_she_is_width * there_she_is_height);
+ }} else {{
+  for (int i = 0; i < there_she_is_height; i++) {{
+   memcpy(((unsigned char *)pixels) + pitch * i, data + stride * i, 4 * there_she_is_width);
+  }}
+ }}
+ plutovg_surface_clear(s, &PLUTOVG_WHITE_COLOR);
+}}
+"#);
+
     efuckprint!("max x = {}\n", swf.header.stage_size().x_max.to_pixels());
     efuckprint!("max y = {}\n", swf.header.stage_size().y_max.to_pixels());
     efuckprint!("min x = {}\n", swf.header.stage_size().x_min.to_pixels());
     efuckprint!("min y = {}\n", swf.header.stage_size().y_min.to_pixels());
     efuckprint!("decompressed tags: {} bytes\n", swf_buf.data.len());
+    fuckprint!("\nint const there_she_is_n_frame = {};\n", display_lists.len());
 }
