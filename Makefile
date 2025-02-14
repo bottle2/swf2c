@@ -9,7 +9,7 @@ demo:$(SOURCE) $(OBJECT) $(ARCHIVE)
 	$(CC) $(CFLAGS) -o $@ $(SOURCE) $(OBJECT) $(ARCHIVE) $(LDLIBS)
 
 there_she_is.o:there_she_is.c
-	$(CC) -ftime-trace $(CFLAGS) -Oz -c $<
+	time $(CC) $(CFLAGS) -O0 -c $<
 
 there_she_is.c:hello-rust/src/main.rs
 	pushd hello-rust; cargo run > ../$@

@@ -35,12 +35,12 @@ fn main() {
     let mut display_list: Vec<Option<(u16, Option<swf::Matrix>)>> = Vec::new();
     let mut display_lists: Vec<Vec<Option<(u16, Option<swf::Matrix>)>>> = Vec::new();
     let mut frame_i = 0;
-    let mut n_invisible = 0;
+    let limit = 99999;
     for tag in swf.tags {
         match tag {
             swf::Tag::ExportAssets(exported_assets) => todo!(),
             swf::Tag::ScriptLimits { max_recursion_depth, timeout_in_seconds } => todo!(),
-            swf::Tag::ShowFrame => { display_lists.push(display_list.clone()); frame_i += 1; if frame_i >= 5500 { break;} },
+            swf::Tag::ShowFrame => { display_lists.push(display_list.clone()); frame_i += 1; if frame_i >= limit { break;} },
             swf::Tag::Protect(None) => efuckprint!("no protect\n"),
             swf::Tag::Protect(Some(swf_str)) => efuckprint!("protect is {}\n", swf_str.to_string_lossy(encoding)),
             swf::Tag::CsmTextSettings(csm_text_settings) => todo!(),
@@ -140,111 +140,121 @@ fn main() {
     fuckprint!("static plutovg_surface_t *s;\n");
     fuckprint!("static plutovg_canvas_t *c;\n\n");
 
+    let mut i_want_to_kill_myself = 0;
+    fuckprint!("#define OBJECT_XS \\\n");
     for s in shapes.iter() {
-        fuckprint!("static plutovg_path_t *o{};\n", s.id);
-    }
-    for i in ignored.iter() {
-        fuckprint!("static plutovg_path_t *o{};\n", i);
-    }
-
-    fuckprint!("\nvoid there_she_is_init(void) {{\n");
-    fuckprint!(" s = plutovg_surface_create(there_she_is_width, there_she_is_height);\n");
-    fuckprint!(" c = plutovg_canvas_create(s);\n");
-    fuckprint!(" plutovg_canvas_set_line_width(c, 1);\n");
-    fuckprint!(" plutovg_canvas_set_rgb(c, 0,0,0);\n");
-    for i in ignored.iter() {
-        fuckprint!(" o{} = \n", i)
-    }
-    if ignored.len() > 0 {
-        fuckprint!(" plutovg_path_create();\n");
-    }
-    fuckprint!(r" #define V(ID, COUNT) \
-     p = plutovg_path_create(); \
-     plutovg_path_reserve(p, (COUNT)); \
-     o##ID = p
-
- #define M(X, Y) plutovg_path_move_to(p, x=(X), y=(Y))
- 
- #define L(DX, DY) \
-     x = new_x = x+(DX); y = new_y = y+(DY); \
-     plutovg_path_line_to(p, new_x, new_y);
- 
- #define B(ADX, ADY, CDX, CDY) \
-     new_x = x+(ADX)+(CDX); new_y = y+(ADY)+(CDY); \
-     plutovg_path_quad_to(p, x+(CDX), y+(CDY), new_x, new_y); \
-     x = new_x; y = new_y
-
- float x, y, new_x, new_y;
- plutovg_path_t *p;
-
- #pragma omp sections private(x,y,new_x,new_y,p)
- {{
-");
-    for s in shapes.iter() {
-        fuckprint!("  #pragma omp section\n  {{\n   V({},{});\n", s.id, s.shape.len());
+        fuckprint!(" X({},{}, \\\n", s.id, s.shape.len());
         for sr in s.shape.iter() {
             match sr {
                 swf::ShapeRecord::StyleChange(style_change_data) => {
                     match style_change_data.move_to {
-                        Some(to) => fuckprint!("   M({},{});\n", to.x.to_pixels(), to.y.to_pixels()),
+                        Some(to) => fuckprint!("  M({},{}) \\\n", to.x.to_pixels(), to.y.to_pixels()),
                         None => (),
                     }
                 },
                 swf::ShapeRecord::StraightEdge { delta } => {
-                    fuckprint!("   L({},{});\n", delta.dx.to_pixels(), delta.dy.to_pixels());
+                    fuckprint!("  L({},{}) \\\n", delta.dx.to_pixels(), delta.dy.to_pixels());
                 },
                 swf::ShapeRecord::CurvedEdge { control_delta, anchor_delta } => {
                     fuckprint!(
-                        "   B({},{},{},{});\n",
+                        "  B({},{},{},{}) \\\n",
                         anchor_delta.dx.to_pixels(),
                         anchor_delta.dy.to_pixels(),
                         control_delta.dx.to_pixels(),
-                        control_delta.dy.to_pixels()
+                        control_delta.dy.to_pixels(),
                     );
                 },
             }
         }
-        fuckprint!("  }}\n");
+        fuckprint!(" ){}", if i_want_to_kill_myself == shapes.len() - 1 {"\n"} else {" \\\n"});
+        i_want_to_kill_myself += 1;
     }
-    fuckprint!(" }}\n}}\n\n");
+    fuckprint!("\n");
 
-    fuckprint!("void there_she_is_free(void) {{\n");
-    fuckprint!(" #define D(ID) plutovg_path_destroy(o##ID)\n");
-    for s in shapes.iter() {
-        fuckprint!(" D({});\n", s.id);
-    }
-    if ignored.len() > 0 {
-        fuckprint!(" D({});\n", ignored[0]);
-    }
-    fuckprint!(" plutovg_canvas_destroy(c);\n");
-    fuckprint!(" plutovg_surface_destroy(s);\n");
-    fuckprint!("}}\n\n");
+    fuckprint!(r"
+static void segment(plutovg_path_t *p, float x[static 1], float y[static 1], float dx, float dy) {{
+ plutovg_path_line_to(p, *x += dx, *y += dy);
+}}
 
-    fuckprint!(r"void there_she_is_render(void *pixels, int pitch, int frame) {{
+static void curve(plutovg_path_t *p, float x[static 1], float y[static 1], float adx, float ady, float cdx, float cdy) {{
+ float new_x = *x+adx+cdx;
+ float new_y = *y+ady+cdy;
+ plutovg_path_quad_to(p, *x+cdx, *y+cdy, new_x, new_y);
+ *x = new_x;
+ *y = new_y;
+}}
+
+#define M(X, Y) plutovg_path_move_to(p, x=(X), y=(Y));
+#define L(DX, DY) segment(p, &x, &y, (DX), (DY));
+#define B(ADX, ADY, CDX, CDY) curve(p, &x, &y, (ADX), (ADY), (CDX), (CDY));
+
+#define X(ID, COUNT, CTOR) \
+ static plutovg_path_t *o##ID; \
+ static void o##ID##i(void) {{ plutovg_path_t *p = o##ID; float x, y; CTOR }}
+OBJECT_XS
+#undef X
+
+void there_she_is_init(void) {{
+ s = plutovg_surface_create(there_she_is_width, there_she_is_height);
+ c = plutovg_canvas_create(s);
+ plutovg_canvas_set_line_width(c, 1);
+ plutovg_canvas_set_rgb(c, 0,0,0);
+
+ #define X(ID, COUNT, CTOR) \
+  o##ID = plutovg_path_create(); \
+  plutovg_path_reserve(o##ID, (COUNT));
+ OBJECT_XS
+ #undef X
+
+ #define X(ID, COUNT, CTOR) o##ID##i,
+ static void(*inits[])(void) = {{
+  OBJECT_XS
+ }};
+ #undef X
+
+ #pragma omp parallel for schedule(dynamic)
+ for (int i = 0; i < (int)(sizeof inits / sizeof *inits); i++)
+  inits[i]();
+}}
+
+void there_she_is_free(void) {{
+ #define X(ID, COUNT, CTOR) plutovg_path_destroy(o##ID);
+ OBJECT_XS
+ #undef X
+ plutovg_canvas_destroy(c);
+ plutovg_surface_destroy(s);
+}}");
+
+    fuckprint!(r"
+
+#define P(ID, A, B, C, D, TX, TY) \
+ assert(o##ID != NULL); \
+ plutovg_canvas_set_matrix(c, &PLUTOVG_MAKE_MATRIX(A, B, C, D, TX, TY)); \
+ plutovg_canvas_stroke_path(c, o##ID)
+
+void there_she_is_render(void *pixels, int pitch, int frame) {{
+ assert(c != NULL);
  switch (frame) {{
-  #define P(ID, A, B, C, D, TX, TY) \
-      assert(c != NULL); \
-      assert(o##ID != NULL); \
-      plutovg_canvas_set_matrix(c, &PLUTOVG_MAKE_MATRIX(A, B, C, D, TX, TY)); \
-      plutovg_canvas_stroke_path(c, o##ID)
-
 ");
+    ignored.sort();
     for (i, dl) in display_lists.iter().enumerate() {
         fuckprint!("  case {}:\n", i);
         for d in dl.iter() {
             match d {
                 Some((id, m)) => {
-                    let m = m.unwrap_or(swf::Matrix::IDENTITY);
-                    fuckprint!(
-                        "   P({}, {}, {}, {}, {}, {}, {});\n",
-                        id,
-                        m.a.to_f64(),
-                        m.b.to_f64(),
-                        m.c.to_f64(),
-                        m.d.to_f64(),
-                        m.tx.to_pixels(),
-                        m.ty.to_pixels(),
-                    );
+                    if !ignored.binary_search(id).is_ok() {
+                        let m = m.unwrap_or(swf::Matrix::IDENTITY);
+                        fuckprint!(
+                            "   P({}, {}, {}, {}, {}, {}, {});\n",
+                            id,
+                            m.a.to_f64(),
+                            m.b.to_f64(),
+                            m.c.to_f64(),
+                            m.d.to_f64(),
+                            m.tx.to_pixels(),
+                            m.ty.to_pixels(),
+                        );
+                    }
                 },
                 None => (),
             }
@@ -253,15 +263,13 @@ fn main() {
     }
     fuckprint!(r#"  default: assert(!"No such frame"); break;
  }}
+
  int stride = plutovg_surface_get_stride(s);
  unsigned char *data = plutovg_surface_get_data(s);
- if (stride == pitch) {{
+ if (stride == pitch)
   memcpy(pixels, data, 4 * there_she_is_width * there_she_is_height);
- }} else {{
-  for (int i = 0; i < there_she_is_height; i++) {{
-   memcpy(((unsigned char *)pixels) + pitch * i, data + stride * i, 4 * there_she_is_width);
-  }}
- }}
+ else for (int i = 0; i < there_she_is_height; i++)
+  memcpy(((unsigned char *)pixels) + pitch * i, data + stride * i, 4 * there_she_is_width);
  plutovg_surface_clear(s, &PLUTOVG_WHITE_COLOR);
 }}
 "#);
