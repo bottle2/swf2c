@@ -28,9 +28,45 @@ static bool is_playing = true;
 #define TRYE(IT) TRY_((IT), strerror(errno))
 // E as in errno
 
-SDL_Window *window;
+#ifdef FEAT_HTML5
+EM_JS(__externref_t, get_canvas, (), {
+    return window.pussy;
+});
+
+EM_JS(void, init_canvas, (), {
+    // https://developer.mozilla.org/en-US/docs/Web/API/Window#window0
+    window.pussy = document.getElementById('canvas').getContext('2d');
+});
+# define INIT init_canvas();
+# define END (void)0
+# define CLEAR (void)0
+# define SHOW \
+    there_she_is_render_html5(get_canvas(), frame_i);
+#elif defined(FEAT_PLUTOVG) 
 SDL_Renderer *renderer;
 SDL_Texture *texture;
+# define INIT there_she_is_init_plutovg(); \
+    TRY(!(renderer = SDL_CreateRenderer(window, -1, 0))); \
+    TRY(!(texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, there_she_is_width, there_she_is_height)))
+# define CLEAR \
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0); \
+    SDL_RenderClear(renderer);
+# define END there_she_is_free_plutovg(); \
+    SDL_DestroyTexture(texture); \
+    SDL_DestroyRenderer(renderer)
+# define SHOW \
+    void *pixels; \
+    int pitch; \
+    TRY(SDL_LockTexture(texture, NULL, &pixels, &pitch)); \
+    there_she_is_render_sdl_plutovg(pixels, pitch, frame_i); \
+    SDL_UnlockTexture(texture); \
+    SDL_RenderCopyF(renderer, texture, NULL, NULL); \
+    SDL_RenderPresent(renderer)
+#else
+# error Define graphics backend as one of -DFEAT_PLUTOVG or -DFEAT_HTML5
+#endif
+
+SDL_Window *window;
 
 static float framerate;
 static uint64_t start;
@@ -41,10 +77,9 @@ static void iter(void)
     {
         if (SDL_QUIT == event.type)
         {
-            SDL_DestroyRenderer(renderer);
+	    CLEAR;
             SDL_DestroyWindow(window);
             SDL_QuitSubSystem(SDL_INIT_VIDEO | SDL_INIT_EVENTS);
-	    there_she_is_free();
             LOOP_END;
         }
 	else if (SDL_KEYDOWN == event.type) switch (event.key.keysym.sym)
@@ -54,8 +89,7 @@ static void iter(void)
         }
     }
 
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 1);
-    SDL_RenderClear(renderer);
+    CLEAR;
 
     int frame_i = (SDL_GetTicks64() - start) / framerate;
     if (frame_i < 0)
@@ -66,13 +100,7 @@ static void iter(void)
         frame_i = 0;
     }
 
-    void *pixels;
-    int pitch;
-    TRY(SDL_LockTexture(texture, NULL, &pixels, &pitch));
-    there_she_is_render(pixels, pitch, frame_i);
-    SDL_UnlockTexture(texture);
-    SDL_RenderCopyF(renderer, texture, NULL, NULL);
-    SDL_RenderPresent(renderer);
+    SHOW;
 }
 
 int main(int argc, char *argv[])
@@ -81,8 +109,6 @@ int main(int argc, char *argv[])
     (void)argv;
 
     framerate = 1000 / (float)there_she_is_framerate;
-
-    there_she_is_init();
 
     SDL_SetHint(SDL_HINT_EMSCRIPTEN_ASYNCIFY, "0");
 
@@ -99,9 +125,7 @@ int main(int argc, char *argv[])
     )));
     // TODO Deal with Apple's high-DPI stuff.
 
-    TRY(!(renderer = SDL_CreateRenderer(window, -1, 0)));
-
-    TRY(!(texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, there_she_is_width, there_she_is_height)));
+    INIT;
 
     start = SDL_GetTicks64();
 
