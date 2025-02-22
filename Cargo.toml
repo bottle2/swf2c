@@ -1,0 +1,10 @@
+[package]
+name = "swf2c"
+[[bin]]
+name = "swf2c"
+path = "main.rs"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+swf = "0.2.2"
