@@ -9,7 +9,7 @@ demo:$(SOURCE) $(OBJECT) $(ARCHIVE)
 	$(CC) -DFEAT_PLUTOVG $(CFLAGS) -o $@ $(SOURCE) $(OBJECT) $(ARCHIVE) $(LDLIBS)
 
 there_she_is.o:there_she_is.c
-	time $(CC) -DFEAT_PLUTOVG $(CFLAGS) -O0 -c $<
+	time $(CC) -ferror-limit=1 -DFEAT_PLUTOVG $(CFLAGS) -O0 -c $<
 
 there_she_is.c:hello-rust/src/main.rs
 	pushd hello-rust; cargo run -- c > ../$@

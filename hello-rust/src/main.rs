@@ -3,6 +3,9 @@ use std::fs::File;
 use std::io::BufReader;
 use std::io::Write;
 
+#[derive(Clone)]
+enum Object { Shape, Sprite }
+
 fn main() {
     let mut is_trace = false;
     let mut is_header = false;
@@ -83,11 +86,19 @@ void there_she_is_render_sdl_html5(__externref_t CanvasRenderingContext2D, int f
     trace!("The SWF is version {}.\n", swf.header.version());
     trace!("The SWF has {} tags.\n", swf.tags.len());
     let mut shapes: Vec<swf::Shape> = Vec::new();
+    let mut sprite_ids: Vec<u16> = Vec::new();
+    let mut sprites: Vec<swf::Sprite> = Vec::new();
     let mut ignored: Vec<u16> = Vec::new();
     let encoding = swf::SwfStr::encoding_for_version(swf.header.version());
-    let mut display_list: Vec<Option<(u16, Option<swf::Matrix>)>> = Vec::new();
-    let mut display_lists: Vec<Vec<Option<(u16, Option<swf::Matrix>)>>> = Vec::new();
+    let mut display_list: Vec<Option<(u16, Object, Option<swf::Matrix>)>> = Vec::new();
+    let mut display_lists: Vec<Vec<Option<(u16, Object, Option<swf::Matrix>)>>> = Vec::new();
     let mut frame_i = 0;
+
+    let mut n_solid = 0;
+    let mut n_linear = 0;
+    let mut n_radial = 0;
+    let mut n_focal = 0;
+    let mut n_bitmap = 0;
 
     let limit = 9999;
     for tag in swf.tags {
@@ -129,7 +140,12 @@ void there_she_is_render_sdl_html5(__externref_t CanvasRenderingContext2D, int f
             swf::Tag::DefineSound(sound) => {
                 trace!("no sound for now\n");
             },
-            swf::Tag::DefineSprite(sprite) => {ignored.push(sprite.id); trace!("sprite {} with {} tags and {} frames\n", sprite.id, sprite.tags.len(), sprite.num_frames)},
+            swf::Tag::DefineSprite(sprite) => {
+                /*ignored.push(sprite.id);*/
+                trace!("sprite {} with {} tags and {} frames\n", sprite.id, sprite.tags.len(), sprite.num_frames);
+                sprite_ids.push(sprite.id);
+                sprites.push(sprite);
+            },
             swf::Tag::DefineText(text) => ignored.push(text.id),
             swf::Tag::DefineText2(text) => todo!(),
             swf::Tag::DefineVideoStream(define_video_stream) => todo!(),
@@ -159,22 +175,23 @@ void there_she_is_render_sdl_html5(__externref_t CanvasRenderingContext2D, int f
             swf::Tag::StartSound2 { class_name, sound_info } => todo!(),
             swf::Tag::SymbolClass(symbol_class_links) => todo!(),
             swf::Tag::PlaceObject(place_object) => {
+                sprite_ids.sort();
                 match place_object.action {
                     swf::PlaceObjectAction::Place(id) => {
                         trace!("placeobj {}\n", id);
                         if display_list.len() <= place_object.depth as usize {
                             display_list.resize(place_object.depth as usize + 1, None);
                         }
-                        display_list[place_object.depth as usize] = Some((id, place_object.matrix));
+                        display_list[place_object.depth as usize] = Some((id, if sprite_ids.binary_search(&id).is_ok() {Object::Sprite} else {Object::Shape},  place_object.matrix));
                     },
                     swf::PlaceObjectAction::Modify => {
                         trace!("modifyobj at depth {}\n", place_object.depth);
                         display_list[place_object.depth as usize]
-                        = Some((display_list[place_object.depth as usize].unwrap().0, place_object.matrix))
+                        = Some((display_list[place_object.depth as usize].clone().unwrap().0, display_list[place_object.depth as usize].clone().unwrap().1, place_object.matrix))
                     },
                     swf::PlaceObjectAction::Replace(id) => {
                         trace!("replace id {}\n", id);
-                        display_list[place_object.depth as usize] = Some((id, place_object.matrix));
+                        display_list[place_object.depth as usize] = Some((id, if sprite_ids.binary_search(&id).is_ok() {Object::Sprite} else {Object::Shape}, place_object.matrix));
                     },
                 };
                 match place_object.name {
@@ -210,7 +227,7 @@ void there_she_is_render_sdl_html5(__externref_t CanvasRenderingContext2D, int f
     }
 
     let mut i_want_to_kill_myself = 0;
-    fuckprint!("#define OBJECT_XS \\\n"); // should be SHAPE_XS (or should it?)
+    fuckprint!("#define SHAPE_XS \\\n"); // should be SHAPE_XS (or should it?)
     for s in shapes.iter() {
         fuckprint!(" X({},{}, \\\n", s.id, s.shape.len());
         for sr in s.shape.iter() {
@@ -219,6 +236,17 @@ void there_she_is_render_sdl_html5(__externref_t CanvasRenderingContext2D, int f
                     match style_change_data.move_to {
                         Some(to) => fuckprint!("  M({},{}) \\\n", to.x.to_pixels(), to.y.to_pixels()),
                         None => (),
+                    }
+                    if let Some(ns) = style_change_data.new_styles.clone() {
+                        for fs in ns.fill_styles.iter() {
+                            match fs {
+                                swf::FillStyle::Color(color) => n_solid += 1,
+                                swf::FillStyle::LinearGradient(gradient) => n_linear += 1,
+                                swf::FillStyle::RadialGradient(gradient) => n_radial += 1,
+                                swf::FillStyle::FocalGradient { gradient, focal_point } => n_focal += 1,
+                                swf::FillStyle::Bitmap { id, matrix, is_smoothed, is_repeating } => n_bitmap += 1,
+                            }
+                        }
                     }
                 },
                 swf::ShapeRecord::StraightEdge { delta } => {
@@ -240,17 +268,107 @@ void there_she_is_render_sdl_html5(__externref_t CanvasRenderingContext2D, int f
     }
     fuckprint!("\n");
 
-    fuckprint!("#define FRAME_XS \\\n");
+    // TODO Review those cursed macro names
+
+    sprite_ids.sort();
+
+    fuckprint!("#define SPRITE_XS \\\n");
+    let mut here_we_go_couting = 0;
+    for s in sprites.iter() {
+        fuckprint!(" SDEF({}, {}, \\\n", s.id, s.num_frames);
+        display_list.clear();
+        let mut frame_i = 0;
+        for t in s.tags.iter() {
+            match t {
+                swf::Tag::ShowFrame => {
+                    if display_list.iter().filter(|&n| if let Some((id,_,_)) = n {ignored.binary_search(id).is_ok()} else {false}).count() > 0 {
+                        fuckprint!("  NOSFRAME({}) \\\n", frame_i);
+                        frame_i += 1;
+                    } else {
+                        fuckprint!("  SFRAME({}, \\\n", frame_i);
+                        frame_i += 1;
+                        for i in display_list.iter() {
+                            if let Some((id, t, m)) = i {
+                                if !ignored.binary_search(id).is_ok() {
+                                    let m = m.unwrap_or(swf::Matrix::IDENTITY);
+                                    fuckprint!(
+                                        "   SP{}({}, {}, {}, {}, {}, {}, {}) \\\n",
+                                        match t { Object::Shape => "SH", Object::Sprite => "SP" },
+                                        id,
+                                        m.a.to_f64(),
+                                        m.b.to_f64(),
+                                        m.c.to_f64(),
+                                        m.d.to_f64(),
+                                        m.tx.to_pixels(),
+                                        m.ty.to_pixels(),
+                                    );
+                                }
+                                else {
+                                    fuckprint!("   /* would be id {}*/\n", id);
+                                }
+                            }
+                        }
+                        fuckprint!("  ) \\\n");
+                    }
+                },
+                swf::Tag::DoAbc(items) => todo!(),
+                swf::Tag::DoAbc2(do_abc2) => todo!(),
+                swf::Tag::DoAction(items) => trace!("sprite action\n"),
+                swf::Tag::DoInitAction { id, action_data } => todo!(),
+                swf::Tag::End => todo!(),
+                swf::Tag::SoundStreamBlock(items) => todo!(),
+                swf::Tag::SoundStreamHead(sound_stream_head) => todo!(),
+                swf::Tag::SoundStreamHead2(sound_stream_head) => trace!("sprite sshead\n"),
+                swf::Tag::StartSound(start_sound) => todo!(),
+                swf::Tag::StartSound2 { class_name, sound_info } => todo!(),
+                swf::Tag::PlaceObject(place_object) => {
+                    // TODO This code has been copy&pasted!! Refactor!
+                    match place_object.action {
+                        swf::PlaceObjectAction::Place(id) => {
+                            trace!("placeobj {}\n", id);
+                            if display_list.len() <= place_object.depth as usize {
+                                display_list.resize(place_object.depth as usize + 1, None);
+                            }
+                            display_list[place_object.depth as usize] = Some((id, if sprite_ids.binary_search(&id).is_ok() {Object::Sprite} else {Object::Shape},  place_object.matrix));
+                        },
+                        swf::PlaceObjectAction::Modify => {
+                            trace!("modifyobj at depth {}\n", place_object.depth);
+                            display_list[place_object.depth as usize]
+                            = Some((display_list[place_object.depth as usize].clone().unwrap().0, display_list[place_object.depth as usize].clone().unwrap().1, place_object.matrix))
+                        },
+                        swf::PlaceObjectAction::Replace(id) => {
+                            trace!("replace id {}\n", id);
+                            display_list[place_object.depth as usize] = Some((id, if sprite_ids.binary_search(&id).is_ok() {Object::Sprite} else {Object::Shape}, place_object.matrix));
+                        },
+                    };
+                },
+                swf::Tag::RemoveObject(remove_object) => {
+                    trace!("remove obj in sprite\n");
+                    display_list[remove_object.depth as usize] = None;
+                },
+                _ => todo!("Unexpected tag {:?}", t),
+            }
+        }
+        here_we_go_couting += 1;
+        fuckprint!(" ){}\n", if here_we_go_couting == sprites.len() {""} else {" \\"});
+    }
+
+    fuckprint!("\n#define FRAME_XS \\\n");
     ignored.sort();
     for (i, dl) in display_lists.iter().enumerate() {
         fuckprint!(" F({}, \\\n", i);
         for d in dl.iter() {
             match d {
-                Some((id, m)) => {
+                Some((id, t, m)) => {
                     if !ignored.binary_search(id).is_ok() {
+                        // TODO Optimize out: if previous matrix identical to
+                        // current, don't change matrix. but needs to check
+                        // recursively for every sprite
+                        // TODO Deduplicate code from sprite and main loop
                         let m = m.unwrap_or(swf::Matrix::IDENTITY);
                         fuckprint!(
-                            "  P({}, {}, {}, {}, {}, {}, {}) \\\n",
+                            "  P{}({}, {}, {}, {}, {}, {}, {}) \\\n",
+                            match t { Object::Shape => "SH", Object::Sprite => "SP" },
                             id,
                             m.a.to_f64(),
                             m.b.to_f64(),
@@ -300,7 +418,7 @@ static void curve(plutovg_path_t *p, float x[static 1], float y[static 1], float
 #define X(ID, COUNT, CTOR) \
  static plutovg_path_t *o##ID; \
  static void o##ID##i(void) {{ plutovg_path_t *p = o##ID; float x, y; CTOR }}
-OBJECT_XS
+SHAPE_XS
 #undef X
 #undef B
 #undef L
@@ -318,12 +436,12 @@ void there_she_is_init_plutovg(void) {{
  #define X(ID, COUNT, CTOR) \
   o##ID = plutovg_path_create(); \
   plutovg_path_reserve(o##ID, (COUNT));
- OBJECT_XS
+ SHAPE_XS
  #undef X
 
  #define X(ID, COUNT, CTOR) o##ID##i,
  static void(*inits[])(void) = {{
-  OBJECT_XS
+  SHAPE_XS
  }};
  #undef X
 
@@ -334,22 +452,53 @@ void there_she_is_init_plutovg(void) {{
 
 void there_she_is_free_plutovg(void) {{
  #define X(ID, COUNT, CTOR) plutovg_path_destroy(o##ID);
- OBJECT_XS
+ SHAPE_XS
  #undef X
  plutovg_canvas_destroy(c);
  plutovg_surface_destroy(s);
 }}
 
+#define SDEF(ID, COUNT, CTOR) static int s##ID##d = COUNT;
+SPRITE_XS
+#undef SDEF
+
+#define SDEF(ID, COUNT, CTOR) \
+ static void s##ID##r(int frame_i, plutovg_matrix_t const base[static 1]) {{ \
+  plutovg_matrix_t matrix; \
+  (void)matrix; (void)base; \
+  switch (frame_i) {{ \
+   CTOR \
+   default: assert(!"Invalid frame!"); break; \
+  }} \
+ }}
+#define SFRAME(FRAME, CTOR) case FRAME: CTOR break;
+#define NOSFRAME(FRAME) case FRAME: break;
+#define SPSH(ID, ...) \
+ assert(o##ID != NULL); \
+ plutovg_matrix_multiply(&matrix, base, &PLUTOVG_MAKE_MATRIX(__VA_ARGS__)); \
+ plutovg_canvas_set_matrix(c, &matrix); \
+ plutovg_canvas_stroke_path(c, o##ID);
+#define SPSP(ID, ...) \
+ plutovg_matrix_multiply(&matrix, base, &PLUTOVG_MAKE_MATRIX(__VA_ARGS__)); \
+ s##ID##r(ID % s##ID##d, &matrix);
+SPRITE_XS
+#undef SPSP
+#undef SPSH
+#undef SFRAME
+#undef SDEF
+
 void there_she_is_render_sdl_plutovg(void *pixels, int pitch, int frame) {{
  assert(c != NULL);
  switch (frame) {{
   #define F(ID, CTOR) case ID: CTOR break;
-  #define P(ID, A, B, C, D, TX, TY) \
+  #define PSH(ID, A, B, C, D, TX, TY) \
    assert(o##ID != NULL); \
    plutovg_canvas_set_matrix(c, &PLUTOVG_MAKE_MATRIX(A, B, C, D, TX, TY)); \
    plutovg_canvas_stroke_path(c, o##ID);
+  #define PSP(ID, ...) s##ID##r(ID % s##ID##d, &PLUTOVG_MAKE_MATRIX(__VA_ARGS__));
   FRAME_XS
-  #undef P
+  #undef PSP
+  #undef PSH
   #undef F
   default: assert(!"No such frame"); break;
  }}
@@ -367,6 +516,8 @@ void there_she_is_render_sdl_plutovg(void *pixels, int pitch, int frame) {{
 #ifdef FEAT_HTML5
 #include <emscripten.h>
 
+// TODO I got bored, implement sprites here.
+
 #define X(ID, COUNT, CTOR) \
  function o##ID##r(ctx) {{ let x, y; ctx.beginPath(); CTOR ctx.stroke(); }}
 #define M(X, Y) ctx.moveTo(x=(X), y=(Y));
@@ -374,12 +525,13 @@ void there_she_is_render_sdl_plutovg(void *pixels, int pitch, int frame) {{
 #define B(ADX, ADY, CDX, CDY) \
  ctx.quadraticCurveTo(x+(CDX), y+(CDY), x+(CDX)+(ADX), y+(CDY)+(ADY)); x += (ADX)+(CDX); y += (ADY)+(CDY);
 #define F(ID, CTOR) case ID: CTOR break;
-#define P(ID, A, B, C, D, TX, TY) \
+#define PSH(ID, A, B, C, D, TX, TY) \
  ctx.setTransform((A), (B), (C), (D), (TX), (TY)); \
  o##ID##r(ctx);
+#define PSP(...)
 #define EM_JS2(...) EM_JS(__VA_ARGS__)
 EM_JS2(void, there_she_is_render_html5, (__externref_t CanvasRenderingContext2D, int frame), {{
- OBJECT_XS
+ SHAPE_XS
  const ctx = CanvasRenderingContext2D;
  ctx.resetTransform();
  ctx.fillStyle = 'white';
@@ -406,4 +558,5 @@ EM_JS2(void, there_she_is_render_html5, (__externref_t CanvasRenderingContext2D,
     trace!("min y = {}\n", swf.header.stage_size().y_min.to_pixels());
     trace!("decompressed tags: {} bytes\n", swf_buf.data.len());
     fuckprint!("\nint const there_she_is_n_frame = {};\n", display_lists.len());
+    efuckprint!("n_solid = {} n_linear = {} n_radial = {}  n_focal = {} n_bitmap = {}\n", n_solid, n_linear, n_radial, n_focal, n_bitmap);
 }
