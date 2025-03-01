@@ -139,6 +139,7 @@ The following projects also parse SWF:
 
 ## Future directions
 
+- Clipping
 - Integration with physics engines such as [Chipmunk2D](https://chipmunk-physics.net/)
 - Support for sound
 - Some barebones action support (I don't know yet)

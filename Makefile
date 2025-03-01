@@ -11,11 +11,8 @@ demo:$(SOURCE) $(OBJECT) $(ARCHIVE)
 there_she_is.o:there_she_is.c
 	time $(CC) -ferror-limit=1 -DFEAT_PLUTOVG $(CFLAGS) -O0 -c $<
 
-there_she_is.c:hello-rust/src/main.rs
-	pushd hello-rust; cargo run -- c > ../$@
-
-there_she_is.h:hello-rust/src/main.rs
-	pushd hello-rust; cargo run -- h > ../$@
+there_she_is.c:main.rs there_she_is.swf
+there_she_is.h:main.rs there_she_is.swf
 
 main.c:there_she_is.h
 	touch $@
@@ -27,6 +24,10 @@ plutovg.a:
 	pushd plutovg/source && \
 	$(CC) -DPLUTOVG_BUILD -Wno-sign-compare -Wno-unused-function -c *.c -I../include && \
 	ar r ../../plutovg.a *.o
+
+# Doens't work
+#there_she_is.swf:
+#	curl https://archive.org/download/flash_There_She_Is/flash_There_She_Is.swf > $@
 
 #EMSCRIPTEN_FLAGS=-Oz -flto -mreference-types
 EMSCRIPTEN_FLAGS=-mreference-types
@@ -43,3 +44,13 @@ demo.zip:main.c there_she_is.c shell.html
 
 clean:
 	rm -f plutovg.a there_she_is.o demo.exe demo
+
+tcc.pdf:tcc.mom
+	pdfmom -Kutf8 -t $< > $@
+	
+.SUFFIXES: .swf .c .h
+
+.swf.c:
+	cargo run -- -c $< > ../$@
+.swf.h:
+	cargo run -- -h $< > ../$@

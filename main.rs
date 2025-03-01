@@ -7,9 +7,6 @@ use std::io::Write;
 enum Object { Shape, Sprite }
 
 fn main() {
-    let mut is_trace = false;
-    let mut is_header = false;
-    let mut is_source = false;
     let mut out = std::io::stdout().lock();
     let mut err = std::io::stderr().lock();
 
@@ -23,12 +20,23 @@ fn main() {
             write!(err, $($x)*).unwrap_or_else(|_| { std::process::exit(0)})
         }
     }
+
+    let mut die = || -> ! {efuckprint!("Usage: swf2c -c|-h [-t] <file>\n"); std::process::exit(1);};
+
+    let Ok(g) = getopt3::new(env::args().skip(1), "chts") else { die(); };
+    let Ok(g) = getopt3::validate(g) else { die(); };
+
+    if g.arguments.len() != 1 { die(); }
+
+    let is_trace = g.options.contains_key(&'t');
+    let is_header = g.options.contains_key(&'h');
+    let is_source = g.options.contains_key(&'c');
+
     macro_rules! trace {
         ($($x:tt)*) => { if is_trace { efuckprint!($($x)*) }}
     }
 
-    let mut die = || efuckprint!("Usage: swf2c (c|h)t? <file>\n");
-
+    /*
     if let Some(str) = env::args().skip(1).next()
     {
         for c in str.chars() {
@@ -39,10 +47,10 @@ fn main() {
                 _ => die(),
             }
         }
-    }
+    } */
 
     if is_header == is_source {
-        die()
+        die();
     }
 
     if is_header {
@@ -79,7 +87,7 @@ void there_she_is_render_sdl_html5(__externref_t CanvasRenderingContext2D, int f
     }
 
     //fuckprint!("hi baby\n");
-    let file = File::open(r"C:\Users\Nero\Downloads\flash_There_She_Is.swf").unwrap();
+    let file = File::open(g.arguments.first().unwrap()).unwrap();
     let reader = BufReader::new(file);
     let swf_buf = swf::decompress_swf(reader).unwrap();
     let swf = swf::parse_swf(&swf_buf).unwrap();
@@ -99,6 +107,10 @@ void there_she_is_render_sdl_html5(__externref_t CanvasRenderingContext2D, int f
     let mut n_radial = 0;
     let mut n_focal = 0;
     let mut n_bitmap = 0;
+    let mut n_clipping = 0;
+    let mut n_blending = 0;
+    let mut n_fill0 = 0;
+    let mut n_fill1 = 0;
 
     let limit = 9999;
     for tag in swf.tags {
@@ -176,6 +188,8 @@ void there_she_is_render_sdl_html5(__externref_t CanvasRenderingContext2D, int f
             swf::Tag::SymbolClass(symbol_class_links) => todo!(),
             swf::Tag::PlaceObject(place_object) => {
                 sprite_ids.sort();
+                n_clipping += place_object.clip_depth.is_some() as i32;
+                n_blending += place_object.blend_mode.is_some() as i32;
                 match place_object.action {
                     swf::PlaceObjectAction::Place(id) => {
                         trace!("placeobj {}\n", id);
@@ -233,6 +247,8 @@ void there_she_is_render_sdl_html5(__externref_t CanvasRenderingContext2D, int f
         for sr in s.shape.iter() {
             match sr {
                 swf::ShapeRecord::StyleChange(style_change_data) => {
+                    n_fill0 += style_change_data.fill_style_0.is_some() as i32;
+                    n_fill1 += style_change_data.fill_style_1.is_some() as i32;
                     match style_change_data.move_to {
                         Some(to) => fuckprint!("  M({},{}) \\\n", to.x.to_pixels(), to.y.to_pixels()),
                         None => (),
@@ -559,4 +575,5 @@ EM_JS2(void, there_she_is_render_html5, (__externref_t CanvasRenderingContext2D,
     trace!("decompressed tags: {} bytes\n", swf_buf.data.len());
     fuckprint!("\nint const there_she_is_n_frame = {};\n", display_lists.len());
     efuckprint!("n_solid = {} n_linear = {} n_radial = {}  n_focal = {} n_bitmap = {}\n", n_solid, n_linear, n_radial, n_focal, n_bitmap);
+    efuckprint!("n_clipping = {} n_blending = {} n_fill0 = {} n_fill1 = {}\n", n_clipping, n_blending, n_fill0, n_fill1);
 }

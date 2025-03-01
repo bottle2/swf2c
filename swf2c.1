@@ -1,0 +1,44 @@
+.Dd 25th February, 2025
+.Dt SWF2C 1
+.Os
+.Sh NAME
+.Nm swf2c
+.Nd compiles Flash into C
+.Sh SYNOPSIS
+.Nm
+.Cm h Ns | Ns Cm c Ns Op Cm d
+.Sh DESCRIPTION
+The
+.Nm
+utility transforms.
+The programmer requires no knowledge of Flash, its file format SWF nor Flash
+authoring tools, while the artist of Flash requires no knowledge of programming.
+.Sh OPTIONS
+.Bl -tag -compact
+.It Cm c
+Prints a source to standard output.
+.It Cm h
+Prints a header to standard output.
+.It Cm d
+Prints debug information to standard error.
+.El
+.Sh FILES
+Requires a file at
+.Pa C:\eUsers\eNero\eDownloads\eflash_There_She_Is.swf
+to work.
+.Sh EXIT STATUS
+Exits with status 0 on success.
+.Sh EXAMPLES
+The user may add the following inference rules to their
+.Pa Makefile .
+.Bd -literal
+\&.SUFFIXES: .swf .c .h
+\&.swf.c:
+	swf2c c < $< > $@
+\&.swf.h:
+	swf2c h < $< > $@
+.Ed
+.Sh SEE ALSO
+.Xr swf2c 7
+.Xr xxd 1
+.Xr ragel 1

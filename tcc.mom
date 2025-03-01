@@ -1,0 +1,371 @@
+.\" TODO Deal with flex and shim spacing, deactivate until we are done with.
+.de MSWORD_SIMPLE_12
+.PT_SIZE 12
+.LS 14.4
+..
+.de MSWORD_SIMPLE_14
+.PT_SIZE 14
+.LS 16.8
+..
+.de MSWORD_SIMPLE_16
+.PT_SIZE 16
+.LS 19.2
+..
+.\" Source: https://www.gnu.org/software/groff/manual/groff.html.node/Manipulating-Spacing.html
+.de y-from-bot-up
+.  sp |\\n[.p]u-\\$1-\\n[.v]u
+..
+.TITLE "Teste 123"
+.PRINTSTYLE TYPESET
+.PAPER A4
+.L_MARGIN 3c
+.R_MARGIN 2c
+.T_MARGIN 3c
+.B_MARGIN 2c
+.MSWORD_SIMPLE_12
+.DOCHEADER OFF
+.HEADERS OFF
+.PAGINATE OFF
+.\"
+.ds Autor Bento Borges Schirmer
+.ds Titulo swf2c
+.PDF_TITLE \*[Titulo]
+.ds Subtitulo Compilador de Flash para C
+.de Local
+Santa Maria, RS
+2025
+..
+.ds Orientador Cesar Tadeu Pozzer
+.\"
+.CENTER
+.MSWORD_SIMPLE_14
+.PDF_BOOKMARK 1 "Capa"
+\*[S+2]\*[UC]Universidade Federal de Santa Maria
+Centro de Tecnologia
+Curso de Graduação em Ciência da Computação\*[LC]
+.MSWORD_SIMPLE_12
+.SPACE 8
+.MSWORD_SIMPLE_14
+\*[Autor]
+.MSWORD_SIMPLE_12
+.SPACE 8
+.\" MDT 2021 does not specify font size for title and subtitle.
+.MSWORD_SIMPLE_16
+\*[UC]\fB\*[Titulo]\fR: \*[Subtitulo]\*[LC]
+.y-from-bot-up (2c+16.8p+16.8p)
+.MSWORD_SIMPLE_14
+\*[Local]
+.NEWPAGE
+.PDF_BOOKMARK 1 "Folha de rosto"
+.MSWORD_SIMPLE_12
+\*[UC]\*[Autor]\*[LC]
+.SPACE 7
+\*[UC]\fB\*[Titulo]\fR: \*[Subtitulo]\*[LC]
+.SPACE 7
+.IL 8c \" Interpretação indica ser 7c, 7.5c ou 8c.
+.JUSTIFY
+Trabalho de Conclusão de Curso apresentado
+ao Curso de Graduação em Ciência da Computação
+da Universidade Federal de Santa Maria
+(UFSM, RS), como requisito parcial para obtenção
+do grau de \fBBacharel em Ciência da Computação\fR.
+.IQ CLEAR
+.CENTER
+.SPACE 10
+Orientador: Prof. Dr. \*[Orientador]
+.y-from-bot-up (2c+14.4p+14.4p)
+\*[Local]
+.NEWPAGE
+.PDF_BOOKMARK 1 "Resumo em língua vernácula"
+.CENTER
+.MSWORD_SIMPLE_12
+\fBRESUMO\fR
+.SPACE 2
+\*[UC]\fB\*[Titulo]\fR: \*[Subtitulo]\*[LC]
+.SPACE 2
+AUTOR: \*[Autor]
+ORIENTADOR: \*[Orientador]
+.SPACE 2
+.JUSTIFY
+LAlalalalalalalalala
+.SPACE 2
+\fBPalavras-chave:\fR Computação Gráfica. Gráficos Vetoriais. Animações. Compiladores.
+.NEWPAGE
+.PDF_BOOKMARK 1 "Resumo em língua estrangeira"
+.CENTER
+.MSWORD_SIMPLE_12
+\fBABSTRACT\fR
+.SPACE 2
+\*[UC]\fB\*[Titulo]\fR: \*[Subtitulo]\*[LC]
+.SPACE 2
+AUTHOR: \*[Autor]
+ADVISOR: \*[Orientador]
+.SPACE 2
+.JUSTIFY
+LAlalalalalalalalala
+.SPACE 2
+\fBKeywords:\fR Computer Graphics. Vector graphics. Animations. Compilers.
+.NEWPAGE
+.PDF_BOOKMARK 1 "Lista de figuras"
+Lista de Figuras
+.NEWPAGE
+.PDF_BOOKMARK 1 "Lista de tabelas"
+Lista de Tabelas
+.NEWPAGE
+.PDF_BOOKMARK 1 "Lista de siglas"
+Lista de Siglas
+.NEWPAGE
+.\".PDF_BOOKMARK 1 "Sumário"
+.TOC_HEADER_STRING "Sumário"
+.AUTO_RELOCATE_TOC TOP
+.\".NEWPAGE
+.START
+.de HEADING2
+.PDF_BOOKMARKS
+.PDF_BOOKMARK \\$1 "\\$[\\n(.$]"
+.PDF_BOOKMARKS OFF
+.HEADING \\$@
+..
+.HEADING2 1 "Introdução"
+.HEADING2 1 "Contextualização"
+.HEADING2 2 "Tema"
+.HEADING2 2 "Objetivo geral"
+.HEADING2 2 "Objetivos específicos"
+.HEADING2 2 "Justificativa"
+.HEADING2 2 "Problemas"
+.HEADING2 2 "Hipóteses"
+.HEADING2 2 "Metodologia"
+.HEADING2 3 "Classificação quanto a finalidade do estudo"
+.HEADING2 3 "Classificação quanto aos objetivos do estudo"
+.HEADING2 3 "Classificação quanto aos tipos de abordagem"
+.HEADING2 3 "Classificação quanto ao método"
+.HEADING2 3 "Classificação quanto ao tipo de procedimento"
+.HEADING2 2 "Cronograma"
+.HEADING2 1 "Referencial Teórico"
+Coisas a se discutir:
+.LIST
+.ITEM
+Significado histórico do Flash
+.ITEM
+Por que o Flash morreu?
+.ITEM
+O formato SWF
+.ITEM
+Peculiaridades do formato SWF
+.LIST OFF
+.PP
+Jogos visualmente fantásticos feitos em Flash para navegador:
+.\" Devia ir para um apêndice
+.LIST
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/572865 "Mike Shadow I paid for it ("
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/520768 "Ching Chong Beautiful ("
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/463278 "Mastermind: World Conqueror ("
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/558562 "No Time to Explain ("
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/549888 "Legend of JOHNNY ("
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/490036 "Robot Dinosaurs ("
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/464001 "Crunchdown ("
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/428930 "CannonCrotch ("
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/299858 "Sift Heads (2006-2014)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/511721 "Cubikill (2009-2013)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/478667 "Hitstick (2009-2014)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/547729 "The Douchebag Workout (2010-2013)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/578496 "Feed Us (2011-2014)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/563178 "Crazy Hangover (2011-2013)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/550782 "Mass Mayhem (2010-2013)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/292971 "Submachine (2006-2015)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/362982 "Snowboard Stunts (2007)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/388589 "Covert Front (2007-2012)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/640585 "Escape from Jay is Games (2014)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/389973 "Daymare (2007-2024)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/523103 "Where is 2009? (2010-2015)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/450868 "10 Gnomes (2008-2015)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/25718 "Xiao Xiao No. 4 (2001)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/511552 "Alice is Dead (2009-2010)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/560868 "The Sagittarian (2011-2013)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/579631 "Hood (2011-2012)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/601977 "Kingdom of Liars (2012-2013)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/422811 "The Great Kitchen Escape (2008-2014)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/548076 "Sneak Thief (2010-2014)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/436348 "The Fog Fall (2008-2014)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/549940 "The Trader of Stories (2010)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/469066 "Tortuga Escape (2008-2014)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/504540 "Space Oddity (2009-2010)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/638559 "Bermuda Escape (2014)"
+.\" E a série Morbid, Monster Detective, Aurora, Scene of the crime?
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/38927 "Disorderly (2001-2003)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/404463 "The Visitor (2007)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/439589 "Journeys of Reemus (2008-2012)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/495164 "A Small Favor (2009)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/417513 "Sonny (2007-2009)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/527144 "Colony (2010)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/559714 "Flight (2011)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/515322 "Gretel and Hansel (2009-2010)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/585233 "Max Strong (2011-2012)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/610654 "Vortex Point (2013-2017)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/506146 "GOBTRON (2009)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/550315 "Feed the King (2010)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/562620 "Burrito Bison (2011-2012)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/602131 "Knightmare Tower (2012)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/326452 "Storm the House (<2006-2008)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/404448 "5 Differences (2007-2008)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/467167 "Reincarnation (2008-2024)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/551891 "Lucky Tower (2010-2012)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/609133 "Caesar's Day Off (2013)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/611760 "Drop A Beat, Giuseppe! (2013)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/624426 "Brawlin' Sailor (2013)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/648589 "MURDER (2014)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/498994 "Little Wheel (2009)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/540079 "Easy Joe (2010-2016)"
+.\" Cansei
+.LIST OFF
+.PP
+Software de edição multimídia ou de animação
+.TS H
+box;
+l l l l l
+l n l l l.
+Nome	Ano	Versão	Plataforma	SWF gerado
+.TH
+.\" https://animatearchive.neocities.org/
+FutureSplash Animator	1996	Version 1.0	Windows e macOS (PPC)	?
+Macromedia Flash 5	2000	Version 5.0	Windows e macOS (PPC)	?
+Macromedia Flash MX	2002	Version 6.0	Windows e macOS (PPC)	?
+Macromedia Flash MX 2004	2003	Version 7.0	Windows e macOS (PPC)	?
+Macromedia Flash 8	2005	Version 8.0	Windows e macOS (PPC)	?
+Adobe Flash CS3 Professional	2007	Version 9.0	Windows e macOS (Intel)	?
+Adobe Flash CS4 Professional	2008	Version 10.0	Windows e macOS (Intel)	?
+Adobe Flash CS5 Professional	2010	Version 11.0	Windows e macOS (Intel)	?
+Adobe Flash CS5.5 Professional	2011	Version 11.5	Windows e macOS (Intel)	?
+Adobe Flash CS6 Professional	2012	Version 12.0	Windows e macOS (Intel)	?
+.\" https://www.newgrounds.com/wiki/creator-resources/animation-resources
+Adobe Animate	?	?	?	?
+Toon Boon Harmony	?	?	?	?
+Toonz	?	?	?	?
+OpenToonz	?	?	?	?
+TVPaint	?	?	?	?
+Wick Editor	?	?	?	?
+Krita	?	?	?	?
+Synfig	?	?	?	?
+Pencil2D	?	?	?	?
+Moho	?	?	?	?
+.\" Other I learned about
+Rive Editor	?	?	?	?
+Spine2D	?	?	?	?
+Spriter	?	?	?	?
+DragonBones	?	?	?	?
+.TE
+.PP
+Software que lê SWF
+.TS H
+box;
+l l l.
+Nome	Natureza	Linguagem de programação
+.TH
+swf (do Ruffle)	Biblioteca	Rust
+swf (do Haxe)	Biblioteca	Haxe
+format (do Haxe)	Biblioteca	Haxe
+JPEXS Free Flash Decompiler	Editor visual	Java
+Lightspark	Tocador	C++
+swftools	Ferramentas de lote	C
+Gnash	Tocador	C++
+ffmpeg	Conversor	C
+.TE
+.PP
+Software para gráficos vetoriais
+.\" Discutir licença, criador, backend
+.TS H
+box;
+l.
+Nome
+.TH
+PlutoVG
+NanoVG
+Skia
+Cairo
+HTML CanvasRenderingContext2D
+Direct2D
+Impeller
+Blend2D
+Rive Renderer
+OpenVG
+SDL_gfx
+.TE
+Bibliotecas de jogos:
+.TS H
+box;
+l.
+Nome
+.TH
+SDL
+SFML
+Sokol
+GLFW
+Freeglut
+Raylib
+Allegro
+HTML
+.TE
+.HEADING2 1 "Resultados"
+.HEADING2 1 "Conclusão"
+.NEWPAGE
+.HEADING2 1 "Referências"
+.TOC
+.LIST_OF_TABLES
