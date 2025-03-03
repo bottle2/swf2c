@@ -26,6 +26,8 @@
 .DOCHEADER OFF
 .HEADERS OFF
 .PAGINATE OFF
+.AUTOLABEL_TABLES PREFIX "Tabela " SUFFIX "\fR\ \(en"
+.CAPTION_AFTER_LABEL TBL
 .\"
 .ds Autor Bento Borges Schirmer
 .ds Titulo swf2c
@@ -154,8 +156,108 @@ O formato SWF
 Peculiaridades do formato SWF
 .LIST OFF
 .PP
+Software de edição multimídia ou de animação
+.TS H BOXED LABEL "" CAPTION "Software de edição multimídia ou de animação" SHORT_CAPTION "Buenas"
+box;
+l l l l l
+l n l l l.
+Nome	Ano	Versão	Plataforma
+.TH
+.\" https://animatearchive.neocities.org/
+FutureSplash Animator	1996	Version 1.0	Windows e macOS (PPC)
+Macromedia Flash 5	2000	Version 5.0	Windows e macOS (PPC)
+Macromedia Flash MX	2002	Version 6.0	Windows e macOS (PPC)
+Macromedia Flash MX 2004	2003	Version 7.0	Windows e macOS (PPC)
+Macromedia Flash 8	2005	Version 8.0	Windows e macOS (PPC)
+Adobe Flash CS3 Professional	2007	Version 9.0	Windows e macOS (Intel)
+Adobe Flash CS4 Professional	2008	Version 10.0	Windows e macOS (Intel)
+Adobe Flash CS5 Professional	2010	Version 11.0	Windows e macOS (Intel)
+Adobe Flash CS5.5 Professional	2011	Version 11.5	Windows e macOS (Intel)
+Adobe Flash CS6 Professional	2012	Version 12.0	Windows e macOS (Intel)
+.\" https://www.newgrounds.com/wiki/creator-resources/animation-resources
+Adobe Animate	?	?	?
+Toon Boon Harmony	?	?	?
+Toonz	?	?	?
+OpenToonz	?	?	?
+TVPaint	?	?	?
+Wick Editor	?	?	?
+Krita	?	?	?
+Synfig	?	?	?
+Pencil2D	?	?	?
+Moho	?	?	?
+.\" Other I learned about
+Rive Editor	?	?	?
+Spine2D	?	?	?
+Spriter	?	?	?
+DragonBones	?	?	?
+.TE
+.PP
+Software que lê SWF
+.TS H BOXED CAPTION "Leitores"
+box;
+l l l.
+Nome	Natureza	Linguagem de programação
+.TH
+swf (do Ruffle)	Biblioteca	Rust
+swf (do Haxe)	Biblioteca	Haxe
+format (do Haxe)	Biblioteca	Haxe
+JPEXS Free Flash Decompiler	Editor visual	Java
+Lightspark	Tocador	C++
+swftools	Ferramentas de lote	C
+Gnash	Tocador	C++
+ffmpeg	Conversor	C
+.TE
+.PP
+Software para gráficos vetoriais
+.\" Discutir licença, criador, backend
+.TS H BOXED CAPTION "Bibs"
+box;
+l.
+Nome
+.TH
+PlutoVG
+NanoVG
+Skia
+Cairo
+HTML CanvasRenderingContext2D
+Direct2D
+Impeller
+Blend2D
+Rive Renderer
+OpenVG
+SDL_gfx
+.TE
+Bibliotecas de jogos:
+.TS H BOXED CAPTION "Gamers"
+box;
+l.
+Nome
+.TH
+SDL
+SFML
+Sokol
+GLFW
+Freeglut
+Raylib
+Allegro
+HTML
+.TE
+.HEADING2 1 "Resultados"
+.FLOAT
+.LABEL "Tabela \*[tbl-label] \(en " CAPTION "Testando aqui" SHORT_CAPTION "Shorter" TO_LIST TABLES
+.AUTOLABEL_TABLES NO
+.TS
+l.
+heyyyyyyyyyyyyyyyyyyyy
+.TE
+.FLOAT OFF
+.HEADING2 1 "Conclusão"
+.NEWPAGE
+.HEADING2 1 "Referências"
+.NEWPAGE
+.HEADING2 1 "Apêndice A: Alguns Flashes marcantes"
+.PP
 Jogos visualmente fantásticos feitos em Flash para navegador:
-.\" Devia ir para um apêndice
 .LIST
 .ITEM
 .PDF_WWW_LINK https://www.newgrounds.com/portal/view/572865 "Mike Shadow I paid for it ("
@@ -276,96 +378,7 @@ Jogos visualmente fantásticos feitos em Flash para navegador:
 .PDF_WWW_LINK https://www.newgrounds.com/portal/view/540079 "Easy Joe (2010-2016)"
 .\" Cansei
 .LIST OFF
-.PP
-Software de edição multimídia ou de animação
-.TS H
-box;
-l l l l l
-l n l l l.
-Nome	Ano	Versão	Plataforma	SWF gerado
-.TH
-.\" https://animatearchive.neocities.org/
-FutureSplash Animator	1996	Version 1.0	Windows e macOS (PPC)	?
-Macromedia Flash 5	2000	Version 5.0	Windows e macOS (PPC)	?
-Macromedia Flash MX	2002	Version 6.0	Windows e macOS (PPC)	?
-Macromedia Flash MX 2004	2003	Version 7.0	Windows e macOS (PPC)	?
-Macromedia Flash 8	2005	Version 8.0	Windows e macOS (PPC)	?
-Adobe Flash CS3 Professional	2007	Version 9.0	Windows e macOS (Intel)	?
-Adobe Flash CS4 Professional	2008	Version 10.0	Windows e macOS (Intel)	?
-Adobe Flash CS5 Professional	2010	Version 11.0	Windows e macOS (Intel)	?
-Adobe Flash CS5.5 Professional	2011	Version 11.5	Windows e macOS (Intel)	?
-Adobe Flash CS6 Professional	2012	Version 12.0	Windows e macOS (Intel)	?
-.\" https://www.newgrounds.com/wiki/creator-resources/animation-resources
-Adobe Animate	?	?	?	?
-Toon Boon Harmony	?	?	?	?
-Toonz	?	?	?	?
-OpenToonz	?	?	?	?
-TVPaint	?	?	?	?
-Wick Editor	?	?	?	?
-Krita	?	?	?	?
-Synfig	?	?	?	?
-Pencil2D	?	?	?	?
-Moho	?	?	?	?
-.\" Other I learned about
-Rive Editor	?	?	?	?
-Spine2D	?	?	?	?
-Spriter	?	?	?	?
-DragonBones	?	?	?	?
-.TE
-.PP
-Software que lê SWF
-.TS H
-box;
-l l l.
-Nome	Natureza	Linguagem de programação
-.TH
-swf (do Ruffle)	Biblioteca	Rust
-swf (do Haxe)	Biblioteca	Haxe
-format (do Haxe)	Biblioteca	Haxe
-JPEXS Free Flash Decompiler	Editor visual	Java
-Lightspark	Tocador	C++
-swftools	Ferramentas de lote	C
-Gnash	Tocador	C++
-ffmpeg	Conversor	C
-.TE
-.PP
-Software para gráficos vetoriais
-.\" Discutir licença, criador, backend
-.TS H
-box;
-l.
-Nome
-.TH
-PlutoVG
-NanoVG
-Skia
-Cairo
-HTML CanvasRenderingContext2D
-Direct2D
-Impeller
-Blend2D
-Rive Renderer
-OpenVG
-SDL_gfx
-.TE
-Bibliotecas de jogos:
-.TS H
-box;
-l.
-Nome
-.TH
-SDL
-SFML
-Sokol
-GLFW
-Freeglut
-Raylib
-Allegro
-HTML
-.TE
-.HEADING2 1 "Resultados"
-.HEADING2 1 "Conclusão"
-.NEWPAGE
-.HEADING2 1 "Referências"
+.LIST_OF_TABLES TITLE_STRING "Lista de Tabelas" START_PAGENUM 20
 .TOC
-.LIST_OF_TABLES
+.\" TODO Lista de Ilustrações pode ser desemembrada em Lista de
+.\"      Listagens, Lista de Quadros, Lista de Gráficos etc.

@@ -47,6 +47,7 @@ clean:
 
 tcc.pdf:tcc.mom
 	pdfmom -Kutf8 -t $< > $@
+#	groff -Kutf8 -t -mom -Tpdf $< > $@
 	
 .SUFFIXES: .swf .c .h
 
