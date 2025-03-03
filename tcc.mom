@@ -1,7 +1,11 @@
-.\" TODO Deal with flex and shim spacing, deactivate until we are done with.
+.\" Line spacing in Word maybe means 120% the current font size.
 .de MSWORD_SIMPLE_12
 .PT_SIZE 12
 .LS 14.4
+..
+.de MSWORD_ONEHALF_12
+.PT_SIZE 12
+.LS 21.6
 ..
 .de MSWORD_SIMPLE_14
 .PT_SIZE 14
@@ -15,14 +19,26 @@
 .de y-from-bot-up
 .  sp |\\n[.p]u-\\$1-\\n[.v]u
 ..
-.TITLE "Teste 123"
 .PRINTSTYLE TYPESET
 .PAPER A4
 .L_MARGIN 3c
 .R_MARGIN 2c
 .T_MARGIN 3c
 .B_MARGIN 2c
+.XCOLOR Black
+.PDF_LINK_COLOR Black
+.\" TODO Align TOC numbers
+.TOC_ENTRY_STYLE 1 SIZE 12 CAPS   FONT B INDENT 0
+.TOC_ENTRY_STYLE 2 SIZE 12 CAPS   FONT R INDENT 0
+.TOC_ENTRY_STYLE 3 SIZE 12 NO_CAPS FONT B INDENT 0
+.TOC_ENTRY_STYLE 4 SIZE 12 NO_CAPS FONT R INDENT 0
+.HEADING_STYLE 1 NUMBER SIZE 12 CAPS   FONT B
+.HEADING_STYLE 2 NUMBER SIZE 12 CAPS   FONT R
+.HEADING_STYLE 3 NUMBER SIZE 12 NOCAPS FONT B
+.HEADING_STYLE 4 NUMBER SIZE 12 NOCAPS FONT R
 .MSWORD_SIMPLE_12
+.PARA_INDENT 1.25c
+.INDENT_FIRST_PARAS
 .DOCHEADER OFF
 .HEADERS OFF
 .PAGINATE OFF
@@ -108,14 +124,41 @@ LAlalalalalalalalala
 .SPACE 2
 \fBKeywords:\fR Computer Graphics. Vector graphics. Animations. Compilers.
 .NEWPAGE
-.PDF_BOOKMARK 1 "Lista de figuras"
-Lista de Figuras
+.PDF_BOOKMARK 1 "Lista de ilustrações"
+.\" To be automated.
+Lista de Ilustrações
 .NEWPAGE
 .PDF_BOOKMARK 1 "Lista de tabelas"
 Lista de Tabelas
 .NEWPAGE
-.PDF_BOOKMARK 1 "Lista de siglas"
-Lista de Siglas
+.PDF_BOOKMARK 1 "Lista de abreviaturas e siglas"
+.CENTER
+.MSWORD_SIMPLE_12
+\fBLISTA DE ABREVIATURAS E SIGLAS\fR
+.JUSTIFY
+.SPACE 1.5c
+.SILENT
+.\" XXX Write longest acronym here!! 
+.PAD "\*[ST1]SWF\*[ST1X]\ \ \*[ST2]#\*[ST2X]"
+.SILENT OFF
+.ST 1 L
+.ST 2 L QUAD
+.de Sigla
+.TAB 1
+\\$1\\*[TB+]
+.shift
+\\$*
+..
+.de Abreviatura
+.Sigla \\$@
+..
+.MSWORD_ONEHALF_12
+.Sigla SWF ShockWave File ou Small Web Format
+.Sigla GCC Gnu Compiler Collection
+.TQ
+.NEWPAGE
+.PDF_BOOKMARK 1 "Lista de símbolos"
+Lista de símbolos
 .NEWPAGE
 .\".PDF_BOOKMARK 1 "Sumário"
 .TOC_HEADER_STRING "Sumário"
@@ -128,14 +171,34 @@ Lista de Siglas
 .PDF_BOOKMARKS OFF
 .HEADING \\$@
 ..
+.MSWORD_ONEHALF_12
 .HEADING2 1 "Introdução"
+.PP
+Quanto ao alinhamento para os títulos que identificam os elementos pré-textuais (agra\%decimentos, dedicatória, listas, resumo e sumário), por não possuírem indicativos numéricos,
+devem ser dispostos na parte superior da página com alinhamento centralizado. O texto que os
+sucede (dados desses elementos) deve ser separado do título do elemento pré-textual ao qual se
+vincula por uma linha em branco (espaço de 1,5 entre linhas).
 .HEADING2 1 "Contextualização"
+.PP
+Something.
 .HEADING2 2 "Tema"
+.PP
+Something.
 .HEADING2 2 "Objetivo geral"
+.PP
+Something.
 .HEADING2 2 "Objetivos específicos"
+.PP
+Something.
 .HEADING2 2 "Justificativa"
+.PP
+Something.
 .HEADING2 2 "Problemas"
+.PP
+Something.
 .HEADING2 2 "Hipóteses"
+.PP
+Something.
 .HEADING2 2 "Metodologia"
 .HEADING2 3 "Classificação quanto a finalidade do estudo"
 .HEADING2 3 "Classificação quanto aos objetivos do estudo"
@@ -252,6 +315,7 @@ heyyyyyyyyyyyyyyyyyyyy
 .TE
 .FLOAT OFF
 .HEADING2 1 "Conclusão"
+.HEADING_STYLE 1 NO_NUMBER
 .NEWPAGE
 .HEADING2 1 "Referências"
 .NEWPAGE
@@ -376,6 +440,8 @@ Jogos visualmente fantásticos feitos em Flash para navegador:
 .PDF_WWW_LINK https://www.newgrounds.com/portal/view/498994 "Little Wheel (2009)"
 .ITEM
 .PDF_WWW_LINK https://www.newgrounds.com/portal/view/540079 "Easy Joe (2010-2016)"
+.ITEM
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/624750 "Samsara Room (2013)"
 .\" Cansei
 .LIST OFF
 .LIST_OF_TABLES TITLE_STRING "Lista de Tabelas" START_PAGENUM 20
