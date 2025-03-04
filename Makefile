@@ -45,10 +45,18 @@ demo.zip:main.c there_she_is.c shell.html
 clean:
 	rm -f plutovg.a there_she_is.o demo.exe demo
 
-tcc.pdf:tcc.mom
-	pdfmom -Kutf8 -t $< > $@
-#	groff -Kutf8 -t -mom -Tpdf $< > $@
+tcc.pdf:tcc.mom om.tmac
+	pdfmom -M. -Kutf8 -t $< > $@
+#	groff -Kutf8 -t -Tpdf om.tmac $< > $@
 	
+MOM_PATH=/usr/share/groff/1.23.0/tmac/om.tmac
+
+tcc.patch:
+	-diff -u $(MOM_PATH) om.tmac > $@
+
+om.tmac:
+	cp $(MOM_PATH) $@ && patch < tcc.patch
+
 .SUFFIXES: .swf .c .h
 
 .swf.c:

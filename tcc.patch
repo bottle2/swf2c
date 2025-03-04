@@ -1,0 +1,19 @@
+--- /usr/share/groff/1.23.0/tmac/om.tmac	2023-09-15 13:36:19.000000000 -0300
++++ om.tmac	2025-03-04 18:26:38.293505900 -0300
+@@ -11055,6 +11055,7 @@
+ .       while \\n+[@LEVEL]<=\\n[#LOOP] \
+ .          if \\n[#HEAD_\\n[@LEVEL]_NUM] \
+ .             as $HD_NUM \\n[#HEAD_\\n[@LEVEL]_NUM].
++.       chop $HD_NUM
+ .       ie \\n[#TRUNC_TOC_HD_NUM] \
+ .          ds $TOC_HD_NUM \\n[#HEAD_\\n[#LEVEL]_NUM].
+ .       el .ds $TOC_HD_NUM \\*[$HD_NUM]
+@@ -15647,7 +15648,7 @@
+ "\f[\\*[$TOC_HEAD_\\n[#LEVEL]_FAM]\
+ \\*[$TOC_HEAD_\\n[#LEVEL]_FT]]\
+ \h'\\\\n[#TOC_INDENT_ADJ]u'\h'\\n[#TOC_HEAD_\\n[#LEVEL]_INDENT]u'\
+-\\*[$TOC_HD_NUM]\\*[$TOC_HEAD_\\n[#LEVEL]_ITEM]\\*[$TOC_PN\\*[_TYPEWRITE]]" \
++\\*[$TOC_HD_NUM]\h'\\n[TocDesired]-(\\w'\\*[$TOC_HD_NUM]'/1m)'\\*[$TOC_HEAD_\\n[#LEVEL]_ITEM]\\*[$TOC_PN\\*[_TYPEWRITE]]" \
+ "\\*[PDFBOOKMARK.NAME]"
+ .       \}
+ .       el \{\

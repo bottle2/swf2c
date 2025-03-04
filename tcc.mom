@@ -165,6 +165,7 @@ Lista de símbolos
 .AUTO_RELOCATE_TOC TOP
 .\".NEWPAGE
 .START
+.nr TocDesired \w'2.7.5xx'/1m
 .de HEADING2
 .PDF_BOOKMARKS
 .PDF_BOOKMARK \\$1 "\\$[\\n(.$]"
@@ -176,24 +177,24 @@ Lista de símbolos
 .JUSTIFY
 .HEADING2 1 "Introdução"
 .PP
-Quanto ao alinhamento para os títulos que identificam os elementos pré-textuais (agra\%decimentos, dedicatória, listas, resumo e sumário), por não possuírem indicativos numéricos,
-devem ser dispostos na parte superior da página com alinhamento centralizado. O texto que os
-sucede (dados desses elementos) deve ser separado do título do elemento pré-textual ao qual se
-vincula por uma linha em branco (espaço de 1,5 entre linhas).
-.PP
-Hey
+Nada por enquanto.
 .HEADING2 1 "Contextualização"
-.PP
-Something.
 .HEADING2 2 "Tema"
 .PP
-Something.
+Renderização de animações com gráficos vetoriais.
 .HEADING2 2 "Objetivo geral"
 .PP
-Something.
+Fazer um programa escrito em C renderizar animações com gráficos
+vetoriais extraídas de um arquivo Small Web Format (SWF).
 .HEADING2 2 "Objetivos específicos"
-.PP
-Something.
+.LIST
+.ITEM
+Ler o arquivo Flash;
+.ITEM
+Extrair dados;
+.ITEM
+Botar no C.
+.LIST OFF
 .HEADING2 2 "Justificativa"
 .PP
 Something.
@@ -206,6 +207,15 @@ Something.
 .HEADING2 2 "Metodologia"
 .HEADING2 3 "Classificação quanto a finalidade do estudo"
 .HEADING2 3 "Classificação quanto aos objetivos do estudo"
+.SILENT
+.PAD "\*[ST1]AAAAAAAA\*[ST1X]\ \ \*[ST2]AAAAAAAAAAAAAAAAA\*[ST2X]"
+.SILENT OFF
+.ST 1 L
+.ST 2 L QUAD
+.as lalala "\\*[TAB 1]hey\\*[TB+]"
+\*[lalala]
+hello
+.TQ
 .HEADING2 3 "Classificação quanto aos tipos de abordagem"
 .HEADING2 3 "Classificação quanto ao método"
 .HEADING2 3 "Classificação quanto ao tipo de procedimento"
