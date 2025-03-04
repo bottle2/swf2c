@@ -32,10 +32,12 @@
 .TOC_ENTRY_STYLE 2 SIZE 12 CAPS   FONT R INDENT 0
 .TOC_ENTRY_STYLE 3 SIZE 12 NO_CAPS FONT B INDENT 0
 .TOC_ENTRY_STYLE 4 SIZE 12 NO_CAPS FONT R INDENT 0
+.TOC_ENTRY_STYLE 5 SIZE 12 NO_CAPS FONT I INDENT 0
 .HEADING_STYLE 1 NUMBER SIZE 12 CAPS   FONT B
 .HEADING_STYLE 2 NUMBER SIZE 12 CAPS   FONT R
 .HEADING_STYLE 3 NUMBER SIZE 12 NOCAPS FONT B
 .HEADING_STYLE 4 NUMBER SIZE 12 NOCAPS FONT R
+.HEADING_STYLE 5 NUMBER SIZE 12 NOCAPS FONT I
 .MSWORD_SIMPLE_12
 .PARA_INDENT 1.25c
 .INDENT_FIRST_PARAS
@@ -93,7 +95,6 @@ do grau de \fBBacharel em Ciência da Computação\fR.
 Orientador: Prof. Dr. \*[Orientador]
 .y-from-bot-up (2c+14.4p+14.4p)
 \*[Local]
-.NEWPAGE
 .PDF_BOOKMARK 1 "Resumo em língua vernácula"
 .CENTER
 .MSWORD_SIMPLE_12
@@ -149,9 +150,8 @@ Lista de Tabelas
 .shift
 \\$*
 ..
-.de Abreviatura
-.Sigla \\$@
-..
+.als Abreviatura Sigla
+.als Acronimo Sigla
 .MSWORD_ONEHALF_12
 .Sigla SWF ShockWave File ou Small Web Format
 .Sigla GCC Gnu Compiler Collection
@@ -171,13 +171,17 @@ Lista de símbolos
 .PDF_BOOKMARKS OFF
 .HEADING \\$@
 ..
+.TOC_PADDING 1
 .MSWORD_ONEHALF_12
+.JUSTIFY
 .HEADING2 1 "Introdução"
 .PP
 Quanto ao alinhamento para os títulos que identificam os elementos pré-textuais (agra\%decimentos, dedicatória, listas, resumo e sumário), por não possuírem indicativos numéricos,
 devem ser dispostos na parte superior da página com alinhamento centralizado. O texto que os
 sucede (dados desses elementos) deve ser separado do título do elemento pré-textual ao qual se
 vincula por uma linha em branco (espaço de 1,5 entre linhas).
+.PP
+Hey
 .HEADING2 1 "Contextualização"
 .PP
 Something.
@@ -444,7 +448,8 @@ Jogos visualmente fantásticos feitos em Flash para navegador:
 .PDF_WWW_LINK https://www.newgrounds.com/portal/view/624750 "Samsara Room (2013)"
 .\" Cansei
 .LIST OFF
-.LIST_OF_TABLES TITLE_STRING "Lista de Tabelas" START_PAGENUM 20
+.\".TOC_PADDING 2
+.\".LIST_OF_TABLES TITLE_STRING "Lista de Tabelas" START_PAGENUM 20
 .TOC
 .\" TODO Lista de Ilustrações pode ser desemembrada em Lista de
 .\"      Listagens, Lista de Quadros, Lista de Gráficos etc.
