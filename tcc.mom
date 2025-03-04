@@ -166,27 +166,21 @@ Lista de símbolos
 .\".NEWPAGE
 .START
 .nr TocDesired \w'2.7.5xx'/1m
-.de HEADING2
-.PDF_BOOKMARKS
-.PDF_BOOKMARK \\$1 "\\$[\\n(.$]"
-.PDF_BOOKMARKS OFF
-.HEADING \\$@
-..
 .TOC_PADDING 1
 .MSWORD_ONEHALF_12
 .JUSTIFY
-.HEADING2 1 "Introdução"
+.HEADING 1 "Introdução"
 .PP
 Nada por enquanto.
-.HEADING2 1 "Contextualização"
-.HEADING2 2 "Tema"
+.HEADING 1 "Contextualização"
+.HEADING 2 "Tema"
 .PP
 Renderização de animações com gráficos vetoriais.
-.HEADING2 2 "Objetivo geral"
+.HEADING 2 "Objetivo geral"
 .PP
 Fazer um programa escrito em C renderizar animações com gráficos
 vetoriais extraídas de um arquivo Small Web Format (SWF).
-.HEADING2 2 "Objetivos específicos"
+.HEADING 2 "Objetivos específicos"
 .LIST
 .ITEM
 Ler o arquivo Flash;
@@ -195,18 +189,18 @@ Extrair dados;
 .ITEM
 Botar no C.
 .LIST OFF
-.HEADING2 2 "Justificativa"
+.HEADING 2 "Justificativa"
 .PP
 Something.
-.HEADING2 2 "Problemas"
+.HEADING 2 "Problemas"
 .PP
 Something.
-.HEADING2 2 "Hipóteses"
+.HEADING 2 "Hipóteses"
 .PP
 Something.
-.HEADING2 2 "Metodologia"
-.HEADING2 3 "Classificação quanto a finalidade do estudo"
-.HEADING2 3 "Classificação quanto aos objetivos do estudo"
+.HEADING 2 "Metodologia"
+.HEADING 3 "Classificação quanto a finalidade do estudo"
+.HEADING 3 "Classificação quanto aos objetivos do estudo"
 .SILENT
 .PAD "\*[ST1]AAAAAAAA\*[ST1X]\ \ \*[ST2]AAAAAAAAAAAAAAAAA\*[ST2X]"
 .SILENT OFF
@@ -216,11 +210,11 @@ Something.
 \*[lalala]
 hello
 .TQ
-.HEADING2 3 "Classificação quanto aos tipos de abordagem"
-.HEADING2 3 "Classificação quanto ao método"
-.HEADING2 3 "Classificação quanto ao tipo de procedimento"
-.HEADING2 2 "Cronograma"
-.HEADING2 1 "Referencial Teórico"
+.HEADING 3 "Classificação quanto aos tipos de abordagem"
+.HEADING 3 "Classificação quanto ao método"
+.HEADING 3 "Classificação quanto ao tipo de procedimento"
+.HEADING 2 "Cronograma"
+.HEADING 1 "Referencial Teórico"
 Coisas a se discutir:
 .LIST
 .ITEM
@@ -319,7 +313,7 @@ Raylib
 Allegro
 HTML
 .TE
-.HEADING2 1 "Resultados"
+.HEADING 1 "Resultados"
 .FLOAT
 .LABEL "Tabela \*[tbl-label] \(en " CAPTION "Testando aqui" SHORT_CAPTION "Shorter" TO_LIST TABLES
 .AUTOLABEL_TABLES NO
@@ -328,12 +322,12 @@ l.
 heyyyyyyyyyyyyyyyyyyyy
 .TE
 .FLOAT OFF
-.HEADING2 1 "Conclusão"
+.HEADING 1 "Conclusão"
 .HEADING_STYLE 1 NO_NUMBER
 .NEWPAGE
-.HEADING2 1 "Referências"
+.HEADING 1 "Referências"
 .NEWPAGE
-.HEADING2 1 "Apêndice A: Alguns Flashes marcantes"
+.HEADING 1 "Apêndice A: Alguns Flashes marcantes"
 .PP
 Jogos visualmente fantásticos feitos em Flash para navegador:
 .LIST
