@@ -1,3 +1,4 @@
+.PAPER A4
 .\" Line spacing in Word maybe means 120% the current font size.
 .de MSWORD_SIMPLE_12
 .PT_SIZE 12
@@ -20,14 +21,13 @@
 .  sp |\\n[.p]u-\\$1-\\n[.v]u
 ..
 .PRINTSTYLE TYPESET
-.PAPER A4
 .L_MARGIN 3c
 .R_MARGIN 2c
 .T_MARGIN 3c
 .B_MARGIN 2c
 .XCOLOR Black
 .PDF_LINK_COLOR Black
-.\" TODO Align TOC numbers
+.TOC_HEADER_STRING "Sumário"
 .TOC_ENTRY_STYLE 1 SIZE 12 CAPS   FONT B INDENT 0
 .TOC_ENTRY_STYLE 2 SIZE 12 CAPS   FONT R INDENT 0
 .TOC_ENTRY_STYLE 3 SIZE 12 NO_CAPS FONT B INDENT 0
@@ -38,13 +38,14 @@
 .HEADING_STYLE 3 NUMBER SIZE 12 NOCAPS FONT B
 .HEADING_STYLE 4 NUMBER SIZE 12 NOCAPS FONT R
 .HEADING_STYLE 5 NUMBER SIZE 12 NOCAPS FONT I
+.LISTS_STYLE TITLE_QUAD CENTER
 .MSWORD_SIMPLE_12
 .PARA_INDENT 1.25c
 .INDENT_FIRST_PARAS
 .DOCHEADER OFF
 .HEADERS OFF
 .PAGINATE OFF
-.AUTOLABEL_TABLES PREFIX "Tabela " SUFFIX "\fR\ \(en"
+.\".AUTOLABEL_TABLES PREFIX "Tabela " SUFFIX ""\""\fR\ \(en"
 .CAPTION_AFTER_LABEL TBL
 .\"
 .ds Autor Bento Borges Schirmer
@@ -56,13 +57,61 @@ Santa Maria, RS
 2025
 ..
 .ds Orientador Cesar Tadeu Pozzer
+.PDF_BOOKMARKS OFF
+.START
+.PDF_BOOKMARKS
+.\".TITLE      COVER "swf2c:\\fR \*[Subtitulo]"
+.\".TITLE  DOC_COVER "swf2c:\\fR \*[Subtitulo]"
+.\".COVER_TITLE_CAPS
+.\".DOC_COVER_TITLE_CAPS
+.\".COVER_AUTHOR_SPACE -3c
+.\".AUTHOR     COVER "\*[Autor]"
+.\".AUTHOR DOC_COVER "\*[Autor]"
+.\".ATTRIBUTE_STRING ""
+.\".MISC "Santa Maria, RS" "2025"
+.\".TITLE Resumo
+.\".COVERTEXT START 0
+.\"Universidade Federal de Santa Maria
+.\"Centro de Tecnologia
+.\"Curso de Graduação em Ciência da Computação
+.\".PDF_BOOKMARKS
+.\".PDF_BOOKMARK 1 "Folha de rosto"
+.\".PDF_BOOKMARKS OFF
+.\".COVERTEXT OFF
+.\".DOC_COVERTEXT START 0
+.\"Universidade Federal de Santa Maria
+.\"Centro de Tecnologia
+.\"Curso de Graduação em Ciência da Computação
+.\".PDF_BOOKMARKS
+.\".PDF_BOOKMARK 1 Capa
+.\".PDF_BOOKMARKS OFF
+.\".DOC_COVERTEXT OFF
+.\".NO_TOC_ENTRY
+.\".DOC_COVER TITLE AUTHOR MISC DOC_COVERTEXT
+.\".COVER     TITLE AUTHOR MISC     COVERTEXT
+.\".PDF_BOOKMARKS OFF
+.\".START
+.\".PDF_BOOKMARKS
+.\".PDF_BOOKMARK 1 "Resumo em língua vernácula"
+.\".COLLATE
+.\".TITLE "Abstract"
+.\".NO_TOC_ENTRY
+.\".TOC_AFTER_HERE
+.\".PDF_BOOKMARKS OFF
+.\".START
+.\".PDF_BOOKMARKS
+.\".PDF_BOOKMARK 1 "Resumo em língua estrangeira"
+.\".COLLATE
+.\".PDF_BOOKMARKS OFF
+.\".START
+.\".PDF_BOOKMARKS
 .\"
 .CENTER
 .MSWORD_SIMPLE_14
 .PDF_BOOKMARK 1 "Capa"
-\*[S+2]\*[UC]Universidade Federal de Santa Maria
-Centro de Tecnologia
-Curso de Graduação em Ciência da Computação\*[LC]
+\*[S+2]UNIVERSIDADE FEDERAL DE SANTA MARIA
+CENTRO DE TECNOLOGIA
+CURSO DE GRADUAÇÃO EM CIÊNCIA DA COMPUTAÇÃO
 .MSWORD_SIMPLE_12
 .SPACE 8
 .MSWORD_SIMPLE_14
@@ -124,26 +173,6 @@ ADVISOR: \*[Orientador]
 LAlalalalalalalalala
 .SPACE 2
 \fBKeywords:\fR Computer Graphics. Vector graphics. Animations. Compilers.
-.NEWPAGE
-.PDF_BOOKMARK 1 "Lista de ilustrações"
-.\" To be automated.
-Lista de Ilustrações
-.NEWPAGE
-.PDF_BOOKMARK 1 "Lista de tabelas"
-Lista de Tabelas
-.NEWPAGE
-.PDF_BOOKMARK 1 "Lista de abreviaturas e siglas"
-.CENTER
-.MSWORD_SIMPLE_12
-\fBLISTA DE ABREVIATURAS E SIGLAS\fR
-.JUSTIFY
-.SPACE 1.5c
-.SILENT
-.\" XXX Write longest acronym here!! 
-.PAD "\*[ST1]SWF\*[ST1X]\ \ \*[ST2]#\*[ST2X]"
-.SILENT OFF
-.ST 1 L
-.ST 2 L QUAD
 .de Sigla
 .TAB 1
 \\$1\\*[TB+]
@@ -152,19 +181,10 @@ Lista de Tabelas
 ..
 .als Abreviatura Sigla
 .als Acronimo Sigla
-.MSWORD_ONEHALF_12
-.Sigla SWF ShockWave File ou Small Web Format
-.Sigla GCC Gnu Compiler Collection
-.TQ
-.NEWPAGE
-.PDF_BOOKMARK 1 "Lista de símbolos"
-Lista de símbolos
+.TOC_AFTER_HERE
 .NEWPAGE
 .\".PDF_BOOKMARK 1 "Sumário"
-.TOC_HEADER_STRING "Sumário"
-.AUTO_RELOCATE_TOC TOP
 .\".NEWPAGE
-.START
 .nr TocDesired \w'2.7.5xx'/1m
 .TOC_PADDING 1
 .MSWORD_ONEHALF_12
@@ -228,7 +248,7 @@ Peculiaridades do formato SWF
 .LIST OFF
 .PP
 Software de edição multimídia ou de animação
-.TS H BOXED LABEL "" CAPTION "Software de edição multimídia ou de animação" SHORT_CAPTION "Buenas"
+.TS H BOXED LABEL "" CAPTION "Software de edição multimídia ou de animação"
 box;
 l l l l l
 l n l l l.
@@ -315,12 +335,17 @@ HTML
 .TE
 .HEADING 1 "Resultados"
 .FLOAT
-.LABEL "Tabela \*[tbl-label] \(en " CAPTION "Testando aqui" SHORT_CAPTION "Shorter" TO_LIST TABLES
+.LABEL "Tabela \*[tbl-label] \(en " CAPTION "Testando aqui" TO_LIST TABLES
 .AUTOLABEL_TABLES NO
 .TS
 l.
 heyyyyyyyyyyyyyyyyyyyy
 .TE
+.FLOAT OFF
+.SPACE
+.FLOAT
+.LABEL "Gráfico \*[fig-label] \(en " CAPTION "Testando figura" TO_LIST FIGURES
+aaaaaaaaaaaaaaaaaa
 .FLOAT OFF
 .HEADING 1 "Conclusão"
 .HEADING_STYLE 1 NO_NUMBER
@@ -453,7 +478,37 @@ Jogos visualmente fantásticos feitos em Flash para navegador:
 .\" Cansei
 .LIST OFF
 .\".TOC_PADDING 2
-.\".LIST_OF_TABLES TITLE_STRING "Lista de Tabelas" START_PAGENUM 20
+.\" TODO Make Lista de Tabelas aparecer no outline do PDF
+.\" TODO Find a way to add Lista de Abreviaturas e Siglas e de Símbolos aqui dentro também.
+.da TOC_ENTRIES
+.\" Stuff seems reversed here. Go figure hahaha.
+\!.COLLATE
+\!.START
+\!.pdfbookmark 1 "Lista de símbolos"
+\!LISTA DE SÍMBOLOS
+\!.COLLATE
+\!.START
+\!.pdfbookmark 1 "Lista de abreviaturas e siglas"
+\!.CENTER
+\!.MSWORD_SIMPLE_12
+\!\fBLISTA DE ABREVIATURAS E SIGLAS\fR
+\!.JUSTIFY
+\!.SPACE 1.5c
+\!.SILENT
+\!.\" XXX Write longest acronym here!! 
+\!.PAD "\*[ST1]SWF\*[ST1X]\ \ \*[ST2]#\*[ST2X]"
+\!.SILENT OFF
+\!.ST 1 L
+\!.ST 2 L QUAD
+\!.MSWORD_ONEHALF_12
+\!.Sigla SWF ShockWave File ou Small Web Format
+\!.Sigla GCC Gnu Compiler Collection
+\!.TQ
+\!.LIST_OF_TABLES  TITLE_STRING "LISTA DE TABELAS"
+\!.pdfbookmark 1 "Lista de tabelas"
+\!.LIST_OF_FIGURES TITLE_STRING "LISTA DE ILUSTRAÇÕES"
+\!.pdfbookmark 1 "Lista de ilustrações"
+.da
 .TOC
 .\" TODO Lista de Ilustrações pode ser desemembrada em Lista de
 .\"      Listagens, Lista de Quadros, Lista de Gráficos etc.
