@@ -52,10 +52,13 @@ tcc.pdf:tcc.mom om.tmac
 MOM_PATH=/usr/share/groff/1.23.0/tmac/om.tmac
 
 tcc.patch:
-	-diff -u $(MOM_PATH) om.tmac > $@
+	-diff -u om.tmac.orig om.tmac > $@
 
 om.tmac:
-	cp $(MOM_PATH) $@ && patch < tcc.patch
+	cp om.tmac.orig $@ && patch < tcc.patch
+
+see:
+	mv tcc.pdf ../storage/downloads/tcc.pdf
 
 .SUFFIXES: .swf .c .h
 

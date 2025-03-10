@@ -38,7 +38,7 @@
 .HEADING_STYLE 3 NUMBER SIZE 12 NOCAPS FONT B
 .HEADING_STYLE 4 NUMBER SIZE 12 NOCAPS FONT R
 .HEADING_STYLE 5 NUMBER SIZE 12 NOCAPS FONT I
-.LISTS_STYLE TITLE_QUAD CENTER
+.LISTS_STYLE TITLE_QUAD CENTER PT_SIZE 12 TITLE_SIZE 0 LEAD 1c
 .MSWORD_SIMPLE_12
 .PARA_INDENT 1.25c
 .INDENT_FIRST_PARAS
@@ -50,6 +50,8 @@
 .\"
 .ds Autor Bento Borges Schirmer
 .ds Titulo swf2c
+.TITLE "fakenews"
+.SKIP_PDF_OUTLINE
 .PDF_TITLE \*[Titulo]
 .ds Subtitulo Compilador de Flash para C
 .de Local
@@ -57,55 +59,7 @@ Santa Maria, RS
 2025
 ..
 .ds Orientador Cesar Tadeu Pozzer
-.PDF_BOOKMARKS OFF
 .START
-.PDF_BOOKMARKS
-.\".TITLE      COVER "swf2c:\\fR \*[Subtitulo]"
-.\".TITLE  DOC_COVER "swf2c:\\fR \*[Subtitulo]"
-.\".COVER_TITLE_CAPS
-.\".DOC_COVER_TITLE_CAPS
-.\".COVER_AUTHOR_SPACE -3c
-.\".AUTHOR     COVER "\*[Autor]"
-.\".AUTHOR DOC_COVER "\*[Autor]"
-.\".ATTRIBUTE_STRING ""
-.\".MISC "Santa Maria, RS" "2025"
-.\".TITLE Resumo
-.\".COVERTEXT START 0
-.\"Universidade Federal de Santa Maria
-.\"Centro de Tecnologia
-.\"Curso de Graduação em Ciência da Computação
-.\".PDF_BOOKMARKS
-.\".PDF_BOOKMARK 1 "Folha de rosto"
-.\".PDF_BOOKMARKS OFF
-.\".COVERTEXT OFF
-.\".DOC_COVERTEXT START 0
-.\"Universidade Federal de Santa Maria
-.\"Centro de Tecnologia
-.\"Curso de Graduação em Ciência da Computação
-.\".PDF_BOOKMARKS
-.\".PDF_BOOKMARK 1 Capa
-.\".PDF_BOOKMARKS OFF
-.\".DOC_COVERTEXT OFF
-.\".NO_TOC_ENTRY
-.\".DOC_COVER TITLE AUTHOR MISC DOC_COVERTEXT
-.\".COVER     TITLE AUTHOR MISC     COVERTEXT
-.\".PDF_BOOKMARKS OFF
-.\".START
-.\".PDF_BOOKMARKS
-.\".PDF_BOOKMARK 1 "Resumo em língua vernácula"
-.\".COLLATE
-.\".TITLE "Abstract"
-.\".NO_TOC_ENTRY
-.\".TOC_AFTER_HERE
-.\".PDF_BOOKMARKS OFF
-.\".START
-.\".PDF_BOOKMARKS
-.\".PDF_BOOKMARK 1 "Resumo em língua estrangeira"
-.\".COLLATE
-.\".PDF_BOOKMARKS OFF
-.\".START
-.\".PDF_BOOKMARKS
-.\"
 .CENTER
 .MSWORD_SIMPLE_14
 .PDF_BOOKMARK 1 "Capa"
@@ -504,7 +458,7 @@ Jogos visualmente fantásticos feitos em Flash para navegador:
 \!.Sigla SWF ShockWave File ou Small Web Format
 \!.Sigla GCC Gnu Compiler Collection
 \!.TQ
-\!.LIST_OF_TABLES  TITLE_STRING "LISTA DE TABELAS"
+\!.LIST_OF_TABLES  TITLE_STRING "LISTA DE TABELAS\\v'3c'"
 \!.pdfbookmark 1 "Lista de tabelas"
 \!.LIST_OF_FIGURES TITLE_STRING "LISTA DE ILUSTRAÇÕES"
 \!.pdfbookmark 1 "Lista de ilustrações"

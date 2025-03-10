@@ -1,6 +1,6 @@
---- /usr/share/groff/1.23.0/tmac/om.tmac	2023-09-15 13:36:19.000000000 -0300
-+++ om.tmac	2025-03-04 18:36:24.111869700 -0300
-@@ -11055,6 +11055,7 @@
+--- om.tmac.orig	2025-03-10 12:43:23.670198728 -0300
++++ om.tmac	2025-03-10 13:39:50.079064365 -0300
+@@ -11149,6 +11149,7 @@
  .       while \\n+[@LEVEL]<=\\n[#LOOP] \
  .          if \\n[#HEAD_\\n[@LEVEL]_NUM] \
  .             as $HD_NUM \\n[#HEAD_\\n[@LEVEL]_NUM].
@@ -8,7 +8,7 @@
  .       ie \\n[#TRUNC_TOC_HD_NUM] \
  .          ds $TOC_HD_NUM \\n[#HEAD_\\n[#LEVEL]_NUM].
  .       el .ds $TOC_HD_NUM \\*[$HD_NUM]
-@@ -11078,7 +11079,7 @@
+@@ -11186,7 +11187,7 @@
  .          as $TOC_HEAD_\\n[#LEVEL]_ITEM "\\*[toc-word-space]
  .    \}
  .    PDF_BOOKMARK \
@@ -17,12 +17,12 @@
          \\*[$PDF_HD_NUM] \\*[$TOC_HEAD_\\n[#LEVEL]_ITEM]
  .    rm PDF_NM
  .    rm $PDF_HD_NUM
-@@ -15647,7 +15648,7 @@
- "\f[\\*[$TOC_HEAD_\\n[#LEVEL]_FAM]\
- \\*[$TOC_HEAD_\\n[#LEVEL]_FT]]\
- \h'\\\\n[#TOC_INDENT_ADJ]u'\h'\\n[#TOC_HEAD_\\n[#LEVEL]_INDENT]u'\
--\\*[$TOC_HD_NUM]\\*[$TOC_HEAD_\\n[#LEVEL]_ITEM]\\*[$TOC_PN\\*[_TYPEWRITE]]" \
-+\\*[$TOC_HD_NUM]\h'\\n[TocDesired]-(\\w'\\*[$TOC_HD_NUM]'/1m)'\\*[$TOC_HEAD_\\n[#LEVEL]_ITEM]\\*[$TOC_PN\\*[_TYPEWRITE]]" \
- "\\*[PDFBOOKMARK.NAME]"
- .       \}
- .       el \{\
+@@ -15802,7 +15803,7 @@
+ \w'\\*[$TOC_HD_NUM]'u
+ .          ti -\w'\\*[$TOC_HD_NUM]'u
+ .          pdfhref L -D "\\*[PDFBOOKMARK.NAME]" -E -- \
+-\&\\*[$TOC_HD_NUM]\\*[$TOC_HEAD_\\n[#LEVEL]_ITEM]
++\&\\*[$TOC_HD_NUM]\h'\\n[TocDesired]-(\\w'\\*[$TOC_HD_NUM]'/1m)'\\*[$TOC_HEAD_\\n[#LEVEL]_ITEM]
+ \!.        ll
+ '          in
+ .          di TOC_LEADERS
