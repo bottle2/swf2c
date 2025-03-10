@@ -28,6 +28,7 @@
 .XCOLOR Black
 .PDF_LINK_COLOR Black
 .TOC_HEADER_STRING "Sumário"
+.PAGINATE_TOC OFF
 .TOC_ENTRY_STYLE 1 SIZE 12 CAPS   FONT B INDENT 0
 .TOC_ENTRY_STYLE 2 SIZE 12 CAPS   FONT R INDENT 0
 .TOC_ENTRY_STYLE 3 SIZE 12 NO_CAPS FONT B INDENT 0
@@ -38,12 +39,14 @@
 .HEADING_STYLE 3 NUMBER SIZE 12 NOCAPS FONT B
 .HEADING_STYLE 4 NUMBER SIZE 12 NOCAPS FONT R
 .HEADING_STYLE 5 NUMBER SIZE 12 NOCAPS FONT I
-.LISTS_STYLE TITLE_QUAD CENTER PT_SIZE 12 TITLE_SIZE 0 LEAD 1c
+.LISTS_STYLE TITLE_QUAD CENTER PT_SIZE 12 TITLE_SIZE 0 LEAD 21.6 NO_PAGINATION
 .MSWORD_SIMPLE_12
 .PARA_INDENT 1.25c
 .INDENT_FIRST_PARAS
 .DOCHEADER OFF
 .HEADERS OFF
+.FOOTERS OFF
+.\" XXX MDT 2021 doesn't specify exact position of pagination.
 .PAGINATE OFF
 .\".AUTOLABEL_TABLES PREFIX "Tabela " SUFFIX ""\""\fR\ \(en"
 .CAPTION_AFTER_LABEL TBL
@@ -136,9 +139,11 @@ LAlalalalalalalalala
 .als Abreviatura Sigla
 .als Acronimo Sigla
 .TOC_AFTER_HERE
+.PAGINATE
+.PAGENUM_POS TOP RIGHT
+.PAGENUM_HYPHENS OFF
+.PAGENUMBER 9 \"XXX Defined manually, one less before Introdução
 .NEWPAGE
-.\".PDF_BOOKMARK 1 "Sumário"
-.\".NEWPAGE
 .nr TocDesired \w'2.7.5xx'/1m
 .TOC_PADDING 1
 .MSWORD_ONEHALF_12
@@ -434,9 +439,12 @@ Jogos visualmente fantásticos feitos em Flash para navegador:
 .\".TOC_PADDING 2
 .\" TODO Make Lista de Tabelas aparecer no outline do PDF
 .\" TODO Find a way to add Lista de Abreviaturas e Siglas e de Símbolos aqui dentro também.
+.\" XXX MDT requires either 1.5 cm between title and entries, or an empty line
+.\"     which is 2 * 12 * 1.2 * 1.5 * 2.54 / 72 = 1.524 cm
 .da TOC_ENTRIES
 .\" Stuff seems reversed here. Go figure hahaha.
 \!.COLLATE
+\!.PAGINATE OFF
 \!.START
 \!.pdfbookmark 1 "Lista de símbolos"
 \!LISTA DE SÍMBOLOS
