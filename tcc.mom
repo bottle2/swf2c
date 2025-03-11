@@ -25,6 +25,8 @@
 .R_MARGIN 2c
 .T_MARGIN 3c
 .B_MARGIN 2c
+.NO_SHIM
+.NO_FLEX
 .XCOLOR Black
 .PDF_LINK_COLOR Black
 .TOC_HEADER_STRING "Sumário"
@@ -138,12 +140,14 @@ LAlalalalalalalalala
 ..
 .als Abreviatura Sigla
 .als Acronimo Sigla
+.als Simbolo Sigla
 .TOC_AFTER_HERE
 .PAGINATE
 .PAGENUM_POS TOP RIGHT
 .PAGENUM_HYPHENS OFF
 .PAGENUMBER 9 \"XXX Defined manually, one less before Introdução
 .NEWPAGE
+.NO_SHIM OFF
 .nr TocDesired \w'2.7.5xx'/1m
 .TOC_PADDING 1
 .MSWORD_ONEHALF_12
@@ -445,24 +449,39 @@ Jogos visualmente fantásticos feitos em Flash para navegador:
 .\" Stuff seems reversed here. Go figure hahaha.
 \!.COLLATE
 \!.PAGINATE OFF
+\!.NO_SHIM
+\!.NO_FLEX
 \!.START
 \!.pdfbookmark 1 "Lista de símbolos"
-\!LISTA DE SÍMBOLOS
+\!.CENTER
+\!.MSWORD_ONEHALF_12
+\!\fBLISTA DE SÍMBOLOS\fR
+\!.sp
+\!.JUSTIFY
+\!.SILENT
+.\" XXX Write longest symbol here!! 
+\!.PAD "\*[ST1]GHz\*[ST1X]\ \ \*[ST2]#\*[ST2X]"
+\!.SILENT OFF
+\!.ST 1 L
+\!.ST 2 L QUAD
+\!.Simbolo GHz Gigahertz
+\!.Simbolo ms Milissegundo
 \!.COLLATE
+\!.NO_SHIM
+\!.NO_FLEX
 \!.START
 \!.pdfbookmark 1 "Lista de abreviaturas e siglas"
 \!.CENTER
-\!.MSWORD_SIMPLE_12
+\!.MSWORD_ONEHALF_12
 \!\fBLISTA DE ABREVIATURAS E SIGLAS\fR
+\!.sp
 \!.JUSTIFY
-\!.SPACE 1.5c
 \!.SILENT
-\!.\" XXX Write longest acronym here!! 
+.\" XXX Write longest acronym here!! 
 \!.PAD "\*[ST1]SWF\*[ST1X]\ \ \*[ST2]#\*[ST2X]"
 \!.SILENT OFF
 \!.ST 1 L
 \!.ST 2 L QUAD
-\!.MSWORD_ONEHALF_12
 \!.Sigla SWF ShockWave File ou Small Web Format
 \!.Sigla GCC Gnu Compiler Collection
 \!.TQ
