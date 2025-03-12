@@ -1,5 +1,5 @@
---- om.tmac.orig	2025-03-10 12:43:23.670198728 -0300
-+++ om.tmac	2025-03-10 13:39:50.079064365 -0300
+--- om.tmac.orig	2025-03-10 16:09:55.218392400 -0300
++++ om.tmac	2025-03-11 16:02:40.668678000 -0300
 @@ -11149,6 +11149,7 @@
  .       while \\n+[@LEVEL]<=\\n[#LOOP] \
  .          if \\n[#HEAD_\\n[@LEVEL]_NUM] \
@@ -22,7 +22,15 @@
  .          ti -\w'\\*[$TOC_HD_NUM]'u
  .          pdfhref L -D "\\*[PDFBOOKMARK.NAME]" -E -- \
 -\&\\*[$TOC_HD_NUM]\\*[$TOC_HEAD_\\n[#LEVEL]_ITEM]
-+\&\\*[$TOC_HD_NUM]\h'\\n[TocDesired]-(\\w'\\*[$TOC_HD_NUM]'/1m)'\\*[$TOC_HEAD_\\n[#LEVEL]_ITEM]
++\&\\*[$TOC_HD_NUM]\h'\\n[TocDesired]-(\\w'\\*[$TOC_HD_NUM]'/1m)'\ \ \\*[$TOC_HEAD_\\n[#LEVEL]_ITEM]
  \!.        ll
  '          in
  .          di TOC_LEADERS
+@@ -20172,6 +20173,7 @@
+ .    if \\n[#SLANT_ON] .nop \\*[SLANTX]
+ .    if \\n[#COLUMNS]=1 .nr #COLUMNS 0
+ .    START
++.    sp 1.524c
+ .    if \\n[#PRINT_STYLE]=2 .sp -1
+ .    if '\\*[$LIST_TYPE]'FIGURES'   .LIST_OF_FIG
+ .    if '\\*[$LIST_TYPE]'TABLES'    .LIST_OF_TBL

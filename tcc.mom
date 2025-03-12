@@ -29,6 +29,12 @@
 .NO_FLEX
 .XCOLOR Black
 .PDF_LINK_COLOR Black
+.TOC_PT_SIZE 12
+.TOC_LEAD 21.6
+.TOC_HEADER_SIZE +0
+.TOC_HEADER_QUAD CENTER
+.TOC_HEADER_CAPS
+.TOC_HEADER_V_POS 3c+1v
 .TOC_HEADER_STRING "Sumário"
 .PAGINATE_TOC OFF
 .TOC_ENTRY_STYLE 1 SIZE 12 CAPS   FONT B INDENT 0
@@ -148,8 +154,8 @@ LAlalalalalalalalala
 .PAGENUMBER 9 \"XXX Defined manually, one less before Introdução
 .NEWPAGE
 .NO_SHIM OFF
-.nr TocDesired \w'2.7.5xx'/1m
-.TOC_PADDING 1
+.nr TocDesired \w'2.7.5'/1m
+.TOC_PADDING 2
 .MSWORD_ONEHALF_12
 .JUSTIFY
 .HEADING 1 "Introdução"
@@ -311,11 +317,33 @@ heyyyyyyyyyyyyyyyyyyyy
 aaaaaaaaaaaaaaaaaa
 .FLOAT OFF
 .HEADING 1 "Conclusão"
-.HEADING_STYLE 1 NO_NUMBER
 .NEWPAGE
+.HEADING_STYLE 1 NO_NUMBER SIZE 12 CAPS FONT B QUAD CENTER BASELINE_ADJUST 0 NO_SPACE_AFTER
 .HEADING 1 "Referências"
+.SPACE 1.524c-1v
+.PARA_INDENT 0
+.DOC_QUAD LEFT
+.PP
+ADOBE. 2012.
+\fBSWF FILE FORMAT SPECIFICATION: Version 19\fR.
+[\fIonline\fR]. Disponível em:
+.PDF_WWW_LINK \
+https://open-flash.github.io/mirrors/swf-spec-19.pdf \
+PREFIX < SUFFIX >. "https://open-flash.github.io/mirrors/swf-spec-19.pdf"
+Acesso em: março de 2025.
+.sp
+.PP
+BILAS, Scott. 200-.
+\fBWhat About Flash? Can We Really Make Games With It?\fR
+[\fIonline\fR]. Disponível em:
+.PDF_WWW_LINK \
+https://web.archive.org/web/20080113212114/https://www.drizzle.com/~scottb/gdc/flash-paper.htm \
+PREFIX < SUFFIX >. "https://web.archive.org/web/20080113212114/https://www.drizzle.com\
+\:/~scottb/gdc/flash-paper.htm"
+Acesso em: março de 2025.
 .NEWPAGE
 .HEADING 1 "Apêndice A: Alguns Flashes marcantes"
+.SPACE 1.524c-1v
 .PP
 Jogos visualmente fantásticos feitos em Flash para navegador:
 .LIST
@@ -440,9 +468,6 @@ Jogos visualmente fantásticos feitos em Flash para navegador:
 .PDF_WWW_LINK https://www.newgrounds.com/portal/view/624750 "Samsara Room (2013)"
 .\" Cansei
 .LIST OFF
-.\".TOC_PADDING 2
-.\" TODO Make Lista de Tabelas aparecer no outline do PDF
-.\" TODO Find a way to add Lista de Abreviaturas e Siglas e de Símbolos aqui dentro também.
 .\" XXX MDT requires either 1.5 cm between title and entries, or an empty line
 .\"     which is 2 * 12 * 1.2 * 1.5 * 2.54 / 72 = 1.524 cm
 .da TOC_ENTRIES
@@ -451,12 +476,14 @@ Jogos visualmente fantásticos feitos em Flash para navegador:
 \!.PAGINATE OFF
 \!.NO_SHIM
 \!.NO_FLEX
+\!.MSWORD_SIMPLE_12
 \!.START
 \!.pdfbookmark 1 "Lista de símbolos"
 \!.CENTER
-\!.MSWORD_ONEHALF_12
 \!\fBLISTA DE SÍMBOLOS\fR
-\!.sp
+\!.MSWORD_ONEHALF_12
+\!.SPACE
+\!.SPACE
 \!.JUSTIFY
 \!.SILENT
 .\" XXX Write longest symbol here!! 
@@ -469,12 +496,14 @@ Jogos visualmente fantásticos feitos em Flash para navegador:
 \!.COLLATE
 \!.NO_SHIM
 \!.NO_FLEX
+\!.MSWORD_SIMPLE_12
 \!.START
 \!.pdfbookmark 1 "Lista de abreviaturas e siglas"
 \!.CENTER
-\!.MSWORD_ONEHALF_12
 \!\fBLISTA DE ABREVIATURAS E SIGLAS\fR
-\!.sp
+\!.MSWORD_ONEHALF_12
+\!.SPACE
+\!.SPACE
 \!.JUSTIFY
 \!.SILENT
 .\" XXX Write longest acronym here!! 
