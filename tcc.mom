@@ -56,9 +56,6 @@
 .FOOTERS OFF
 .\" XXX MDT 2021 doesn't specify exact position of pagination.
 .PAGINATE OFF
-.\".AUTOLABEL_TABLES PREFIX "Tabela " SUFFIX ""\""\fR\ \(en"
-.CAPTION_AFTER_LABEL TBL
-.\"
 .ds Autor Bento Borges Schirmer
 .ds Titulo swf2c
 .TITLE "fakenews"
@@ -162,9 +159,111 @@ LAlalalalalalalalala
 .PP
 Nada por enquanto.
 .HEADING 1 "Contextualização"
+.PP
+Vou te mostrar a contextualização sinistra aqui.
+.nr FiguraContador 0 +1
+.nr TabelaContador 0 +1
+.de FiguraEntrar
+. da FiguraEntradas
+\!.TAB 1
+\!Figura\\\\*[TB+]
+.\"\!.TN
+\!\\$1\ \(en\\\\*[TB+]
+.\"\!.TN
+. shift
+\!\\$*\\*[LEADER]
+\!.TN
+\!\\n[#PAGENUMBER]
+. da
+..
+.de TabelaEntrar
+. da TabelaEntradas
+\!.TAB 1
+\!Tabela\\\\*[TB+]
+.\"\!.TN
+\!\\$1\ \(en\\\\*[TB+]
+.\"\!.TN
+. shift
+\!\\$*\\*[LEADER]
+\!.TN
+\!\\n[#PAGENUMBER]
+. da
+..
+.de FiguraCurta
+. FiguraEntrar \\n+[FiguraContador] \\$*
+. PT_SIZE 10
+. CENTER
+Figura \\n[FiguraContador]\ \(en\ \\$*
+. PT_SIZE
+. PP
+. RLD 12p
+..
+.de TabelaCurta
+. TabelaEntrar \\n+[TabelaContador] \\$*
+. PT_SIZE 10
+. CENTER
+Tabela \\n[TabelaContador]\ \(en\ \\$*
+. PT_SIZE
+. PP
+. RLD 12p
+..
+.\".de FiguraLonga
+.\". FiguraEntrar \\n+[FiguraContador] \\$*
+.\". PT_SIZE 10
+.\".\". SILENT
+.\".\". PAD "\\*[ST1]Figura\ \\n[FiguraContador]\ \(en\\*[ST1X]\ \\*[ST2]#\\*[ST2X]"
+.\".\". SILENT OFF
+.\". PAD "Figura\ \\n[FiguraContador]\ \(en\ \\*[ST1]#\\*[ST1X]" NOBREAK
+.\". EL
+.\". ST 1 J QUAD
+.\". TAB 1
+.\".\"Figura \\n[FiguraContador] \(en\\*[TB+]
+.\"\\$*
+.\". PT_SIZE
+.\". TQ
+.\"..
+.de ListaFiguras
+. SILENT
+. PAD "\\*[ST1]Figura\\*[ST1X]\ \\*[ST2]\0\ \(en\\*[ST2X]\ \\*[ST3]#\\*[ST3X]\ \*[ST4]\0\0\*[ST4X]"
+. char \[leader] " .
+. LEADER_CHARACTER \[leader]
+. SILENT OFF
+. ST 1 L
+. ST 2 R
+. ST 3 J QUAD
+. ST 4 C
+. TAB 1
+. FiguraEntradas
+. TQ
+..
+.de ListaTabelas
+. SILENT
+. PAD "\\*[ST1]Tabela\\*[ST1X]\ \\*[ST2]\0\ \(en\\*[ST2X]\ \\*[ST3]#\\*[ST3X]\ \*[ST4]\0\0\*[ST4X]"
+. char \[leader] " .
+. LEADER_CHARACTER \[leader]
+. SILENT OFF
+. ST 1 L
+. ST 2 R
+. ST 3 J QUAD
+. ST 4 C
+. TAB 1
+. TabelaEntradas
+. TQ
+..
+.PP
+Hahahahahahahahahahah.
+.PP
+That being said...
+.PP
+.PP
+Okay we are done.
+.PP
+Or are we? asd as da sdasd as d asd as d as das d asd as d as das d asd as d as d as das  ad asd asd sad
 .HEADING 2 "Tema"
 .PP
 Renderização de animações com gráficos vetoriais.
+.PP
+Yeah
 .HEADING 2 "Objetivo geral"
 .PP
 Fazer um programa escrito em C renderizar animações com gráficos
@@ -217,7 +316,9 @@ Peculiaridades do formato SWF
 .LIST OFF
 .PP
 Software de edição multimídia ou de animação
-.TS H BOXED LABEL "" CAPTION "Software de edição multimídia ou de animação"
+.FLOAT
+.FiguraCurta "Software de edição multimídia ou de animação"
+.TS H BOXED
 box;
 l l l l l
 l n l l l.
@@ -251,9 +352,65 @@ Spine2D	?	?	?
 Spriter	?	?	?
 DragonBones	?	?	?
 .TE
+Fonte: autoria própria (SQN)
+.FLOAT OFF
 .PP
 Software que lê SWF
-.TS H BOXED CAPTION "Leitores"
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+Software que lê SWF
+.FLOAT
+.FiguraCurta "Software que lê SWF"
+.TS H BOXED
 box;
 l l l.
 Nome	Natureza	Linguagem de programação
@@ -267,10 +424,41 @@ swftools	Ferramentas de lote	C
 Gnash	Tocador	C++
 ffmpeg	Conversor	C
 .TE
+.FLOAT OFF
 .PP
 Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
+Software para gráficos vetoriais
 .\" Discutir licença, criador, backend
-.TS H BOXED CAPTION "Bibs"
+.FLOAT
+.FiguraCurta "Software gráficos vetoriais"
+.TS H BOXED
 box;
 l.
 Nome
@@ -287,9 +475,72 @@ Rive Renderer
 OpenVG
 SDL_gfx
 .TE
+.FLOAT OFF
+.PP
 Bibliotecas de jogos:
-.TS H BOXED CAPTION "Gamers"
-box;
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+Bibliotecas de jogos:
+.FLOAT
+.FiguraCurta "Bibliotecas de jogos"
+.TS H BOXED CENTER
+box center;
 l.
 Nome
 .TH
@@ -302,19 +553,19 @@ Raylib
 Allegro
 HTML
 .TE
+.FLOAT OFF
 .HEADING 1 "Resultados"
 .FLOAT
-.LABEL "Tabela \*[tbl-label] \(en " CAPTION "Testando aqui" TO_LIST TABLES
-.AUTOLABEL_TABLES NO
-.TS
-l.
-heyyyyyyyyyyyyyyyyyyyy
+.TabelaCurta "Relação de tamanhos"
+.TS H CENTER
+center;
+l l l.
+Versão	Peso	Comprimido
+_
+.TH
+Lala	3 MB	7 MB
+Lele	2 MB	2 KB
 .TE
-.FLOAT OFF
-.SPACE
-.FLOAT
-.LABEL "Gráfico \*[fig-label] \(en " CAPTION "Testando figura" TO_LIST FIGURES
-aaaaaaaaaaaaaaaaaa
 .FLOAT OFF
 .HEADING 1 "Conclusão"
 .NEWPAGE
@@ -514,10 +765,36 @@ Jogos visualmente fantásticos feitos em Flash para navegador:
 \!.Sigla SWF ShockWave File ou Small Web Format
 \!.Sigla GCC Gnu Compiler Collection
 \!.TQ
-\!.LIST_OF_TABLES  TITLE_STRING "LISTA DE TABELAS\\v'3c'"
+.\"\!.LIST_OF_TABLES  TITLE_STRING "LISTA DE TABELAS"
+.\"\!.pdfbookmark 1 "Lista de tabelas"
+.\"\!.LIST_OF_FIGURES TITLE_STRING "LISTA DE ILUSTRAÇÕES"
+.\"\!.pdfbookmark 1 "Lista de ilustrações"
+\!.COLLATE
+\!.PAGINATE OFF
+\!.NO_SHIM
+\!.NO_FLEX
+\!.MSWORD_SIMPLE_12
+\!.START
 \!.pdfbookmark 1 "Lista de tabelas"
-\!.LIST_OF_FIGURES TITLE_STRING "LISTA DE ILUSTRAÇÕES"
+\!.CENTER
+\!\fBLISTA DE TABELAS\fR
+\!.MSWORD_ONEHALF_12
+\!.SPACE
+\!.SPACE
+\!.ListaTabelas
+\!.COLLATE
+\!.PAGINATE OFF
+\!.NO_SHIM
+\!.NO_FLEX
+\!.MSWORD_SIMPLE_12
+\!.START
 \!.pdfbookmark 1 "Lista de ilustrações"
+\!.CENTER
+\!\fBLISTA DE ILUSTRAÇÕES\fR
+\!.MSWORD_ONEHALF_12
+\!.SPACE
+\!.SPACE
+\!.ListaFiguras
 .da
 .TOC
 .\" TODO Lista de Ilustrações pode ser desemembrada em Lista de
