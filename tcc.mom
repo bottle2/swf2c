@@ -42,11 +42,11 @@
 .TOC_ENTRY_STYLE 3 SIZE 12 NO_CAPS FONT B INDENT 0
 .TOC_ENTRY_STYLE 4 SIZE 12 NO_CAPS FONT R INDENT 0
 .TOC_ENTRY_STYLE 5 SIZE 12 NO_CAPS FONT I INDENT 0
-.HEADING_STYLE 1 NUMBER SIZE 12 CAPS   FONT B
-.HEADING_STYLE 2 NUMBER SIZE 12 CAPS   FONT R
-.HEADING_STYLE 3 NUMBER SIZE 12 NOCAPS FONT B
-.HEADING_STYLE 4 NUMBER SIZE 12 NOCAPS FONT R
-.HEADING_STYLE 5 NUMBER SIZE 12 NOCAPS FONT I
+.HEADING_STYLE 1 NUMBER SIZE 12 CAPS   FONT B SPACE_AFTER
+.HEADING_STYLE 2 NUMBER SIZE 12 CAPS   FONT R SPACE_AFTER
+.HEADING_STYLE 3 NUMBER SIZE 12 NOCAPS FONT B SPACE_AFTER
+.HEADING_STYLE 4 NUMBER SIZE 12 NOCAPS FONT R SPACE_AFTER
+.HEADING_STYLE 5 NUMBER SIZE 12 NOCAPS FONT I SPACE_AFTER
 .LISTS_STYLE TITLE_QUAD CENTER PT_SIZE 12 TITLE_SIZE 0 LEAD 21.6 NO_PAGINATION
 .MSWORD_SIMPLE_12
 .PARA_INDENT 1.25c
@@ -117,7 +117,14 @@ AUTOR: \*[Autor]
 ORIENTADOR: \*[Orientador]
 .SPACE 2
 .JUSTIFY
-LAlalalalalalalalala
+Escrito mais no final.
+1) Introdução ao assunto,
+2) Falar que tem muitas soluções e trabalhos relacionados,
+3) Falar do problema em questão, limitações das soluções existentes,
+4) Foco genérico da pesquisa,
+5) Foco específico,
+6)
+.UNDERSCORE SUFFIX . Contribuição
 .SPACE 2
 \fBPalavras-chave:\fR Computação Gráfica. Gráficos Vetoriais. Animações. Compiladores.
 .NEWPAGE
@@ -157,10 +164,15 @@ LAlalalalalalalalala
 .JUSTIFY
 .HEADING 1 "Introdução"
 .PP
-Nada por enquanto.
+Escrito mais no final.
+Falar do contexto
+.UNDERLINE geral
+do problema e ir direcionando ao aspecto que será focado no trabalho,
+.UNDERLINE justificando
+a necessidade da pesquisa, e finalizando com uma descrição geral da
+solução desenvolvida e técnicas utilizadas.
 .HEADING 1 "Contextualização"
-.PP
-Vou te mostrar a contextualização sinistra aqui.
+.SPACE -1v
 .nr FiguraContador 0 +1
 .nr TabelaContador 0 +1
 .de FiguraEntrar
@@ -250,26 +262,18 @@ Tabela \\n[TabelaContador]\ \(en\ \\$*
 . TabelaEntradas
 . TQ
 ..
-.PP
-Hahahahahahahahahahah.
-.PP
-That being said...
-.PP
-.PP
-Okay we are done.
-.PP
-Or are we? asd as da sdasd as d asd as d as das d asd as d as das d asd as d as d as das  ad asd asd sad
 .HEADING 2 "Tema"
 .PP
 Renderização de animações com gráficos vetoriais.
-.PP
-Yeah
 .HEADING 2 "Objetivo geral"
 .PP
-Fazer um programa escrito em C renderizar animações com gráficos
-vetoriais extraídas de um arquivo Small Web Format (SWF).
+Extrair animações com gráficos vetoriais do Flash e utilizá-las em
+jogos escritos em C.
 .HEADING 2 "Objetivos específicos"
 .LIST
+.SHIFT_LIST 1.25c
+.ITEM
+Escolher uma 
 .ITEM
 Ler o arquivo Flash;
 .ITEM
@@ -277,6 +281,9 @@ Extrair dados;
 .ITEM
 Botar no C.
 .LIST OFF
+.HEADING 2 "Contribuição do trabalho"
+.PP
+Contribuições atingidas. Onde colocar?
 .HEADING 2 "Justificativa"
 .PP
 Something.
@@ -568,6 +575,8 @@ Lele	2 MB	2 KB
 .TE
 .FLOAT OFF
 .HEADING 1 "Conclusão"
+.PP
+Deve confirmar seção Objetivo.
 .NEWPAGE
 .HEADING_STYLE 1 NO_NUMBER SIZE 12 CAPS FONT B QUAD CENTER BASELINE_ADJUST 0 NO_SPACE_AFTER
 .HEADING 1 "Referências"
