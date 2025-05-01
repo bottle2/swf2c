@@ -45,8 +45,84 @@ demo.zip:main.c there_she_is.c shell.html
 clean:
 	rm -f plutovg.a there_she_is.o demo.exe demo
 
-tcc.pdf:tcc.mom om.tmac
-	pdfmom -M. -Kutf8 -t $< > $@
+#TABELA_TAMANHOS_DATA=there_she_is.swf    there_she_is.c    there_she_is_clang_O0.o    demo.exe    \
+#                     there_she_is.swf.gz there_she_is.c.gz there_she_is_clang_O0.o.gz demo.exe.gz \
+#                     there_she_is.swf.br there_she_is.c.br there_she_is_clang_O0.o.br demo.exe.br \
+#                                                           there_she_is_clang_Oz.o    \
+#                                                           there_she_is_clang_Oz.o.gz \
+#                                                           there_she_is_clang_Oz.o.br \
+#                                                           there_she_is_gcc_O0.o    \
+#                                                           there_she_is_gcc_O0.o.gz \
+#                                                           there_she_is_gcc_O0.o.br \
+#                                                           there_she_is_gcc_Oz.o    \
+#                                                           there_she_is_gcc_Oz.o.gz \
+#                                                           there_she_is_gcc_Oz.o.br \
+#                                                           there_she_is_emcc_O0.o    \
+#                                                           there_she_is_emcc_O0.o.gz \
+#                                                           there_she_is_emcc_O0.o.br \
+#                                                           there_she_is_emcc_Oz.o    \
+#                                                           there_she_is_emcc_Oz.o.gz \
+#                                                           there_she_is_emcc_Oz.o.br
+
+there_she_is.swf.gz:there_she_is.swf
+	gzip -fk $<
+there_she_is.c.gz:there_she_is.c
+	gzip -fk $<
+demo.exe.gz:demo.exe
+	gzip -fk $<
+#there_she_is.swf.br:there_she_is.swf
+	brotli -fkc $< > $@
+there_she_is.c.br:there_she_is.c
+	brotli -fkc $< > $@
+demo.exe.br:demo.exe
+	brotli -fkc $< > $@
+
+#there_she_is_clang_O0.o:there_she_is.c
+#	clang -O0 -c $< -o $@
+#there_she_is_clang_O0.o.gz:there_she_is_clang_O0.o
+#there_she_is_clang_O0.o.br:there_she_is_clang_O0.o
+#there_she_is_clang_Oz.o:there_she_is.c
+#	clang -Oz -c $< -o $@
+#there_she_is_clang_Oz.o.gz:there_she_is_clang_Oz.o
+#there_she_is_clang_Oz.o.br:there_she_is_clang_Oz.o
+#there_she_is_gcc_O0.o:there_she_is.c
+#	gcc -O0 -c $< -o $@
+#there_she_is_gcc_O0.o.gz:there_she_is_gcc_O0.o
+#there_she_is_gcc_O0.o.br:there_she_is_gcc_O0.o
+#there_she_is_gcc_Oz.o:there_she_is.c
+#	gcc -Oz -c $< -o $@
+#there_she_is_gcc_Oz.o.gz:there_she_is_gcc_Oz.o
+#there_she_is_gcc_Oz.o.br:there_she_is_gcc_Oz.o
+#there_she_is_emcc_O0.o:there_she_is.c
+#	emcc -O0 -c $< -o $@
+#there_she_is_emcc_O0.o.gz:there_she_is_emcc_O0.o
+#there_she_is_emcc_O0.o.br:there_she_is_emcc_O0.o
+#there_she_is_emcc_Oz.o:there_she_is.c
+#	emcc -Oz -c $< -o $@
+#there_she_is_emcc_Oz.o.gz:there_she_is_emcc_Oz.o
+#there_she_is_emcc_Oz.o.br:there_she_is_emcc_Oz.o
+#
+#tabela-tamanhos.txt:tabela-tamanhos.m4 $(TABELA_TAMANHOS_DATA)
+#	m4 < $< > $@
+
+#tabela-tamanhos.d:tabela-tamanhos.py
+#	python $< d | tr -d '\r' > $@
+
+#include tabela-tamanhos.d
+include tamanhos.d
+
+#tabela-tamanhos.txt:tabela-tamanhos.py tabela-tamanhos.d $(TABELA_TAMANHOS_DATA)
+#	python $< s | tr -d '\r' > $@
+
+tamanhos.d:tamanhos.m4
+	m4 -Dd $< > $@
+
+tamanhos.txt:tamanhos.m4 tamanhos.d $(TAMANHOS_DATA)
+	m4 -Dt $< > $@
+
+TCC_DRAFT=-d IsDraft=""
+tcc.pdf:tcc.mom om.tmac tamanhos.txt
+	soelim $< | preconv -eutf8 | pdfmom $(TCC_DRAFT) -M. -t > $@
 #	groff -Kutf8 -t -Tpdf om.tmac $< > $@
 	
 MOM_PATH=/usr/share/groff/1.23.0/tmac/om.tmac
@@ -60,9 +136,12 @@ om.tmac:
 see:
 	mv tcc.pdf ../storage/downloads/tcc.pdf
 
-.SUFFIXES: .swf .c .h
+hello:
+	gcc --version
+
+.SUFFIXES: .swf .c .h .gz .br .o
 
 .swf.c:
-	cargo run -- -c $< > ../$@
+	cargo run -- -c $< > $@
 .swf.h:
-	cargo run -- -h $< > ../$@
+	cargo run -- -h $< > $@

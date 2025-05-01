@@ -16,6 +16,17 @@
 .PT_SIZE 16
 .LS 19.2
 ..
+.ie d IsDraft \{\
+.  ds Pronto \ \(OK
+.  ds Fazer \ \(dd
+.  ds Melhorar \ \(lh
+.\}
+.el \{
+.  as Pronto
+.  as Fazer
+.  as Melhorar
+.\}
+.ds FonteEu Fonte: elaboração própria.
 .\" Source: https://www.gnu.org/software/groff/manual/groff.html.node/Manipulating-Spacing.html
 .de y-from-bot-up
 .  sp |\\n[.p]u-\\$1-\\n[.v]u
@@ -162,7 +173,7 @@ LAlalalalalalalalala
 .TOC_PADDING 2
 .MSWORD_ONEHALF_12
 .JUSTIFY
-.HEADING 1 "Introdução"
+.HEADING 1 "Introdução\*[Fazer]"
 .PP
 Escrito mais no final.
 Falar do contexto
@@ -309,7 +320,57 @@ hello
 .HEADING 3 "Classificação quanto ao método"
 .HEADING 3 "Classificação quanto ao tipo de procedimento"
 .HEADING 2 "Cronograma"
-.HEADING 1 "Referencial Teórico"
+.HEADING 1 "Fundamentação teórica\*[Fazer]"
+.HEADING 2 "O formato SWF"
+.HEADING 2 "Leitura de arquivos SWF"
+.PP
+É utilizada a biblioteca \*[CODE]swf\*[CODE X] do projeto Ruffle para ler
+arquivos SWF. Conforme a Figura 1, há apenas três bibliotecas que leem SWF,
+sendo as outras duas escritas com a linguagem de programação Haxe. A decisão é
+por Rust estar na moda.
+.\" XXX Tirar isso aqui da fundamentação teórica e botar em outra seção de
+.\" arquitetura ou implementação.
+A Figura 1 apresenta as principais soluções para ler arquivos SWF. Destas, foi
+escolhida para a implementação a biblioteca \*[CODE]swf\*[CODE X] do projeto
+Ruffle, pois Rust está na moda e por ser uma biblitoeca.
+.FLOAT
+.FiguraCurta "Programas que leem SWF"
+.TS H BOXED
+box;
+l l l.
+Nome	Natureza	Linguagem de programação
+.TH
+swf (do Ruffle)	Biblioteca	Rust
+swf (do Haxe)	Biblioteca	Haxe
+format (do Haxe)	Biblioteca	Haxe
+JPEXS Free Flash Decompiler	Editor visual	Java
+Lightspark	Tocador	C++
+swftools	Ferramentas de lote	C
+Gnash	Tocador	C++
+ffmpeg	Conversor	C
+.TE
+.FLOAT OFF
+.HEADING 2 "Macros X
+.HEADING 1 "Trabalhos relacionados\*[Fazer]"
+.HEADING 1 "Projeto e implementação da solução\*[Fazer]"
+.HEADING 2 "Tradutor\*[Fazer]"
+Rust é a linguagem de programação utilizada para implementar o tradutor do
+presente trabalho. O tradutor inteiro é um código bastante simples, logo 
+.\" Não há nada para ser dito, apenas mencionar Rust em outra seção sem
+.\" maiores explicações XXX
+.HEADING 3 "Leitura de arquivos SWF"
+.HEADING 2 "Runtime\*[Fazer]"
+.HEADING 1 "Resultados\*[Fazer]"
+.FLOAT
+.TabelaCurta "Tamanho de artefatos para a animação There she is!!!"
+.\" XXX Diminuir espaçamento entre linhas do cabeçalho
+.\"     Ver opção v da especificação de colunas
+.so tamanhos.txt
+.FLOAT OFF
+.HEADING 1 "Conclusão"
+.PP
+Deve confirmar seção Objetivo.
+.HEADING 1 "Câncer abaixo"
 Coisas a se discutir:
 .LIST
 .ITEM
@@ -415,23 +476,6 @@ Software que lê SWF
 Software que lê SWF
 Software que lê SWF
 Software que lê SWF
-.FLOAT
-.FiguraCurta "Software que lê SWF"
-.TS H BOXED
-box;
-l l l.
-Nome	Natureza	Linguagem de programação
-.TH
-swf (do Ruffle)	Biblioteca	Rust
-swf (do Haxe)	Biblioteca	Haxe
-format (do Haxe)	Biblioteca	Haxe
-JPEXS Free Flash Decompiler	Editor visual	Java
-Lightspark	Tocador	C++
-swftools	Ferramentas de lote	C
-Gnash	Tocador	C++
-ffmpeg	Conversor	C
-.TE
-.FLOAT OFF
 .PP
 Software para gráficos vetoriais
 Software para gráficos vetoriais
@@ -561,22 +605,6 @@ Allegro
 HTML
 .TE
 .FLOAT OFF
-.HEADING 1 "Resultados"
-.FLOAT
-.TabelaCurta "Relação de tamanhos"
-.TS H CENTER
-center;
-l l l.
-Versão	Peso	Comprimido
-_
-.TH
-Lala	3 MB	7 MB
-Lele	2 MB	2 KB
-.TE
-.FLOAT OFF
-.HEADING 1 "Conclusão"
-.PP
-Deve confirmar seção Objetivo.
 .NEWPAGE
 .HEADING_STYLE 1 NO_NUMBER SIZE 12 CAPS FONT B QUAD CENTER BASELINE_ADJUST 0 NO_SPACE_AFTER
 .HEADING 1 "Referências"
