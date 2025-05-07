@@ -1,52 +1,54 @@
 dnl d is for Makefile dependency
 dnl t is for table data
 changequote([,])dnl
+define(just,there_she_is)dnl
+define(junk,j/there_she_is)dnl
 ifdef([d], [dnl
 TAMANHOS_DATA=\
-define(itself, [divert(1)there_she_is$1\
+define(itself, [divert(1)$1\
 divert(-1)])dnl
-define(build, [divert(1)there_she_is$1\
+define(build, [divert(1)$1\
 divert(2)dnl
-there_she_is$1:there_she_is$2
+$1:$2
 	$3
 divert(-1)dnl
 ])dnl
+define(time,[])dnl
 divert(2)
 divert(-1)dnl
 ])dnl
 ifdef([t], [dnl
 define(size, [syscmd([python -c "print(f'{$(wc -c<$1) / 2**20:.2f}'.replace('.','\\\&,'), end='')"])])dnl
-define(itself, [size(there_she_is$1)])dnl
-define(build, [size(there_she_is$1)])dnl
-])dnl
+define(itself, [size($1)])dnl
+define(build, [size($1)])dnl
+define(time, [syscmd([awk '2==NF {n++; s+=$]2[-$]1[} END {split(sprintf("%.2f", s/n),r,"."); ORS=""; print r[1] "\\&," r[2]}' < $1.t])])dnl
+dnl define(time, [syscmd([])]dnl
+dnl ])dnl
 .TS H CENTER
 center;
-cB cB.
+cB cB cB.
 _
-Artefato	Tamanho em MiB
+Artefato	Tamanho em MiB	Tempo em s
 _
 .TH
 .T&
 l nB
 l s
 a n.
-Arquivo SWF original	itself(.swf)
+Arquivo SWF original	itself(just().swf)
 Vídeos substitutivos da Newgrounds
-Com qualidade \0360p	itself(_360p.mp4)
-Com qualidade \0720p	itself(_720p.mp4)
-Com qualidade 1080p	itself(_1080p.mp4)
+Com qualidade \0360p	itself(just()_360p.mp4)
+Com qualidade \0720p	itself(just()_720p.mp4)
+Com qualidade 1080p	itself(just()_1080p.mp4)
 .T&
-l n
+l n n
 l s
-afC n.
-Código-fonte C gerado	itself(.c)
+afC n n.
+Código-fonte C gerado	itself(just().c)	time(just().c)
 Arquivos objeto
-gcc -Og -g3 -c	build(_gcc_g.o,.c,gcc -DFEAT_PLUTOVG -Iplutovg/include -DPLUTOVG_BUILD -Og -g3 -c $< -o $@)
-gcc -Oz -flto	build(_gcc_z.o,.c,gcc -DFEAT_PLUTOVG -Iplutovg/include -DPLUTOVG_BUILD -Oz -flto -c $< -o $@) 
-clang -Oz -flto -c	build(_clang_z.o,.c,clang -DFEAT_PLUTOVG -Iplutovg/include -DPLUTOVG_BUILD -Oz -flto -c $< -o $@)
-emcc -Og -g3 \e	build(_emcc_g.o,.c,[emcc -DFEAT_HTML5 -mreference-types -Og -g3 -fsanitize=address,undefined -c $< -o $@])
-\ \ \ \ -fsanitize=address,undefined	\^
-emcc -Oz -flto	build(_clang_z,.c,emcc -DFEAT_HTML5 -mreference-types -Oz -flto -c $< -o $@)
+gcc -c	build(junk()_gcc.o,just().c,$(CS) gcc -DFEAT_PLUTOVG -Iplutovg/include -DPLUTOVG_BUILD -c $< -o $@ $(CE))	time(junk()_clang.o)
+clang -c	build(junk()_clang.o,just().c,$(CS) clang -DFEAT_PLUTOVG -Iplutovg/include -DPLUTOVG_BUILD -c $< -o $@ $(CE))	time(junk()_gcc.o)
+emcc -c	build(junk()_emcc.o,just().c,$(CS) emcc -DFEAT_HTML5 -mreference-types -Oz -flto -c $< -o $@ $(CE))	time(junk()_emcc.o)
 dnl .T&
 dnl l n n n
 dnl l s s s
