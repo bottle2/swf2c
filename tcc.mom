@@ -16,6 +16,7 @@
 .PT_SIZE 16
 .LS 19.2
 ..
+.ds Err \\*[red]\\$*\\*[black]
 .ie d IsDraft \{\
 .  ds Pronto \ \(OK
 .  ds Fazer \ \(dd
@@ -38,8 +39,9 @@
 .B_MARGIN 2c
 .NO_SHIM
 .NO_FLEX
-.XCOLOR Black
-.PDF_LINK_COLOR Black
+.XCOLOR black
+.XCOLOR red
+.PDF_LINK_COLOR black
 .TOC_PT_SIZE 12
 .TOC_LEAD 21.6
 .TOC_HEADER_SIZE +0
@@ -351,7 +353,143 @@ ffmpeg	Conversor	C
 .TE
 .FLOAT OFF
 .HEADING 2 "Macros X
+.HEADING 2 "Plataforma Web"
+.PP
+Jogos para navegador não são mais relevantes \*[Err citar]. O
+\fImarketshare\fR \*[Err sic] predominante atualmente são redes sociais,
+Roblox e o celular. Teclado e mouse não são mais a interface prodominante
+\*[Err citar]. Joystick \*[Err ???]
+.PP
+Durante um tempo \*[Err quando?] portais de
+jogos para navegador foram cruciais para a monetização de todos os tipos de
+sites. Facebook, sites de notícias, sites de televisão, sites de marcas.
+.PP
+\*[Err "Discussão extensa sobre propagandas e patrocínio e FGL"].
+.PP
+Se existem jogos para navegador, a maioria são projetos de estudantes, ou
+então projetos feitos no tempo de livre de profissionais, com zero perspectiva
+comercial \*[Err fonte?]. O número de gamejams cresceu consideravelmente, e os
+prêmios também \*[Err citar], porém participar de gamejams e ganhar
+consistentemente está longe de prover um salário mínimo aos participantes.
+Também cresceu a quantidade de profissionais que presentes em plataformas como
+Patreon e Ko-Fi, que por sua vez, apenas uma fração consegue ganhar mais que
+um salário mínimo. Atividades talvez lucrativas incluem as Atividades do
+Discord, que são pequenos jogos que participantes de uma chama de voz ou vídeo
+da plataforma Discord podem lançar. Essas atividades são feitas usando
+tecnologias Web. Não há dados publicados sobre a lucratividade de atividades
+do Discord \*[Err checar de verdade].
+.PP
+Com o Flash sendo defasado, surgiram inúmeras tecnologias HTML5 para.
+.HEADING 3 "Emscripten"
+.PP
+Felizmente, não é necessário abraçar tecnologias Web para produzir jogos
+HTML5. Além dos vários motores como Unity e Godot, Emscripten.
+.HEADING 3 "Bibliotecas C/C++ adaptadas para a Web"
+.PP
+SDL, Sokol, GLFW, Cocos2Dx.
+.HEADING 3 "O Canvas HTML"
+.\" XXX Consultar esse suco https://blogs.igalia.com/carlosgc/
+.PP
+\*[Err "Esse quadro é necessário? Eu acho que não"].
+.\"\&.clearRect()Limpa a tela
+.\"_
+.\"\&.beginPath()Começa um desenho
+.\"_
+.\"\&.stroke()Desenha o contorno do que foi descrito
+.\"_
+.\"\&.setTransform()Muda a transformação dos próximos comandos
+.\"_
+.\"\&.moveTo()Vai para um ponto sem desenhar
+.\"_
+.\"\&.lineTo()Desenha um segmento de reta do ponto atual até outro
+.\"_
+.\"\&.quadraticCurveTo()Desenha uma curva de Bézier quadrática (com um
+.\" XXX putImageData()
+.\"\^ponto de controle) do ponto atual até outro
+.\"_
+.\"\&.drawImage()Desenha uma imagem
+.\"Todos esses métodoes estão disponíveis para ambos
+.\"\*[CODE]CanvasRenderingContext2D\*[CODE X] e
+.\"\*[CODE]OffscreenCanvasRenderingContext2D\*[CODE X] e têm comportamento
+.\"idêntico.
+.PP
+No caso de uma \fIcutscene\fP ou uma interface gráfica, que variam bastante, é
+viável desenha-los no Canvas diretamente.
+Porém, para cenários estáticos e para \fIassets\fP pequenos,
+como o protagonista do jogo, inimigos, NPCs, objetos de cena e projéteis, é
+mais eficiente renderizar tudo de uma vez só, manter tudo em memória e
+utilizar texturas para copiar para o buffer de renderização com o mínimo de
+atraso. De fato, pré-renderizar a maioria dos \fIassets\fP durante a
+inicialização é uma técnica comum mesmo em jogos em Flash. Finalmente, talvez
+seja desejado salvar o conteúdo de um Canvas no caso de um jogo 3D, onde
+a animação em Flash seja usada para objetos 2D dentro de um cenário 3D, como
+televisões, terminais, letreiros entre outros.
+.FLOAT
+.FiguraCurta "Métodos do Canvas HTML para acessar seu conteúdo renderizado"
+.TS H CENTER
+center;
+l l l lzw(0)
+|cB|cB|cB|lzw(0)
+|lp-2fC |lp-2fC |lp-2fC |lzw(0).
+_	_	_
+Objeto	Método	Tipo devolvido
+_	_	_
+.TH
+HTMLCanvasElement	toBlob()	Blob	T{
+.
+.ll 0
+.sp 2
+T}
+_
+OffscreenCanvas	\^	\^	\^
+\^	_	_
+\^	transferToImageBitmap()	ImageBitmap
+_	_	_
+CanvasRenderingContext2D	getImageData()	ImageData
+OffscreenCanvasRenderingContext2D	\^	\^
+_	_	_
+.TE
+.FLOAT OFF
+.PP
+Escrever código portátil significa criar abstrações e seguir abstrações
+\*[Err citar]. Precisamos salvar tudo num buffer. Tudo bem o usuário passar
+uma referência a um contexto 2D, mas Web é só uma das plataformas, todas as
+outras vão usar tipos do SDL como SDL_Texture, ou então manter tudo em buffers
+gerenciados pela runtime do C, como um char * ou void *. Então é fofo ter tudo
+num Canvas2D, mas a API precisa saber arrancar os dados de lá e dar para o
+usuário algo que ele possa manusear fácil. Tipo, deixa ele usar o Canvas, de
+repente ele vai gostar de puxar um ImageBitmap, mas senão, void * nele.
+.PP
+.\"Puta que pariu que cu essa merda.
+.PP
+Precisamos baixar o nível da coisa toda.
+.PP
+CanvasRenderingContext2D
+OffscreenCanvasRenderingContext2D
+.PP
+Há duas possibilidades.
+.PP
+No caso de uma \fIcutscene\fP.
+.PP
+Há vários Canvas. O principal é o <canvas></canvas>.
+.PP
+Utilizando o tipo __externref_t descrito anteriormente.
+.PP
+.HEADING 3 "A macro \f(CBEM_JS\fP e o tipo \f(CB__externref_t"
+.PP
+Mesmo que o código gerado use um \*[CODE]CanvasRenderingContext2D\*[CODE X]
+diretamente, como exatamente ele vai acessá-lo?
+Visto que acessar o Canvas do HTML diretamente é conveniente para um jogo,
+resta o seguinte problema: como o código gerado vai 
+.PP
+É implementação do tipo WebAssembly \*[CODE]externref\*[CODE OFF] e é bem
+poggers.
 .HEADING 1 "Trabalhos relacionados\*[Fazer]"
+.PP
+As duas principais tentativas de tocar multimídia Flash é o Lightspark
+e o Ruffle.
+.PP
+O programa Scaleform GFx da Autodesk é relevante.
 .HEADING 1 "Projeto e implementação da solução\*[Fazer]"
 .HEADING 2 "Tradutor\*[Fazer]"
 Rust é a linguagem de programação utilizada para implementar o tradutor do
@@ -361,6 +499,11 @@ presente trabalho. O tradutor inteiro é um código bastante simples, logo
 .HEADING 3 "Leitura de arquivos SWF"
 .HEADING 2 "Runtime\*[Fazer]"
 .HEADING 1 "Resultados\*[Fazer]"
+.PP
+Essa tabela aqui é um verdadeiro nerd \fIsniping\fR. Caso clássico de QUERO
+PROGRAMAR HURRR DUUUR sem
+.UNDERSCORE pensar
+antes (chama-se metodologia).
 .FLOAT
 .TabelaCurta "Tamanho de artefatos para a animação There she is!!!"
 .\" XXX Diminuir espaçamento entre linhas do cabeçalho
@@ -836,3 +979,4 @@ Jogos visualmente fantásticos feitos em Flash para navegador:
 .TOC
 .\" TODO Lista de Ilustrações pode ser desemembrada em Lista de
 .\"      Listagens, Lista de Quadros, Lista de Gráficos etc.
+.\" vim:syntax=groff tw=78
