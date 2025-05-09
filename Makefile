@@ -71,7 +71,7 @@ tamanhos.txt:tamanhos.m4 tamanhos.d $(TAMANHOS_DATA)
 
 TCC_DRAFT=-d IsDraft=""
 tcc.pdf:tcc.mom om.tmac tamanhos.txt
-	soelim $< | pdfmom -Kutf8 $(TCC_DRAFT) -M. -t > $@
+	soelim $< | pdfmom -Kutf8 $(TCC_DRAFT) -M. -pt > $@
 #	groff -Kutf8 -t -Tpdf om.tmac $< > $@
 	
 MOM_PATH=/usr/share/groff/1.23.0/tmac/om.tmac

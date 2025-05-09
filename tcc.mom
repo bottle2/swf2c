@@ -137,6 +137,8 @@ Escrito mais no final.
 4) Foco genérico da pesquisa,
 5) Foco específico,
 6)
+.sp
+A técnica proposta é extrair recursos relevantes do arquivo Flash, como gráficos vetoriais e animações com os mesmos, e armazena-las em estruturas de dados em nível de pré-processador, que são expandidas múltiplas vezes para utilizar várias APIs de desenho, como Skia e CanvasRenderingContext2D. O código gerado pelo compilador pode ser usado em programas como jogos para renderizar cenários, personagens e cutscenes. Outras aplicações incluem aplicações Web e de celular, e sistemas embarcados, devido a versatilidade do C interagir com as mais diversas plataformas.
 .UNDERSCORE SUFFIX . Contribuição
 .SPACE 2
 \fBPalavras-chave:\fR Computação Gráfica. Gráficos Vetoriais. Animações. Compiladores.
@@ -168,7 +170,7 @@ LAlalalalalalalalala
 .PAGINATE
 .PAGENUM_POS TOP RIGHT
 .PAGENUM_HYPHENS OFF
-.PAGENUMBER 9 \"XXX Defined manually, one less before Introdução
+.PAGENUMBER 10 \"XXX Defined manually, one less before Introdução
 .NEWPAGE
 .NO_SHIM OFF
 .nr TocDesired \w'2.7.5'/1m
@@ -282,6 +284,8 @@ Renderização de animações com gráficos vetoriais.
 .PP
 Extrair animações com gráficos vetoriais do Flash e utilizá-las em
 jogos escritos em C.
+.PP
+Renderizar animações com gráficos vetoriais em programas escritos em C.
 .HEADING 2 "Objetivos específicos"
 .LIST
 .SHIFT_LIST 1.25c
@@ -294,19 +298,64 @@ Extrair dados;
 .ITEM
 Botar no C.
 .LIST OFF
+.PP
+Mais especificamente, este projeto objetiva:
+.br
+-Ler o arquivo do Flash, chamado SWF
+.br
+-Compilar partes relevantes do SWF para C
+.br
+-Empregar automaticamente APIs existentes de gráficos vetoriais e de gerenciamento de janelas
+.br
+-Testar várias animações famosas e jogos simples
+.br
+-Produzir um jogo que exercita o código gerado pelo compilador e que demonstra a tecnologia
 .HEADING 2 "Contribuição do trabalho"
 .PP
 Contribuições atingidas. Onde colocar?
 .HEADING 2 "Justificativa"
 .PP
 Something.
+.PP
+O patrimônio do Flash fala por si só sobre sua importância. Desde sua origem, centenas de cartoons para televisão foram criados usando seus editores, e milhares de jogos para navegador de Internet também, muitos de alta qualidade. O tocador de Flash para navegador foi descontinuado em 31 de dezembro de 2020, por razões de segurança e por preferência a padrões abertos, mas afetando criativamente as produções. Faz-se necessário desvendar o poder do Flash e usufruir do mesmo, e aproveitar o talento de vários profissionais que utilizam ferramentas que produzem Flash, como o Adobe Animator e o Toon Boom Harmony. Ainda que haja alternativas, como o SVG, não chegam perto do que o Flash foi. Flash é binário, lembrando ASN.1, e SVG utiliza XML, que é um formato de texto bastante verboso. Animações são o cerne do Flash, ao passo que o mesmo no SVG requer escrever CSS, SMIL ou JavaScript manualmente. Flash armazena sons, para uma verdadeira experiência multimídia, e isso nem é previsto no SVG.
 .HEADING 2 "Problemas"
 .PP
 Something.
 .HEADING 2 "Hipóteses"
 .PP
+Seguem elas:
+.LIST
+.ITEM
+O peso do objeto C que renderiza é menor que um vídeo mais a runtime
+necessária para renderizá-lo.
+.ITEM
+O peso do objeto C que renderiza se aproxima do peso do SWF original
+.ITEM
+A fidelidade é alta.
+.LIST OFF
+.PP
 Something.
 .HEADING 2 "Metodologia"
+.PP
+Este projeto de pesquisa possui a seguinte metodologia de execução:
+.br
+1.Pesquisa aplicada;
+.br
+2.Pesquisa descritiva;
+.br
+3.Pesquisa quali-qualitativa;
+.br
+4.Método indutivo;
+.br
+5.Pesquisa bibliográfica;
+.br
+6.Pesquisa documental;
+.br
+7.Pesquisa experimental;
+.br
+8.Estudo de caso.
+.PP
+O principal caso de teste utiliza a animação musical coreana There She Is!!!, publicada em 2003, durando cerca de três minutos e meio. Os resultados da implementação proposta foram comparados à animação original para priorizar os próximos recursos a serem implementados e verificar visualmente a fidedignidade.
 .HEADING 3 "Classificação quanto a finalidade do estudo"
 .HEADING 3 "Classificação quanto aos objetivos do estudo"
 .SILENT
@@ -321,9 +370,61 @@ hello
 .HEADING 3 "Classificação quanto aos tipos de abordagem"
 .HEADING 3 "Classificação quanto ao método"
 .HEADING 3 "Classificação quanto ao tipo de procedimento"
+.HEADING 2 "Metas"
+.PP
+Este projeto de pesquisa possui as seguintes metas:
+.br
+1.Democratizar o acesso a animações com gráficos vetoriais de alta qualidade
+.br
+2.Possibilitar que artistas profissionais penetrem na indústria de jogos
+.br
+3.Ao levar a tecnologia Flash para o nível baixo do C, a torna acessível em mais sistemas
+.br
+4.Promover padrões de maior calibre para 
+.br
+5.Criar novas possibilidades para aplicativos Web, de celular e em sistemas embarcado
 .HEADING 2 "Cronograma"
+.PP
+Para realizar este projeto, sugerem-se as seguintes atividades, que obedecem ao seguinte cronograma de execução:
+.FLOAT
+.TS
+allbox;
+lB c c c c c
+l c c c c c.
+Atividade	Mar.	Abril	Maio	Jun.	Jul.
+_
+Revisão bibliográfica e documental	\(OK	\(OK	\(OK	\(OK	\(OK
+Implementação do compilador	\(OK	\(OK	\(OK	\(OK	
+Testes visuais com produções clássicas	\(OK	\(OK	\(OK	\(OK	
+Implementação de jogo usando Flash e C				\(OK	\(OK
+.TE
+.FLOAT OFF
+.HEADING 2 "Resultados esperados (literalmente hipóteses)"
+.PP
+Espera-se um compilador muito fácil de usar seja criado, para que artistas possam produzir suas animações sem nenhum conhecimento de programação, e programadores possam utilizar essas animações sem nenhum conhecimento de Flash. Ainda que o alvo primário seja o C, interfaces para outras linguagens é totalmente possível, para alcançar ainda mais mercado. Deseja-se que a interface gerada pelo compilador seja o mais simples possível, e empregando as APIs de mais alto desempenho de cada sistema, para escalabilidade máxima.
 .HEADING 1 "Fundamentação teórica\*[Fazer]"
 .HEADING 2 "O formato SWF"
+.HEADING 3 "Representação dos dados no Flash"
+.PP
+De acordo com a especificação da Adobe (2013, p. 14, tradução nossa), “o formato de arquivo SWF armazena todas as coordenadas x-y como inteiros, geralmente numa unidade de medida chamada twip. No formato SWF, um twip são 1/20 de um pixel lógico”.
+.PP
+Além de tipos inteiros com e sem sinal variando em comprimento, “o formato de arquivo SWF implementa dois tipos de número de ponto fixo: 32 bits e 16 bits.” (ADOBE, 2013, p. 15, tradução nossa).
+.PP
+No Flash, “o formato para o valor de uma string é uma lista sequencial de bytes terminados pelo byte do caractere nulo”. (ADOBE, 2013, p. 19, tradução nossa).
+.PP
+De acordo com Adobe (2013, p. 28, tradução nossa), “o cabeçalho é seguido por séries de blocos de dados etiquetados. Todas as etiquetas seguem um formato comum, então qualquer programa lendo um arquivo SWF pode pular blocos que não entende”. Ainda conforme Adobe (2013, p. 29, tradução nossa), “cada etiqueta começa com um tipo de etiqueta e um tamanho”, e há “duas categorias de etiquetas”: “etiquetas de definição” e “etiquetas de controle”.
+.HEADING 3 "Gráficos vetoriais do Flash"
+.PP
+O bloco com etiqueta DefineShape contém um caminho:
+.PP
+Um caminho pode ser fechado, onde o início e o fim do caminho se encontram para fechar a figura, ou aberto, quando o caminho forma um traço aberto. Um caminho pode conter uma mistura de arestas retas, arestas curvadas e comandos de ‘levante a caneta e mova’. Este último permite descrever múltiplas figuras desconectadas em uma única estrutura de forma. (ADOBE, 2013, p. 119, tradução nossa).
+.PP
+Ainda de acordo com Adobe (2013, p. 119), preenchimentos podem ser definidos para a área da figura ou o contorno dela, havendo um ou dois preenchimentos definidos por aresta, o que permite tratar casos de figuras com auto-intersecção.
+.PP
+Uma forma possui um identificador: “valor de 16 bits que unicamente identifica a forma como um ‘personagem’ no dicionário” (ADOBE, 2013, p. 119, tradução nossa). Depois de definido e presente no dicionário, um personagem pode ser posicionado na tela ou combinado com outros personagens em um ator usando DefineSprite.
+.HEADING 3 "Animações do SWF"
+.PP
+A frequência de quadros de um Flash é fixa, definida no cabeçalho pelo criador da animação. Valores populares variam de 12 a 60 FPS, sendo 31 o mais comum por razões históricas. Cada quadro da animação consiste em renderizar o conteúdo de um DisplayList de trás para frente, aplicando matrizes de transformação para cada personagem ou ator presente. O DisplayList é preservado entre um quadro e outro e vai sendo alterado aos poucos, para eficiência máxima.
 .HEADING 2 "Leitura de arquivos SWF"
 .PP
 É utilizada a biblioteca \*[CODE]swf\*[CODE X] do projeto Ruffle para ler
@@ -424,6 +525,70 @@ inicialização é uma técnica comum mesmo em jogos em Flash. Finalmente, talve
 seja desejado salvar o conteúdo de um Canvas no caso de um jogo 3D, onde
 a animação em Flash seja usada para objetos 2D dentro de um cenário 3D, como
 televisões, terminais, letreiros entre outros.
+.FT C
+.PT_SIZE 10
+.PS
+arrowhead=0
+arrowwid=0.1
+Html: [
+	down
+	box "HTMLCanvasElement" "<canvas></canvas>" wid 1.75 ht 0.375
+	box ".width\ " ".height" wid 1.75 ht 0.375
+]
+move 1.75 from Html.e
+Canvas: [
+	down
+	box "CanvasRenderingContext2D" wid 2.5 ht 2/8
+	box ".drawImage()" wid 2.5 ht 2/8
+]
+move at Html.e up 1/12
+arrow right 1.75    ".getContext(\(aq2d\(aq)" above
+move at Html.e down 1/12
+arrow right 1.75 <- ".canvas" below
+move at Html.s down
+Off: box "OffscreenCanvas" "\fRPossui construtor\fP" wid 1.5
+move at Html.s right 1/12
+arrow down " .transferControlToOffscreen()" ljust
+move at Html.s left 1/12
+line right 0.05 down 0.1 then left 0.1 then up 0.1 right 0.05
+move at Html.s left 1/12 down 0.1
+line 1/2-0.1
+move right 1.75 from Off.e
+OffCanvas: box "OffscreenCanvasRenderingContext2D" wid 3
+arrow 1.75    from 1/3 <Off.ne,Off.se> ".getContext(\(aq2d\(aq)" above
+arrow 1.75 <- from 2/3 <Off.ne,Off.se> ".canvas" below
+arrow up from Canvas.n ".getImageData()\ " rjust
+Data: box "ImageData" wid 1
+arrow ".data\ " rjust
+Clamped: box "Uint8ClampedArray" wid 1.75
+move left from Clamped.w
+Typed: [
+	down
+	box "TypedArray" wid 1 ht 2/8
+	box ".length\ \ \ \ " ".byteLength" ".set()\ \ \ \ \ " wid 1 ht 4/8
+]
+line from Clamped.w 1/2-0.1 then up 0.05 then left 0.1 down 0.05 then right 0.1 down 0.05 then up 0.05
+arrow up from Html.n "\ .getBlob()" ljust
+Blob: box "Blob"
+move at Blob.e right 1/8
+Expl: box "\fRAcesso bruto à dados através de" "\fCPromise\fRs e \fCReadableStream\fR," "pode ser PNG, JPG, ICO, GIF ou WebP\fC" invis wid 2.25
+box dashed at ((Blob.w.x+Expl.e.x)/2,Blob.y) wid Blob.wid+Expl.wid+1/4+1/8 ht (Blob.ht+1/4)
+arrow down from Off.s "\ .transferToImageBitmap()" ljust
+Bitmap: [
+	down
+	box "ImageBitmap" wid 1 ht 2/8
+	box ".width\ " ".height" wid 1 ht 3/8
+]
+arrow from last [].e right dashed
+box dashed "WebGLRenderingContext.texImage2D()" width 3
+arc -> from Bitmap.e to (Canvas.s.x-1/2,Canvas.s.y+0.05) radius 5 dashed
+line down 0.1 right 0.05 from Canvas.s then left 0.1 then up 0.1 right 0.05
+move at Canvas.s down 0.1
+line Canvas.s.y-OffCanvas.n.y-0.1
+.PE
+.PT_SIZE 12
+.FT R
+.PP
 .FLOAT
 .FiguraCurta "Métodos do Canvas HTML para acessar seu conteúdo renderizado"
 .TS H CENTER
@@ -445,10 +610,10 @@ OffscreenCanvas	\^	\^	\^
 \^	_	_
 \^	transferToImageBitmap()	ImageBitmap
 _	_	_
-CanvasRenderingContext2D	getImageData()	ImageData
-OffscreenCanvasRenderingContext2D	\^	\^
-_	_	_
 .TE
+.\"CanvasRenderingContext2D	getImageData()	ImageData
+.\"OffscreenCanvasRenderingContext2D	\^	\^
+.\"_	_	_
 .FLOAT OFF
 .PP
 Escrever código portátil significa criar abstrações e seguir abstrações
@@ -498,12 +663,16 @@ presente trabalho. O tradutor inteiro é um código bastante simples, logo
 .\" maiores explicações XXX
 .HEADING 3 "Leitura de arquivos SWF"
 .HEADING 2 "Runtime\*[Fazer]"
-.HEADING 1 "Resultados\*[Fazer]"
+.HEADING 2 "API\*[Fazer]"
 .PP
-Essa tabela aqui é um verdadeiro nerd \fIsniping\fR. Caso clássico de QUERO
-PROGRAMAR HURRR DUUUR sem
-.UNDERSCORE pensar
-antes (chama-se metodologia).
+Funções reentrantes, proteção de parâmetros etc.
+Pipipipipipipipipi. \"XXX
+.HEADING 1 "Resultados\*[Fazer]"
+.\".PP
+.\"Essa tabela aqui é um verdadeiro nerd \fIsniping\fR. Caso clássico de QUERO
+.\"PROGRAMAR HURRR DUUUR sem
+.\".UNDERSCORE pensar
+.\"antes (chama-se metodologia).
 .FLOAT
 .TabelaCurta "Tamanho de artefatos para a animação There she is!!!"
 .\" XXX Diminuir espaçamento entre linhas do cabeçalho
@@ -772,6 +941,43 @@ https://web.archive.org/web/20080113212114/https://www.drizzle.com/~scottb/gdc/f
 PREFIX < SUFFIX >. "https://web.archive.org/web/20080113212114/https://www.drizzle.com\
 \:/~scottb/gdc/flash-paper.htm"
 Acesso em: março de 2025.
+.\" XXX
+.br
+ADOBE. 2013. Swf File Format Specification: Version 19. [online]. Disponível em: <https://open-flash.github.io/mirrors/swf-spec-19.pdf>. Acesso em: março de 2025.
+.br
+ANSI X3J11 TECHNICAL COMMITTEE. Programming language C. Rascunho do comitê X3.???-1988. [S. l.], 1988. Disponível em: <https://web.archive.org/web/20161223125339/http://flash-gordon.me.uk/ansi.c.txt>. Acesso em: 16 jul. 2023. Popularmente conhecido como ANSI C, ISO C, C89 e C90.
+.br
+BEAL, Stephan. Supermacros: powerful, maintainable preprocessor macros in C++. [S. l.: s. n.], 22 aug. 2004. Disponível em: <http://wanderinghorse.net/computing/papers/supermacros_cpp.pdf>. Acesso em: 15 jul. 2023.
+.br
+BILAS, Scott. 200-. What About Flash? Can We Really Make Games With It? [online]. Disponível em: <https://web.archive.org/web/20080113212114/https://www.drizzle.com/˜scottb/gdc/flash-paper.htm>. Acesso em: março de 2025.
+.br
+BRIGHT, Walter. The X Macro. [S. l.]: Digital Mars, 24 jun. 2010. Disponível em: <https://digitalmars.com/articles/b51.html>. Acesso em: 14 jul. 2023.
+.br
+ISO/IEC 9899:201x. Programming languages: C. Rascunho do comitê. [S. l.], 12 abr. 2011. Disponível em: <https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf>. Acesso em: 16 jul. 2023. N1570. Popularmente conhecido como C11.
+.br
+ISO/IEC 9899:2023. Programming languages: C. Rascunho de trabalho. [S. l.], 1 abr. 2023. Disponível em: <https://www.open-std.org/jtc1/sc22/wg14/www/docs/n3096.pdf>. Acesso em: 16 jul. 2023. N3096. Popularmente conhecido como C23.
+.br
+ISO/IEC 9899:202x (E). Programming languages: C. Rascunho. [S. l.], 6 nov. 2018. Disponível em: <https://www.open-std.org/jtc1/sc22/wg14/www/docs/n2310.pdf>. Acesso em: 16 jul. 2023. N2310. Popularmente conhecido como C17 e C18.
+.br
+ISO/IEC 9899:TC3. Programming languages: C. Rascunho do comitê. [S. l.], 7 set. 2007. Disponível em: <https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf>. Acesso em: 16 jul. 2023. WG14/N1256. Popularmente conhecido como C99.
+.br
+LUCAS, Andrew. Reduce C-language coding errors with X macros: Part 1. [S. l.]: Embedded, 1 jan. 2013a. Disponível em: <https://www.embedded.com/reduce-c-language-coding-errors-with-x-macros-part-1/>. Acesso em: 15 jul. 2023.
+.br
+______. Reduce C- language coding errors with X-macros: Part 2. [S. l.]: Embedded, 20 jan. 2013b. Disponível em: <https://www.embedded.com/reduce-c-language-coding-errors-with-x-macros-part-2/>. Acesso em: 15 jul. 2023.
+.br
+______. Reduce C language coding errors with X macros: Part 3. [S. l.]: Embedded, 2 mar. 2013c. Disponível em: <https://www.embedded.com/reduce-c-language-coding-errors-with-x-macros-part-3/>. Acesso em: 15 jul. 2023.
+.br
+MEYERS, Randy. The new C: X Macros. [S. l.]: Dr. Dobbs’, 1 maio 2001. Disponível em: <https://www.drdobbs.com/the-new-c-x-macros/184401387>. Acesso em: 14 jul. 2023.
+.br
+SCHWARZ, Keith. Advanced Preprocessor Techniques. [S. l.: s. n.], 2 out. 2008. Disponível em: <https://www.keithschwarz.com/cs106l/fall2008/handouts/060_Preprocessor_2.pdf>. Acesso em: 16 jul. 2023.
+.br
+______. Advanced Preprocessor Techniques. [S. l.: s. n.], 16 abr. 2009. Disponível em: https://www.keithschwarz.com/cs106l/spring2009/handouts/080_Preprocessor_2.pdf. Acesso em: 16 jul. 2023.
+.br
+______. Chapter 7: The Preprocessor. [S. l.: s. n.], [2010a]. Disponível em: https://www.keithschwarz.com/cs106l/spring2010/course-reader/Ch7-ThePreprocessor.pdf. Acesso em: 16 jul. 2023.
+.br
+______. Chapter 4: Multi-File Programs, Abstraction, and the Preprocessor. [S. l.: s. n.], [2010b]. Disponível em: https://www.keithschwarz.com/cs106l/fall2010/course-reader/Ch4_MultiFileAbstractionPreprocessor.pdf. Acesso em: 16 jul. 2023.
+.br
+WIRZENIUS, Lars. C Preprocessor Trick For Implementing Similar Data Types. [S. l.: s. n.], 17 jan. 2000. Disponível em: http://liw.iki.fi/liw/texts/cpp-trick.html. Acesso em: 14 jul. 2023.
 .NEWPAGE
 .HEADING 1 "Apêndice A: Alguns Flashes marcantes"
 .SPACE 1.524c-1v
