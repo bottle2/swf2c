@@ -280,13 +280,39 @@ Tabela \\n[TabelaContador]\ \(en\ \\$*
 .HEADING 2 "Tema"
 .PP
 Renderização de animações com gráficos vetoriais.
+.HEADING 2 "Delimitação do tema"
+.PP
+\*[Err "essa seção inteira deveria ir pra Metodologia, provavelmente"].
+.PP
+Os casos de estudo são algumas animações exemplares da Newgrounds
+anteriores a 2005, na esperança de enfrentar arquivos Flash de menor
+complexidade, para que o trabalho possa rapidamente obter.
+se perder em recursos modernos que, por mais convenientes e poderosos, não
+impediu que surgissem obras-primas então.
+\*[Err usar o termo proeminente].
+.PP
+.PP
+Sendo uma tecnologia multimídia antiga que ao longo de duas décadas sofreu
+alterações, Flash conta com muitos recursos. O cerne do presente trabalho é
+obter um amparo mínimo e efetivo de animações. Mesmo exemplos de animações 
+estudo cerne
+.PP
+Está fora de escopo analisar e consumir o \fIbytecode\fP do Flash.
 .HEADING 2 "Objetivo geral"
 .PP
 Extrair animações com gráficos vetoriais do Flash e utilizá-las em
 jogos escritos em C.
 .PP
 Renderizar animações com gráficos vetoriais em programas escritos em C.
+.PP
+é o elemento que resume e apresenta a ideia
+central do trabalho. Deve ser claro e demonstrar qual a intenção daquela
+projeto de pesquisa
 .HEADING 2 "Objetivos específicos"
+.PP
+imagine-os como os passos necessários
+para se atingir o objetivo geral. Ou seja, eles descrevem as etapas da
+pesquisa em sequência de execução.
 .LIST
 .SHIFT_LIST 1.25c
 .ITEM
@@ -315,13 +341,43 @@ Mais especificamente, este projeto objetiva:
 Contribuições atingidas. Onde colocar?
 .HEADING 2 "Justificativa"
 .PP
+Perguntas-chave:
+.br
+Quais os principais problemas o projeto pretende ajudar a resolver?
+.br
+Quais potencialidades e oportunidades existem para a execução do
+projeto?
+.br
+Por que o projeto é importante para o alcance do objetivo?
+.br
+Qual a importância do projeto no contexto apresentado?
+.br
+Por que ele foi proposto? De onde nasceu a ideia?
+.br
+Qual inovação ou diferencial traz?
+.br
+Direcionar o texto para explicar porque a estratégia definida pelo projeto foi escolhida
+para resolver o(s) problema(s) apresentado(s) no contexto ou aproveitar suas
+potencialidades.
+.br
+Deve-se deixar claro porque as atividades e investimentos propostos são necessários e
+como vão ajudar a alcançar os resultados e objetivos esperados e, assim, melhorar a
+realidade.
+.PP
 Something.
 .PP
 O patrimônio do Flash fala por si só sobre sua importância. Desde sua origem, centenas de cartoons para televisão foram criados usando seus editores, e milhares de jogos para navegador de Internet também, muitos de alta qualidade. O tocador de Flash para navegador foi descontinuado em 31 de dezembro de 2020, por razões de segurança e por preferência a padrões abertos, mas afetando criativamente as produções. Faz-se necessário desvendar o poder do Flash e usufruir do mesmo, e aproveitar o talento de vários profissionais que utilizam ferramentas que produzem Flash, como o Adobe Animator e o Toon Boom Harmony. Ainda que haja alternativas, como o SVG, não chegam perto do que o Flash foi. Flash é binário, lembrando ASN.1, e SVG utiliza XML, que é um formato de texto bastante verboso. Animações são o cerne do Flash, ao passo que o mesmo no SVG requer escrever CSS, SMIL ou JavaScript manualmente. Flash armazena sons, para uma verdadeira experiência multimídia, e isso nem é previsto no SVG.
 .HEADING 2 "Problemas"
 .PP
+é a questão específica que será investigada dentro do
+tema.
+.PP
 Something.
 .HEADING 2 "Hipóteses"
+.PP
+deve ser possível de teste. Nem sempre é verdadeira.
+É UM PALPITE SOBRE O QUE VAI ACONTECER COM A
+PESQUISA.
 .PP
 Seguem elas:
 .LIST
@@ -336,6 +392,51 @@ A fidelidade é alta.
 .PP
 Something.
 .HEADING 2 "Metodologia"
+.PP
+.FLOAT
+.TS H
+cB cB cB cB
+^ ^ cB ^
+l l c n
+l l c n.
+_
+Título	Autor	Lançamento	Peso em MiB
+		na Newgrounds
+_
+.TH
+There she is!!!	SamBakZa	10/04/2004	2\&,7 MB
+Dad's Home	Sakupen	06/10/2004
+.T&
+l l s s
+a l c n.
+Série Xiao Xiao	Zhu
+Xiao Xiao No. 3		2001
+Xiao Xiao No. 5		2002
+Xiao Xiao No. 7		2002
+Xiao Xiao No. 8		2002
+.T&
+l l s s
+a l c n.
+Série Madness Combat	Krinkels
+Marsh-Mellow-Madness		2002
+Madness Combat		2002
+Madness Redeemer		2003
+Madness Avenger		2003
+Madness Apotheosis		2004
+.T&
+l l c s
+a l c n.
+Série Miss Dynamite	Sirkowski
+Miss.Dynamite I to V		2001
+\*[Err Outros...]
+.T&
+l l c n
+l ^ c n.
+DE_dust	Wei Xing 	2004
+DE_aztec		2004
+_
+.TE
+.FLOAT OFF
 .PP
 Este projeto de pesquisa possui a seguinte metodologia de execução:
 .br
@@ -403,6 +504,8 @@ Implementação de jogo usando Flash e C				\(OK	\(OK
 .PP
 Espera-se um compilador muito fácil de usar seja criado, para que artistas possam produzir suas animações sem nenhum conhecimento de programação, e programadores possam utilizar essas animações sem nenhum conhecimento de Flash. Ainda que o alvo primário seja o C, interfaces para outras linguagens é totalmente possível, para alcançar ainda mais mercado. Deseja-se que a interface gerada pelo compilador seja o mais simples possível, e empregando as APIs de mais alto desempenho de cada sistema, para escalabilidade máxima.
 .HEADING 1 "Fundamentação teórica\*[Fazer]"
+.PP
+A tecnologia Flash possui duas máquinas virtuais, AVM1 e AVM2, que executa \fIbytecode\fP
 .HEADING 2 "O formato SWF"
 .HEADING 3 "Representação dos dados no Flash"
 .PP
@@ -624,6 +727,21 @@ gerenciados pela runtime do C, como um char * ou void *. Então é fofo ter tudo
 num Canvas2D, mas a API precisa saber arrancar os dados de lá e dar para o
 usuário algo que ele possa manusear fácil. Tipo, deixa ele usar o Canvas, de
 repente ele vai gostar de puxar um ImageBitmap, mas senão, void * nele.
+.TS
+tab(#);
+| l | l | l
+| cB | cB | cB |
+| lfC | lfC | lfC | .
+_#_#_
+Objeto#M\['e]todo#Tipo devolvido
+_#_#_
+HTMLCanvasElement#toBlob()#Blob
+_#\^#\^
+#\^#\^
+OffscreenCanvas#_#_
+#transferToImageBitmap()#ImageBitmap
+_#_#_
+.TE
 .PP
 .\"Puta que pariu que cu essa merda.
 .PP
@@ -1150,6 +1268,7 @@ Jogos visualmente fantásticos feitos em Flash para navegador:
 \!.ST 2 L QUAD
 \!.Sigla SWF ShockWave File ou Small Web Format
 \!.Sigla GCC Gnu Compiler Collection
+\!.Abreviatura MiB mebibyte
 \!.TQ
 .\"\!.LIST_OF_TABLES  TITLE_STRING "LISTA DE TABELAS"
 .\"\!.pdfbookmark 1 "Lista de tabelas"
