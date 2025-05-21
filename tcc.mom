@@ -6,7 +6,8 @@
 ..
 .de MSWORD_ONEHALF_12
 .PT_SIZE 12
-.LS 21.6
+.\".LS 21.6
+.DOC_LEAD 21.6
 ..
 .de MSWORD_SIMPLE_14
 .PT_SIZE 14
@@ -55,11 +56,11 @@
 .TOC_ENTRY_STYLE 3 SIZE 12 NO_CAPS FONT B INDENT 0
 .TOC_ENTRY_STYLE 4 SIZE 12 NO_CAPS FONT R INDENT 0
 .TOC_ENTRY_STYLE 5 SIZE 12 NO_CAPS FONT I INDENT 0
-.HEADING_STYLE 1 NUMBER SIZE 12 CAPS   FONT B SPACE_AFTER
-.HEADING_STYLE 2 NUMBER SIZE 12 CAPS   FONT R SPACE_AFTER
-.HEADING_STYLE 3 NUMBER SIZE 12 NOCAPS FONT B SPACE_AFTER
-.HEADING_STYLE 4 NUMBER SIZE 12 NOCAPS FONT R SPACE_AFTER
-.HEADING_STYLE 5 NUMBER SIZE 12 NOCAPS FONT I SPACE_AFTER
+.HEADING_STYLE 1 NUMBER SIZE 12 CAPS   FONT B
+.HEADING_STYLE 2 NUMBER SIZE 12 CAPS   FONT R
+.HEADING_STYLE 3 NUMBER SIZE 12 NOCAPS FONT B
+.HEADING_STYLE 4 NUMBER SIZE 12 NOCAPS FONT R
+.HEADING_STYLE 5 NUMBER SIZE 12 NOCAPS FONT I
 .LISTS_STYLE TITLE_QUAD CENTER PT_SIZE 12 TITLE_SIZE 0 LEAD 21.6 NO_PAGINATION
 .MSWORD_SIMPLE_12
 .PARA_INDENT 1.25c
@@ -177,15 +178,21 @@ LAlalalalalalalalala
 .TOC_PADDING 2
 .MSWORD_ONEHALF_12
 .JUSTIFY
-.HEADING 1 "Introdução\*[Fazer]"
+.HEADING 1 NAMED Intro "Introdução\*[Fazer]"
 .PP
 Escrito mais no final.
 Falar do contexto
-.UNDERLINE geral
+.UNDERSCORE geral
 do problema e ir direcionando ao aspecto que será focado no trabalho,
-.UNDERLINE justificando
+.UNDERSCORE justificando
 a necessidade da pesquisa, e finalizando com uma descrição geral da
 solução desenvolvida e técnicas utilizadas.
+.HEADING 2 "Contribuição do trabalho \*[Fazer]"
+.PP
+Contribuições atingidas. Onde colocar?
+.PP
+Deve-se descrever as contribuições que foram atingidas com a pesquisa desenvolvida. Isso é o principal para
+artigos, dissertações e teses.
 .HEADING 1 "Contextualização"
 .SPACE -1v
 .nr FiguraContador 0 +1
@@ -277,7 +284,7 @@ Tabela \\n[TabelaContador]\ \(en\ \\$*
 . TabelaEntradas
 . TQ
 ..
-.HEADING 2 "Tema"
+.HEADING 2 "Tema \*[Pronto]"
 .PP
 Renderização de animações com gráficos vetoriais.
 .HEADING 2 "Delimitação do tema"
@@ -286,11 +293,13 @@ Renderização de animações com gráficos vetoriais.
 .PP
 Os casos de estudo são algumas animações exemplares da Newgrounds
 anteriores a 2005, na esperança de enfrentar arquivos Flash de menor
-complexidade, para que o trabalho possa rapidamente obter.
+complexidade, para que o trabalho possa se concentrar em demonstrar a
+viabilidade da técnica proposta.
+.PP
+O ambiente de desenvolvimento é um ambiente UNIX
 se perder em recursos modernos que, por mais convenientes e poderosos, não
 impediu que surgissem obras-primas então.
 \*[Err usar o termo proeminente].
-.PP
 .PP
 Sendo uma tecnologia multimídia antiga que ao longo de duas décadas sofreu
 alterações, Flash conta com muitos recursos. O cerne do presente trabalho é
@@ -298,48 +307,64 @@ obter um amparo mínimo e efetivo de animações. Mesmo exemplos de animações
 estudo cerne
 .PP
 Está fora de escopo analisar e consumir o \fIbytecode\fP do Flash.
-.HEADING 2 "Objetivo geral"
+.HEADING 2 "Objetivo geral \*[Pronto]"
 .PP
-Extrair animações com gráficos vetoriais do Flash e utilizá-las em
-jogos escritos em C.
-.PP
-Renderizar animações com gráficos vetoriais em programas escritos em C.
-.PP
-é o elemento que resume e apresenta a ideia
-central do trabalho. Deve ser claro e demonstrar qual a intenção daquela
-projeto de pesquisa
-.HEADING 2 "Objetivos específicos"
-.PP
-imagine-os como os passos necessários
-para se atingir o objetivo geral. Ou seja, eles descrevem as etapas da
-pesquisa em sequência de execução.
-.LIST
+Renderizar animações com gráficos vetoriais do Flash dentro de programas
+escritos em C, sobretudo jogos de computador.
+.\"é o elemento que resume e apresenta a ideia
+.\"central do trabalho. Deve ser claro e demonstrar qual a intenção daquela
+.\"projeto de pesquisa
+.HEADING 2 "Objetivos específicos \*[Pronto]"
+.\".PP
+.\"imagine-os como os passos necessários
+.\"para se atingir o objetivo geral. Ou seja, eles descrevem as etapas da
+.\"pesquisa em sequência de execução.
+.LIST USER "\(en\ "
 .SHIFT_LIST 1.25c
 .ITEM
-Escolher uma 
+Estudar o formato de arquivo do Flash.
 .ITEM
-Ler o arquivo Flash;
+Listar programas de edição de animações com gráficos vetoriais e comparar suas
+opções de exportação de arquivos.
 .ITEM
-Extrair dados;
+Analisar tocadores de Flash.
 .ITEM
-Botar no C.
+Analisar outros formatos de arquivo de animações com gráficos vetoriais.
+.\"esqueletos, Rive
+.ITEM
+Analisar outras abordagens para renderizar animações com gráficos vetoriais.
+.\"spritesheets, vídeo
+.ITEM
+Analisar soluções que consomem Flash\*[Err ", como Scaleform GFx e Game\
+Maker"].
+.ITEM
+Elencar bibliotecas que leem SWF.
+.ITEM
+Elencar bibliotecas de criação de janela.
+.ITEM
+Elencar bibliotecas de gráficos vetorais.
+.ITEM
+Escolher animações exemplares publicadas no site Newgrounds para servirem como
+casos de teste, e baixar seus vídeos e SWFs.
+.ITEM
+\*[Err "Arquitetar/projetar"] uma solução de extração de animações do Flash.
+.ITEM
+Implementar um renderizador em C com SDL que exercita a técnica proposta.
+.ITEM
+Preparar Makefile que constrói a solução proposta e realiza parte dos
+experimentos.
+.ITEM
+Implementar uma quantidade aceitável de recursos do Flash.
+.ITEM
+Realizar experimentos de fidelidade visual e \fIprofile\fP do pipeline da
+técnica proposta.
+.ITEM
+Cooperar com um animador e produzir um jogo de\%mons\%trando a solução
+proposta.
 .LIST OFF
-.PP
-Mais especificamente, este projeto objetiva:
-.br
--Ler o arquivo do Flash, chamado SWF
-.br
--Compilar partes relevantes do SWF para C
-.br
--Empregar automaticamente APIs existentes de gráficos vetoriais e de gerenciamento de janelas
-.br
--Testar várias animações famosas e jogos simples
-.br
--Produzir um jogo que exercita o código gerado pelo compilador e que demonstra a tecnologia
-.HEADING 2 "Contribuição do trabalho"
-.PP
-Contribuições atingidas. Onde colocar?
 .HEADING 2 "Justificativa"
+.PP
+Tem a questão. E se só ler o arquivo original?
 .PP
 Perguntas-chave:
 .br
@@ -367,31 +392,70 @@ realidade.
 Something.
 .PP
 O patrimônio do Flash fala por si só sobre sua importância. Desde sua origem, centenas de cartoons para televisão foram criados usando seus editores, e milhares de jogos para navegador de Internet também, muitos de alta qualidade. O tocador de Flash para navegador foi descontinuado em 31 de dezembro de 2020, por razões de segurança e por preferência a padrões abertos, mas afetando criativamente as produções. Faz-se necessário desvendar o poder do Flash e usufruir do mesmo, e aproveitar o talento de vários profissionais que utilizam ferramentas que produzem Flash, como o Adobe Animator e o Toon Boom Harmony. Ainda que haja alternativas, como o SVG, não chegam perto do que o Flash foi. Flash é binário, lembrando ASN.1, e SVG utiliza XML, que é um formato de texto bastante verboso. Animações são o cerne do Flash, ao passo que o mesmo no SVG requer escrever CSS, SMIL ou JavaScript manualmente. Flash armazena sons, para uma verdadeira experiência multimídia, e isso nem é previsto no SVG.
-.HEADING 2 "Problemas"
+.HEADING 2 "Problemas \*[Pronto]"
 .PP
-é a questão específica que será investigada dentro do
-tema.
+A técnica proposta consegue renderizar animações Flash com fidelidade
+apreciável, e também competir com a eficiência da tecnologia original?
+.HEADING 2 "Hipóteses \*[Melhorar]"
+.\"Fica de fora: tempo de compilação e custos de manutenção (UX).
 .PP
-Something.
-.HEADING 2 "Hipóteses"
-.PP
-deve ser possível de teste. Nem sempre é verdadeira.
-É UM PALPITE SOBRE O QUE VAI ACONTECER COM A
-PESQUISA.
-.PP
-Seguem elas:
-.LIST
+A preocupação principal é atender as expectativas do artista envolvido na
+produção do jogo, isto é, utilizando C renderizar suas animações feitas em
+Flash com a maior fidelidade possível. As hipóteses referentes são:
+.LIST USER "\(en\ "
+.SHIFT_LIST 1.25c
 .ITEM
-O peso do objeto C que renderiza é menor que um vídeo mais a runtime
-necessária para renderizá-lo.
+Todas as animações renderizadas em C ultrapassam 99% de correspondência visual
+com o original em Flash.
 .ITEM
-O peso do objeto C que renderiza se aproxima do peso do SWF original
+Apesar de todas as animações testadas conterem ações, nenhuma precisa ser
+avaliada para atingir boa fidelidade visual.
 .ITEM
-A fidelidade é alta.
+Um subconjunto de ações pode ser avaliado em tempo de compilação para
+animações que dependem delas para renderizar corretamente.
+.ITEM
+Um subconjunto de ações pode ser traduzido para C pelo compilador para
+animações que dependem delas para renderizar corretamente.
 .LIST OFF
 .PP
-Something.
+A eficiência do Flash é um dos seus aspectos mais marcantes, e propor uma
+técnica que esteja à altura é um grande desafio. As hipóteses referentes são:
+.LIST USER "\(en\ "
+.SHIFT_LIST 1.25c
+.ITEM
+A versão de código gerado com milhares de chamadas de funções é apenas
+marginalmente mais rápida que a versão com os dados em vetores mais um pequeno
+código iterando os mesmos.
+.ITEM
+A versão do código gerado que só anima para frente é significativamente mais
+leve que a versão que permite pular para qualquer quadro a qualquer momento.
+.ITEM
+O executável final, após otimizações globais e comprimido em um pacote para
+distribuição, ainda é significamente mais pesado que o arquivo SWF original,
+sem contar que o código gerado nem implementa todos os recursos Flash
+presentes na animação.
+.ITEM
+Compressão transparente em nível de sistemas de arquivo reduz
+significativamente o peso dos objetos intermediários resultantes da compilação
+do código gerado.
+.ITEM
+Num cenário de compilação distribuída em rede, código-fonte e objetos
+intermediários podem ser comprimidos significamente para consumir menos
+recursos de rede.
+.LIST OFF
+.LIST USER "\(en\ "
+.SHIFT_LIST 1.25c
+.ITEM
+\*[Err "São todos equiparáveis para uma mesma animação: o tempo de decodificá-la como um vídeo, \
+o tempo de tocadores de Flash renderizarem um \
+quadro e o tempo da técnica proposta"]
+.LIST OFF
 .HEADING 2 "Metodologia"
+.PP
+Fora que o seguinte né. O peso do tocador do Flash é amortizado, pois é
+necessário reconhecer sua prevalência. Idem para um tocador de filme, todo
+mundo tem. Para uma tecnologia nova, ela enfrenta o desafio do peso de sua
+runtime. 
 .PP
 .FLOAT
 .TS H
@@ -473,6 +537,8 @@ hello
 .HEADING 3 "Classificação quanto ao tipo de procedimento"
 .HEADING 2 "Metas"
 .PP
+\*[Err "Acho que isso só importa no projeto/pré-TCC, remover?"]
+.PP
 Este projeto de pesquisa possui as seguintes metas:
 .br
 1.Democratizar o acesso a animações com gráficos vetoriais de alta qualidade
@@ -504,6 +570,8 @@ Implementação de jogo usando Flash e C				\(OK	\(OK
 .PP
 Espera-se um compilador muito fácil de usar seja criado, para que artistas possam produzir suas animações sem nenhum conhecimento de programação, e programadores possam utilizar essas animações sem nenhum conhecimento de Flash. Ainda que o alvo primário seja o C, interfaces para outras linguagens é totalmente possível, para alcançar ainda mais mercado. Deseja-se que a interface gerada pelo compilador seja o mais simples possível, e empregando as APIs de mais alto desempenho de cada sistema, para escalabilidade máxima.
 .HEADING 1 "Fundamentação teórica\*[Fazer]"
+.PP
+\*[Err discutir CrossBridge AKA Alchemy, discutir Game Maker].
 .PP
 A tecnologia Flash possui duas máquinas virtuais, AVM1 e AVM2, que executa \fIbytecode\fP
 .HEADING 2 "O formato SWF"
@@ -557,7 +625,11 @@ ffmpeg	Conversor	C
 .TE
 .FLOAT OFF
 .HEADING 2 "Macros X
+.PP
+\*[Err "Tira!"]
 .HEADING 2 "Plataforma Web"
+.PP
+\*[Err "Capar fora!!!!!!!!!"]
 .PP
 Jogos para navegador não são mais relevantes \*[Err citar]. O
 \fImarketshare\fR \*[Err sic] predominante atualmente são redes sociais,
@@ -791,6 +863,10 @@ Pipipipipipipipipi. \"XXX
 .\"PROGRAMAR HURRR DUUUR sem
 .\".UNDERSCORE pensar
 .\"antes (chama-se metodologia).
+.\" XXX Essa porra aqui de tempo é OPCIONAL no trabalho. é apenas um
+.\" aperitivo. tipo, não importa pra pesquisa quanto tempo demora pra
+.\" compilar. Precisa falar que os tempos são mostrados à título de
+.\" curiosidade. ser enfático nisso!!!!!!!
 .FLOAT
 .TabelaCurta "Tamanho de artefatos para a animação There she is!!!"
 .\" XXX Diminuir espaçamento entre linhas do cabeçalho
@@ -1097,6 +1173,7 @@ ______. Chapter 4: Multi-File Programs, Abstraction, and the Preprocessor. [S. l
 .br
 WIRZENIUS, Lars. C Preprocessor Trick For Implementing Similar Data Types. [S. l.: s. n.], 17 jan. 2000. Disponível em: http://liw.iki.fi/liw/texts/cpp-trick.html. Acesso em: 14 jul. 2023.
 .NEWPAGE
+.PARA_INDENT 1.25c
 .HEADING 1 "Apêndice A: Alguns Flashes marcantes"
 .SPACE 1.524c-1v
 .PP
@@ -1225,6 +1302,57 @@ Jogos visualmente fantásticos feitos em Flash para navegador:
 .LIST OFF
 .\" XXX MDT requires either 1.5 cm between title and entries, or an empty line
 .\"     which is 2 * 12 * 1.2 * 1.5 * 2.54 / 72 = 1.524 cm
+.NEWPAGE
+.HEADING 1 "Apêndice B: Revisão do texto"
+.SPACE 1.524c-1v
+.PP
+Não falar sobre todas as bulhufas de Makefile, m4, opções de linha de comando,
+nada! Razão: é perda de tempo. É tudo intermediário. Só vou saber qualquer
+depois de fazer um jogo
+.UNDERSCORE SUFFIX , complexo
+até lá é tudo intermediário. Falar o menos possível, o mínimo.
+.PP
+Discriminar os seguintes termos e checar a consistência no uso em texto de:
+.LIST USER "\(en\ "
+.SHIFT_LIST 1.25c
+.ITEM
+animação Flash vs. animação em Flash vs. animação do Flash vs. animação feita
+em Flash;
+.ITEM
+renderizar vs. reproduzir;
+.ITEM
+interpretar vs. avaliar vs. executar;
+.ITEM
+código vs. script vs. ações vs. \fIbytecode\fP;
+.ITEM
+\fIruntime\fP vs. máquina virtual;
+.ITEM
+compilador vs. técnica proposta vs. código gerado vs. presente trabalho vs.
+solução proposta;
+.ITEM
+compilar vs. emitir vs. gerar vs. imprimir;
+.ITEM
+código[-fonte] [[[escrito] em] C];
+.ITEM
+jogo [de computador] vs. videogame vs. jogo eletrônico;
+.ITEM
+compilador vs. leitor;
+.ITEM
+integrar vs. incorporar vs. incluir vs. empregar vs. usar;
+.ITEM
+formato de arquivo [do] Flash vs. arquivo Flash vs. SWF;
+.ITEM
+animação vetorial vs. animação com gráficos vetoriais;
+.ITEM
+fidelidade vs. correspondência;
+.ITEM
+peso.
+.LIST OFF
+.PP
+Acho bom ter tudo explicadinho já na
+.PP
+Enfatizar jogos!
+.PDF_LINK Intro SUFFIX !! "Introdução"
 .da TOC_ENTRIES
 .\" Stuff seems reversed here. Go figure hahaha.
 \!.COLLATE
