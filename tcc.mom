@@ -450,125 +450,65 @@ quadro e o tempo da técnica proposta"]
 .LIST OFF
 .HEADING 2 "Metodologia"
 .PP
-Foram realizados dois experimentos com \*[Err 18] animações, listadas na
-Figura\~1, publicadas no site Newgrounds por cinco autores diferentes, todas
-anteriores a 2005.
-Esse ano li\%mi\%te foi escolhido arbitrariamente, esperando enfrentar arquivos
-Flash de menor complexidade. \*[Err "Ver versão Flash de cada uma"].
+Foram realizados dois experimentos, o primeiro avaliando a fidelidade
+visual da solução proposta, e o segundo avaliando o peso de transmitir
+a animação pela Internet para um usuário, doravante denominado
+simplesmente como "experimento de eficiência".
+.PP
+A amostra usada nos dois experimentos são \*[Err 18] animações,
+listadas na Figura\~1, publicadas no site Newgrounds por cinco autores
+diferentes, todas anteriores a 2005.
+Esse ano li\%mi\%te foi escolhido para contemplar a animação There she
+is!!!, mas sem incluir animações posteriores, esperando enfrentar
+arquivos Flash de menor complexidade.
+De fato, conforme a Figura 1, a versão mínima \*[Err do Flash] para
+reproduzir as animações da amostra varia de \*[Err X] a versão
+\*[Err Y], sendo que a última versão é a \*[Err Z, datada de 2018].
 .\", para que o trabalho pudesse se concentrar em
 .\"demonstrar a viabilidade da técnica proposta sem maiores complicações.
 .HEADING 3 "Experimento de fidelidade visual"
+.\" Não vamos usar o VMAF da Netflix, porque foda-se a Netflix.
 .PP
-FUCK.
-.PP
-.\" XXX Ler estudos para ver terminologia correta.
-No primeiro experimento, foi computada as métricas relação sinal\%-ruído de
-pico (PSNR) e similaridade estrutural (SSIM)
-\*[Err ou esse tal de VMAF da Netflix]
-entre as animações renderizadas com o tocador de Flash original e as mesmas com a
-solução proposta.
-as animações renderizadas com o tocador Flash
-original são o \*[Err "grupo de controle/referência"], e 
-.PP
+.\" TODO Inverter referência-candidato
+A fidelidade visual da solução proposta é avaliada com duas métricas: 
+relação sinal\%-ruído de pico (PSNR) e similaridade estrutural (SSIM).
+Ambas são métricas de referência completa, ou seja, comparam quadro a
+quadro um vídeo referência contra um vídeo candidato.
+Como a frequência de quadros é fixa na tecnologia Flash, é garantido
+que os vídeos referência e candidatos têm uma correspondência exata de
+quadro para quadro, mesmo vindo de implementações diferentes.
+Como a maioria das animações têm \fIpreloaders\fP e menus
+interativos com botões para começar a animação
+e seletores de cenas, é necessário usar as ferramemtas Swivel ou JPEXS
+Free Flash Decompiler para determinar em qual quadro a animação
+inicia, e em qual termina.
+Para o vídeo referência, a ferramenta Swivel, que interfaceia
+o Adobe Flash Air, exporta para cada animação do grupo amostral um
+vídeo no formato AVI descomprimido, sem áudio, preservando a qualidade
+dos gráficos renderizados em tempo real.
+Para o vídeo candidato, a implementação da solução proposta é adaptada
+pada salvar seus quadros renderizados em disco, um por um, no formato
+.\" TODO nomeados etc.
+.\" TODO pipipi grupo amostral
+de imagem BMP, separados e enumerados, e sem compressão.
+Com os vídeos referência e candidatos, a ferramenta em lotes ffmpeg se
+encarrega de computar as métricas para cada par de vídeos do grupo
+amostral.
 .\" TODO Conferir Xiph.org e y4m
 .\" https://github.com/Netflix/vmaf/blob/master/libvmaf/tools/README.md
-O primeiro experimento computou, com OpenCV \*[Err "(ou não)"], as métricas
-relação sinal\%-ruído de pico (PSNR) e similaridade estrutural (SSIM)
-\*[Err ou esse tal de VMAF da Netflix], para \*[Err verificar] se a solução
-proposta se assemelha com \*[Err a qualidade] do tocador de Flash original.
-.PP
-Ambos o tocador de Flash original e a solução proposta renderizam os gráficos
-em tempo real, então para computar as métricas, as animações são gravadas em
-vídeo no formato AVI descomprimido, sem desvirtuar a qualidade.
-as métricas offline sem desvirtuar a
-
-qualidade de gráficos \*[Err "em tempo real"], foi gravado vídeos
-de ambos no formato AVI descomprimido, o primeiro usando Swivel, e o segundo
-integrando ffmpeg na solução proposta.
-
-Os dados compreendem um par de vídeos para cada animação testada. O formato do
-vídeo é o AVI descomprimido \*[Err "ou esse tal y4m"], para representar
-exatamente o que o usuário veria reproduzido em tempo real.
-
-Para realizar essa \*[Err "comparação"], foi gravado um par de vídeos no formato
-AVI descomprimido de cada animação testada,
-descomprimido para simular a experiência de gráficos renderizados em tempo
-real.
-Os
-vídeos de referência, gravados a partir do tocador de Flash original, foram
-obtidos com a ferramenta Swivel. Os vídeos 
-sendo reproduzida ora com o tocador de Flash original, ora com a solução
-proposta.
-.PP
-Para obter essas gravações, foi utilizado Swivel, que interfaceia
-com Adobe Air, que acessa o tocador Flash original, e ffmpeg na implementação.
-Gravações de cada animação original \*[Err derrame] testada foram exportados
-usando Swivel, que utiliza Adobe Air para acessar o tocador Flash original.
-Gravações
-.PP
-Para essa análise, foi produzido um par de vídeos no formato AVI descomprimido
-para cada animação testada: com Swivel, que utiliza Adobe Air, para produzir vídeos,
-original reproduzindo cada animação, e a implementação da solução
-proposta foi adaptada para fazer o mesmo.
-Para produzir os vídeos, a implementação da solução proposta foi
-adaptada para salvar seus quadros em vídeo usando a biblioteca ffmpeg, e
-Swivel foi utilizado com os mesmos propósitos para salvar  
-Por conta de limitação técnica dos formatos de vídeo, animações com altura ou
-largura ímpares são cortadas para em até um pixel para ficarem com dimensões
-pares. Por conta de animações em Flash geralmente conterem um menu anterior à
-animação em si, com botões para começar a animação, configurações e
-selecionar cenas, os vídeos começam eu um quadro manualmente selecionado.
 .HEADING 3 "Experimento de eficiência"
 .PP
 O segundo experimento analisa a eficiência da solução proposta. O peso
-original de cada animação testada é comparada com o peso do arquivo wasm final
-comprimido com Brotli, que é uma opção de compressão para HTTP.
-No contexto de jogos de computador, executáveis são empacotados de diversos
-modos, dependendo de como são distribuídos. Para simplificar o experimento, e
-visto que Flash é uma tecnologia especialmente presente na Web, e sua
-eficiência se destacava na transmissão via Internet em portais, o experimento
-compara o tamanho do arquivo SWF com o peso combinado dos arquivos Web
-comprimidos com Brotli, um dos algoritmos de compressão HTTP versão proposta.
-.PP
-A fidelidade visual da solução proposta foi comparada com a do tocador Flash
-original através de um experimento com 
-Os dados do experimentos são um par de vídeos no formato AVI descomprimido
-para cada animação testada, na resolução
-original de cada uma \*[Err "mencionar quadro"]. Para a solução proposta, sua implementação é
-adaptada para gerar tal vídeo usando ffmpeg, ao passo que o vídeo Swivel.
-
-Finalmente, um programa compara cada par de vídeos de cada
-animação através da bibilioteca OpenCV para computar métricas como PSNR, SSIM e EQM, que são então
-analizados.
-
-Para o experimento é gerado um vídeo no formato AVI descomprimido utilizando a
-resolução original
-Os dados necessários para o experimento foram obtidos adaptando a
-implementação da solução proposta para salvar em disco um vídeo AVI
-descomprimido utilizando a biblioteca ffmpeg,
-e o programa Swivel, que interfaceia o Adobe Flash Air, processou todas as
-animações para também produzir vídeos AVI descomprimidos. Os vídeos são
-gerados na resolução original de cada animação
-
-Em seguida, um programa utilizando
-.PP
-O experimento funcionou do seguinte modo:
-A \*[Err "fidelidade visual"] da solução proposta e do tocador Flash original
-foi avaliada
-com as
-\*[Err 18] animações por cinco autores listadas na Figura\~1.
-Para isso, o programa de teste foi adaptado para salvar em disco todos os
-quadros que renderiza, e o programa Swivel foi usado para salvar em disco 
-os quadros da
-solução proposta são salvos em disco um a um sem compressão
-Dois experimentos.
-.PP
-O primeiro consiste 
-.PP
-Fora que o seguinte né. O peso do tocador do Flash é amortizado, pois é
-necessário reconhecer sua prevalência. Idem para um tocador de filme, todo
-mundo tem. Para uma tecnologia nova, ela enfrenta o desafio do peso de sua
-runtime. 
+original de cada animação testada é comparada com o peso do arquivo
+wasm final comprimido com Brotli, que é uma opção de compressão para
+HTTP.
+No contexto de jogos de computador, executáveis são empacotados de
+diversos modos, dependendo de como são distribuídos. Para simplificar
+o experimento, e visto que Flash é uma tecnologia especialmente
+presente na Web, e sua eficiência se destacava na transmissão via
+Internet em portais, o experimento compara o tamanho do arquivo SWF
+com o peso combinado dos arquivos Web comprimidos com Brotli, um dos
+algoritmos de compressão HTTP versão proposta.
 .FLOAT
 .\"XXX https://www.newgrounds.com/search/conduct/movies?advanced=1&match=tdtu&user=Sirkowski&before=2005-01-01&sort=views-desc
 .\" XXX Essa tabela... vou repetir ela nos resultados. Escolher bem qual
@@ -1552,4 +1492,4 @@ Enfatizar jogos!
 .TOC
 .\" TODO Lista de Ilustrações pode ser desemembrada em Lista de
 .\"      Listagens, Lista de Quadros, Lista de Gráficos etc.
-.\" vim:syntax=groff tw=78
+.\" vim:syntax=groff tw=70
