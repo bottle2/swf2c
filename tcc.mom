@@ -1,11 +1,15 @@
 .PAPER A4
 .\" Line spacing in Word maybe means 120% the current font size.
+.de MSWORD_SIMPLE_10
+.DOC_PT_SIZE 10
+.DOC_LEAD 12
+..
 .de MSWORD_SIMPLE_12
 .PT_SIZE 12
 .LS 14.4
 ..
 .de MSWORD_ONEHALF_12
-.PT_SIZE 12
+.DOC_PT_SIZE 12
 .\".LS 21.6
 .DOC_LEAD 21.6
 ..
@@ -289,12 +293,6 @@ Tabela \\n[TabelaContador]\ \(en\ \\$*
 Renderização de animações com gráficos vetoriais.
 .HEADING 2 "Delimitação do tema"
 .PP
-\*[Err "essa seção inteira deveria ir pra Metodologia, provavelmente"].
-.PP
-Os casos de estudo são algumas animações exemplares da Newgrounds
-anteriores a 2005, na esperança de enfrentar arquivos Flash de menor
-complexidade, para que o trabalho possa se concentrar em demonstrar a
-viabilidade da técnica proposta.
 .PP
 O ambiente de desenvolvimento é um ambiente UNIX
 se perder em recursos modernos que, por mais convenientes e poderosos, não
@@ -452,23 +450,143 @@ quadro e o tempo da técnica proposta"]
 .LIST OFF
 .HEADING 2 "Metodologia"
 .PP
+Foram realizados dois experimentos com \*[Err 18] animações, listadas na
+Figura\~1, publicadas no site Newgrounds por cinco autores diferentes, todas
+anteriores a 2005.
+Esse ano li\%mi\%te foi escolhido arbitrariamente, esperando enfrentar arquivos
+Flash de menor complexidade. \*[Err "Ver versão Flash de cada uma"].
+.\", para que o trabalho pudesse se concentrar em
+.\"demonstrar a viabilidade da técnica proposta sem maiores complicações.
+.HEADING 3 "Experimento de fidelidade visual"
+.PP
+FUCK.
+.PP
+.\" XXX Ler estudos para ver terminologia correta.
+No primeiro experimento, foi computada as métricas relação sinal\%-ruído de
+pico (PSNR) e similaridade estrutural (SSIM)
+\*[Err ou esse tal de VMAF da Netflix]
+entre as animações renderizadas com o tocador de Flash original e as mesmas com a
+solução proposta.
+as animações renderizadas com o tocador Flash
+original são o \*[Err "grupo de controle/referência"], e 
+.PP
+.\" TODO Conferir Xiph.org e y4m
+.\" https://github.com/Netflix/vmaf/blob/master/libvmaf/tools/README.md
+O primeiro experimento computou, com OpenCV \*[Err "(ou não)"], as métricas
+relação sinal\%-ruído de pico (PSNR) e similaridade estrutural (SSIM)
+\*[Err ou esse tal de VMAF da Netflix], para \*[Err verificar] se a solução
+proposta se assemelha com \*[Err a qualidade] do tocador de Flash original.
+.PP
+Ambos o tocador de Flash original e a solução proposta renderizam os gráficos
+em tempo real, então para computar as métricas, as animações são gravadas em
+vídeo no formato AVI descomprimido, sem desvirtuar a qualidade.
+as métricas offline sem desvirtuar a
+
+qualidade de gráficos \*[Err "em tempo real"], foi gravado vídeos
+de ambos no formato AVI descomprimido, o primeiro usando Swivel, e o segundo
+integrando ffmpeg na solução proposta.
+
+Os dados compreendem um par de vídeos para cada animação testada. O formato do
+vídeo é o AVI descomprimido \*[Err "ou esse tal y4m"], para representar
+exatamente o que o usuário veria reproduzido em tempo real.
+
+Para realizar essa \*[Err "comparação"], foi gravado um par de vídeos no formato
+AVI descomprimido de cada animação testada,
+descomprimido para simular a experiência de gráficos renderizados em tempo
+real.
+Os
+vídeos de referência, gravados a partir do tocador de Flash original, foram
+obtidos com a ferramenta Swivel. Os vídeos 
+sendo reproduzida ora com o tocador de Flash original, ora com a solução
+proposta.
+.PP
+Para obter essas gravações, foi utilizado Swivel, que interfaceia
+com Adobe Air, que acessa o tocador Flash original, e ffmpeg na implementação.
+Gravações de cada animação original \*[Err derrame] testada foram exportados
+usando Swivel, que utiliza Adobe Air para acessar o tocador Flash original.
+Gravações
+.PP
+Para essa análise, foi produzido um par de vídeos no formato AVI descomprimido
+para cada animação testada: com Swivel, que utiliza Adobe Air, para produzir vídeos,
+original reproduzindo cada animação, e a implementação da solução
+proposta foi adaptada para fazer o mesmo.
+Para produzir os vídeos, a implementação da solução proposta foi
+adaptada para salvar seus quadros em vídeo usando a biblioteca ffmpeg, e
+Swivel foi utilizado com os mesmos propósitos para salvar  
+Por conta de limitação técnica dos formatos de vídeo, animações com altura ou
+largura ímpares são cortadas para em até um pixel para ficarem com dimensões
+pares. Por conta de animações em Flash geralmente conterem um menu anterior à
+animação em si, com botões para começar a animação, configurações e
+selecionar cenas, os vídeos começam eu um quadro manualmente selecionado.
+.HEADING 3 "Experimento de eficiência"
+.PP
+O segundo experimento analisa a eficiência da solução proposta. O peso
+original de cada animação testada é comparada com o peso do arquivo wasm final
+comprimido com Brotli, que é uma opção de compressão para HTTP.
+No contexto de jogos de computador, executáveis são empacotados de diversos
+modos, dependendo de como são distribuídos. Para simplificar o experimento, e
+visto que Flash é uma tecnologia especialmente presente na Web, e sua
+eficiência se destacava na transmissão via Internet em portais, o experimento
+compara o tamanho do arquivo SWF com o peso combinado dos arquivos Web
+comprimidos com Brotli, um dos algoritmos de compressão HTTP versão proposta.
+.PP
+A fidelidade visual da solução proposta foi comparada com a do tocador Flash
+original através de um experimento com 
+Os dados do experimentos são um par de vídeos no formato AVI descomprimido
+para cada animação testada, na resolução
+original de cada uma \*[Err "mencionar quadro"]. Para a solução proposta, sua implementação é
+adaptada para gerar tal vídeo usando ffmpeg, ao passo que o vídeo Swivel.
+
+Finalmente, um programa compara cada par de vídeos de cada
+animação através da bibilioteca OpenCV para computar métricas como PSNR, SSIM e EQM, que são então
+analizados.
+
+Para o experimento é gerado um vídeo no formato AVI descomprimido utilizando a
+resolução original
+Os dados necessários para o experimento foram obtidos adaptando a
+implementação da solução proposta para salvar em disco um vídeo AVI
+descomprimido utilizando a biblioteca ffmpeg,
+e o programa Swivel, que interfaceia o Adobe Flash Air, processou todas as
+animações para também produzir vídeos AVI descomprimidos. Os vídeos são
+gerados na resolução original de cada animação
+
+Em seguida, um programa utilizando
+.PP
+O experimento funcionou do seguinte modo:
+A \*[Err "fidelidade visual"] da solução proposta e do tocador Flash original
+foi avaliada
+com as
+\*[Err 18] animações por cinco autores listadas na Figura\~1.
+Para isso, o programa de teste foi adaptado para salvar em disco todos os
+quadros que renderiza, e o programa Swivel foi usado para salvar em disco 
+os quadros da
+solução proposta são salvos em disco um a um sem compressão
+Dois experimentos.
+.PP
+O primeiro consiste 
+.PP
 Fora que o seguinte né. O peso do tocador do Flash é amortizado, pois é
 necessário reconhecer sua prevalência. Idem para um tocador de filme, todo
 mundo tem. Para uma tecnologia nova, ela enfrenta o desafio do peso de sua
 runtime. 
-.PP
 .FLOAT
-.TS H
-cB cB cB cB
-^ ^ cB ^
-l l c n
-l l c n.
+.\"XXX https://www.newgrounds.com/search/conduct/movies?advanced=1&match=tdtu&user=Sirkowski&before=2005-01-01&sort=views-desc
+.\" XXX Essa tabela... vou repetir ela nos resultados. Escolher bem qual
+.\"     tabela vai mostrar quais colunas...
+.FiguraCurta "Animações Flash publicadas na Newgrounds usadas como casos de teste"
+.MSWORD_SIMPLE_10
+.TS H EXPAND
+expand;
+cB 2 cB 2 cB 2 cB 2 cB 2 cB 2 cB
+^ ^ ^ cB cB cB ^
+l l c n n
+l l c n n.
 _
-Título	Autor	Lançamento	Peso em MiB
-		na Newgrounds
+Título	Autor	Lançamento	Peso	Quadros por	Total de	Duração
+			em MiB	segundo	quadros
 _
 .TH
-There she is!!!	SamBakZa	10/04/2004	2\&,7 MB
+There she is!!!	SamBakZa	10/04/2004	2\&,7 MB	12
 Dad's Home	Sakupen	06/10/2004
 .T&
 l l s s
@@ -491,7 +609,7 @@ Madness Apotheosis		2004
 l l c s
 a l c n.
 Série Miss Dynamite	Sirkowski
-Miss.Dynamite I to V		2001
+Miss.Dynamite XIV		24/10/2001
 \*[Err Outros...]
 .T&
 l l c n
@@ -501,6 +619,7 @@ DE_aztec		2004
 _
 .TE
 .FLOAT OFF
+.MSWORD_ONEHALF_12
 .PP
 Este projeto de pesquisa possui a seguinte metodologia de execução:
 .br
@@ -522,19 +641,20 @@ Este projeto de pesquisa possui a seguinte metodologia de execução:
 .PP
 O principal caso de teste utiliza a animação musical coreana There She Is!!!, publicada em 2003, durando cerca de três minutos e meio. Os resultados da implementação proposta foram comparados à animação original para priorizar os próximos recursos a serem implementados e verificar visualmente a fidedignidade.
 .HEADING 3 "Classificação quanto a finalidade do estudo"
+.PP
+??
 .HEADING 3 "Classificação quanto aos objetivos do estudo"
-.SILENT
-.PAD "\*[ST1]AAAAAAAA\*[ST1X]\ \ \*[ST2]AAAAAAAAAAAAAAAAA\*[ST2X]"
-.SILENT OFF
-.ST 1 L
-.ST 2 L QUAD
-.as lalala "\\*[TAB 1]hey\\*[TB+]"
-\*[lalala]
-hello
-.TQ
+.PP
+Tem que ver né.
 .HEADING 3 "Classificação quanto aos tipos de abordagem"
+.PP
+É quantitativo.
 .HEADING 3 "Classificação quanto ao método"
+.PP
+\*[Err "Método indutivo"].
 .HEADING 3 "Classificação quanto ao tipo de procedimento"
+.PP
+Pesquisa bibliográfica, documental, experimental, ação.
 .HEADING 2 "Metas"
 .PP
 \*[Err "Acho que isso só importa no projeto/pré-TCC, remover?"]
@@ -1346,7 +1466,7 @@ animação vetorial vs. animação com gráficos vetoriais;
 .ITEM
 fidelidade vs. correspondência;
 .ITEM
-peso.
+peso vs. tamanho.
 .LIST OFF
 .PP
 Acho bom ter tudo explicadinho já na
