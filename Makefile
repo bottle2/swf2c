@@ -61,12 +61,12 @@ there_she_is.c.br:there_she_is.c
 	brotli -fkc $< > $@
 demo.exe.br:demo.exe
 	brotli -fkc $< > $@
-include tamanhos.d
+#include tamanhos.d
 
 tamanhos.d:tamanhos.m4
 	m4 -Dd $< > $@
 
-tamanhos.txt:tamanhos.m4 tamanhos.d $(TAMANHOS_DATA)
+tamanhos.txt:tamanhos.m4 tamanhos.d #$(TAMANHOS_DATA)
 	m4 -Dt $< > $@
 
 TCC_DRAFT=-d IsDraft=""

@@ -22,6 +22,7 @@
 .LS 19.2
 ..
 .ds Err \\*[red]\\$*\\*[black]
+.ds Citar \\*[Err \(lBcitar\(rB]
 .ie d IsDraft \{\
 .  ds Pronto \ \(OK
 .  ds Fazer \ \(dd
@@ -467,31 +468,91 @@ reproduzir as animações da amostra varia de \*[Err X] a versão
 .\", para que o trabalho pudesse se concentrar em
 .\"demonstrar a viabilidade da técnica proposta sem maiores complicações.
 .HEADING 3 "Experimento de fidelidade visual"
-.\" Não vamos usar o VMAF da Netflix, porque foda-se a Netflix.
+.\" Não vamos usar o VMAF da Netflix, porque foda-se a Netflix
+.\" (qualidade de merda, o caralho).
 .PP
-.\" TODO Inverter referência-candidato
-A fidelidade visual da solução proposta é avaliada com duas métricas: 
-relação sinal\%-ruído de pico (PSNR) e similaridade estrutural (SSIM).
+Para avaliar a fidelidade visual da solução proposta, é utilizado o
+conversor multimídia em lotes FFmpeg, que entre várias opções
+disponíveis, pode "obter a PSNR (Relação Sinal\%-Ruído de Pico) médio,
+máximo e mínimo entre dois vídeos" e "obter a SSIM (Métrica de
+Similaridade Estrutural) entre dois vídeos", e ser configurado para
+"salvar o PSNR de cada quadro individual" e também "salvar o SSIM de
+cada quadro individual" (THE FFMPEG DEVELOPERS, 2025, tradução nossa).
+.\".PP
+.\".red
+.\"Os dados são então processados com AWK e plotados com gnuplot para
+.\"análise.
+.\".COLOR black
+.PP
+Para computar as métricas PSNR e SSIM com FFmpeg, "ambos vídeos devem
+ter a mesma resolução [...] e também se pressupõe que ambos tem a
+mesma quantidade de quadros, que são comparados um a um" (THE FFMPEG
+DEVELOPERS, 2025, tradução nossa).
+Essas restrições são atendidas, pois de acordo com a Adobe Systems
+Incorporated (2012, p. 28 tradução nossa), os campos
+\*[CODE]FrameSize\*[CODE X], \*[CODE]FrameRate\*[CODE X] e
+\*[CODE]FrameCount\*[CODE X] do cabeçalho do SWF especificam,
+respectivamente, valores fixos para a resolução do "on-screen
+display", frequência de quadros e quantidade total de quadros.
+.PP
+.\"
+Além disso, para obter pares de vídeos que o FFmpeg possa processar, a
+ferramenta Swivel foi usada para obter uma gravação referência da
+animação em sua qualidade original, e para a gravação candidata, o
+programa de teste foi adaptado para imprimir um vídeo diretamente.
+.\"
+Swivel utiliza Adobe Flash Air, e foi configurado para exportar um
+vídeo H.264 no perfil High, sem compressão.
+.PP
+A fidelidade visual da solução proposta é avaliada com duas métricas:
+relação sinal\%-ruído de pico (PSNR) \*[Citar] e similaridade
+estrutural (SSIM) \*[Citar].
 Ambas são métricas de referência completa, ou seja, comparam quadro a
-quadro um vídeo referência contra um vídeo candidato.
-Como a frequência de quadros é fixa na tecnologia Flash, é garantido
-que os vídeos referência e candidatos têm uma correspondência exata de
-quadro para quadro, mesmo vindo de implementações diferentes.
-Como a maioria das animações têm \fIpreloaders\fP e menus
-interativos com botões para começar a animação
-e seletores de cenas, é necessário usar as ferramemtas Swivel ou JPEXS
-Free Flash Decompiler para determinar em qual quadro a animação
-inicia, e em qual termina.
-Para o vídeo referência, a ferramenta Swivel, que interfaceia
-o Adobe Flash Air, exporta para cada animação do grupo amostral um
-vídeo no formato AVI descomprimido, sem áudio, preservando a qualidade
-dos gráficos renderizados em tempo real.
-Para o vídeo candidato, a implementação da solução proposta é adaptada
-pada salvar seus quadros renderizados em disco, um por um, no formato
-.\" TODO nomeados etc.
-.\" TODO pipipi grupo amostral
-de imagem BMP, separados e enumerados, e sem compressão.
-Com os vídeos referência e candidatos, a ferramenta em lotes ffmpeg se
+quadro um vídeo candidato contra um vídeo referência.
+Nesse sentido, animações em Flash são analisadas, uma vez que a
+frequência de quadros é fixa, definida pelo artista ao exportar um
+SWF.
+Apesar das animações em Flash serem renderizadas em tempo real, sua
+frequência de quadros é fixa, definida pelo artista ao exportar um
+SWF, o que viabiliza computar as métricas com gravações das mesmas.
+Essas duas métricas foram computadas para cada animação do grupo
+amostral usando ffmpeg, que é um conversor de vídeos em lotes popular
+\*[Citar].
+.PP
+Para os vídeos candidatos, o programa de teste foi adaptada pada
+exportar cada um de seus quadros renderizados separadamente no formato
+de imagem BMP.
+.\"
+Várias animações têm \fIpreloaders\fP e menus interativos com botões
+para começar a animação, realizar configurações, ver créditos e
+selecionar de cenas.
+Por essa razão, foi necessário determinar manualmente em qual quadro
+exatamente a animação inicia e em qual termina, com auxílio de alguma
+ferramenta, como Swivel ou JPEXS Free Flash Decompiler.
+.\"
+Os vídeos referência foram exportados no formato H.264, perfil High,
+sem faixa de áudio, e comprimido sem perdas para preservar a qualidade
+original de gráficos renderizados em tempo real.
+Esse formato de vídeo não admite altura ou largura ímpares, então para
+animações originalmente projetadas em dimensões ímpares, o vídeo
+exportado teve seu tamanho dobrado.
+.\"
+A ferramenta Swivel interfaceia o Adobe Flash Air
+utilizando a ferramenta Swivel, que interfaceia com o Adobe Flash Air
+para obter a qualidade original de gráficos renderizados em tempo
+real.
+.\"foi usada a ferramenta Swivel, que 
+.\"que interfaceia
+.\"o Adobe Flash Air, exporta para cada animação do grupo amostral um
+.\"vídeo no formato AVI descomprimido, sem áudio, preservando a qualidade
+.\"dos gráficos renderizados em tempo real.
+.\"
+Uma vez que o formato de vídeo H.264 não admite dimensões ímpares
+\*[Err \(lBcitar\(rB], Swivel e o programa de teste foram configurados
+para exportar com a resolução dobrada para animações que tivessem
+altura ou largura ímpares.
+.\"
+Com os vídeos candidatos e referência, a ferramenta em lotes ffmpeg se
 encarrega de computar as métricas para cada par de vídeos do grupo
 amostral.
 .\" TODO Conferir Xiph.org e y4m
@@ -630,6 +691,8 @@ Implementação de jogo usando Flash e C				\(OK	\(OK
 .PP
 Espera-se um compilador muito fácil de usar seja criado, para que artistas possam produzir suas animações sem nenhum conhecimento de programação, e programadores possam utilizar essas animações sem nenhum conhecimento de Flash. Ainda que o alvo primário seja o C, interfaces para outras linguagens é totalmente possível, para alcançar ainda mais mercado. Deseja-se que a interface gerada pelo compilador seja o mais simples possível, e empregando as APIs de mais alto desempenho de cada sistema, para escalabilidade máxima.
 .HEADING 1 "Fundamentação teórica\*[Fazer]"
+.PP
+\*[Err discutir Harman e CheerpX].
 .PP
 \*[Err discutir CrossBridge AKA Alchemy, discutir Game Maker].
 .PP
@@ -852,7 +915,7 @@ _	_	_
 .FLOAT OFF
 .PP
 Escrever código portátil significa criar abstrações e seguir abstrações
-\*[Err citar]. Precisamos salvar tudo num buffer. Tudo bem o usuário passar
+\*[Citar]. Precisamos salvar tudo num buffer. Tudo bem o usuário passar
 uma referência a um contexto 2D, mas Web é só uma das plataformas, todas as
 outras vão usar tipos do SDL como SDL_Texture, ou então manter tudo em buffers
 gerenciados pela runtime do C, como um char * ou void *. Então é fofo ter tudo
@@ -1176,9 +1239,15 @@ HTML
 .HEADING 1 "Referências"
 .SPACE 1.524c-1v
 .PARA_INDENT 0
+.DOC_LEAD 14.4
 .DOC_QUAD LEFT
 .PP
-ADOBE. 2012.
+.COLOR red
+Referências sendo usadas de verdade:
+.COLOR black
+.SP
+.PP
+ADOBE SYSTEMS INCORPORATED. 2012.
 \fBSWF FILE FORMAT SPECIFICATION: Version 19\fR.
 [\fIonline\fR]. Disponível em:
 .PDF_WWW_LINK \
@@ -1186,6 +1255,20 @@ https://open-flash.github.io/mirrors/swf-spec-19.pdf \
 PREFIX < SUFFIX >. "https://open-flash.github.io/mirrors/swf-spec-19.pdf"
 Acesso em: março de 2025.
 .sp
+.PP
+THE FFMPEG DEVELOPERS, 2025.
+\fBFFmpeg Filters Documentation\fP.
+[\fIonline\fP].
+Disponível em:
+.PDF_WWW_LINK \
+https://www.ffmpeg.org/ffmpeg-filters.html \
+PREFIX < SUFFIX >.
+Acesso em: maio de 2025.
+.SP
+.PP
+.COLOR red
+Lixo abaixo:
+.COLOR black
 .PP
 BILAS, Scott. 200-.
 \fBWhat About Flash? Can We Really Make Games With It?\fR
