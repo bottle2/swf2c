@@ -70,10 +70,13 @@ tamanhos.txt:tamanhos.m4 tamanhos.d #$(TAMANHOS_DATA)
 	m4 -Dt $< > $@
 
 TCC_DRAFT=-d IsDraft=""
-tcc.pdf:tcc.mom om.tmac tamanhos.txt
-	soelim $< | pdfmom -Kutf8 $(TCC_DRAFT) -M. -pt > $@
+tcc.pdf:tcc.mom om.tmac tamanhos.txt abnt.tmac
+	soelim $< | pdfmom -Kutf8 $(TCC_DRAFT) -M. -pt -mabnt > $@
 #	groff -Kutf8 -t -Tpdf om.tmac $< > $@
-	
+
+abnt.pdf:abnt.mom abnt.tmac
+	soelim $< | pdfmom -Kutf8 -M. -mabnt > $@
+
 MOM_PATH=/usr/share/groff/1.23.0/tmac/om.tmac
 
 tcc.patch:

@@ -1,0 +1,106 @@
+.PRINTSTYLE TYPESET
+.PAPER A4
+.L_MARGIN 1c
+.R_MARGIN 1c
+.T_MARGIN 2c
+.B_MARGIN 2c
+.DOCHEADER OFF
+.HEADERS OFF
+.FOOTERS OFF
+.PAGINATE OFF
+.PT_SIZE 12
+.LS 14.4
+.PARA_INDENT 0
+.PARA_SPACE 6p
+.JUSTIFY
+.START
+.HEADING 1 "Demo"
+.HEADING 2 "Vários autores numa citação indireta (6.1.x)"
+.Referencia Fonseca Fonseca 1997
+.Referencia Paiva Paiva 1997
+.Referencia Silva Silva 1997
+.Referencia X
+.PP
+Ela polariza e encaminha, sob a forma de "demanda coletiva", as
+necessidades de todos \*[Fonseca m]\*[Paiva m]\*[Silva ""]\&.
+.Referencia Cross Cross 1984
+.Referencia Knox Knox 1986
+.Referencia Mezirow Mezirow 1991
+.Referencia X
+.PP
+Diversos autores salientam a importância do "acompanhamento
+desencadeador" no início de um processo de aprendizagem
+.Cross m
+.Knox m
+.Mezirow ""
+\&.
+.HEADING 2 "Incluido na sentença (6.1.1)"
+.Referencia TeatroAberto "Teatro Aberto" 1963
+.Referencia Morais Morais 1955
+.Referencia OFF
+.PP
+Em \*[TeatroAberto i] relata-se a emergência do teatro do absurdo.
+.PP
+Segundo \*[Morais ip 32] assinala "[...] a presença de concreções de
+bauxita no Rio Cricon."
+.HEADING 2 "Desambiguar autores (6.1.2)"
+.Referencia BarbosaC "C. Barbosa" u "BARBOSA, C." 1958
+.Referencia BarbosaO "O. Barbosa" u "BARBOSA, O." 1959
+.Referencia BarbosaCassio "Cássio Barbosa" u "BARBOSA, Cássio" 1965
+.Referencia BarbosaCelso "Celso Barbosa" u "BARBOSA, Celso" 1965
+.Referencia OFF
+.PP
+.BarbosaC
+.BarbosaO
+.PP
+.BarbosaCassio
+.BarbosaCelso
+.HEADING 2 "Mesmo autor, mesmo ano (6.1.3)"
+.Referencia ReesideA Reeside 1927a
+.Referencia ReesideB Reeside 1927b
+.Referencia OFF
+.PP
+De acordo com \*[ReesideA i]
+.PP
+.ReesideB
+.HEADING 2 "Citação indireta, mesmo autor, vários documentos (6.1.4)"
+.Referencia DreyfusOne Dreyfuss 1989
+.Referencia DreyfusTwo Dreyfuss 1991
+.Referencia DreyfusThree Dreyfuss 1995
+.Referencia CCC_One "Cruz, Correa e Costa" u "CRUZ; CORREA; COSTA" 1998
+.Referencia CCC_Two "Cruz, Correa e Costa" u "CRUZ; CORREA; COSTA" 1999
+.Referencia CCC_Three "Cruz, Correa e Costa" u "CRUZ; CORREA; COSTA" 2000
+.Referencia OFF
+.PP
+.DreyfusOne m
+.DreyfusTwo m
+.DreyfusThree
+.PP
+.CCC_One m
+.CCC_Two m
+.CCC_Three
+.HEADING 2 "Uso de apud (7.1.3)"
+.Referencia Abreu Abreu 1999
+.Referencia Segatto Segatto 1995
+.Referencia Nardi Nardi 1993
+.Referencia OFF
+.PP
+Segundo Silva \*[Abreu ap "1983" 3] diz ser [...]
+.PP
+"[...] o viés organicista da burocracia estatal e o antiliberalismo da
+cultura política de 1937, preservado de modo encapuçado na Carta de
+1946."
+.Segatto ap "VIANNA, 1986, p.\~172" 214-215
+.PP
+No modelo serial de Gough \*[Nardi a "1972"], o ato de ler envolve um
+processamento serial que começa com uma fixação ocular sobre o texto,
+prosseguindo da esquerda para a direita de forma linear.
+.HEADING 2 "Etc."
+.Referencia Mann Mann 2009
+.Referencia MorettiA Moretti 2009a
+.Referencia MorettiC Moretti 2009c
+.Referencia OFF
+.PP
+\*[Mann m]\*[MorettiA m]\*[MorettiC ""]
+.DOC_LEAD 14.4
+.\" vim:syntax=groff tw=70
