@@ -43,9 +43,18 @@
 \!\fBSWF FILE FORMAT SPECIFICATION: Version 19\fR.
 \![\fIonline\fR]. Disponível em:
 \!.PDF_WWW_LINK \
-\!https://open-flash.github.io/mirrors/swf-spec-19.pdf \
-\!PREFIX < SUFFIX >.
+https://open-flash.github.io/mirrors/swf-spec-19.pdf \
+PREFIX < SUFFIX >.
 \!Acesso em: março de 2025.
+.Referencia Ffmpeg "os desenvolvedores do FFmpeg" 2025
+\!OS DESENVOLVEDORES DO FFMPEG, 2025.
+\!\fBFFmpeg Filters Documentation\fP.
+\![\fIonline\fP].
+\!Disponível em:
+\!.PDF_WWW_LINK \
+https://www.ffmpeg.org/ffmpeg-filters.html \
+PREFIX < SUFFIX >.
+\!Acesso em: maio de 2025.
 .Referencia OFF
 .PRINTSTYLE TYPESET
 .L_MARGIN 3c
@@ -486,7 +495,7 @@ disponíveis, pode "obter a PSNR (Relação Sinal\%-Ruído de Pico) médio,
 máximo e mínimo entre dois vídeos" e "obter a SSIM (Métrica de
 Similaridade Estrutural) entre dois vídeos", e ser configurado para
 "salvar o PSNR de cada quadro individual" e também "salvar o SSIM de
-cada quadro individual" (THE FFMPEG DEVELOPERS, 2025, tradução nossa).
+cada quadro individual" \*[Ffmpeg t]\&.
 .\".PP
 .\".red
 .\"Os dados são então processados com AWK e plotados com gnuplot para
@@ -495,9 +504,9 @@ cada quadro individual" (THE FFMPEG DEVELOPERS, 2025, tradução nossa).
 .PP
 Para computar as métricas PSNR e SSIM com FFmpeg, "ambos vídeos devem
 ter a mesma resolução [...] e também se pressupõe que ambos tem a
-mesma quantidade de quadros, que são comparados um a um" (THE FFMPEG
-DEVELOPERS, 2025, tradução nossa).
-Essas restrições são atendidas, pois de acordo com a
+mesma quantidade de quadros, que são comparados um a um"
+.Ffmpeg t
+\&. Essas restrições são atendidas, pois de acordo com a
 \*[AdobeSpec ipt 28],
 .\"Adobe Systems
 .\"Incorporated (2012, p. 28 tradução nossa),
@@ -1258,20 +1267,11 @@ Referências sendo usadas de verdade:
 .COLOR black
 .SP
 .Bibliografia
-.PP
-THE FFMPEG DEVELOPERS, 2025.
-\fBFFmpeg Filters Documentation\fP.
-[\fIonline\fP].
-Disponível em:
-.PDF_WWW_LINK \
-https://www.ffmpeg.org/ffmpeg-filters.html \
-PREFIX < SUFFIX >.
-Acesso em: maio de 2025.
-.SP
-.PP
+.SP -1v
 .COLOR red
 Lixo abaixo:
 .COLOR black
+.SP
 .PP
 BILAS, Scott. 200-.
 \fBWhat About Flash? Can We Really Make Games With It?\fR

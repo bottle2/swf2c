@@ -2,7 +2,7 @@
 .\" SPDX-License-Identifier: MIT
 .\"
 .\" Isso aqui tenta implementar parte do ABNT NBR 10520 : 2002
-.\" Ver comentários para entender funcionamento.
+.\" Ver comentarios para entender funcionamento.
 .\"
 .\"
 .\" Usage: .Referencia <Mnemonic> <Authorship> [e][u]
@@ -67,7 +67,7 @@
 .\" If interpolated without parameters, actually pass "" as parameter.
 .\"
 .\" Flags:
-.\" t Adds ", tradução nossa" before closing parenthesis.
+.\" t Adds ", traducao nossa" before closing parenthesis.
 .\" i Means "inline" and will place <Authorship> "outside"
 .\"   without uppercase.
 .\" p Prefixes "p.\~" before page numbers.
@@ -101,11 +101,11 @@
 . \}
 . \" Checks
 . if \\n[Localish_i]&\\n[Localish_m] \
-.  ab "\n(.F:\n(.c:Flags i and m can't go together"
+.  ab \n(.F:\n(.c:Flags i and m can't go together
 . if \\n[Localish_i]&\\n[Localish_m_previous] \
-.  ab "\n(.F:\n(.c:Can't use flag i if m was used in previous call"
+.  ab \n(.F:\n(.c:Can't use flag i if m was used in previous call
 . if \\n[Localish_p]&\\n[Localish_c] \
-.  ab "\n(.F:\n(.c:Flags p and c can't go together"
+.  ab \n(.F:\n(.c:Flags p and c can't go together
 . \" Opening parenthesis
 . if !\\n[Localish_i]:\\n[Localish_m_previous] .nop (\c
 . \" Place apud
@@ -126,7 +126,7 @@
 . el . nop , \\*[\\$0_ANO]\c
 . if \\n[Localish_p] , p.\~\\$1\c
 . if \\n[Localish_c] , \\$1\c
-. if \\n[Localish_t] , tradução nossa\c
+. if \\n[Localish_t] , tradu\(,c\(~ao nossa\c
 . if !\\n[Localish_m] .nop )\c
 . \" Cleanup
 . ie \\n[Localish_m] \{\
