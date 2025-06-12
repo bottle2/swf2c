@@ -46,7 +46,7 @@
 https://open-flash.github.io/mirrors/swf-spec-19.pdf \
 PREFIX < SUFFIX >.
 \!Acesso em: março de 2025.
-.Referencia Ffmpeg "os desenvolvedores do FFmpeg" 2025
+.Referencia FFmpeg "os desenvolvedores do FFmpeg" 2025
 \!OS DESENVOLVEDORES DO FFMPEG, 2025.
 \!\fBFFmpeg Filters Documentation\fP.
 \![\fIonline\fP].
@@ -55,6 +55,13 @@ PREFIX < SUFFIX >.
 https://www.ffmpeg.org/ffmpeg-filters.html \
 PREFIX < SUFFIX >.
 \!Acesso em: maio de 2025.
+.Referencia Swivel Swivel 201-
+\!SWIVEL. 201-.
+\!\fBNewgrounds Wiki: Swivel - Flash to Video\fP.
+\![\fIonline\fP]. Disponível em:
+\!.PDF_WWW_LINK https://www.newgrounds.com/wiki/creator-resources/animation-resources/swivel-flash-to-video \
+PREFIX < SUFFIX >.
+\!Acesso em: jun. de 2025.
 .Referencia OFF
 .PRINTSTYLE TYPESET
 .L_MARGIN 3c
@@ -495,7 +502,7 @@ disponíveis, pode "obter a PSNR (Relação Sinal\%-Ruído de Pico) médio,
 máximo e mínimo entre dois vídeos" e "obter a SSIM (Métrica de
 Similaridade Estrutural) entre dois vídeos", e ser configurado para
 "salvar o PSNR de cada quadro individual" e também "salvar o SSIM de
-cada quadro individual" \*[Ffmpeg t]\&.
+cada quadro individual" \*[FFmpeg t]\&.
 .\".PP
 .\".red
 .\"Os dados são então processados com AWK e plotados com gnuplot para
@@ -505,16 +512,28 @@ cada quadro individual" \*[Ffmpeg t]\&.
 Para computar as métricas PSNR e SSIM com FFmpeg, "ambos vídeos devem
 ter a mesma resolução [...] e também se pressupõe que ambos tem a
 mesma quantidade de quadros, que são comparados um a um"
-.Ffmpeg t
+.FFmpeg t
 \&. Essas restrições são atendidas, pois de acordo com a
-\*[AdobeSpec ipt 28],
-.\"Adobe Systems
-.\"Incorporated (2012, p. 28 tradução nossa),
+\*[AdobeSpec ip 28],
 os campos
 \*[CODE]FrameSize\*[CODE X], \*[CODE]FrameRate\*[CODE X] e
-\*[CODE]FrameCount\*[CODE X] do cabeçalho do SWF especificam,
-respectivamente, valores fixos para a resolução do "on-screen
-display", frequência de quadros e quantidade total de quadros.
+\*[CODE]FrameCount\*[CODE X] do cabeçalho do SWF especificam valores
+fixos para, respectivamente, a resolução do "\fIon-screen display\fP",
+frequência de quadros e quantidade total de quadros.
+.PP
+Para obter o vídeo de referência, que representa a qualidade original
+do tocador Flash, foi utilizado a ferramenta Swivel, que é "a melhor
+solução para converter seus filmes Adobe Flash em vídeos de alta
+definição" e "sem perder quadros" \*[Swivel t]\&.
+.PP
+Para obter o vídeo candidato, correspondente à solução proposta, o
+programa de teste foi adaptado para salvar em disco um vídeo no
+formato \*[CODE]yuv4mpeg2\*[CODE X], cuja extensão é
+\*[CODE].y4m\*[CODE X], e é fácil de gerar, pois o cabeçalho é em
+formato de texto, e os quadros do vídeos são salvos brutos
+descomprimidos no "formato YCbCr"
+.DRH
+.SP
 .PP
 Além disso, para obter pares de vídeos que o FFmpeg possa processar, a
 ferramenta Swivel foi usada para obter uma gravação referência da
