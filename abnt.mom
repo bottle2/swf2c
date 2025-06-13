@@ -15,7 +15,124 @@
 .JUSTIFY
 .START
 .HEADING 1 "Demo"
-.HEADING 2 "Vários autores numa citação indireta (6.1.x)"
+.HEADING 2 "(5)"
+.Referencia AuthierReiriz "Authier-Reiriz" 1982
+.Referencia Derrida Derrida 1967
+.Referencia X
+.PP
+A ironia seria assim uma forma implícita de heterogeneidade mostrada,
+conforme a classificação proposta por \*[AuthierReiriz i]\&.
+.PP
+"Apesar das aparências, a desconstrução do logocentrismo não é uma
+psicanálise da filosofia […]"
+.Derrida p 293
+\&.
+.HEADING 2 "(5.1) página, volume, tomo ou seção"
+.Referencia Mumford Mumford 1949
+.Referencia OliveiraLeonardos "Oliveira e Leonardos" \
+                              u "OLIVEIRA; LEONARDOS" 1943
+.Referencia Assis Assis 1994
+.Referencia X
+.PP
+A produção de lítio começa em Searles Lake, Califórnia, em 1982
+.Mumford p 513
+\&.
+.PP
+.OliveiraLeonardos ip 146
+ dizem que a "[…] relação da série São Roque com os granitos
+porfiróides pequenos é muito clara."
+.PP
+Meyer parte de uma passagem da crônica de "14 de maio", de A Semana:
+"Houve sol, e grande sol, naquele domingo de 1888, em que o Senado
+votou a lei, que a regente sancionou […]
+.Assis c "v.\~3, p.\~583"
+.HEADING 2 "(5.2) aspas duplas"
+.Referencia Barbour Barbour 1971
+.Referencia ClaracBonnin "Clarac e Bonnin" u "CLARAC; BONNIN" 1985
+.Referencia Sa Sá 1995
+.Referencia X
+.PP
+.Barbour ip 35
+descreve: "O estudo da morfologia dos terrenos […] ativos […]"
+.PP
+"Não se mova, faça de conta que está morta."
+.ClaracBonnin p 72
+.PP
+Segundo \*[Sa ip 27]: "[…] por meio da mesma 'arte de conversação' que
+abrange tão extensa e significafiva parte da nossa existência
+cotidiana […]"
+.HEADING 2 "(5.3) mais de três linhas"
+.HEADIMG 2 "(5.4) supressões, interpolações, comentários, ênfases, \
+destaques"
+.HEADING 2 "(5.5) informação verbal"
+.HEADING 2 "(5.6) fase de elaboração"
+.HEADING 2 "(5.7) enfatizar"
+.Referencia Souto Souto 1916
+.Referencia Candido Candido 1993
+.Referencia X
+.PP
+Deu merda!! Implementar. grifo nosso) grifo do autor)
+.PP
+"[…] para que não tenha lugar a \fBproducção de degenerados,\fP quer
+physicos quer moraes, misérias, verdadeiras ameaças à sociedade."
+(SOUTO, 1916, p.\~46, grifo nosso).
+.PP
+"[…] b) desejo de criar uma literatura \fBindependente, diversa\fP, de
+vez que, aparecendo o classicismo como manifestação de passado
+colonial […]" (CANDIDO, 1993, v.\~2, p.\~12, grifo do autor).
+.HEADING 2 "(5.8) tradução"
+.Referencia Rahner Rahner 1962
+.Referencia X
+.PP
+"Ao fazê-lo pode estar envolto em culpa, perversão, ódio de si mesmo
+[…] pode julgar-se pecador e identificar-se com seu pecado."
+.Rahner lt "v.\~4, p.\~12"
+.HEADING 2 "(6.1.1) Incluido na sentença"
+.Referencia TeatroAberto "Teatro Aberto" 1963
+.Referencia Morais Morais 1955
+.Referencia OFF
+.PP
+Em \*[TeatroAberto i] relata-se a emergência do teatro do absurdo.
+.PP
+Segundo \*[Morais ip 32] assinala "[...] a presença de concreções de
+bauxita no Rio Cricon."
+.HEADING 2 "(6.1.2) Desambiguar autores"
+.Referencia BarbosaC "C. Barbosa" u "BARBOSA, C." 1958
+.Referencia BarbosaO "O. Barbosa" u "BARBOSA, O." 1959
+.Referencia BarbosaCassio "Cássio Barbosa" u "BARBOSA, Cássio" 1965
+.Referencia BarbosaCelso "Celso Barbosa" u "BARBOSA, Celso" 1965
+.Referencia OFF
+.PP
+.BarbosaC
+.BarbosaO
+.PP
+.BarbosaCassio
+.BarbosaCelso
+.HEADING 2 "(6.1.3) Mesmo autor, mesmo ano"
+.Referencia ReesideA Reeside 1927a
+.Referencia ReesideB Reeside 1927b
+.Referencia OFF
+.PP
+De acordo com \*[ReesideA i]
+.PP
+.ReesideB
+.HEADING 2 "(6.1.4) Citação indireta, mesmo autor, vários documentos"
+.Referencia DreyfusOne Dreyfuss 1989
+.Referencia DreyfusTwo Dreyfuss 1991
+.Referencia DreyfusThree Dreyfuss 1995
+.Referencia CCC_One "Cruz, Correa e Costa" u "CRUZ; CORREA; COSTA" 1998
+.Referencia CCC_Two "Cruz, Correa e Costa" u "CRUZ; CORREA; COSTA" 1999
+.Referencia CCC_Three "Cruz, Correa e Costa" u "CRUZ; CORREA; COSTA" 2000
+.Referencia OFF
+.PP
+.DreyfusOne m
+.DreyfusTwo m
+.DreyfusThree
+.PP
+.CCC_One m
+.CCC_Two m
+.CCC_Three
+.HEADING 2 "(6.1.5) Vários autores numa citação indireta"
 .Referencia Fonseca Fonseca 1997
 .Referencia Paiva Paiva 1997
 .Referencia Silva Silva 1997
@@ -34,51 +151,6 @@ desencadeador" no início de um processo de aprendizagem
 .Knox m
 .Mezirow ""
 \&.
-.HEADING 2 "Incluido na sentença (6.1.1)"
-.Referencia TeatroAberto "Teatro Aberto" 1963
-.Referencia Morais Morais 1955
-.Referencia OFF
-.PP
-Em \*[TeatroAberto i] relata-se a emergência do teatro do absurdo.
-.PP
-Segundo \*[Morais ip 32] assinala "[...] a presença de concreções de
-bauxita no Rio Cricon."
-.HEADING 2 "Desambiguar autores (6.1.2)"
-.Referencia BarbosaC "C. Barbosa" u "BARBOSA, C." 1958
-.Referencia BarbosaO "O. Barbosa" u "BARBOSA, O." 1959
-.Referencia BarbosaCassio "Cássio Barbosa" u "BARBOSA, Cássio" 1965
-.Referencia BarbosaCelso "Celso Barbosa" u "BARBOSA, Celso" 1965
-.Referencia OFF
-.PP
-.BarbosaC
-.BarbosaO
-.PP
-.BarbosaCassio
-.BarbosaCelso
-.HEADING 2 "Mesmo autor, mesmo ano (6.1.3)"
-.Referencia ReesideA Reeside 1927a
-.Referencia ReesideB Reeside 1927b
-.Referencia OFF
-.PP
-De acordo com \*[ReesideA i]
-.PP
-.ReesideB
-.HEADING 2 "Citação indireta, mesmo autor, vários documentos (6.1.4)"
-.Referencia DreyfusOne Dreyfuss 1989
-.Referencia DreyfusTwo Dreyfuss 1991
-.Referencia DreyfusThree Dreyfuss 1995
-.Referencia CCC_One "Cruz, Correa e Costa" u "CRUZ; CORREA; COSTA" 1998
-.Referencia CCC_Two "Cruz, Correa e Costa" u "CRUZ; CORREA; COSTA" 1999
-.Referencia CCC_Three "Cruz, Correa e Costa" u "CRUZ; CORREA; COSTA" 2000
-.Referencia OFF
-.PP
-.DreyfusOne m
-.DreyfusTwo m
-.DreyfusThree
-.PP
-.CCC_One m
-.CCC_Two m
-.CCC_Three
 .HEADING 2 "Uso de apud (7.1.3)"
 .Referencia Abreu Abreu 1999
 .Referencia Segatto Segatto 1995

@@ -85,8 +85,9 @@ tcc.patch:
 om.tmac:
 	cp om.tmac.orig $@ && patch < tcc.patch
 
-see:
-	mv tcc.pdf ../storage/downloads/tcc.pdf
+see:abnt.pdf tcc.pdf
+	-mv tcc.pdf ../storage/downloads/tcc.pdf
+	-mv abnt.pdf ../storage/downloads/abnt.pdf
 
 .SUFFIXES: .swf .c .h .gz .br .o
 
