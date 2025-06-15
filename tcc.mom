@@ -46,8 +46,8 @@
 https://open-flash.github.io/mirrors/swf-spec-19.pdf \
 PREFIX < SUFFIX >.
 \!Acesso em: março de 2025.
-.Referencia FFmpeg "os desenvolvedores do FFmpeg" 2025
-\!OS DESENVOLVEDORES DO FFMPEG, 2025.
+.Referencia FFmpegFilters "os desenvolvedores do FFmpeg" 2025a
+\!OS DESENVOLVEDORES DO FFMPEG, 2025a.
 \!\fBFFmpeg Filters Documentation\fP.
 \![\fIonline\fP].
 \!Disponível em:
@@ -55,8 +55,17 @@ PREFIX < SUFFIX >.
 https://www.ffmpeg.org/ffmpeg-filters.html \
 PREFIX < SUFFIX >.
 \!Acesso em: maio de 2025.
-.Referencia Swivel Swivel 201-
-\!SWIVEL. 201-.
+.Referencia FFmpegFormats "os desenvolvedores do \%FFmpeg" 2025b
+\!______, 2025b.
+\!\fBFFmpeg Formats Documentation\fP.
+\![\fIonline\fP].
+\!Disponível em:
+\!.PDF_WWW_LINK \
+https://ffmpeg.org/ffmpeg-formats.html \
+PREFIX < SUFFIX >.
+\!Acesso em: junho de 2025.
+.Referencia Swivel Newgrounds 201-
+\!NEWGROUNDS. 201-.
 \!\fBNewgrounds Wiki: Swivel - Flash to Video\fP.
 \![\fIonline\fP]. Disponível em:
 \!.PDF_WWW_LINK https://www.newgrounds.com/wiki/creator-resources/animation-resources/swivel-flash-to-video \
@@ -492,127 +501,11 @@ reproduzir as animações da amostra varia de \*[Err X] a versão
 \*[Err Y], sendo que a última versão é a \*[Err Z, datada de 2018].
 .\", para que o trabalho pudesse se concentrar em
 .\"demonstrar a viabilidade da técnica proposta sem maiores complicações.
-.HEADING 3 "Experimento de fidelidade visual"
-.\" Não vamos usar o VMAF da Netflix, porque foda-se a Netflix
-.\" (qualidade de merda, o caralho).
-.PP
-Para avaliar a fidelidade visual da solução proposta, é utilizado o
-conversor multimídia em lotes FFmpeg, que entre várias opções
-disponíveis, pode "obter a PSNR (Relação Sinal\%-Ruído de Pico) médio,
-máximo e mínimo entre dois vídeos" e "obter a SSIM (Métrica de
-Similaridade Estrutural) entre dois vídeos", e ser configurado para
-"salvar o PSNR de cada quadro individual" e também "salvar o SSIM de
-cada quadro individual" \*[FFmpeg t]\&.
-.\".PP
-.\".red
-.\"Os dados são então processados com AWK e plotados com gnuplot para
-.\"análise.
-.\".COLOR black
-.PP
-Para computar as métricas PSNR e SSIM com FFmpeg, "ambos vídeos devem
-ter a mesma resolução [...] e também se pressupõe que ambos tem a
-mesma quantidade de quadros, que são comparados um a um"
-.FFmpeg t
-\&. Essas restrições são atendidas, pois de acordo com a
-\*[AdobeSpec ip 28],
-os campos
-\*[CODE]FrameSize\*[CODE X], \*[CODE]FrameRate\*[CODE X] e
-\*[CODE]FrameCount\*[CODE X] do cabeçalho do SWF especificam valores
-fixos para, respectivamente, a resolução do "\fIon-screen display\fP",
-frequência de quadros e quantidade total de quadros.
-.PP
-Para obter o vídeo de referência, que representa a qualidade original
-do tocador Flash, foi utilizado a ferramenta Swivel, que é "a melhor
-solução para converter seus filmes Adobe Flash em vídeos de alta
-definição" e "sem perder quadros" \*[Swivel t]\&.
-.PP
-Para obter o vídeo candidato, correspondente à solução proposta, o
-programa de teste foi adaptado para salvar em disco um vídeo no
-formato \*[CODE]yuv4mpeg2\*[CODE X], cuja extensão é
-\*[CODE].y4m\*[CODE X], e é fácil de gerar, pois o cabeçalho é em
-formato de texto, e os quadros do vídeos são salvos brutos
-descomprimidos no "formato YCbCr"
-.DRH
-.SP
-.PP
-Além disso, para obter pares de vídeos que o FFmpeg possa processar, a
-ferramenta Swivel foi usada para obter uma gravação referência da
-animação em sua qualidade original, e para a gravação candidata, o
-programa de teste foi adaptado para imprimir um vídeo diretamente.
-.\"
-Swivel utiliza Adobe Flash Air, e foi configurado para exportar um
-vídeo H.264 no perfil High, sem compressão.
-.PP
-A fidelidade visual da solução proposta é avaliada com duas métricas:
-relação sinal\%-ruído de pico (PSNR) \*[Citar] e similaridade
-estrutural (SSIM) \*[Citar].
-Ambas são métricas de referência completa, ou seja, comparam quadro a
-quadro um vídeo candidato contra um vídeo referência.
-Nesse sentido, animações em Flash são analisadas, uma vez que a
-frequência de quadros é fixa, definida pelo artista ao exportar um
-SWF.
-Apesar das animações em Flash serem renderizadas em tempo real, sua
-frequência de quadros é fixa, definida pelo artista ao exportar um
-SWF, o que viabiliza computar as métricas com gravações das mesmas.
-Essas duas métricas foram computadas para cada animação do grupo
-amostral usando ffmpeg, que é um conversor de vídeos em lotes popular
-\*[Citar].
-.PP
-Para os vídeos candidatos, o programa de teste foi adaptada pada
-exportar cada um de seus quadros renderizados separadamente no formato
-de imagem BMP.
-.\"
-Várias animações têm \fIpreloaders\fP e menus interativos com botões
-para começar a animação, realizar configurações, ver créditos e
-selecionar de cenas.
-Por essa razão, foi necessário determinar manualmente em qual quadro
-exatamente a animação inicia e em qual termina, com auxílio de alguma
-ferramenta, como Swivel ou JPEXS Free Flash Decompiler.
-.\"
-Os vídeos referência foram exportados no formato H.264, perfil High,
-sem faixa de áudio, e comprimido sem perdas para preservar a qualidade
-original de gráficos renderizados em tempo real.
-Esse formato de vídeo não admite altura ou largura ímpares, então para
-animações originalmente projetadas em dimensões ímpares, o vídeo
-exportado teve seu tamanho dobrado.
-.\"
-A ferramenta Swivel interfaceia o Adobe Flash Air
-utilizando a ferramenta Swivel, que interfaceia com o Adobe Flash Air
-para obter a qualidade original de gráficos renderizados em tempo
-real.
-.\"foi usada a ferramenta Swivel, que 
-.\"que interfaceia
-.\"o Adobe Flash Air, exporta para cada animação do grupo amostral um
-.\"vídeo no formato AVI descomprimido, sem áudio, preservando a qualidade
-.\"dos gráficos renderizados em tempo real.
-.\"
-Uma vez que o formato de vídeo H.264 não admite dimensões ímpares
-\*[Err \(lBcitar\(rB], Swivel e o programa de teste foram configurados
-para exportar com a resolução dobrada para animações que tivessem
-altura ou largura ímpares.
-.\"
-Com os vídeos candidatos e referência, a ferramenta em lotes ffmpeg se
-encarrega de computar as métricas para cada par de vídeos do grupo
-amostral.
-.\" TODO Conferir Xiph.org e y4m
-.\" https://github.com/Netflix/vmaf/blob/master/libvmaf/tools/README.md
-.HEADING 3 "Experimento de eficiência"
-.PP
-O segundo experimento analisa a eficiência da solução proposta. O peso
-original de cada animação testada é comparada com o peso do arquivo
-wasm final comprimido com Brotli, que é uma opção de compressão para
-HTTP.
-No contexto de jogos de computador, executáveis são empacotados de
-diversos modos, dependendo de como são distribuídos. Para simplificar
-o experimento, e visto que Flash é uma tecnologia especialmente
-presente na Web, e sua eficiência se destacava na transmissão via
-Internet em portais, o experimento compara o tamanho do arquivo SWF
-com o peso combinado dos arquivos Web comprimidos com Brotli, um dos
-algoritmos de compressão HTTP versão proposta.
 .FLOAT
 .\"XXX https://www.newgrounds.com/search/conduct/movies?advanced=1&match=tdtu&user=Sirkowski&before=2005-01-01&sort=views-desc
 .\" XXX Essa tabela... vou repetir ela nos resultados. Escolher bem qual
 .\"     tabela vai mostrar quais colunas...
+.MSWORD_SIMPLE_10 \" XXX KLUDGE
 .FiguraCurta "Animações Flash publicadas na Newgrounds usadas como casos de teste"
 .MSWORD_SIMPLE_10
 .TS H EXPAND
@@ -660,6 +553,90 @@ _
 .TE
 .FLOAT OFF
 .MSWORD_ONEHALF_12
+.HEADING 3 "Experimento de fidelidade visual"
+.\" https://github.com/Netflix/vmaf/blob/master/libvmaf/tools/README.md
+.\" Não vamos usar o VMAF da Netflix, porque foda-se a Netflix
+.\" (qualidade de merda, o caralho).
+.\" cheias de artefatos e blocões gigantes uuuuuuhhhrrrrrrr
+.PP
+Para avaliar a fidelidade visual da solução proposta, é utilizado o
+conversor multimídia em lotes FFmpeg.
+Entre várias opções disponíveis, FFmpeg pode "obter a PSNR
+(Relação Sinal\%-Ruído de Pico) médio, máximo e mínimo entre dois
+vídeos" e "obter a SSIM (Métrica de Similaridade Estrutural) entre
+dois vídeos" \*[FFmpegFilters t]\&.
+.\"Desse modo, para cada animação do conjunto amostral, foi gerado um par
+.\"de gravações referência e candidato. 
+.\"Ambas são métricas de referência completa, ou seja, comparam quadro a
+.\"quadro um vídeo candidato contra um vídeo referência.
+.PP
+.\" A situação do Swivel é bem fodida, então por enquanto vamos omitir
+.\" detalhes, porque são realmente infernais e não resolvidos.
+Para gravar o vídeo de referência, que representa a qualidade original
+da animação, foi utilizado a ferramenta Swivel, que é "a melhor
+solução para converter seus filmes Adobe Flash em vídeos de alta
+definição" e "sem perder quadros" \*[Swivel t]\&.
+.PP
+Para o vídeo candidato, correspondente à solução proposta, o programa
+de teste foi adaptado para imprimir na saída padrão dados brutos de
+seus quadros.
+Essa abordagem é viável, pois FFmpeg apresenta o \fIdemuxer\fP
+\*[CODE]rawvideo\*[CODE X], que "permite ler dados brutos de vídeo.
+Como não há cabeçalho especificando os parâmetros presumidos de vídeo,
+o usuário deve especificá-los para decodificar os dados corretamente."
+.FFmpegFormats t
+.\" NÃO UTILIZADO:
+.\", e ser configurado para
+.\""salvar o PSNR de cada quadro individual" e também "salvar o SSIM de
+.\"cada quadro individual" \*[FFmpegFilters t]\&.
+.\" NÃO UTILIZADO:
+.\".PP
+.\".red
+.\"Os dados são então processados com AWK e plotados com gnuplot para
+.\"análise.
+.\".COLOR black
+.PP
+Para computar a PSNR e SSIM com FFmpeg, "ambos vídeos devem
+ter a mesma re\%solução [...] e também se pressupõe que ambos tem a
+mesma quantidade de quadros, que são comparados um a um"
+.FFmpegFilters t
+\&. Essas restrições são atendidas, pois conforme
+\*[AdobeSpec ip 28],
+os campos
+.\" Poderia citar algum dos livros retirados da biblioteca
+.ie 0 \{\
+\*[CODE]FrameSize\*[CODE X], \*[CODE]FrameRate\*[CODE X] e
+\*[CODE]FrameCount\*[CODE X]
+.\}
+.el FrameSize, FrameRate e FrameCount
+do cabeçalho do SWF especificam va\%lo\%res
+fixos para, respectivamente, a resolução do "\fIon-screen display\fP",
+frequência de quadros e quantidade total de quadros.
+.PP
+Ainda, \*[Swivel iG] adverte que "\fBpara filmes com um
+\f(BIpreloader\fB ou outros menus,\fR você pode pular esses segmentos
+alterando as configurações Start Frame e End Frame" da ferramenta
+Swivel.
+Quando foi esse o caso para qualquer uma das animações do grupo
+amostral, o mesmo corte foi repetido no programa de teste, para manter
+a mesma quantidade de quadros e garantir a correspondência de um para
+um.
+.\" TODO Wrap it all up.
+.HEADING 3 "Experimento de eficiência"
+.PP
+A eficiência analisada diz respeito ao ... \" XXX Continue here.
+O segundo experimento analisa a eficiência da solução proposta. O peso
+original de cada animação testada é comparada com o peso do arquivo
+wasm final comprimido com Brotli, que é uma opção de compressão para
+HTTP.
+No contexto de jogos de computador, executáveis são empacotados de
+diversos modos, dependendo de como são distribuídos. Para simplificar
+o experimento, e visto que Flash é uma tecnologia especialmente
+presente na Web, e sua eficiência se destacava na transmissão via
+Internet em portais, o experimento compara o tamanho do arquivo SWF
+com o peso combinado dos arquivos Web comprimidos com Brotli, um dos
+algoritmos de compressão HTTP versão proposta.
+.HEADING 3 "Lilili"
 .PP
 Este projeto de pesquisa possui a seguinte metodologia de execução:
 .br

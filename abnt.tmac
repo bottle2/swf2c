@@ -16,6 +16,9 @@
 .\" TODO Automated "A,B e C" and "A;B;C": cringe or based?
 .\"      Make it optional
 .\"
+.\" Mass replacing a mnemonic will be a PITA if it is also a word that
+.\" appears in free text, or if it is the prefix of another mnemonic.
+.\"
 .\" e flag enables et al. which must NOT be present in <Authorship>.
 .\" u flag allows to write custom uppercase version. (handles 6.1.2)
 .\"
@@ -24,7 +27,7 @@
 .\" The macro .<Mnemonic> [args] or \*[Mnemonic args] becomes available.
 .\"
 .\" Usage: .Referencia OFF|X|END|<anything>
-.\" Must be called to "closed" after last consecutive entry.
+.\" Must be called to "close" after last consecutive entry.
 .\"
 .\" Once you are done, the diversion .Bibliografia becomes available.
 .\" Just like any other diversion, you can .rm Bibliografia to reset
@@ -64,7 +67,7 @@
 . if !'\\n[.z]'Bibliografia' .da Bibliografia
 . nop \!.PP
 ..
-.\" Usage: .<Mnemonic> [i|[[a][m]][t][p|c]
+.\" Usage: .<Mnemonic> [i|[[a][m]][t][p|c][g|G]
 .\"                    [<text before apud> if a]
 .\"                    [<page number(s)>   if p]
 .\"                    [<custom location>  if c]
@@ -82,10 +85,13 @@
 .\" a Means that apud is in effect.
 .\" m Fuses current citation with next citation
 .\"   this option is smartish, try and see it.
+.\" g Adds ", grifo nosso" before closing parenthesis.
+.\" G Adds ", grifo do autor" before closing parenthesis.
 .\"
 .\" Flags i and a don't make sense together.
 .\" Flags i and m are mutually exclusive.
 .\" Flags p and c are mutually exclusive.
+.\" Flags g and G are mutually exclusive.
 .\" Flag i can't be used if previous call used flag m
 .\"
 .\" If <text before apud> is empty (i.e. just ""), the opening
@@ -112,6 +118,8 @@
 .  ab \n(.F:\n(.c:Can't use flag i if m was used in previous call
 . if \\n[Localish_p]&\\n[Localish_c] \
 .  ab \n(.F:\n(.c:Flags p and c can't go together
+. if \\n[Localish_g]&\\n[Localish_G] \
+.  ab \n(.F:\n(.c:Flags g and G can't go together
 . \" Opening parenthesis
 . if !\\n[Localish_i]:\\n[Localish_m_previous] .nop (\c
 . \" Place apud
@@ -133,6 +141,8 @@
 . if \\n[Localish_p] , p.\~\\$1\c
 . if \\n[Localish_c] , \\$1\c
 . if \\n[Localish_t] , tradu\(,c\(~ao nossa\c
+. if \\n[Localish_g] , grifo nosso\c
+. if \\n[Localish_G] , grifo do autor\c
 . if !\\n[Localish_m] .nop )\c
 . \" Cleanup
 . ie \\n[Localish_m] \{\
@@ -149,6 +159,8 @@
 . rr Localish_p
 . rr Localish_c
 . rr Localish_m
+. rr Localish_g
+. rr Localish_G
 ..
 .\" INTERNAL STUFF. Not intended to be used directly.
 .de PlaceAuthorship
