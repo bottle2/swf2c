@@ -21,6 +21,16 @@
 .PT_SIZE 16
 .LS 19.2
 ..
+.de CitacaoLongaS
+.DOC_LEAD 14.4
+.IL 4c
+.PP
+.DOC_PT_SIZE 10
+..
+.de CitacaoLongaE
+.ILX
+.MSWORD_ONEHALF_12 \" XXX We should be smart instead, but fuck it.
+..
 .ds Err \\*[red]\\$*\\*[black]
 .ds Citar \\*[Err \(lBcitar\(rB]
 .ie d IsDraft \{\
@@ -44,6 +54,14 @@
 \![\fIonline\fR]. Disponível em:
 \!.PDF_WWW_LINK \
 https://open-flash.github.io/mirrors/swf-spec-19.pdf \
+PREFIX < SUFFIX >.
+\!Acesso em: março de 2025.
+.Referencia BasedFlash Bilas 200-
+\!BILAS, Scott. 200-.
+\!\fBWhat About Flash? Can We Really Make Games With It?\fR
+\![\fIonline\fR]. Disponível em:
+\!.PDF_WWW_LINK \
+https://web.archive.org/web/20080113212114/https://www.drizzle.com/~scottb/gdc/flash-paper.htm \
 PREFIX < SUFFIX >.
 \!Acesso em: março de 2025.
 .Referencia FFmpegFilters "os desenvolvedores do FFmpeg" 2025a
@@ -71,6 +89,26 @@ PREFIX < SUFFIX >.
 \!.PDF_WWW_LINK https://www.newgrounds.com/wiki/creator-resources/animation-resources/swivel-flash-to-video \
 PREFIX < SUFFIX >.
 \!Acesso em: jun. de 2025.
+.Referencia Fgl RoseDragon 201-
+\!ROSEDRAGON. 201-.
+\!\fBFGL Developer Newbie Guide\fP.
+\![\fIonline\fP].
+\!Disponível em:
+\!.PDF_WWW_LINK \
+https://web.archive.org/web/20130510205857/https://www.fgl.com/view_library.php?page=devnewbieguide
+\
+PREFIX < SUFFIX >.
+\!Acesso em: jun. de 2025.
+.Referencia GettingSponsored Wilton 2013
+\!WILTON, Julian. 2013.
+\!\fBThe 5 Most Important Things to Consider When Getting Your Flash
+\!Game Sponsored\fP.
+\![\fIonline\fP].
+\!Disponível em:
+\!.PDF_WWW_LINK \
+https://web.archive.org/web/20131012112913/http://gamedev.tutsplus.com/articles/business-articles/web-game-sponsorship/ \
+PREFIX < SUFFIX >.
+\!Acesso em: junho de 2025.
 .Referencia OFF
 .PRINTSTYLE TYPESET
 .L_MARGIN 3c
@@ -490,6 +528,12 @@ visual da solução proposta, e o segundo avaliando o peso de transmitir
 a animação pela Internet para um usuário, doravante denominado
 simplesmente como "experimento de eficiência".
 .PP
+.red
+Explicar aqui porque animações e não jogos. O que muda. Ah, é porque é
+visualmente lalala, \fIcutscene\fP, pipipipipipi.
+.black
+\&
+.PP
 A amostra usada nos dois experimentos são \*[Err 18] animações,
 listadas na Figura\~1, publicadas no site Newgrounds por cinco autores
 diferentes, todas anteriores a 2005.
@@ -559,6 +603,14 @@ _
 .\" (qualidade de merda, o caralho).
 .\" cheias de artefatos e blocões gigantes uuuuuuhhhrrrrrrr
 .PP
+Para a solução proposta ser útil em um projeto real, é necessário que
+seja confiável, honrando a visão artística dos profissionais
+envolvidos, sem distorções.
+Isso é avaliado comparando se a animação renderizada pela solução
+proposta reproduz a qualidade original do tocador Flash.
+Essa avaliação constitui o experimento de fidelidade visual, que foi
+realizado automaticamente.
+.PP
 Para avaliar a fidelidade visual da solução proposta, é utilizado o
 conversor multimídia em lotes FFmpeg.
 Entre várias opções disponíveis, FFmpeg pode "obter a PSNR
@@ -621,14 +673,80 @@ Quando foi esse o caso para qualquer uma das animações do grupo
 amostral, o mesmo corte foi repetido no programa de teste, para manter
 a mesma quantidade de quadros e garantir a correspondência de um para
 um.
-.\" TODO Wrap it all up.
+.PP
+.red
+Wrap it all up.
+Falar do significado das métricas.
+Qual número quer dizer que estamos fodidos, qual número quer dizer que
+vencemos.
+Vai ter que citar algum dos dez mil artigos publicados a
+respeito dessa merda.
+Fuck. Significância.
+Essa merda chega a ser teste de hipótese estatístico?
+Fuck.
+Fuck.
+Eu não lembro mais dessa merda.
+Duvido que haja números publicados.
+.black
+\&
 .HEADING 3 "Experimento de eficiência"
 .PP
-A eficiência analisada diz respeito ao ... \" XXX Continue here.
-O segundo experimento analisa a eficiência da solução proposta. O peso
-original de cada animação testada é comparada com o peso do arquivo
-wasm final comprimido com Brotli, que é uma opção de compressão para
-HTTP.
+Fuck.
+.PP
+A técnica proposta se propõe a transformar.
+Indiferente dos méritos [...]
+na prática, o que importa é a banda larga.
+.DRH
+.SP
+.PP
+Na realidade do início dos anos 2000, \*[BasedFlash it] define, entre
+outras características, que um "jogo `casual' [...] tem um tamanho
+entre 3 e 10 megabytes (usuários de modem 56K geralmente não
+conseguirão ou não terão vontade de baixar nada maior)".
+Uma década depois, \*[Fgl it], recomenda restrições ainda maiores:
+.CitacaoLongaS
+Tamanho do arquivo importa.
+Se o seu jogo for maior que 5mb, você deve con\%si\%de\%rar
+cuidadosamente se vale a pena remover recursos ou música para
+conseguir um tamanho menor.
+Muitos portais não aguentam jogos maiores que 10mb.
+Poucos patrocinadores se interessarão num jogo maior que isso.
+O tamanho médio de um jogo é 2mb.
+.CitacaoLongaE
+.PP
+Não somente jogos em Flash são minúsculos, como também são
+distribuídos preferencialmente como um único arquivo
+.\", para que
+.\"milhares de portais roubem jogos uns dos outros facilmente, causando
+.\"um efeito viral que beneficia a todos os atores no sistema de anúncios
+.Fgl
+\&.
+.DRH
+.SP
+.PP
+Donde.
+Parte-se disso que distribuição de jogos em Flash é simplificada
+.PP
+A tecnologia Flash é particularmente interessante, pois jogos
+de alta qualidade podiam ser acessados via Internet de baixa
+velocidade
+.PP
+O segundo experimento analisa o tamanho  
+.PP
+Essa comparação é interessante, pois já no início dos anos 2000, jogos
+em Flash eram distribuídos na Web 
+.PP
+Qualquer tecnologia menos que isso é um retrocesso, e diante disso, muito
+relevante analisar.
+.PP
+Há muitas plataformas onde um jogo pode ser distribuído.
+Há diferenças de hardware, forma de empacotar o jogo, modelo de
+negócios, 
+Um jogo precisa ser distribuído. Há muitas plataformas onde um jogo
+pode ser publicado para 
+.PP
+Jogos modernos são distribuídos
+.PP
 No contexto de jogos de computador, executáveis são empacotados de
 diversos modos, dependendo de como são distribuídos. Para simplificar
 o experimento, e visto que Flash é uma tecnologia especialmente
@@ -636,6 +754,13 @@ presente na Web, e sua eficiência se destacava na transmissão via
 Internet em portais, o experimento compara o tamanho do arquivo SWF
 com o peso combinado dos arquivos Web comprimidos com Brotli, um dos
 algoritmos de compressão HTTP versão proposta.
+.PP
+A eficiência analisada diz respeito ao ... \" XXX Continue here.
+.PP
+O segundo experimento analisa a eficiência da solução proposta. O peso
+original de cada animação testada é comparada com o peso do arquivo
+wasm final comprimido com Brotli, que é uma opção de compressão para
+HTTP.
 .HEADING 3 "Lilili"
 .PP
 Este projeto de pesquisa possui a seguinte metodologia de execução:
@@ -1269,50 +1394,36 @@ Lixo abaixo:
 .COLOR black
 .SP
 .PP
-BILAS, Scott. 200-.
-\fBWhat About Flash? Can We Really Make Games With It?\fR
-[\fIonline\fR]. Disponível em:
-.PDF_WWW_LINK \
-https://web.archive.org/web/20080113212114/https://www.drizzle.com/~scottb/gdc/flash-paper.htm \
-PREFIX < SUFFIX >. "https://web.archive.org/web/20080113212114/https://www.drizzle.com\
-\:/~scottb/gdc/flash-paper.htm"
-Acesso em: março de 2025.
-.\" XXX
-.br
-ADOBE. 2013. Swf File Format Specification: Version 19. [online]. Disponível em: <https://open-flash.github.io/mirrors/swf-spec-19.pdf>. Acesso em: março de 2025.
-.br
 ANSI X3J11 TECHNICAL COMMITTEE. Programming language C. Rascunho do comitê X3.???-1988. [S. l.], 1988. Disponível em: <https://web.archive.org/web/20161223125339/http://flash-gordon.me.uk/ansi.c.txt>. Acesso em: 16 jul. 2023. Popularmente conhecido como ANSI C, ISO C, C89 e C90.
-.br
+.SP
 BEAL, Stephan. Supermacros: powerful, maintainable preprocessor macros in C++. [S. l.: s. n.], 22 aug. 2004. Disponível em: <http://wanderinghorse.net/computing/papers/supermacros_cpp.pdf>. Acesso em: 15 jul. 2023.
-.br
-BILAS, Scott. 200-. What About Flash? Can We Really Make Games With It? [online]. Disponível em: <https://web.archive.org/web/20080113212114/https://www.drizzle.com/˜scottb/gdc/flash-paper.htm>. Acesso em: março de 2025.
-.br
+.SP
 BRIGHT, Walter. The X Macro. [S. l.]: Digital Mars, 24 jun. 2010. Disponível em: <https://digitalmars.com/articles/b51.html>. Acesso em: 14 jul. 2023.
-.br
+.SP
 ISO/IEC 9899:201x. Programming languages: C. Rascunho do comitê. [S. l.], 12 abr. 2011. Disponível em: <https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf>. Acesso em: 16 jul. 2023. N1570. Popularmente conhecido como C11.
-.br
+.SP
 ISO/IEC 9899:2023. Programming languages: C. Rascunho de trabalho. [S. l.], 1 abr. 2023. Disponível em: <https://www.open-std.org/jtc1/sc22/wg14/www/docs/n3096.pdf>. Acesso em: 16 jul. 2023. N3096. Popularmente conhecido como C23.
-.br
+.SP
 ISO/IEC 9899:202x (E). Programming languages: C. Rascunho. [S. l.], 6 nov. 2018. Disponível em: <https://www.open-std.org/jtc1/sc22/wg14/www/docs/n2310.pdf>. Acesso em: 16 jul. 2023. N2310. Popularmente conhecido como C17 e C18.
-.br
+.SP
 ISO/IEC 9899:TC3. Programming languages: C. Rascunho do comitê. [S. l.], 7 set. 2007. Disponível em: <https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf>. Acesso em: 16 jul. 2023. WG14/N1256. Popularmente conhecido como C99.
-.br
+.SP
 LUCAS, Andrew. Reduce C-language coding errors with X macros: Part 1. [S. l.]: Embedded, 1 jan. 2013a. Disponível em: <https://www.embedded.com/reduce-c-language-coding-errors-with-x-macros-part-1/>. Acesso em: 15 jul. 2023.
-.br
+.SP
 ______. Reduce C- language coding errors with X-macros: Part 2. [S. l.]: Embedded, 20 jan. 2013b. Disponível em: <https://www.embedded.com/reduce-c-language-coding-errors-with-x-macros-part-2/>. Acesso em: 15 jul. 2023.
-.br
+.SP
 ______. Reduce C language coding errors with X macros: Part 3. [S. l.]: Embedded, 2 mar. 2013c. Disponível em: <https://www.embedded.com/reduce-c-language-coding-errors-with-x-macros-part-3/>. Acesso em: 15 jul. 2023.
-.br
+.SP
 MEYERS, Randy. The new C: X Macros. [S. l.]: Dr. Dobbs’, 1 maio 2001. Disponível em: <https://www.drdobbs.com/the-new-c-x-macros/184401387>. Acesso em: 14 jul. 2023.
-.br
+.SP
 SCHWARZ, Keith. Advanced Preprocessor Techniques. [S. l.: s. n.], 2 out. 2008. Disponível em: <https://www.keithschwarz.com/cs106l/fall2008/handouts/060_Preprocessor_2.pdf>. Acesso em: 16 jul. 2023.
-.br
+.SP
 ______. Advanced Preprocessor Techniques. [S. l.: s. n.], 16 abr. 2009. Disponível em: https://www.keithschwarz.com/cs106l/spring2009/handouts/080_Preprocessor_2.pdf. Acesso em: 16 jul. 2023.
-.br
+.SP
 ______. Chapter 7: The Preprocessor. [S. l.: s. n.], [2010a]. Disponível em: https://www.keithschwarz.com/cs106l/spring2010/course-reader/Ch7-ThePreprocessor.pdf. Acesso em: 16 jul. 2023.
-.br
+.SP
 ______. Chapter 4: Multi-File Programs, Abstraction, and the Preprocessor. [S. l.: s. n.], [2010b]. Disponível em: https://www.keithschwarz.com/cs106l/fall2010/course-reader/Ch4_MultiFileAbstractionPreprocessor.pdf. Acesso em: 16 jul. 2023.
-.br
+.SP
 WIRZENIUS, Lars. C Preprocessor Trick For Implementing Similar Data Types. [S. l.: s. n.], 17 jan. 2000. Disponível em: http://liw.iki.fi/liw/texts/cpp-trick.html. Acesso em: 14 jul. 2023.
 .NEWPAGE
 .PARA_INDENT 1.25c
