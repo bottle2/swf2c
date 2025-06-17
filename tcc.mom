@@ -65,6 +65,8 @@ https://web.archive.org/web/20080113212114/https://www.drizzle.com/~scottb/gdc/f
 PREFIX < SUFFIX >.
 \!Acesso em: março de 2025.
 .Referencia FFmpegFilters "os desenvolvedores do FFmpeg" 2025a
+.\" TODO Traduzir ou não o nome para português?
+.\"      Era The FFmpeg developers
 \!OS DESENVOLVEDORES DO FFMPEG, 2025a.
 \!\fBFFmpeg Filters Documentation\fP.
 \![\fIonline\fP].
@@ -99,6 +101,14 @@ https://web.archive.org/web/20130510205857/https://www.fgl.com/view_library.php?
 \
 PREFIX < SUFFIX >.
 \!Acesso em: jun. de 2025.
+.Referencia SteamDB "o time do SteamDB" 2020
+\!O TIME DO STEAMDB. 2013.
+\!\fBTaking a look at Steam's download and preload system\fP.
+\![\fIonline\fP].
+\!.PDF_WWW_LINK \
+https://steamdb.info/blog/steam-download-system/ \
+PREFIX < SUFFIX >.
+\!Acesso em: junho de 2025.
 .Referencia GettingSponsored Wilton 2013
 \!WILTON, Julian. 2013.
 \!\fBThe 5 Most Important Things to Consider When Getting Your Flash
@@ -691,6 +701,95 @@ Duvido que haja números publicados.
 \&
 .HEADING 3 "Experimento de eficiência"
 .PP
+Parte do.
+.\"
+Jogos em Flash foram centrais num esquema de anúncios durante todo o
+seu reinado, parte disso se dá pelo formato formidável dos arquivos
+SWF permitirem produções com tamanhos diminutos, que permitem que
+pessoas do mundo inteiram possam, independentemente da latência,
+lentidão da Internet, acessar conteúdo Flash.
+.PP
+Diante do estado da arte alcançado nesse período, foi realizado um
+experimento para verificar se a solução proposta não representa um
+retrocesso.
+O experimento compararou o tamanho do arquivo SWF de cada
+animação do grupo amostral \(em já evidente na Figura \*[Err X] \(em
+com a soma do tamanho comprimido de todos
+os recursos Web que compõem a animação reconstituída com solução
+proposta.
+.PP
+O tamanho do arquivo SWF é comparado diretamente, pois é exatamente o
+que um usuário baixa ao acessar um conteúdo Flash.
+Além de ser frugal, o arquivo SWF é com\%pri\%mi\%do \*[Citar], então
+para tornar a comparação justa, os arquivos da solução proposta são
+comprimidos usando algoritmos modernos de compressão modernos que são
+correntes que o próprio protocolo HTTP fornece.
+Demais detalhes, como todo o \fIoverhead\fP de negociação e
+transmissão do HTTP e protocolos subjacentes, é desconsiderado.
+.DRH
+.SP
+.PP
+\*[Err "FUCK, mas na verdade a compressão HTTP"]
+O experimento se preocupa exclusivamente com o tamanho dos arquivos
+transmitidos, desconsiderando inteiramente 
+o \fIoverhead\fP do protocolo HTTP e os
+protocolos subjacentes, e por consequência, quaisqueres vantagens de
+quaisqueres versões ou extensões.
+O arquivo SWF é exatamente o que um usuário baixa ao visualizar um
+conteúdo Flash na Internet.
+Por o arquivo SWF ser enxuto e comprimido por natureza, o experimento
+testa o tamanho comprimido dos arquivos da solução proposta, por
+justiça, sem fazer juz de algoritmos modernos.
+.DRH
+.SP
+.PP
+O arquivo SWF é bastante formidável, e foi chave numa indústria de
+anúncios que contava com sua .
+Uma vez que o arquivo SWF é especialmente marcante por sua formidável
+e estar numa indústria que estimulava economia, é essencial verificar
+que a solução proposta consegue continuar XXX, sem retrocesso, arte
+anterior.
+.PP
+O segundo experimento, de eficiência, comparou o tamanho dos
+arquivos SWF das animações do grupo amostral, que é exatamente o
+quanto um usuário originalmente baixava pela Internet para
+assisti-las, contra a soma do tamanho de todos os recursos Web que
+um usuário precisa baixar para assistir a animação reconstituída
+utilizando a técnica proposta, quando compilada para a Web.
+O experimento desconsidera a banda larga utilizada pelo protocolo
+HTTP, indiferente da versão que seja
+.PP
+O experimento utiliza Web, porque
+.PP
+Historicamente, a tecnologia Flash esteve intimamente conectado com
+.PP
+O experimento de eficiência 
+.DRH
+.SP
+.PP
+De acordo com \*[SteamDB it], para jogos distribuídos pela Steam,
+"cada arquivo é quebrado em pedaços de por volta de um megabyte, e
+cada pedaço é comprimido com LZMA e criptografado com uma chave AES
+256-bit".
+Ainda segundo \*[SteamDB it], "a chave de criptografia é única para o
+\fIdepot\fP e é a mesma para todos os usuários.
+Isso permite CDNs armazenarem em cache o conteúdo eficientemente, e
+permitir que caches de LAN funcionem."
+.PP
+\*[Err falar da porra de algoritmos modernos pipipipi].
+.PP
+Falar sobre APKs talvez.
+.DRH
+.SP
+.PP
+O segundo experimento
+.PP
+.\" Explícito
+O segundo experimento avalia se a solução proposta consegue não ser um
+retrocesso.
+.PP
+Discutir contexto do Flash.
+.PP
 Fuck.
 .PP
 A técnica proposta se propõe a transformar.
@@ -1063,21 +1162,6 @@ gerenciados pela runtime do C, como um char * ou void *. Então é fofo ter tudo
 num Canvas2D, mas a API precisa saber arrancar os dados de lá e dar para o
 usuário algo que ele possa manusear fácil. Tipo, deixa ele usar o Canvas, de
 repente ele vai gostar de puxar um ImageBitmap, mas senão, void * nele.
-.TS
-tab(#);
-| l | l | l
-| cB | cB | cB |
-| lfC | lfC | lfC | .
-_#_#_
-Objeto#M\['e]todo#Tipo devolvido
-_#_#_
-HTMLCanvasElement#toBlob()#Blob
-_#\^#\^
-#\^#\^
-OffscreenCanvas#_#_
-#transferToImageBitmap()#ImageBitmap
-_#_#_
-.TE
 .PP
 .\"Puta que pariu que cu essa merda.
 .PP
@@ -1138,6 +1222,8 @@ Pipipipipipipipipi. \"XXX
 .so tamanhos.txt
 .FLOAT OFF
 .HEADING 1 "Conclusão"
+.PP
+\*[Err falar da porra do V-CAM, o tutorial do Jazza.]
 .PP
 Deve confirmar seção Objetivo.
 .HEADING 1 "Câncer abaixo"
@@ -1559,6 +1645,10 @@ Jogos visualmente fantásticos feitos em Flash para navegador:
 .HEADING 1 "Apêndice B: Revisão do texto"
 .SPACE 1.524c-1v
 .PP
+Essa merda sempre me confunde: eu escrevo "assim." Maiúscula ou
+"assim". Maiúscula?? FUCK. Obviamente o MDT 2021 dá as duas versões,
+sem explicações. FUCK.
+.PP
 Não falar sobre todas as bulhufas de Makefile, m4, opções de linha de comando,
 nada! Razão: é perda de tempo. É tudo intermediário. Só vou saber qualquer
 depois de fazer um jogo
@@ -1643,12 +1733,19 @@ Enfatizar jogos!
 \!.JUSTIFY
 \!.SILENT
 .\" XXX Write longest acronym here!! 
-\!.PAD "\*[ST1]SWF\*[ST1X]\ \ \*[ST2]#\*[ST2X]"
+\!.PAD "\*[ST1]LZMA\*[ST1X]\ \ \*[ST2]#\*[ST2X]"
 \!.SILENT OFF
 \!.ST 1 L
 \!.ST 2 L QUAD
-\!.Sigla SWF ShockWave File ou Small Web Format
+\!.Sigla AES Advanced Encryption Standard
+\!.Sigla CDN Content distribution network
 \!.Sigla GCC Gnu Compiler Collection
+\!.Sigla HTTP HyperText Transfer Protocol
+\!.Sigla LAN Local area network
+\!.Sigla LZMA Lempel-Ziv-Markov chain algorithm \" XXX Traduzir?
+\!.Sigla PSNR Peak signal-to-noise ratio
+\!.Sigla SSIM Structural similarity index measure
+\!.Sigla SWF ShockWave File ou Small Web Format
 \!.Abreviatura MiB mebibyte
 \!.TQ
 .\"\!.LIST_OF_TABLES  TITLE_STRING "LISTA DE TABELAS"
