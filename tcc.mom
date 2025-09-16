@@ -28,7 +28,7 @@
 .DOC_PT_SIZE 10
 ..
 .de CitacaoLongaE
-.ILX
+.ILX CLEAR
 .MSWORD_ONEHALF_12 \" XXX We should be smart instead, but fuck it.
 ..
 .ds Err \\*[red]\\$*\\*[black]
@@ -266,6 +266,183 @@ LAlalalalalalalalala
 .MSWORD_ONEHALF_12
 .JUSTIFY
 .HEADING 1 NAMED Intro "Introdução\*[Fazer]"
+.\" Direção:
+.\" - Não citar Java (para tentar explicar a polissemia)
+.PP
+Jogos de computador são um esforço combinado de várias especialidades
+artísticas e técnicas, abrangendo música, efeitos sonoros,
+narrativa, código e artes visuais, unidos em uníssono para
+entregar uma experiência interativa e cativante.
+.PP
+As animações com gráficos vetoriais são uma opção de identidade visual
+para jogos de computador, desfrutando de vantagens intrínsicas como
+eficiência e escalabilidade \*[Err "(alta defini\(,c\(~ao?)"] do formato, o
+primeiro fator sendo significativo para que produções artísticas se
+disseminassem durante a infância da Internet, quando as conexões ainda
+eram lentas.
+.PP
+A tecnologia Flash foi, durante mais de duas décadas, o meio primário
+\*[Err de] disseminar conteúdo com gráficos vetoriais animados.
+Trata-se, na verdade, de três componentes: 1) o editor de animações
+Flash, \*[Err atualmente] denominado Adobe Animate; 2) o formato de
+arquivo Flash, chamado SWF; e 3) uma \fIruntime\fP que executa o
+conteúdo Flash, chamado de Flash Player.
+Esses três componentes formam, essencialmente, um \fIpipeline\fP que
+habilita tudo: criação, veiculação e reprodução de conteúdo Flash.
+Inicialmente projetada para a produção de filmes, a tecnologia Flash
+foi gradualmente incrementada com múltiplos avanços tecnológicos, de
+tal modo que passou a servir para a criação de jogos eletrônicos,
+anúncios de Internet, partes de websites, ou websites inteiros.
+.PP
+O uso disseminado da tecnologia Flash, que permaneceu proprietário,
+exceto por algumas decisões judiciais para flexibilizar.
+Em 2020, a tecnologia foi essencialmente terminada, por três razões
+principais: 1) se desamarrar da Adobe em prol de alternativas abertas,
+2) escapar das limitações do Flash, como sua resolução fixa que
+limita, 3) decisão ultimata tendo em vista inúmeras vulnerabilidades,
+agravada pelo código mutante que impossibilita checagens por
+anti-virus.
+.PP
+Apesar da decisão extrema, a chamada "morte do Flash", mostrou-se
+benéfica.
+Com o vácuo da ausência do Flash, outras tecnologias puderam crescer,
+desta vez com maiores pretensões de segurança e ser aberto.
+.PP
+O presente trabalho toma uma abordagem curiosa para o problema de
+animações com gráficos vetoriais.
+Faz-se necessário discernir que o que foi "morto" foi o Flash Player,
+especificamente.
+A morte do Flash não torna o formato de arquivo SWF e as ferramentas
+de criação menos úteis.
+De fato, tendo em mente a criação de jogos eletrônicos, para ser
+produtivo, uma equipe deve contar com a qualificação dos animadores e
+artistas, que devem trabalhar com ferramentas habituais e proficientes.
+A partir disso, a solução do presente trabalho se propõe a investigar
+o formato de arquivo SWF, extrair seus gráficos vetoriais e animações,
+sem se distrair com os demais recursos da tecnologia Flash, e
+transforma-los num formato fácil de utilizar em vários motores de
+jogos e frameworks.
+.PP
+A arquitetura proposta foge um pouco do esperado, concebida como o
+caminho mais \*[Err vagabundo/f\('acil] possível, sem ser absurdo,
+tomando vantagem de tecnologia existente, com o mínimo de esforço.
+Trata-se de \*[Err leverage] a biblioteca \fCswf\fP escrita em Rust
+para ler o arquivo SWF, e transformar todos os gráficos vetoriais em
+código C que, quando compilado junto à um programa, utiliza alguma
+API de gráficos vetoriais para renderizar as animações em alguma
+textura pré-definida por alguma plataforma.
+.PP
+Esforço mínimo.
+EXTREME GO HORSE.
+.DRH
+.SP
+.PP
+Cada uma dessas artes possui ramificações adicionais.
+A história do jogo, primariamente as falas dos personagens e o texto
+dos menus, devem ser traduzidos para várias línguas para aumentar o
+alcance do jogo.
+O código deve conseguir se comportar bem em diversos sistemas.
+.PP
+O presente trabalho se concentra em um tipo de arte, que é a arte
+vetorial, mais especificamente, as animações usando gráficos
+vetoriais.
+.PP
+Considera-se que o desenvolver \fIindie\fP seja a porta de entrada
+para se adentrar e se firmar na indústria de jogos.
+Porém a estatística \*[Err X] sugere que somente \*[Err Y] são bem
+sucedidos.
+Na prática, pessoas interessadas possuem uma especialização, construir
+um jogo é coordenar as partes.
+.PP
+Para que um jogo seja produzido diligentemente, é necessário equipar
+os profissionais envolvidos com ferramentas habituais e proficientes.
+.PP
+Por exemplo, para \fIpixel art\fP, o programa Aseprite domina.
+Para modelagem 3D, há o Blender.
+Fora que os motores de jogos integram com \fIassets\fP 3D
+trivialmente.
+.PP
+As animações com gráficos vetoriais sofreram um enorme baque com o
+monopólio da Adobe e a descontinuação do Flash Player em 2020.
+.PP
+Pois veja, as animações com gráficos vetoriais, não basta uma
+ferramenta para produzi-las, faz-se necessário um formato de arquivo
+que possa transmitir eficientemente as artes criadas, e um
+\fIruntime\fP que possa reproduzir as animações a partir de tal
+arquivo.
+O editor de animações Flash, o formato de arquivo SWF e o Flash
+Player, foram, durante duas décadas, o \fIpipeline\fP predominante
+para publicar assim, denominados em conjunto simplesmente como "O
+Flash". Como um sinônimo.
+Um termo polissêmico
+Flash foi concebido, e de fato persisitiu, como um termo polissêmico
+para três tecnologias, que juntas \*[Err pipipipip].
+Semelhante ao Java.
+Todo mundo fala no Java.
+Mas o que é o Java?
+É a linguagem de programação.
+É o \fIbytecode\fP que em alguns processadores é processado.
+É a máquina virutal JVM.
+É um paradigma de segurança, através dos acessores de visibilidade
+\fIpublic\fP, \fIinternal\fP, \fIprotected\fP e \fIprivate\fP.
+.PP
+Citar o Steve Jobs.
+.PP
+Com a morte do Flash, significa um campo inteiro afetado.
+.PP
+Flash, agora renomeado como Adobe Animate, nunca foi a única a
+ferramenta para editar animações vetoriais.
+Porém, sem o Flash Player, não há mais um \fIruntime\fP.
+Sem a \fIruntime\fP, o arquivo SWF perde sua função.
+Todas as ferramentas exportam vídeos, mas o vídeo desfaz todas as
+qualidades diferenciais dos gráficos vetoriais, logo anulando a arte
+inteiramente.
+Tudo bem que isso dá uma sobrevida às animações, que podem ser então
+publicadas em sites como YouTube, mas usar vídeos é dificilmente
+aceitável e adequado para jogos de computador.
+.PP
+Com o vácuo causado, há uma corrida para.
+.PP
+Uma resposta foi
+.PP
+Fora que há outros programas que exportam SWF: Toon Boom Harmony,
+Toonz e outros.
+O formato é simples, e sua estrutura é bem conhecida.
+É um padrão de facto.
+.PP
+Uma resposta foi o Ruffle.
+Já houveram vários esforços anteriores para produzir \fIruntimes\fP
+alternativas, chamadas de \fIplayers\fP, sendo a maior delas o
+Lightspark.
+Só que o Lightspark é escrito em C++, que é uma linguagem que carrega
+um estigma de ser insegura, o que não faria juz, difícil de promover
+como uma alternativa viável para executar conteúdo Flash, que é danado
+criticado.
+Logo, escrito em Rust, com sua reputação e escrutínio, não há margem
+para reclamar.
+.PP
+Graças ao Ruffle.
+.PP
+O formato SWF é bastante compreensivo.
+Interpretar o arquivo inteiro já é feito por Ruffle.
+O presente trabalho cerne somente as animações em gráficos vetoriais,
+que são o grande trunfo do Flash.
+Com o objetivo de transformar em código C, que é o maior denominador
+comum, podendo ser integrado, então, em virtual qualquer plataforma,
+motor de jogo, fugindo um pouco da plataforma Flash que é tão
+criticada por ser fechada e auto-contida.
+Ao usar C, \fIbindings\fP podem ser preparados para vários sistemas,
+permitindo usufruir da arte única em todo tipo de motor de jogo.
+.PP
+Isso permite então que artistas trabalhem em ferramentas proficientes,
+e seu conteúdo possa ser utilizado por qualquer programdor,
+independentemente da tecnologia escolhida para implementar o jogo de
+computador.
+Ainda, como o C é altamente portátil, e visto que pode ser compilado
+para JavaScript e WebAssembly, conteúdo Flash pode ultrapassar as
+amarras, e ver outros usos, como XYZ.
+.DRH
+.SP
 .PP
 Escrito mais no final.
 Falar do contexto
@@ -604,6 +781,10 @@ l ^ c n.
 DE_dust	Wei Xing 	2004
 DE_aztec		2004
 _
+.T&
+l s s s s s s.
+TODO: remover coluna peso, isso vai pra tabela de eficiência
+TODO: colocar coluna com visualizações (aqui só tem cachorro grande)
 .TE
 .FLOAT OFF
 .MSWORD_ONEHALF_12
@@ -930,6 +1111,142 @@ Implementação de jogo usando Flash e C				\(OK	\(OK
 .HEADING 2 "Resultados esperados (literalmente hipóteses)"
 .PP
 Espera-se um compilador muito fácil de usar seja criado, para que artistas possam produzir suas animações sem nenhum conhecimento de programação, e programadores possam utilizar essas animações sem nenhum conhecimento de Flash. Ainda que o alvo primário seja o C, interfaces para outras linguagens é totalmente possível, para alcançar ainda mais mercado. Deseja-se que a interface gerada pelo compilador seja o mais simples possível, e empregando as APIs de mais alto desempenho de cada sistema, para escalabilidade máxima.
+.HEADING 1 "Dump de informações"
+.PP
+Na UFSM, Flash já foi usado em dois trabalhos acadêmicos.
+.HEADING 2 "TCC do Pozzer"
+.PP
+.CitacaoLongaS
+Torna-se cada vez mais comum a funcionalidade de multiplayer em jogos.
+A produtora de jogos Decadium Studios, que produz jogos com essa
+funionalidade, investe para resolver problemas de comunicação entre
+jgoos.
+Com a parceria da Decadium, esse projeto desenvolveu uma ferramenta
+que organiza salas para partidas multiplayer e efetua a comunicação
+durante partida sem a necessidade de um servidor dedicado.
+Essa ferramenta de comunicação via rede foi criada para os jogos já
+desenvolvidos e futuros projetos da Decadium Studios.
+O trabalho foi desenvolvido na linguagem Action Script 3.0 e deve ser
+integrado a jogos desenvolvidos na ferramenta proprietária Adobe
+Flash.
+.CitacaoLongaE
+.PP
+Bah muito citável porra p. 4
+.PP
+.CitacaoLongaS
+a empresa Decadium Studios. Essa empresa surgiu de uma iniciativa de
+cinco alunos do curso de Ciência da Computação no ano de 2003.
+A empresa já trabalhou com diversos títulos de jogos entre outros
+sistemas.
+Agora mais especializada em jogos casuais, a empresa mantém vários
+clientes em diversos países.
+.PP
+A empresa criou vários jogos com módulo \fImultiplayer\fP para a sua
+cliente, a empresa Sim, localizada na Alemanha.
+Visando a qualidade e a produtividade nas atividades de programação
+para criação dos jogos, os programadores da empresa concretizaram uma
+biblioteca usada atualmente para a produção de diversos jogos na
+plataforma Flash.
+Essa biblioteca foi batizada de Simskeleton.
+.CitacaoLongaE
+.PP
+p. 12
+.PP
+Tinha que citar o que foi o trabalho do cara né.
+E o resultado obtido.
+Não somente as menções a Flash.
+.PP
+.CitacaoLongaS
+[...] muito difundido em sistemas distribuídos, e utiliza o protocolo
+de comunicação \fIReal Time Midia Flow Protocol\fP (RTMFP), um
+protocolo da Adobe que utiliza como base de transporte o \fIUser
+Datagram Protocol\fP (UDP).
+.CitacaoLongaE
+.PP
+Hey. p. 12.
+.PP
+Requer um \fIapud\fP perdido abaixo:
+.CitacaoLongaS
+O protocolo da camada de aplicação para a implementação desse trabalho
+é proprietário da Adobe RTMFP (Real Time Media Flow Protocol - RTMFP ,
+2009).
+Esse é um protocolo desenvolvido para aplicações criadas com a
+ferramenta da Adobe e tem sua otimização voltada para troca de grande
+quantidade de informações que não precisam de confiabilidade em seus
+pacotes.
+Essa não necessidade de sistemas para confiabilidade de pacotes é
+comum em \fIstreamings\fP de vídeo e áudio ou em jogos.
+Na sua versão atual, a utilizada pelo Flash Player 10.1, o protocolo
+RTMFP tem implementado como seu protocolo da camada de transporte
+padrão o UDP.
+A adobe prevê possíveis atualizações para que o protocolo aceite
+outros protocolos de transporte.
+.CitacaoLongaE
+.PP
+p. 21.
+Próximo:
+.CitacaoLongaS
+Visto sua simplicidade e sua falta de confiabilidade quem o implementa
+tem a opção de aplicar diversos algoritmos de estruturas de controle
+como timeouts, retransmissões, \fIacknowledgments\fP, controle de
+fluxo, etc.
+O protocolo RTMFP implementa seus próprios algoritmos para melhorar a
+confiabilidade do UDP.
+.CitacaoLongaE
+.PP
+p. 21-22. Aqui vai um apud Wikipédia.
+.PP
+Porra só pedrada esse TCC. MUITA LORE.
+.CitacaoLongaS
+No decorrer dos anos da empresa Decadium, seus contatos na Alemanha
+geraram certa demanda de jogos casuais \fIweb-browser\fP.
+A empresa SIM (SevenOne Intermedia) (SevenOne , 2010) criou um portal
+de jogos desenvolvidos em Flash e em linguagem AS3 (Seven Games,
+2010), sendo que todos esses partilhavam diversas características,
+como: pontuações diferenciadas para cada jogador em um \fIrank\fP,
+poderes especiais para jogadores pagantes (\fIPower-ups\fR) e a
+capacidade de multi-jogadores.
+Alguns desses jogos foram terceirizados para serem desenvolvidos pela
+Decadium.
+Como os jogos se assemelhavam em características de desenvolvimento
+deu-se início a criação de uma biblioteca que contivesse todo código
+comum e útil aos jogos desenvolvidos pela a Sim.
+Esse concentrado de código foi batizado de Simskeleton.
+A biblioteca expandiu-se de tal maneira que se tornou útil em várias
+ocasiões e inclusive para outros jogos que não os voltados para esse
+cliente.
+.CitacaoLongaE
+.PP
+BASED. p. 26.
+.CitacaoLongaS
+Para efetivar essa tarefa, a Sim disponibilizava para os seus jogos um
+servidor Smart Fox (SmartFox, 2010).
+Esse é um servidor proprietário da companhia gotoAndPlay (gotoAndPlay,
+2008) para comunicação massiva entre aplicativos em plataformas como
+Flash/Flex/Air, Java, Android, .Net, Unity3D, SilverLight entre
+outros.
+No sistema de comunicação SimSkeleton seus jogos enviam as mensagens
+diretamente ao servidor da Sim e esse, por sua vez, fazia o processo
+de reenviar a todos os outros jogadores envolvidos na partida,
+efetivando assim um \fIbroadcast\fP pelo servidor.
+.CitacaoLongaE
+.PP
+BASED. p. 27.
+.CitacaoLongaS
+A fim de demonstrações e propaganda, a Decadium Studios tem interesse
+que seus jogos tenham a capacidade de se comunicar sem a necessidade
+de um servidor Smart Fox.
+Houve então a análise de meios alternativos para comunicação em
+partidas multi-jogador para demonstração de seus sistemas.
+Na análise sugeriu-se a utilização de uma nova tecnologia experimental
+da companhia Adobe em seus aplicativos Flash: a comunicação P2P.
+Essa nova tecnologia está apenas disponível para rodar em Flash
+Players 10.1 e só pode ser compilada com Flex SDK 4 (explicado na
+seção 5.1).
+.CitacaoLongaE
+.PP
+Os níveis de based são avassaladores. p. 27.
+.HEADING 2 "Mestrado em geologia"
 .HEADING 1 "Fundamentação teórica\*[Fazer]"
 .PP
 \*[Err discutir Harman e CheerpX].

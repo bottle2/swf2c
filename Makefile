@@ -29,10 +29,6 @@ plutovg.a:
 	$(CC) -DPLUTOVG_BUILD -Wno-sign-compare -Wno-unused-function -c *.c -I../include && \
 	ar r ../../plutovg.a *.o
 
-# Doens't work
-#there_she_is.swf:
-#	curl https://archive.org/download/flash_There_She_Is/flash_There_She_Is.swf > $@
-
 #EMSCRIPTEN_FLAGS=-Oz -flto -mreference-types
 EMSCRIPTEN_FLAGS=-mreference-types
 
@@ -88,6 +84,11 @@ om.tmac:
 see:abnt.pdf tcc.pdf
 	-mv tcc.pdf ../storage/downloads/tcc.pdf
 	-mv abnt.pdf ../storage/downloads/abnt.pdf
+
+movies.c:movies.m4
+	m4 -Dgen=c $< | sed "s/@aq@/'/g" > $@
+movies.h:movies.m4
+	m4 -Dgen=h $< > $@
 
 .SUFFIXES: .swf .c .h .gz .br .o
 

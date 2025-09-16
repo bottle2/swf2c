@@ -53,14 +53,25 @@ fn main() {
         die();
     }
 
+    //fuckprint!("hi baby\n");
+    let file = File::open(g.arguments.first().unwrap()).unwrap();
+    let reader = BufReader::new(file);
+    let swf_buf = swf::decompress_swf(reader).unwrap();
+    let swf = swf::parse_swf(&swf_buf).unwrap();
+    trace!("The SWF is version {}.\n", swf.header.version());
+    trace!("The SWF has {} tags.\n", swf.tags.len());
+
+
     if is_header {
         fuckprint!(r"#ifndef THERE_SHE_IS_H
 #define THERE_SHE_IS_H
 
-extern int const there_she_is_framerate;
-extern int const there_she_is_n_frame;
-extern int const there_she_is_width;
-extern int const there_she_is_height;
+enum {{
+    there_she_is_framerate = {},
+    there_she_is_n_frame   = {},
+    there_she_is_width     = {},
+    there_she_is_height    = {}
+}};
 
 #ifdef FEAT_PLUTOVG
 void there_she_is_init_plutovg(void);
@@ -82,17 +93,13 @@ void there_she_is_render_sdl_html5(__externref_t CanvasRenderingContext2D, int f
 // TODO Discuss thread safety and reentrancy
 
 #endif
-");
+", swf.header.frame_rate(), swf.header.num_frames(), (swf.header.stage_size().x_max - swf.header.stage_size().x_min).to_pixels(), (swf.header.stage_size().y_max - swf.header.stage_size().y_min).to_pixels());
+
         std::process::exit(0);
     }
 
-    //fuckprint!("hi baby\n");
-    let file = File::open(g.arguments.first().unwrap()).unwrap();
-    let reader = BufReader::new(file);
-    let swf_buf = swf::decompress_swf(reader).unwrap();
-    let swf = swf::parse_swf(&swf_buf).unwrap();
-    trace!("The SWF is version {}.\n", swf.header.version());
-    trace!("The SWF has {} tags.\n", swf.tags.len());
+    fuckprint!("#include \"there_she_is.h\"\n", );
+
     let mut shapes: Vec<swf::Shape> = Vec::new();
     let mut sprite_ids: Vec<u16> = Vec::new();
     let mut sprites: Vec<swf::Sprite> = Vec::new();
@@ -400,9 +407,6 @@ void there_she_is_render_sdl_html5(__externref_t CanvasRenderingContext2D, int f
         }
         fuckprint!(" ){}\n", if i == display_lists.len() - 1 {""} else {" \\"});
     }
-    fuckprint!("int const there_she_is_framerate = {};\n", swf.header.frame_rate());
-    fuckprint!("int const there_she_is_width = {};\n", (swf.header.stage_size().x_max - swf.header.stage_size().x_min).to_pixels());
-    fuckprint!("int const there_she_is_height = {};\n", (swf.header.stage_size().y_max - swf.header.stage_size().y_min).to_pixels());
 
     //assert!(swf.header.num_frames() as usize == display_lists.len());
 /*
@@ -573,7 +577,6 @@ EM_JS2(void, there_she_is_render_html5, (__externref_t CanvasRenderingContext2D,
     trace!("min x = {}\n", swf.header.stage_size().x_min.to_pixels());
     trace!("min y = {}\n", swf.header.stage_size().y_min.to_pixels());
     trace!("decompressed tags: {} bytes\n", swf_buf.data.len());
-    fuckprint!("\nint const there_she_is_n_frame = {};\n", display_lists.len());
     efuckprint!("n_solid = {} n_linear = {} n_radial = {}  n_focal = {} n_bitmap = {}\n", n_solid, n_linear, n_radial, n_focal, n_bitmap);
     efuckprint!("n_clipping = {} n_blending = {} n_fill0 = {} n_fill1 = {}\n", n_clipping, n_blending, n_fill0, n_fill1);
 }
