@@ -739,53 +739,50 @@ reproduzir as animações da amostra varia de \*[Err X] a versão
 .MSWORD_SIMPLE_10 \" XXX KLUDGE
 .FiguraCurta "Animações Flash publicadas na Newgrounds usadas como casos de teste"
 .MSWORD_SIMPLE_10
-.TS H EXPAND
-expand;
-cB 2 cB 2 cB 2 cB 2 cB 2 cB 2 cB
-^ ^ ^ cB cB cB ^
-l l c n n
-l l c n n.
-_
-Título	Autor	Lançamento	Peso	Quadros por	Total de	Duração
-			em MiB	segundo	quadros
-_
-.TH
-There she is!!!	SamBakZa	10/04/2004	2\&,7 MB	12
-Dad's Home	Sakupen	06/10/2004
-.T&
-l l s s
-a l c n.
-Série Xiao Xiao	Zhu
-Xiao Xiao No. 3		2001
-Xiao Xiao No. 5		2002
-Xiao Xiao No. 7		2002
-Xiao Xiao No. 8		2002
-.T&
-l l s s
-a l c n.
-Série Madness Combat	Krinkels
-Marsh-Mellow-Madness		2002
-Madness Combat		2002
-Madness Redeemer		2003
-Madness Avenger		2003
-Madness Apotheosis		2004
-.T&
-l l c s
-a l c n.
-Série Miss Dynamite	Sirkowski
-Miss.Dynamite XIV		24/10/2001
-\*[Err Outros...]
-.T&
-l l c n
-l ^ c n.
-DE_dust	Wei Xing 	2004
-DE_aztec		2004
-_
-.T&
-l s s s s s s.
-TODO: remover coluna peso, isso vai pra tabela de eficiência
-TODO: colocar coluna com visualizações (aqui só tem cachorro grande)
-.TE
+.so movies_t_geral.txt
+.\".TS H EXPAND
+.\"expand;
+.\"cB 2 cB 2 cB 2 cB 2 cB 2 cB 2 cB
+.\"^ ^ ^ cB cB cB ^
+.\"l l c n n
+.\"l l c n n.
+.\"_
+.\"Título	Autor	Lançamento	Peso	Quadros por	Total de	Duração
+.\"			em MiB	segundo	quadros
+.\"_
+.\".TH
+.\"There she is!!!	SamBakZa	10/04/2004	2\&,7 MB	12
+.\"Dad's Home	Sakupen	06/10/2004
+.\".T&
+.\"l l s s
+.\"a l c n.
+.\"Série Xiao Xiao	Zhu
+.\"Xiao Xiao No. 3		2001
+.\"Xiao Xiao No. 5		2002
+.\"Xiao Xiao No. 7		2002
+.\"Xiao Xiao No. 8		2002
+.\".T&
+.\"l l s s
+.\"a l c n.
+.\"Série Madness Combat	Krinkels
+.\"Marsh-Mellow-Madness		2002
+.\"Madness Combat		2002
+.\"Madness Redeemer		2003
+.\"Madness Avenger		2003
+.\"Madness Apotheosis		2004
+.\".T&
+.\"l l c s
+.\"a l c n.
+.\"Série Miss Dynamite	Sirkowski
+.\"Miss.Dynamite XIV		24/10/2001
+.\"\*[Err Outros...]
+.\".T&
+.\"l l c n
+.\"l ^ c n.
+.\"DE_dust	Wei Xing 	2004
+.\"DE_aztec		2004
+.\"_
+.\".TE
 .FLOAT OFF
 .MSWORD_ONEHALF_12
 .HEADING 3 "Experimento de fidelidade visual"

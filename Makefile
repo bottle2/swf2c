@@ -66,7 +66,7 @@ tamanhos.txt:tamanhos.m4 tamanhos.d #$(TAMANHOS_DATA)
 	m4 -Dt $< > $@
 
 TCC_DRAFT=-d IsDraft=""
-tcc.pdf:tcc.mom om.tmac tamanhos.txt abnt.tmac
+tcc.pdf:tcc.mom om.tmac tamanhos.txt abnt.tmac movies_t_geral.txt
 	soelim $< | pdfmom -Kutf8 $(TCC_DRAFT) -M. -pt -mabnt > $@
 #	groff -Kutf8 -t -Tpdf om.tmac $< > $@
 
@@ -89,6 +89,11 @@ movies.c:movies.m4
 	m4 -Dgen=c $< | sed "s/@aq@/'/g" > $@
 movies.h:movies.m4
 	m4 -Dgen=h $< > $@
+movies_t_geral.txt:movies.m4 swf2c
+	m4 -Dgen=t_geral $< | sed "s/@aq@/'/g" > $@
+
+swf2c:main.rs
+	cargo b && cp target/debug/swf2c{,.pdb} ./
 
 .SUFFIXES: .swf .c .h .gz .br .o
 
