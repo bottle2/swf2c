@@ -6,7 +6,16 @@
 
 #include <SDL.h>
 
-#include "there_she_is.h"
+#ifndef MOVIE
+#error define object-like macro MOVIE... see file movies.m4
+#endif
+
+#define CAT2(A,B) A##B
+#define CAT(A,B) CAT2(A,B)
+#define STR2(X) #X
+#define STR(X) STR2(X)
+
+#include STR(MOVIE.h)
 
 #ifdef __EMSCRIPTEN__
 #include <emscripten.h>
@@ -37,28 +46,27 @@ EM_JS(void, init_canvas, (), {
     // https://developer.mozilla.org/en-US/docs/Web/API/Window#window0
     window.pussy = document.getElementById('canvas').getContext('2d');
 });
-# define INIT init_canvas();
-# define END (void)0
+# define INIT  init_canvas();
+# define END   (void)0
 # define CLEAR (void)0
-# define SHOW \
-    there_she_is_render_html5(get_canvas(), frame_i);
+# define SHOW  CAT(MOVIE,_render_html5)(get_canvas(), frame_i);
 #elif defined(FEAT_PLUTOVG) 
 static SDL_Renderer *renderer;
 static SDL_Texture *texture;
-# define INIT there_she_is_init_plutovg(); \
+# define INIT CAT(MOVIE,_init_plutovg)(); \
     TRY(!(renderer = SDL_CreateRenderer(window, -1, 0))); \
-    TRY(!(texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, there_she_is_width, there_she_is_height)))
+    TRY(!(texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, CAT(MOVIE,_width), CAT(MOVIE,_height))))
 # define CLEAR \
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0); \
     SDL_RenderClear(renderer);
-# define END there_she_is_free_plutovg(); \
+# define END CAT(MOVIE,_free_plutovg)(); \
     SDL_DestroyTexture(texture); \
     SDL_DestroyRenderer(renderer)
 # define SHOW \
     void *pixels; \
     int pitch; \
     TRY(SDL_LockTexture(texture, NULL, &pixels, &pitch)); \
-    there_she_is_render_sdl_plutovg(pixels, pitch, frame_i); \
+    CAT(MOVIE,_render_sdl_plutovg)(pixels, pitch, frame_i); \
     SDL_UnlockTexture(texture); \
     SDL_RenderCopyF(renderer, texture, NULL, NULL); \
     SDL_RenderPresent(renderer)
@@ -91,7 +99,7 @@ static void iter(void)
         {
             if (event.key.keysym.sym >= '0' && event.key.keysym.sym <= '9')
             {
-                frame_0 = there_she_is_n_frame / 10 * (event.key.keysym.sym - '0');
+                frame_0 = CAT(MOVIE,_n_frame) / 10 * (event.key.keysym.sym - '0');
                 start = SDL_GetTicks64();
             }
             else switch (event.key.keysym.sym)
@@ -104,7 +112,7 @@ static void iter(void)
                         frame_0 = EVAL_FRAME;
                 break;
                 case '.':
-                    if (!is_play && frame_0 < there_she_is_n_frame - 1)
+                    if (!is_play && frame_0 < CAT(MOVIE,_n_frame) - 1)
                         frame_0++;
                 break;
                 case ',':
@@ -120,7 +128,7 @@ static void iter(void)
     int frame_i = is_play ? EVAL_FRAME : frame_0;
     if (frame_i < 0)
         frame_i = 0;
-    if (frame_i >= there_she_is_n_frame)
+    if (frame_i >= CAT(MOVIE,_n_frame))
     {
         start = SDL_GetTicks64();
         frame_i = 0;
@@ -137,7 +145,7 @@ int main(int argc, char *argv[])
     (void)argc;
     (void)argv;
 
-    framerate = 1000 / (float)there_she_is_framerate;
+    framerate = 1000 / (float)CAT(MOVIE,_framerate);
 
     SDL_SetHint(SDL_HINT_EMSCRIPTEN_ASYNCIFY, "0");
 
@@ -149,7 +157,7 @@ int main(int argc, char *argv[])
         "There She Is! but in C",
         SDL_WINDOWPOS_UNDEFINED,
         SDL_WINDOWPOS_UNDEFINED,
-        there_she_is_width, there_she_is_height,
+        CAT(MOVIE,_width), CAT(MOVIE,_height),
         0
     )));
     // TODO Deal with Apple's high-DPI stuff.

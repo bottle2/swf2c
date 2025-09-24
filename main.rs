@@ -6,7 +6,8 @@ use std::io::Write;
 #[derive(Clone)]
 enum Object { Shape, Sprite }
 
-fn main() {
+fn main()
+{
     let mut out = std::io::stdout().lock();
     let mut err = std::io::stderr().lock();
 
@@ -54,7 +55,59 @@ fn main() {
     }
 
     //fuckprint!("hi baby\n");
-    let file = File::open(g.arguments.first().unwrap()).unwrap();
+
+    //let filename = if let Some(a) = g.arguments.first() {
+    //    a
+    //} else {
+    //    die();
+    //};
+
+    //let filename = g.arguments.first().unwrap_or_else(||{die(); ""});
+    let filename = if let Some(f) = g.arguments.first() {f} else { die(); };
+
+    macro_rules! soft_todo {
+        () => {
+            unsafe {
+                static mut ONCE:bool = false;
+                if !ONCE { efuckprint!("{}:{}:not implemented ({})\n", file!(), line!(), filename); }
+                ONCE = true;
+            }
+        };
+        ($($arg:tt)+) => {
+            unsafe {
+                static mut ONCE:bool = false;
+                if !ONCE { efuckprint!("{}:{}:not implemented ({}): {}\n", file!(), line!(), filename, format!($($arg)+)); }
+                ONCE = true;
+            }
+        };
+    }
+
+    let mut lowername = String::with_capacity(filename.len());
+    let mut uppername = String::with_capacity(filename.len());
+
+    for (i, c) in filename.as_bytes().iter().enumerate().skip(if let Some(start) = filename.rfind('/') { start + 1} else { 0 }) {
+        match c {
+            b'0'..=b'9' if i != 0 => {lowername.push( *c                as char); uppername.push( *c                as char); },
+            b'a'..=b'z'           => {lowername.push( *c                as char); uppername.push((*c - b'a' + b'A') as char); },
+            b'A'..=b'Z'           => {lowername.push((*c - b'A' + b'a') as char); uppername.push( *c                as char); },
+            b'_' | b'.'           => {lowername.push('_'); uppername.push('_'); },
+            _ => {
+                efuckprint!("filename wieldn't a C identifier\n");
+                std::process::exit(1);
+            },
+        }
+    }
+
+    if filename.ends_with(".swf") {
+        lowername.truncate(lowername.len() - 4);
+        uppername.truncate(uppername.len() - 4);
+    }
+
+    let file = if let Ok(f) = File::open(filename) { f } else {
+        efuckprint!("couldn't open file {}\n", filename);
+        std::process::exit(1);
+    };
+
     let reader = BufReader::new(file);
     let swf_buf = swf::decompress_swf(reader).unwrap();
     let swf = swf::parse_swf(&swf_buf).unwrap();
@@ -63,25 +116,25 @@ fn main() {
 
 
     if is_header {
-        fuckprint!(r"#ifndef THERE_SHE_IS_H
-#define THERE_SHE_IS_H
+        fuckprint!(r"#ifndef {}_H
+#define {}_H
 
+#define {}_framerate {}
 enum {{
-    there_she_is_framerate = {},
-    there_she_is_n_frame   = {},
-    there_she_is_width     = {},
-    there_she_is_height    = {}
+    {}_n_frame   = {},
+    {}_width     = {},
+    {}_height    = {}
 }};
 
 #ifdef FEAT_PLUTOVG
-void there_she_is_init_plutovg(void);
-void there_she_is_free_plutovg(void);
-void there_she_is_render_sdl_plutovg(void *pixels, int pitch, int frame);
+void {}_init_plutovg(void);
+void {}_free_plutovg(void);
+void {}_render_sdl_plutovg(void *pixels, int pitch, int frame);
 #endif
 
 #ifdef FEAT_HTML5
-void there_she_is_render_html5(__externref_t CanvasRenderingContext2D, int frame);
-void there_she_is_render_sdl_html5(__externref_t CanvasRenderingContext2D, int frame, void *pixels, int pitch);
+void {}_render_html5(__externref_t CanvasRenderingContext2D, int frame);
+void {}_render_sdl_html5(__externref_t CanvasRenderingContext2D, int frame, void *pixels, int pitch);
 #endif
 
 // TODO Discuss rendering cutscenes, pre-rendering sprites, ImageBitmap etc.
@@ -93,12 +146,12 @@ void there_she_is_render_sdl_html5(__externref_t CanvasRenderingContext2D, int f
 // TODO Discuss thread safety and reentrancy
 
 #endif
-", swf.header.frame_rate(), swf.header.num_frames(), (swf.header.stage_size().x_max - swf.header.stage_size().x_min).to_pixels(), (swf.header.stage_size().y_max - swf.header.stage_size().y_min).to_pixels());
+", uppername, uppername, lowername, swf.header.frame_rate(), lowername, swf.header.num_frames(), lowername, (swf.header.stage_size().x_max - swf.header.stage_size().x_min).to_pixels(), lowername, (swf.header.stage_size().y_max - swf.header.stage_size().y_min).to_pixels(), lowername, lowername, lowername, lowername, lowername);
 
         std::process::exit(0);
     }
 
-    fuckprint!("#include \"there_she_is.h\"\n", );
+    fuckprint!("#include \"{}.h\"\n", lowername);
 
     let mut shapes: Vec<swf::Shape> = Vec::new();
     let mut sprite_ids: Vec<u16> = Vec::new();
@@ -122,43 +175,35 @@ void there_she_is_render_sdl_html5(__externref_t CanvasRenderingContext2D, int f
     let limit = 9999;
     for tag in swf.tags {
         match tag {
-            swf::Tag::ExportAssets(exported_assets) => todo!(),
-            swf::Tag::ScriptLimits { max_recursion_depth, timeout_in_seconds } => todo!(),
+            swf::Tag::ExportAssets(exported_assets) => soft_todo!(),
+            swf::Tag::ScriptLimits { max_recursion_depth, timeout_in_seconds } => soft_todo!(),
             swf::Tag::ShowFrame => { trace!("frame {}\n", frame_i); display_lists.push(display_list.clone()); frame_i += 1; if frame_i >= limit { break;} },
             swf::Tag::Protect(None) => trace!("no protect\n"),
             swf::Tag::Protect(Some(swf_str)) => trace!("protect is {}\n", swf_str.to_string_lossy(encoding)),
-            swf::Tag::CsmTextSettings(csm_text_settings) => todo!(),
-            swf::Tag::DebugId(_) => todo!(),
-            swf::Tag::DefineBinaryData(define_binary_data) => todo!(),
-            swf::Tag::DefineBits { id, jpeg_data } => todo!(),
-            swf::Tag::DefineBitsJpeg2 { id, jpeg_data } => {
-                trace!("bits jpeg 2 is interesting\n");
-            },
-            swf::Tag::DefineBitsJpeg3(define_bits_jpeg3) => {
-                trace!("interesting bits jpeg, but now 3\n");
-            },
-            swf::Tag::DefineBitsLossless(define_bits_lossless) => todo!(),
-            swf::Tag::DefineButton(button) => todo!(),
+            swf::Tag::CsmTextSettings(csm_text_settings) => soft_todo!(),
+            swf::Tag::DebugId(_) => soft_todo!(),
+            swf::Tag::DefineBinaryData(define_binary_data) => soft_todo!(),
+            swf::Tag::DefineBits { id, jpeg_data } => soft_todo!(),
+            swf::Tag::DefineBitsJpeg2 { id, jpeg_data } => soft_todo!(),
+            swf::Tag::DefineBitsJpeg3(define_bits_jpeg3) => soft_todo!(),
+            swf::Tag::DefineBitsLossless(define_bits_lossless) => soft_todo!(),
+            swf::Tag::DefineButton(button) => soft_todo!(),
             swf::Tag::DefineButton2(button) => ignored.push(button.id),
-            swf::Tag::DefineButtonColorTransform(button_color_transform) => todo!(),
-            swf::Tag::DefineButtonSound(button_sounds) => todo!(),
-            swf::Tag::DefineEditText(edit_text) => todo!(),
-            swf::Tag::DefineFont(font_v1) => {
-                trace!("define font. no\n");
-            },
-            swf::Tag::DefineFont2(font) => todo!(),
-            swf::Tag::DefineFont4(font4) => todo!(),
-            swf::Tag::DefineFontAlignZones { id, thickness, zones } => todo!(),
+            swf::Tag::DefineButtonColorTransform(button_color_transform) => soft_todo!(),
+            swf::Tag::DefineButtonSound(button_sounds) => soft_todo!(),
+            swf::Tag::DefineEditText(edit_text) => soft_todo!(),
+            swf::Tag::DefineFont(font_v1) => soft_todo!(),
+            swf::Tag::DefineFont2(font) => soft_todo!(),
+            swf::Tag::DefineFont4(font4) => soft_todo!(),
+            swf::Tag::DefineFontAlignZones { id, thickness, zones } => soft_todo!(),
             swf::Tag::DefineFontInfo(font_info) => {
                 trace!("define font info. no {}\n", font_info.code_table.len());
             },
-            swf::Tag::DefineFontName { id, name, copyright_info } => todo!(),
-            swf::Tag::DefineMorphShape(define_morph_shape) => todo!(),
-            swf::Tag::DefineScalingGrid { id, splitter_rect } => todo!(),
+            swf::Tag::DefineFontName { id, name, copyright_info } => soft_todo!(),
+            swf::Tag::DefineMorphShape(define_morph_shape) => soft_todo!(),
+            swf::Tag::DefineScalingGrid { id, splitter_rect } => soft_todo!(),
             swf::Tag::DefineShape(shape) => { trace!("defshape {}\n", shape.id); shapes.push(shape)},
-            swf::Tag::DefineSound(sound) => {
-                trace!("no sound for now\n");
-            },
+            swf::Tag::DefineSound(sound) => soft_todo!(),
             swf::Tag::DefineSprite(sprite) => {
                 /*ignored.push(sprite.id);*/
                 trace!("sprite {} with {} tags and {} frames\n", sprite.id, sprite.tags.len(), sprite.num_frames);
@@ -166,33 +211,29 @@ void there_she_is_render_sdl_html5(__externref_t CanvasRenderingContext2D, int f
                 sprites.push(sprite);
             },
             swf::Tag::DefineText(text) => ignored.push(text.id),
-            swf::Tag::DefineText2(text) => todo!(),
-            swf::Tag::DefineVideoStream(define_video_stream) => todo!(),
-            swf::Tag::DoAbc(items) => todo!(),
-            swf::Tag::DoAbc2(do_abc2) => todo!(),
+            swf::Tag::DefineText2(text) => soft_todo!(),
+            swf::Tag::DefineVideoStream(define_video_stream) => soft_todo!(),
+            swf::Tag::DoAbc(items) => soft_todo!(),
+            swf::Tag::DoAbc2(do_abc2) => soft_todo!(),
             swf::Tag::DoAction(items) => {
                 trace!("some {} actions\n", items.len());
             },
-            swf::Tag::DoInitAction { id, action_data } => todo!(),
-            swf::Tag::EnableDebugger(swf_str) => todo!(),
-            swf::Tag::EnableTelemetry { password_hash } => todo!(),
-            swf::Tag::End => todo!(),
-            swf::Tag::Metadata(swf_str) => todo!(),
-            swf::Tag::ImportAssets { url, imports } => todo!(),
-            swf::Tag::JpegTables(items) => todo!(),
-            swf::Tag::NameCharacter(name_character) => todo!(),
-            swf::Tag::SetBackgroundColor(color) => fuckprint!("//bg is ({} {} {} {})\n", color.r, color.g, color.b, color.a),
-            swf::Tag::SetTabIndex { depth, tab_index } => todo!(),
-            swf::Tag::SoundStreamBlock(items) => {
-                trace!("sb");
-            },
-            swf::Tag::SoundStreamHead(_sound_stream_head) => trace!("ignoring sound at line {}\n", line!()),
-            swf::Tag::SoundStreamHead2(sound_stream_head) => todo!(),
-            swf::Tag::StartSound(start_sound) => {
-                trace!("no sound starting for now\n");
-            },
-            swf::Tag::StartSound2 { class_name, sound_info } => todo!(),
-            swf::Tag::SymbolClass(symbol_class_links) => todo!(),
+            swf::Tag::DoInitAction { id, action_data } => soft_todo!(),
+            swf::Tag::EnableDebugger(swf_str) => soft_todo!(),
+            swf::Tag::EnableTelemetry { password_hash } => soft_todo!(),
+            swf::Tag::End => soft_todo!(),
+            swf::Tag::Metadata(swf_str) => soft_todo!(),
+            swf::Tag::ImportAssets { url, imports } => soft_todo!(),
+            swf::Tag::JpegTables(items) => soft_todo!(),
+            swf::Tag::NameCharacter(name_character) => soft_todo!(),
+            swf::Tag::SetBackgroundColor(color) => { soft_todo!(); fuckprint!("//bg is ({} {} {} {})\n", color.r, color.g, color.b, color.a) },
+            swf::Tag::SetTabIndex { depth, tab_index } => soft_todo!(),
+            swf::Tag::SoundStreamBlock(items) => soft_todo!(),
+            swf::Tag::SoundStreamHead(sound_stream_head) => soft_todo!(),
+            swf::Tag::SoundStreamHead2(sound_stream_head) => soft_todo!(),
+            swf::Tag::StartSound(start_sound) => soft_todo!(),
+            swf::Tag::StartSound2 { class_name, sound_info } => soft_todo!(),
+            swf::Tag::SymbolClass(symbol_class_links) => soft_todo!(),
             swf::Tag::PlaceObject(place_object) => {
                 sprite_ids.sort();
                 n_clipping += place_object.clip_depth.is_some() as i32;
@@ -215,35 +256,26 @@ void there_she_is_render_sdl_html5(__externref_t CanvasRenderingContext2D, int f
                         display_list[place_object.depth as usize] = Some((id, if sprite_ids.binary_search(&id).is_ok() {Object::Sprite} else {Object::Shape}, place_object.matrix));
                     },
                 };
-                match place_object.name {
-                    Some(name) => trace!("Got name {} when placing\n", name.to_string_lossy(encoding)),
-                    None => (),
-                };
-                match place_object.ratio {
-                    Some(ratio) => trace!("Got ratio {}\n", ratio),
-                    None => (),
-                }
-                match place_object.clip_actions {
-                    Some(actions) => for ca in actions.iter() {
-                        // TODO The action data is in swf::OpCode
-                        trace!("clip action {} with {} data\n", ca.events.bits(), ca.action_data.len())
-                    }
-                    None => (),
-                }
+                if let Some(name) = place_object.name { trace!("Got name {} when placing\n", name.to_string_lossy(encoding)) };
+                if let Some(ratio) = place_object.ratio { trace!("Got ratio {}\n", ratio) }
+                if let Some(actions) = place_object.clip_actions { for ca in actions.iter() {
+                    // soft_todo The action data is in swf::OpCode
+                    trace!("clip action {} with {} data\n", ca.events.bits(), ca.action_data.len())
+                } }
             },
             swf::Tag::RemoveObject(remove_object) => {
                 trace!("remove\n");
                 display_list[remove_object.depth as usize] = None;
             },
-            swf::Tag::VideoFrame(video_frame) => todo!(),
-            swf::Tag::FileAttributes(file_attributes) => todo!(),
+            swf::Tag::VideoFrame(video_frame) => soft_todo!(),
+            swf::Tag::FileAttributes(file_attributes) => soft_todo!(),
             swf::Tag::FrameLabel(frame_label) => {
                 trace!("frame label: {} (is anchor: {})\n", frame_label.label.to_str_lossy(encoding), frame_label.is_anchor);
                 // TODO What is the current frame? the previous rendered or the to-be-rendered?
             },
-            swf::Tag::DefineSceneAndFrameLabelData(define_scene_and_frame_label_data) => todo!(),
-            swf::Tag::ProductInfo(product_info) => todo!(),
-            swf::Tag::Unknown { tag_code, data } => todo!(),
+            swf::Tag::DefineSceneAndFrameLabelData(define_scene_and_frame_label_data) => soft_todo!(),
+            swf::Tag::ProductInfo(product_info) => soft_todo!(),
+            swf::Tag::Unknown { tag_code, data } => soft_todo!(),
         }
     }
 
@@ -334,18 +366,18 @@ void there_she_is_render_sdl_html5(__externref_t CanvasRenderingContext2D, int f
                         fuckprint!("  ) \\\n");
                     }
                 },
-                swf::Tag::DoAbc(items) => todo!(),
-                swf::Tag::DoAbc2(do_abc2) => todo!(),
-                swf::Tag::DoAction(items) => trace!("sprite action\n"),
-                swf::Tag::DoInitAction { id, action_data } => todo!(),
-                swf::Tag::End => todo!(),
-                swf::Tag::SoundStreamBlock(items) => todo!(),
-                swf::Tag::SoundStreamHead(sound_stream_head) => todo!(),
-                swf::Tag::SoundStreamHead2(sound_stream_head) => trace!("sprite sshead\n"),
-                swf::Tag::StartSound(start_sound) => todo!(),
-                swf::Tag::StartSound2 { class_name, sound_info } => todo!(),
+                swf::Tag::DoAbc(items) => soft_todo!(),
+                swf::Tag::DoAbc2(do_abc2) => soft_todo!(),
+                swf::Tag::DoAction(items) => soft_todo!(),
+                swf::Tag::DoInitAction { id, action_data } => soft_todo!(),
+                swf::Tag::End => soft_todo!(),
+                swf::Tag::SoundStreamBlock(items) => soft_todo!(),
+                swf::Tag::SoundStreamHead(sound_stream_head) => soft_todo!(),
+                swf::Tag::SoundStreamHead2(sound_stream_head) => soft_todo!(),
+                swf::Tag::StartSound(start_sound) => soft_todo!(),
+                swf::Tag::StartSound2 { class_name, sound_info } => soft_todo!(),
                 swf::Tag::PlaceObject(place_object) => {
-                    // TODO This code has been copy&pasted!! Refactor!
+                    // soft_todo This code has been copy&pasted!! Refactor!
                     match place_object.action {
                         swf::PlaceObjectAction::Place(id) => {
                             trace!("placeobj {}\n", id);
@@ -369,7 +401,7 @@ void there_she_is_render_sdl_html5(__externref_t CanvasRenderingContext2D, int f
                     trace!("remove obj in sprite\n");
                     display_list[remove_object.depth as usize] = None;
                 },
-                _ => todo!("Unexpected tag {:?}", t),
+                _ => soft_todo!("Unexpected tag {:?}", t),
             }
         }
         here_we_go_couting += 1;
@@ -447,8 +479,8 @@ SHAPE_XS
 static plutovg_surface_t *s;
 static plutovg_canvas_t *c;
 
-void there_she_is_init_plutovg(void) {{
- s = plutovg_surface_create(there_she_is_width, there_she_is_height);
+void {}_init_plutovg(void) {{
+ s = plutovg_surface_create({}_width, {}_height);
  c = plutovg_canvas_create(s);
  plutovg_canvas_set_line_width(c, 1);
  plutovg_canvas_set_rgb(c, 0,0,0);
@@ -470,7 +502,7 @@ void there_she_is_init_plutovg(void) {{
   inits[i]();
 }}
 
-void there_she_is_free_plutovg(void) {{
+void {}_free_plutovg(void) {{
  #define X(ID, COUNT, CTOR) plutovg_path_destroy(o##ID);
  SHAPE_XS
  #undef X
@@ -507,7 +539,7 @@ SPRITE_XS
 #undef SFRAME
 #undef SDEF
 
-void there_she_is_render_sdl_plutovg(void *pixels, int pitch, int frame) {{
+void {}_render_sdl_plutovg(void *pixels, int pitch, int frame) {{
  assert(c != NULL);
  switch (frame) {{
   #define F(ID, CTOR) case ID: CTOR break;
@@ -526,9 +558,9 @@ void there_she_is_render_sdl_plutovg(void *pixels, int pitch, int frame) {{
  int stride = plutovg_surface_get_stride(s);
  unsigned char *data = plutovg_surface_get_data(s);
  if (stride == pitch)
-  memcpy(pixels, data, 4 * there_she_is_width * there_she_is_height);
- else for (int i = 0; i < there_she_is_height; i++)
-  memcpy(((unsigned char *)pixels) + pitch * i, data + stride * i, 4 * there_she_is_width);
+  memcpy(pixels, data, 4 * {}_width * {}_height);
+ else for (int i = 0; i < {}_height; i++)
+  memcpy(((unsigned char *)pixels) + pitch * i, data + stride * i, 4 * {}_width);
  plutovg_surface_clear(s, &PLUTOVG_WHITE_COLOR);
 }}
 #endif
@@ -550,7 +582,7 @@ void there_she_is_render_sdl_plutovg(void *pixels, int pitch, int frame) {{
  o##ID##r(ctx);
 #define PSP(...)
 #define EM_JS2(...) EM_JS(__VA_ARGS__)
-EM_JS2(void, there_she_is_render_html5, (__externref_t CanvasRenderingContext2D, int frame), {{
+EM_JS2(void, {}_render_html5_2, (__externref_t CanvasRenderingContext2D, int frame), {{
  SHAPE_XS
  const ctx = CanvasRenderingContext2D;
  ctx.resetTransform();
@@ -569,8 +601,13 @@ EM_JS2(void, there_she_is_render_html5, (__externref_t CanvasRenderingContext2D,
 #undef L
 #undef M
 #undef X
+
+void {}_render_html5(__externref_t CanvasRenderingContext2D, int frame) {{
+    {}_render_html5_2(CanvasRenderingContext2D, frame);
+}}
+
 #endif
-"#);
+"#, lowername, lowername, lowername, lowername, lowername, lowername, lowername, lowername, lowername, lowername, lowername, lowername);
 
     trace!("max x = {}\n", swf.header.stage_size().x_max.to_pixels());
     trace!("max y = {}\n", swf.header.stage_size().y_max.to_pixels());

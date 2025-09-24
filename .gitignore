@@ -1,3 +1,9 @@
 /target
-*.swf
 *.exe
+*.pdb
+movies*
+!movies.m4
+/plutovg
+/swf
+om.tmac
+*.pdf

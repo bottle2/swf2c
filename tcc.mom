@@ -733,56 +733,10 @@ reproduzir as animações da amostra varia de \*[Err X] a versão
 .\", para que o trabalho pudesse se concentrar em
 .\"demonstrar a viabilidade da técnica proposta sem maiores complicações.
 .FLOAT
-.\"XXX https://www.newgrounds.com/search/conduct/movies?advanced=1&match=tdtu&user=Sirkowski&before=2005-01-01&sort=views-desc
-.\" XXX Essa tabela... vou repetir ela nos resultados. Escolher bem qual
-.\"     tabela vai mostrar quais colunas...
 .MSWORD_SIMPLE_10 \" XXX KLUDGE
 .FiguraCurta "Animações Flash publicadas na Newgrounds usadas como casos de teste"
 .MSWORD_SIMPLE_10
-.so movies_t_geral.txt
-.\".TS H EXPAND
-.\"expand;
-.\"cB 2 cB 2 cB 2 cB 2 cB 2 cB 2 cB
-.\"^ ^ ^ cB cB cB ^
-.\"l l c n n
-.\"l l c n n.
-.\"_
-.\"Título	Autor	Lançamento	Peso	Quadros por	Total de	Duração
-.\"			em MiB	segundo	quadros
-.\"_
-.\".TH
-.\"There she is!!!	SamBakZa	10/04/2004	2\&,7 MB	12
-.\"Dad's Home	Sakupen	06/10/2004
-.\".T&
-.\"l l s s
-.\"a l c n.
-.\"Série Xiao Xiao	Zhu
-.\"Xiao Xiao No. 3		2001
-.\"Xiao Xiao No. 5		2002
-.\"Xiao Xiao No. 7		2002
-.\"Xiao Xiao No. 8		2002
-.\".T&
-.\"l l s s
-.\"a l c n.
-.\"Série Madness Combat	Krinkels
-.\"Marsh-Mellow-Madness		2002
-.\"Madness Combat		2002
-.\"Madness Redeemer		2003
-.\"Madness Avenger		2003
-.\"Madness Apotheosis		2004
-.\".T&
-.\"l l c s
-.\"a l c n.
-.\"Série Miss Dynamite	Sirkowski
-.\"Miss.Dynamite XIV		24/10/2001
-.\"\*[Err Outros...]
-.\".T&
-.\"l l c n
-.\"l ^ c n.
-.\"DE_dust	Wei Xing 	2004
-.\"DE_aztec		2004
-.\"_
-.\".TE
+.so movies_geral.txt
 .FLOAT OFF
 .MSWORD_ONEHALF_12
 .HEADING 3 "Experimento de fidelidade visual"
@@ -895,6 +849,13 @@ animação do grupo amostral \(em já evidente na Figura \*[Err X] \(em
 com a soma do tamanho comprimido de todos
 os recursos Web que compõem a animação reconstituída com solução
 proposta.
+.FLOAT
+.MSWORD_SIMPLE_10 \" XXX KLUDGE
+.FiguraCurta "Eficiência máxima"
+.MSWORD_SIMPLE_10
+.so movies_efficiency.txt
+.FLOAT OFF
+.MSWORD_ONEHALF_12
 .PP
 O tamanho do arquivo SWF é comparado diretamente, pois é exatamente o
 que um usuário baixa ao acessar um conteúdo Flash.
@@ -1529,12 +1490,12 @@ Pipipipipipipipipi. \"XXX
 .\" aperitivo. tipo, não importa pra pesquisa quanto tempo demora pra
 .\" compilar. Precisa falar que os tempos são mostrados à título de
 .\" curiosidade. ser enfático nisso!!!!!!!
-.FLOAT
-.TabelaCurta "Tamanho de artefatos para a animação There she is!!!"
-.\" XXX Diminuir espaçamento entre linhas do cabeçalho
-.\"     Ver opção v da especificação de colunas
-.so tamanhos.txt
-.FLOAT OFF
+.\".FLOAT
+.\".TabelaCurta "Tamanho de artefatos para a animação There she is!!!"
+.\".\" XXX Diminuir espaçamento entre linhas do cabeçalho
+.\".\"     Ver opção v da especificação de colunas
+.\".so tamanhos.txt
+.\".FLOAT OFF
 .HEADING 1 "Conclusão"
 .PP
 \*[Err falar da porra do V-CAM, o tutorial do Jazza.]
