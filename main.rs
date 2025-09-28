@@ -114,6 +114,10 @@ fn main()
     trace!("The SWF is version {}.\n", swf.header.version());
     trace!("The SWF has {} tags.\n", swf.tags.len());
 
+    let le_framerate = swf.header.frame_rate();
+    let le_n_frame = swf.header.num_frames();
+    let pixel_width = (swf.header.stage_size().x_max - swf.header.stage_size().x_min).to_pixels();
+    let pixel_height = (swf.header.stage_size().y_max - swf.header.stage_size().y_min).to_pixels();
 
     if is_header {
         fuckprint!(r"#ifndef {}_H
@@ -146,12 +150,10 @@ void {}_render_sdl_html5(__externref_t CanvasRenderingContext2D, int frame, void
 // TODO Discuss thread safety and reentrancy
 
 #endif
-", uppername, uppername, lowername, swf.header.frame_rate(), lowername, swf.header.num_frames(), lowername, (swf.header.stage_size().x_max - swf.header.stage_size().x_min).to_pixels(), lowername, (swf.header.stage_size().y_max - swf.header.stage_size().y_min).to_pixels(), lowername, lowername, lowername, lowername, lowername);
+", uppername, uppername, lowername, le_framerate, lowername, le_n_frame, lowername, pixel_width, lowername, pixel_height, lowername, lowername, lowername, lowername, lowername);
 
         std::process::exit(0);
     }
-
-    fuckprint!("#include \"{}.h\"\n", lowername);
 
     let mut shapes: Vec<swf::Shape> = Vec::new();
     let mut sprite_ids: Vec<u16> = Vec::new();
@@ -479,8 +481,8 @@ SHAPE_XS
 static plutovg_surface_t *s;
 static plutovg_canvas_t *c;
 
-void {}_init_plutovg(void) {{
- s = plutovg_surface_create({}_width, {}_height);
+void {0}_init_plutovg(void) {{
+ s = plutovg_surface_create({1}, {2});
  c = plutovg_canvas_create(s);
  plutovg_canvas_set_line_width(c, 1);
  plutovg_canvas_set_rgb(c, 0,0,0);
@@ -502,7 +504,7 @@ void {}_init_plutovg(void) {{
   inits[i]();
 }}
 
-void {}_free_plutovg(void) {{
+void {0}_free_plutovg(void) {{
  #define X(ID, COUNT, CTOR) plutovg_path_destroy(o##ID);
  SHAPE_XS
  #undef X
@@ -539,7 +541,7 @@ SPRITE_XS
 #undef SFRAME
 #undef SDEF
 
-void {}_render_sdl_plutovg(void *pixels, int pitch, int frame) {{
+void {0}_render_sdl_plutovg(void *pixels, int pitch, int frame) {{
  assert(c != NULL);
  switch (frame) {{
   #define F(ID, CTOR) case ID: CTOR break;
@@ -558,15 +560,17 @@ void {}_render_sdl_plutovg(void *pixels, int pitch, int frame) {{
  int stride = plutovg_surface_get_stride(s);
  unsigned char *data = plutovg_surface_get_data(s);
  if (stride == pitch)
-  memcpy(pixels, data, 4 * {}_width * {}_height);
- else for (int i = 0; i < {}_height; i++)
-  memcpy(((unsigned char *)pixels) + pitch * i, data + stride * i, 4 * {}_width);
+  memcpy(pixels, data, 4 * {1} * {2});
+ else for (int i = 0; i < {2}; i++)
+  memcpy(((unsigned char *)pixels) + pitch * i, data + stride * i, 4 * {1});
  plutovg_surface_clear(s, &PLUTOVG_WHITE_COLOR);
 }}
 #endif
 
+#if defined(FEAT_HTML5) || defined(FEAT_JAVASCRIPT)
 #ifdef FEAT_HTML5
 #include <emscripten.h>
+#endif
 
 // TODO I got bored, implement sprites here.
 
@@ -581,10 +585,13 @@ void {}_render_sdl_plutovg(void *pixels, int pitch, int frame) {{
  ctx.setTransform((A), (B), (C), (D), (TX), (TY)); \
  o##ID##r(ctx);
 #define PSP(...)
-#define EM_JS2(...) EM_JS(__VA_ARGS__)
-EM_JS2(void, {}_render_html5_2, (__externref_t CanvasRenderingContext2D, int frame), {{
+#ifdef FEAT_HTML5
+#define EM_JS2(...) EM_JS(__VA_ARGS__);
+#elif defined(FEAT_JAVASCRIPT)
+#define EM_JS2(T, N, P, B) function {0}_render(ctx, frame) B
+#endif
+EM_JS2(void, {0}_render_html5_2, (__externref_t ctx, int frame), {{
  SHAPE_XS
- const ctx = CanvasRenderingContext2D;
  ctx.resetTransform();
  ctx.fillStyle = 'white';
  ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -593,7 +600,7 @@ EM_JS2(void, {}_render_html5_2, (__externref_t CanvasRenderingContext2D, int fra
   FRAME_XS
   default: alert('No such frame'); break;
  }}
-}});
+}})
 #undef EM_JS2
 #undef P
 #undef F
@@ -602,12 +609,25 @@ EM_JS2(void, {}_render_html5_2, (__externref_t CanvasRenderingContext2D, int fra
 #undef M
 #undef X
 
-void {}_render_html5(__externref_t CanvasRenderingContext2D, int frame) {{
-    {}_render_html5_2(CanvasRenderingContext2D, frame);
+#ifdef FEAT_HTML5
+void {0}_render_html5(__externref_t CanvasRenderingContext2D, int frame) {{
+    {0}_render_html5_2(CanvasRenderingContext2D, frame);
 }}
+#endif
+
+#ifdef FEAT_JAVASCRIPT
+function {0}_info() {{
+    return {{
+        framerate: {3},
+        n_frame: {4},
+        width: {1},
+        height: {2}
+    }};
+}}
+#endif
 
 #endif
-"#, lowername, lowername, lowername, lowername, lowername, lowername, lowername, lowername, lowername, lowername, lowername, lowername);
+"#, lowername, pixel_width, pixel_height, le_framerate, le_n_frame);
 
     trace!("max x = {}\n", swf.header.stage_size().x_max.to_pixels());
     trace!("max y = {}\n", swf.header.stage_size().y_max.to_pixels());

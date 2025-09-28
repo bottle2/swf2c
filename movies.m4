@@ -1,7 +1,7 @@
 divert(-1)
 
 # ATTENTION:
-# You have to download each SWF manually and place them under folder swf/
+# You have to download each SWF manually and place them under folder work/
 # I will NOT provide instructions on how to do so.
 # To compile the PDF and executables with less SWFs,
 # prefix the SWFs you don't have with dnl, like so:

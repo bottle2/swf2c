@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+    <title>Gargantuan switch..case test</title>
+  </head>
+  <body>
+    <h1>Gargantuan switch..case test</h1>
+    <p id="info">Wait...</p>
+    <p id="progress">Loading...</p>
+    <canvas id="canvas"></canvas>
+    <script src="there_she_is.js"></script>
+    <script>
+      "use strict";
+      const { framerate, n_frame, width, height } = there_she_is_info();
+
+      const canvas = document.getElementById("canvas")
+
+      canvas.width  = width;
+      canvas.height = height;
+      const context = canvas.getContext('2d');
+
+      document.getElementById("info").innerText =  "Running as fast as possible"
+                                                + ` (framerate ${framerate} ignored).`
+                                                + ` Width: ${width}. Height: ${height}.`;
+
+      const progress = document.getElementById("progress");
+
+      let i = 0;
+      function render(timestamp) {
+        progress.innerText = `Frame ${i + 1}/${n_frame}.`;
+        there_she_is_render(context, i);
+        i = i < n_frame - 1 ? i + 1 : 0;
+        window.requestAnimationFrame(render);
+      }
+      window.requestAnimationFrame(render);
+    </script>
+  </body>
+</html>

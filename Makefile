@@ -16,6 +16,9 @@ demo:$(SOURCE) $(OBJECT) $(ARCHIVE)
 work/there_she_is.o:work/there_she_is.c
 	time $(CC) -ferror-limit=1 -DFEAT_PLUTOVG $(CFLAGS) -c $< -o $@
 
+there_she_is.js:work/there_she_is.c
+	$(CC) -DFEAT_JAVASCRIPT -E -P $< > $@
+
 #time $(CC) -ferror-limit=1 -DFEAT_PLUTOVG $(CFLAGS) -c -O0 $<
 
 work/there_she_is.c:main.rs work/there_she_is.swf
@@ -84,7 +87,7 @@ swf2c:main.rs
 EMSCRIPTEN_FLAGS=-Oz -flto
 
 .c.js:
-	NODE_OPTIONS=--max-old-space-size-percentage=90 time emcc \
+	NODE_OPTIONS=--max-old-space-size-percentage=90 emcc \
 	-ferror-limit=1 -std=c18 -mreference-types \
 	-Iwork \
 	-DFEAT_HTML5 -DMOVIE=$(*F) \
