@@ -39,7 +39,7 @@ clean:
 	rm -f plutovg.a there_she_is.o demo.exe demo swf2c swf2c.exe \
 	work/*.js work/*.gz work/*.c work/*.h work/*.br work/*.zst work/*.o work/*.js work/*.html work/*.wasm
 
-TCC_DRAFT=-d IsDraft=""
+#TCC_DRAFT=-d IsDraft=""
 tcc.pdf:tcc.mom om.tmac abnt.tmac movies_geral.txt movies_efficiency.txt
 	soelim $< | pdfmom -Kutf8 $(TCC_DRAFT) -M. -pt -mabnt > $@
 #	groff -Kutf8 -t -Tpdf om.tmac $< > $@
@@ -75,7 +75,9 @@ movies_efficiency.txt:movies.m4 $(MOVIE_COMPRESSED) hack.pl
 	m4 -Dgen=efficiency $< > $@
 
 swf2c:main.rs
-	cargo b && cp target/debug/swf2c{,.pdb} ./
+	cargo b
+	cp target/debug/swf2c ./
+	-cp target/debug/swf2c.pdb ./
 
 .SUFFIXES: .swf .c .h .o .zip .html .js
 

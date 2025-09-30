@@ -110,7 +110,6 @@ $'`2	syscmd(./hack.pl work/$'`1)
 
 divert(0)dnl
 ifelse(gen,`m',`dnl
-dnl divertif(`m')
 .pl 1000i
 .ll 1000i
 .po 0
@@ -123,7 +122,6 @@ substr(MOVIES(`AS_COMPRESSED_MACRO'),4)
 
 MOVIES(`AS_COMPRESSED_RECIPE')
 .pl 1i
-dnl divertif(`h')
 ',gen,`h',`dnl
 #ifndef MOVIES_H
 #define MOVIES_H
@@ -157,7 +155,6 @@ extern struct movie
 
 #endif
 ',gen,`c',`dnl
-dnl divertif(`c')
 .pl 1000i
 .ll 1000i
 .po 0
@@ -186,15 +183,14 @@ MOVIES(`AS_INITIALIZER')dnl
 };
 .pl 1i
 ',gen,`geral',`dnl
-dnl divertif(`geral')
 .TS H EXPAND
 expand;
-cB 2 cB 2 cB 2 cB 2 cB 2 cB
-^ ^ cB cB cB ^
-l l c n n n.
+cB cB cB cB cB cB cB
+^  ^  cB cB cB cB ^
+l l c n n n n.
 _
-Título	Autor	Lança-	Quadros por	Total de	Duração
-		mento	segundo	quadros
+Título	Autor	Lança-	Versão	Quadros por	Total de	Duração
+		mento	do Flash	segundo	quadros
 _
 .TH
 MOVIES(`AS_GERAL')dnl
@@ -203,11 +199,7 @@ MOVIES(`AS_GERAL')dnl
 ',gen,`stats_2',`dnl
 ',gen,`stats_3',`dnl
 ',gen,`quality',`dnl
-dnl divertif(`stats_1')
-dnl divertif(`stats_2')
-dnl divertif(`stats_3')
 # TODO These are troff tbl tables with some counts and amounts, such as curves, line, PlaceObjectX
-dnl divertif(`quality')
 .TS H EXPAND
 expand;
 cB
@@ -220,19 +212,24 @@ MOVIES(`AS_QUALITY')
 .TE
 dnl TODO This is a troff tbl table analyzing PSRN and SSM, this calls swivel.exe and ffmpeg
 ',gen,`efficiency',`dnl
-dnl divertif(`efficiency')
-.TS H EXPAND
-expand;
-cB cB s  s  s  s s  s  s
-^  l  s  s  s  s s  s  s
-^  cB cB s  s  l cB s  s
-^  ^  l  s  s  l l  s  s
-^  ^  cB cB cB l cB cB cB
-l  n  n  n  n  l n  n  n.
+.TS H CENTER
+center;
+cB cB s  s  s   s  s  s  s
+^  l  s  s  s   s  s  s  s
+^  lB cB s  s  0l1 cB s  s
+^  ^  cB s  s   l  cB s  s
+^  ^  l  s  s   l  l  s  s
+^  ^  cB cB cB  l  cB cB cB
+l  n  n  n  n   l  n  n  n.
 _
 Animação	Peso em Megabytes
 	_
-	SWF original	Vídeo[1], por resolução		Objetos, por algoritmo
+	T{
+.ce 2
+SWF
+original
+T}	Vídeo[1], por		Objetos, por
+		resolução		algoritmo
 		_		_
 		360p	720p	1080p		gzip	brotli	zstd
 _

@@ -52,17 +52,13 @@
 \!ADOBE SYSTEMS INCORPORATED. 2012.
 \!\fBSWF FILE FORMAT SPECIFICATION: Version 19\fR.
 \![\fIonline\fR]. Disponível em:
-\!.PDF_WWW_LINK \
-https://open-flash.github.io/mirrors/swf-spec-19.pdf \
-PREFIX < SUFFIX >.
+\!.PDF_WWW_LINK https://open-flash.github.io/mirrors/swf-spec-19.pdf PREFIX < SUFFIX >.
 \!Acesso em: março de 2025.
 .Referencia BasedFlash Bilas 200-
 \!BILAS, Scott. 200-.
 \!\fBWhat About Flash? Can We Really Make Games With It?\fR
 \![\fIonline\fR]. Disponível em:
-\!.PDF_WWW_LINK \
-https://web.archive.org/web/20080113212114/https://www.drizzle.com/~scottb/gdc/flash-paper.htm \
-PREFIX < SUFFIX >.
+\!.PDF_WWW_LINK https://web.archive.org/web/20080113212114/https://www.drizzle.com/~scottb/gdc/flash-paper.htm PREFIX < SUFFIX >.
 \!Acesso em: março de 2025.
 .Referencia FFmpegFilters "os desenvolvedores do FFmpeg" 2025a
 .\" TODO Traduzir ou não o nome para português?
@@ -71,43 +67,33 @@ PREFIX < SUFFIX >.
 \!\fBFFmpeg Filters Documentation\fP.
 \![\fIonline\fP].
 \!Disponível em:
-\!.PDF_WWW_LINK \
-https://www.ffmpeg.org/ffmpeg-filters.html \
-PREFIX < SUFFIX >.
+\!.PDF_WWW_LINK https://www.ffmpeg.org/ffmpeg-filters.html PREFIX < SUFFIX >.
 \!Acesso em: maio de 2025.
 .Referencia FFmpegFormats "os desenvolvedores do \%FFmpeg" 2025b
 \!______, 2025b.
 \!\fBFFmpeg Formats Documentation\fP.
 \![\fIonline\fP].
 \!Disponível em:
-\!.PDF_WWW_LINK \
-https://ffmpeg.org/ffmpeg-formats.html \
-PREFIX < SUFFIX >.
+\!.PDF_WWW_LINK https://ffmpeg.org/ffmpeg-formats.html PREFIX < SUFFIX >.
 \!Acesso em: junho de 2025.
 .Referencia Swivel Newgrounds 201-
 \!NEWGROUNDS. 201-.
 \!\fBNewgrounds Wiki: Swivel - Flash to Video\fP.
 \![\fIonline\fP]. Disponível em:
-\!.PDF_WWW_LINK https://www.newgrounds.com/wiki/creator-resources/animation-resources/swivel-flash-to-video \
-PREFIX < SUFFIX >.
+\!.PDF_WWW_LINK https://www.newgrounds.com/wiki/creator-resources/animation-resources/swivel-flash-to-video PREFIX < SUFFIX >.
 \!Acesso em: jun. de 2025.
 .Referencia Fgl RoseDragon 201-
 \!ROSEDRAGON. 201-.
 \!\fBFGL Developer Newbie Guide\fP.
 \![\fIonline\fP].
 \!Disponível em:
-\!.PDF_WWW_LINK \
-https://web.archive.org/web/20130510205857/https://www.fgl.com/view_library.php?page=devnewbieguide
-\
-PREFIX < SUFFIX >.
+\!.PDF_WWW_LINK https://web.archive.org/web/20130510205857/https://www.fgl.com/view_library.php?page=devnewbieguide PREFIX < SUFFIX >.
 \!Acesso em: jun. de 2025.
 .Referencia SteamDB "o time do SteamDB" 2020
 \!O TIME DO STEAMDB. 2013.
 \!\fBTaking a look at Steam's download and preload system\fP.
 \![\fIonline\fP].
-\!.PDF_WWW_LINK \
-https://steamdb.info/blog/steam-download-system/ \
-PREFIX < SUFFIX >.
+\!.PDF_WWW_LINK https://steamdb.info/blog/steam-download-system/ PREFIX < SUFFIX >.
 \!Acesso em: junho de 2025.
 .Referencia GettingSponsored Wilton 2013
 \!WILTON, Julian. 2013.
@@ -115,9 +101,7 @@ PREFIX < SUFFIX >.
 \!Game Sponsored\fP.
 \![\fIonline\fP].
 \!Disponível em:
-\!.PDF_WWW_LINK \
-https://web.archive.org/web/20131012112913/http://gamedev.tutsplus.com/articles/business-articles/web-game-sponsorship/ \
-PREFIX < SUFFIX >.
+\!.PDF_WWW_LINK https://web.archive.org/web/20131012112913/http://gamedev.tutsplus.com/articles/business-articles/web-game-sponsorship/ PREFIX < SUFFIX >.
 \!Acesso em: junho de 2025.
 .Referencia OFF
 .PRINTSTYLE TYPESET
@@ -162,7 +146,7 @@ PREFIX < SUFFIX >.
 .TITLE "fakenews"
 .SKIP_PDF_OUTLINE
 .PDF_TITLE \*[Titulo]
-.ds Subtitulo Compilador de Flash para C
+.ds Subtitulo Conversor de Flash para C
 .de Local
 Santa Maria, RS
 2025
@@ -218,6 +202,7 @@ AUTOR: \*[Autor]
 ORIENTADOR: \*[Orientador]
 .SPACE 2
 .JUSTIFY
+.if 0 \{\
 Escrito mais no final.
 1) Introdução ao assunto,
 2) Falar que tem muitas soluções e trabalhos relacionados,
@@ -226,8 +211,24 @@ Escrito mais no final.
 5) Foco específico,
 6)
 .sp
-A técnica proposta é extrair recursos relevantes do arquivo Flash, como gráficos vetoriais e animações com os mesmos, e armazena-las em estruturas de dados em nível de pré-processador, que são expandidas múltiplas vezes para utilizar várias APIs de desenho, como Skia e CanvasRenderingContext2D. O código gerado pelo compilador pode ser usado em programas como jogos para renderizar cenários, personagens e cutscenes. Outras aplicações incluem aplicações Web e de celular, e sistemas embarcados, devido a versatilidade do C interagir com as mais diversas plataformas.
-.UNDERSCORE SUFFIX . Contribuição
+.\}
+.\" Pozzer: 
+.\" O que eh a tecnica? Fala um pouco mais. Ex: (rascunho)
+.\" 
+.\" Este trabalho visa desenvolver um "conversor" de aniamcoes feitas
+.\" em linguagem Flash para ....... A solucao proposta extrai.......
+.\" Expande o teu texto. 
+A técnica proposta é extrair recursos relevantes do arquivo Flash,
+como gráficos vetoriais e animações, e armazena-las em estruturas de
+dados em nível de pré-processador, que são expandidas múltiplas vezes
+para utilizar várias APIs de desenho, como Skia e
+CanvasRenderingContext2D.
+O código gerado pelo conversor pode ser usado em programas como jogos
+para renderizar cenários, personagens e \fIcutscenes\fP.
+Outras aplicações incluem aplicações Web e de celular, e sistemas
+embarcados, devido a versatilidade da linguagem C interagir com todas
+as plataformas.
+.if 0 .UNDERSCORE SUFFIX . Contribuição
 .SPACE 2
 \fBPalavras-chave:\fR Computação Gráfica. Gráficos Vetoriais. Animações. Compiladores.
 .NEWPAGE
@@ -242,7 +243,9 @@ AUTHOR: \*[Autor]
 ADVISOR: \*[Orientador]
 .SPACE 2
 .JUSTIFY
+.if 0 \{\
 LAlalalalalalalalala
+.\}
 .SPACE 2
 \fBKeywords:\fR Computer Graphics. Vector graphics. Animations. Compilers.
 .de Sigla
@@ -258,7 +261,7 @@ LAlalalalalalalalala
 .PAGINATE
 .PAGENUM_POS TOP RIGHT
 .PAGENUM_HYPHENS OFF
-.PAGENUMBER 10 \"XXX Defined manually, one less before Introdução
+.PAGENUMBER 9 \"XXX Defined manually, one less before Introdução
 .NEWPAGE
 .NO_SHIM OFF
 .nr TocDesired \w'2.7.5'/1m
@@ -266,74 +269,116 @@ LAlalalalalalalalala
 .MSWORD_ONEHALF_12
 .JUSTIFY
 .HEADING 1 NAMED Intro "Introdução\*[Fazer]"
-.\" Direção:
-.\" - Não citar Java (para tentar explicar a polissemia)
 .PP
 Jogos de computador são um esforço combinado de várias especialidades
 artísticas e técnicas, abrangendo música, efeitos sonoros,
-narrativa, código e artes visuais, unidos em uníssono para
-entregar uma experiência interativa e cativante.
+narrativa, código e artes visuais, integrados para entregar uma
+experiência interativa e cativante.
 .PP
 As animações com gráficos vetoriais são uma opção de identidade visual
-para jogos de computador, desfrutando de vantagens intrínsicas como
-eficiência e escalabilidade \*[Err "(alta defini\(,c\(~ao?)"] do formato, o
-primeiro fator sendo significativo para que produções artísticas se
-disseminassem durante a infância da Internet, quando as conexões ainda
-eram lentas.
+para jogos de computador, desfrutando de vantagens intrínsicas, como
+eficiência e imagens infinitamente ampliáveis.
+Gráficos vetoriais permitem emular estilos reminiscentes de cartoons e
+animes, transmitidos na programação de TV, ou explorar os limites da
+criatividade combinando primitivas geométricas de modos inusitados
+para obter efeitos únicos.
 .PP
 A tecnologia Flash foi, durante mais de duas décadas, o meio primário
-\*[Err de] disseminar conteúdo com gráficos vetoriais animados.
+de disseminar conteúdo com gráficos vetoriais animados.
 Trata-se, na verdade, de três componentes: 1) o editor de animações
-Flash, \*[Err atualmente] denominado Adobe Animate; 2) o formato de
-arquivo Flash, chamado SWF; e 3) uma \fIruntime\fP que executa o
-conteúdo Flash, chamado de Flash Player.
+Flash, atualmente denominado Adobe Animate; 2) o formato de arquivo
+Flash, chamado SWF; e 3) uma \fIruntime\fP que executa o conteúdo
+Flash, chamado de Flash Player.
 Esses três componentes formam, essencialmente, um \fIpipeline\fP que
-habilita tudo: criação, veiculação e reprodução de conteúdo Flash.
+habilita a criação, a veiculação e a reprodução de conteúdo Flash.
 Inicialmente projetada para a produção de filmes, a tecnologia Flash
 foi gradualmente incrementada com múltiplos avanços tecnológicos, de
 tal modo que passou a servir para a criação de jogos eletrônicos,
 anúncios de Internet, partes de websites, ou websites inteiros.
 .PP
-O uso disseminado da tecnologia Flash, que permaneceu proprietário,
-exceto por algumas decisões judiciais para flexibilizar.
-Em 2020, a tecnologia foi essencialmente terminada, por três razões
-principais: 1) se desamarrar da Adobe em prol de alternativas abertas,
-2) escapar das limitações do Flash, como sua resolução fixa que
-limita, 3) decisão ultimata tendo em vista inúmeras vulnerabilidades,
-agravada pelo código mutante que impossibilita checagens por
-anti-virus.
+Em 31 de dezembro de 2020, a tecnologia foi forçosamente terminada,
+por três razões: 1) fugir da propriedade intelectual
+proprietária da Adobe em prol de soluções abertas; 2) escapar das
+limitações do Flash, como sua resolução e taxa de atualização de
+quadros fixas, que não se encaixam com a diversidade de aparelhos
+modernos, como smartphones, smartwatches, TVs e óculos de realidade
+virtual; e 3) presença de vulnerabilidades gravíssimas sendo tratadas
+irresponsavelmente, agravadas por código mutante que impossibilita
+checagens por anti-virus.
 .PP
-Apesar da decisão extrema, a chamada "morte do Flash", mostrou-se
-benéfica.
-Com o vácuo da ausência do Flash, outras tecnologias puderam crescer,
-desta vez com maiores pretensões de segurança e ser aberto.
+A decisão extrema, chamada "morte do Flash", mostrou-se benéfica.  Com
+o vácuo causado pela ausência do Flash, outras tecnologias puderam
+crescer e se firmar, desta vez com maiores pretensões de segurança,
+flexibilidade e compromisso com propriedade intelectual aberta e
+desembaraçada.
 .PP
-O presente trabalho toma uma abordagem curiosa para o problema de
-animações com gráficos vetoriais.
-Faz-se necessário discernir que o que foi "morto" foi o Flash Player,
-especificamente.
-A morte do Flash não torna o formato de arquivo SWF e as ferramentas
-de criação menos úteis.
-De fato, tendo em mente a criação de jogos eletrônicos, para ser
-produtivo, uma equipe deve contar com a qualificação dos animadores e
-artistas, que devem trabalhar com ferramentas habituais e proficientes.
-A partir disso, a solução do presente trabalho se propõe a investigar
-o formato de arquivo SWF, extrair seus gráficos vetoriais e animações,
-sem se distrair com os demais recursos da tecnologia Flash, e
-transforma-los num formato fácil de utilizar em vários motores de
-jogos e frameworks.
+Arquivos SVG e arquivos Lottie são dois formatos abertos que
+diretamente substituem o SWF em matéria de animações com gráficos
+vetoriais, porém são longe de serem alternativas satisfatórias, a
+começar por serem formatos textuais, sendo que dados de animações são
+improváveis de serem textualmente legíveis ou editáveis.
+Outros efeitos da "morte do Flash" foram o surgimento de iniciativas
+almejando a sobrevida do Flash, como os projetos Ruffle e Lightspark,
+e as distribuições HARMAN e CheerpX.
 .PP
-A arquitetura proposta foge um pouco do esperado, concebida como o
-caminho mais \*[Err vagabundo/f\('acil] possível, sem ser absurdo,
-tomando vantagem de tecnologia existente, com o mínimo de esforço.
-Trata-se de \*[Err leverage] a biblioteca \fCswf\fP escrita em Rust
-para ler o arquivo SWF, e transformar todos os gráficos vetoriais em
-código C que, quando compilado junto à um programa, utiliza alguma
-API de gráficos vetoriais para renderizar as animações em alguma
-textura pré-definida por alguma plataforma.
+O presente trabalho discerne que, apesar do fim do Flash Player, nem o
+formato de arquivo SWF e nem as ferramentas de criação não se tornam
+menos úteis.
+.\"
+De fato, tendo em mente a criação de jogos eletrônicos, uma produção
+de conteúdo elevada requer uma equipe com profissionais
+tra\%ba\%lhan\%do com ferramentas habituais e eficazes.
+.\"
+A partir disso, o presente trabalho se propõe a investigar o formato
+de arquivo SWF, extrair seus gráficos vetoriais e animações, sem se
+ater com os demais recursos da tecnologia Flash, e transformá-los num
+formato fácil de utilizar em vários motores de jogos e
+\fIframeworks\fP, porém desvinculado do Flash para renderização.
 .PP
-Esforço mínimo.
-EXTREME GO HORSE.
+A linguagem de programação Rust, que adquiriu notoriedade pela sua
+segurança, possui uma biblioteca moderna para ler arquivos SWF.
+Em contrapartida, a linguagem de programação C, conhecida pelo seu
+desempenho e adaptabilidade, conta com várias bibliotecas de
+renderização de gráficos vetoriais.
+Partindo disso, a solução proposta é um programa conversor escrito na
+linguagem Rust, que lê um arquivo SWF, e então emite centenas de
+milhares de linhas de código C, que são sucessivas chamadas de funções
+de desenho; o código gerado, ao ser compilado e executado, reconstitui
+a animação Flash original.
+.if 0 \{\
+.PP
+Ao gerar código, há um benefício adicional.
+Normalmente, usar uma biblioteca nova em um sistema, é um desafio
+integrá-la com os demais componentes.
+No melhor caso, será copiado código de um exemplo oficial ou
+extraoficial, apesar de sujeito a se tornar desatualizado.
+No pior caso, muitas horas de trabalho serão perdidas escrevendo
+\fIboilerplate\fP, com riscos como implementar algo incorretamente, ou
+desperdiçando várias oportunidades de otimização.
+.\"
+Ao gerar código, diferente de uma biblioteca normal, é viável realizar
+a parte difícil e propensa a erros, de integrar no sistema,
+Uma biblioteca normal
+Ao gerar código, é possível ir além.
+Não se trata simplesmente de renderizar as animações com gráficos
+vetoriais.
+Há inúmeras bibliotecas possíveis que o desenvolvedor de jogos pode
+utilizar.
+Se for uma API simples.
+Mas é muito mais que isso.
+Trata-se de milhares de desenvolvedores escrevendo exatamente o mesmo
+código para interfacear biblioteca com animação.
+Ou pior, copiando exemplos e acumulando erros, deixando de usar as
+opções mais rápidas.
+A solução proposta busca fazer o trabalho difícil, não somente usar
+APIs, mas automaticamente usar as abordagens mais rápiadas e
+eficientes possíveis.
+.DRH
+.SP
+.\}
+.\" Direção:
+.\" - Não citar Java (para tentar explicar a polissemia)
+.if 0 \{\
 .DRH
 .SP
 .PP
@@ -342,10 +387,6 @@ A história do jogo, primariamente as falas dos personagens e o texto
 dos menus, devem ser traduzidos para várias línguas para aumentar o
 alcance do jogo.
 O código deve conseguir se comportar bem em diversos sistemas.
-.PP
-O presente trabalho se concentra em um tipo de arte, que é a arte
-vetorial, mais especificamente, as animações usando gráficos
-vetoriais.
 .PP
 Considera-se que o desenvolver \fIindie\fP seja a porta de entrada
 para se adentrar e se firmar na indústria de jogos.
@@ -451,12 +492,16 @@ do problema e ir direcionando ao aspecto que será focado no trabalho,
 .UNDERSCORE justificando
 a necessidade da pesquisa, e finalizando com uma descrição geral da
 solução desenvolvida e técnicas utilizadas.
+.\}
+.if 0 \{\
 .HEADING 2 "Contribuição do trabalho \*[Fazer]"
 .PP
 Contribuições atingidas. Onde colocar?
 .PP
 Deve-se descrever as contribuições que foram atingidas com a pesquisa desenvolvida. Isso é o principal para
 artigos, dissertações e teses.
+.\}
+.NEWPAGE
 .HEADING 1 "Contextualização"
 .SPACE -1v
 .nr FiguraContador 0 +1
@@ -552,7 +597,7 @@ Tabela \\n[TabelaContador]\ \(en\ \\$*
 .PP
 Renderização de animações com gráficos vetoriais.
 .HEADING 2 "Delimitação do tema"
-.PP
+.if 0 \{\
 .PP
 O ambiente de desenvolvimento é um ambiente UNIX
 se perder em recursos modernos que, por mais convenientes e poderosos, não
@@ -565,13 +610,19 @@ obter um amparo mínimo e efetivo de animações. Mesmo exemplos de animações
 estudo cerne
 .PP
 Está fora de escopo analisar e consumir o \fIbytecode\fP do Flash.
+Não será analisado o tempo gasto compilando e comprimindo a solução
+proposta.
+Não será analisado a funcionalidade de texto e botões do Flash.
+Somente serão preenchidos polígonos simples.
+.\}
 .HEADING 2 "Objetivo geral \*[Pronto]"
 .PP
 Renderizar animações com gráficos vetoriais do Flash dentro de programas
-escritos em C, sobretudo jogos de computador.
+escritos em C, principalmente em jogos de computador.
 .\"é o elemento que resume e apresenta a ideia
 .\"central do trabalho. Deve ser claro e demonstrar qual a intenção daquela
 .\"projeto de pesquisa
+.if 0 \{\
 .HEADING 2 "Objetivos específicos \*[Pronto]"
 .\".PP
 .\"imagine-os como os passos necessários
@@ -620,6 +671,8 @@ técnica proposta.
 Cooperar com um animador e produzir um jogo de\%mons\%trando a solução
 proposta.
 .LIST OFF
+.\}
+.if 0 \{\
 .HEADING 2 "Justificativa"
 .PP
 Tem a questão. E se só ler o arquivo original?
@@ -650,48 +703,62 @@ realidade.
 Something.
 .PP
 O patrimônio do Flash fala por si só sobre sua importância. Desde sua origem, centenas de cartoons para televisão foram criados usando seus editores, e milhares de jogos para navegador de Internet também, muitos de alta qualidade. O tocador de Flash para navegador foi descontinuado em 31 de dezembro de 2020, por razões de segurança e por preferência a padrões abertos, mas afetando criativamente as produções. Faz-se necessário desvendar o poder do Flash e usufruir do mesmo, e aproveitar o talento de vários profissionais que utilizam ferramentas que produzem Flash, como o Adobe Animator e o Toon Boom Harmony. Ainda que haja alternativas, como o SVG, não chegam perto do que o Flash foi. Flash é binário, lembrando ASN.1, e SVG utiliza XML, que é um formato de texto bastante verboso. Animações são o cerne do Flash, ao passo que o mesmo no SVG requer escrever CSS, SMIL ou JavaScript manualmente. Flash armazena sons, para uma verdadeira experiência multimídia, e isso nem é previsto no SVG.
+.\}
+.if 0 \{\
 .HEADING 2 "Problemas \*[Pronto]"
 .PP
 A técnica proposta consegue renderizar animações Flash com fidelidade
 apreciável, e também competir com a eficiência da tecnologia original?
+.\}
 .HEADING 2 "Hipóteses \*[Melhorar]"
 .\"Fica de fora: tempo de compilação e custos de manutenção (UX).
 .PP
-A preocupação principal é atender as expectativas do artista envolvido na
-produção do jogo, isto é, utilizando C renderizar suas animações feitas em
-Flash com a maior fidelidade possível. As hipóteses referentes são:
+A preocupação principal é atender as expectativas do artista envolvido
+na produção do jogo, isto é, que suas animações feitas em Flash sejam
+renderizadas com a maior fidelidade possível.
+As hipóteses referentes são:
 .LIST USER "\(en\ "
 .SHIFT_LIST 1.25c
 .ITEM
-Todas as animações renderizadas em C ultrapassam 99% de correspondência visual
-com o original em Flash.
+Todas as animações renderizadas com a solução ultrapassam 90% de
+cor\%res\%pon\%dên\%cia visual com o original em Flash.
 .ITEM
 Apesar de todas as animações testadas conterem ações, nenhuma precisa ser
 avaliada para atingir boa fidelidade visual.
 .ITEM
-Um subconjunto de ações pode ser avaliado em tempo de compilação para
+Um subconjunto de ações pode ser avaliado em tempo de conversão para
 animações que dependem delas para renderizar corretamente.
 .ITEM
-Um subconjunto de ações pode ser traduzido para C pelo compilador para
+Um subconjunto de ações pode ser traduzido para C pelo conversor para
 animações que dependem delas para renderizar corretamente.
 .LIST OFF
 .PP
-A eficiência do Flash é um dos seus aspectos mais marcantes, e propor uma
-técnica que esteja à altura é um grande desafio. As hipóteses referentes são:
+.ie 1 Em relação à eficiência do Flash, uma hipótese é formulada:
+.el \{
+A eficiência do Flash é um dos seus aspectos mais ilustres, e propor uma
+técnica que esteja à altura é um grande desafio.
+.ie 0 As hipóteses referentes são:
+.el Apenas uma hipótese é formulada:
+.\}
 .LIST USER "\(en\ "
 .SHIFT_LIST 1.25c
+.if 0 \{\
 .ITEM
 A versão de código gerado com milhares de chamadas de funções é apenas
 marginalmente mais rápida que a versão com os dados em vetores mais um pequeno
 código iterando os mesmos.
+.\}
+.if 0 \{\
 .ITEM
 A versão do código gerado que só anima para frente é significativamente mais
 leve que a versão que permite pular para qualquer quadro a qualquer momento.
+.\}
 .ITEM
 O executável final, após otimizações globais e comprimido em um pacote para
 distribuição, ainda é significamente mais pesado que o arquivo SWF original,
 sem contar que o código gerado nem implementa todos os recursos Flash
 presentes na animação.
+.if 0 \{\
 .ITEM
 Compressão transparente em nível de sistemas de arquivo reduz
 significativamente o peso dos objetos intermediários resultantes da compilação
@@ -700,7 +767,9 @@ do código gerado.
 Num cenário de compilação distribuída em rede, código-fonte e objetos
 intermediários podem ser comprimidos significamente para consumir menos
 recursos de rede.
+.\}
 .LIST OFF
+.if 0 \{\
 .LIST USER "\(en\ "
 .SHIFT_LIST 1.25c
 .ITEM
@@ -708,30 +777,36 @@ recursos de rede.
 o tempo de tocadores de Flash renderizarem um \
 quadro e o tempo da técnica proposta"]
 .LIST OFF
+.\}
 .HEADING 2 "Metodologia"
 .PP
 Foram realizados dois experimentos, o primeiro avaliando a fidelidade
 visual da solução proposta, e o segundo avaliando o peso de transmitir
 a animação pela Internet para um usuário, doravante denominado
-simplesmente como "experimento de eficiência".
+simplesmente "experimento de eficiência".
 .PP
+.if 0 \{\
 .red
 Explicar aqui porque animações e não jogos. O que muda. Ah, é porque é
 visualmente lalala, \fIcutscene\fP, pipipipipipi.
 .black
 \&
+.\}
 .PP
-A amostra usada nos dois experimentos são \*[Err 18] animações,
+A amostra usada nos dois experimentos são 26 animações,
 listadas na Figura\~1, publicadas no site Newgrounds por cinco autores
 diferentes, todas anteriores a 2005.
 Esse ano li\%mi\%te foi escolhido para contemplar a animação There she
 is!!!, mas sem incluir animações posteriores, esperando enfrentar
 arquivos Flash de menor complexidade.
+.if 0 \{
 De fato, conforme a Figura 1, a versão mínima \*[Err do Flash] para
 reproduzir as animações da amostra varia de \*[Err X] a versão
 \*[Err Y], sendo que a última versão é a \*[Err Z, datada de 2018].
+.\}
 .\", para que o trabalho pudesse se concentrar em
 .\"demonstrar a viabilidade da técnica proposta sem maiores complicações.
+.PP
 .FLOAT
 .MSWORD_SIMPLE_10 \" XXX KLUDGE
 .FiguraCurta "Animações Flash publicadas na Newgrounds usadas como casos de teste"
@@ -749,7 +824,7 @@ Para a solução proposta ser útil em um projeto real, é necessário que
 seja confiável, honrando a visão artística dos profissionais
 envolvidos, sem distorções.
 Isso é avaliado comparando se a animação renderizada pela solução
-proposta reproduz a qualidade original do tocador Flash.
+proposta reproduz a qualidade original do Flash Player.
 Essa avaliação constitui o experimento de fidelidade visual, que foi
 realizado automaticamente.
 .PP
@@ -798,14 +873,15 @@ mesma quantidade de quadros, que são comparados um a um"
 \*[AdobeSpec ip 28],
 os campos
 .\" Poderia citar algum dos livros retirados da biblioteca
-.ie 0 \{\
-\*[CODE]FrameSize\*[CODE X], \*[CODE]FrameRate\*[CODE X] e
-\*[CODE]FrameCount\*[CODE X]
-.\}
-.el FrameSize, FrameRate e FrameCount
+.\".ie 0 \{\
+.\"\*[CODE]FrameSize\*[CODE X], \*[CODE]FrameRate\*[CODE X] e
+.\"\*[CODE]FrameCount\*[CODE X]
+.\".\}
+.\".el FrameSize, FrameRate e FrameCount
+FrameSize e FrameRate
 do cabeçalho do SWF especificam va\%lo\%res
-fixos para, respectivamente, a resolução do "\fIon-screen display\fP",
-frequência de quadros e quantidade total de quadros.
+fixos para, respectivamente, a resolução do "\fIon-screen display\fP"
+e frequência de quadros.
 .PP
 Ainda, \*[Swivel iG] adverte que "\fBpara filmes com um
 \f(BIpreloader\fB ou outros menus,\fR você pode pular esses segmentos
@@ -815,6 +891,7 @@ Quando foi esse o caso para qualquer uma das animações do grupo
 amostral, o mesmo corte foi repetido no programa de teste, para manter
 a mesma quantidade de quadros e garantir a correspondência de um para
 um.
+.if 0 \{
 .PP
 .red
 Wrap it all up.
@@ -831,111 +908,22 @@ Eu não lembro mais dessa merda.
 Duvido que haja números publicados.
 .black
 \&
+.\}
 .HEADING 3 "Experimento de eficiência"
 .PP
-Parte do.
-.\"
-Jogos em Flash foram centrais num esquema de anúncios durante todo o
-seu reinado, parte disso se dá pelo formato formidável dos arquivos
-SWF permitirem produções com tamanhos diminutos, que permitem que
-pessoas do mundo inteiram possam, independentemente da latência,
-lentidão da Internet, acessar conteúdo Flash.
-.PP
-Diante do estado da arte alcançado nesse período, foi realizado um
-experimento para verificar se a solução proposta não representa um
-retrocesso.
-O experimento compararou o tamanho do arquivo SWF de cada
-animação do grupo amostral \(em já evidente na Figura \*[Err X] \(em
-com a soma do tamanho comprimido de todos
-os recursos Web que compõem a animação reconstituída com solução
+O segundo experimento comparou o tamanho dos arquivos SWF das
+animações do grupo amostral, que é exatamente o quanto um usuário
+baixa pela Internet para assisti-las, contra o tamanho comprimido de
+um objeto JavaScript que o compilador Emscripten produz, quando cada
+animação do grupo amostral é compilada para a Web usando a solução
 proposta.
-.FLOAT
-.MSWORD_SIMPLE_10 \" XXX KLUDGE
-.FiguraCurta "Eficiência máxima"
-.MSWORD_SIMPLE_10
-.so movies_efficiency.txt
-.FLOAT OFF
-.MSWORD_ONEHALF_12
-.PP
-O tamanho do arquivo SWF é comparado diretamente, pois é exatamente o
-que um usuário baixa ao acessar um conteúdo Flash.
-Além de ser frugal, o arquivo SWF é com\%pri\%mi\%do \*[Citar], então
-para tornar a comparação justa, os arquivos da solução proposta são
-comprimidos usando algoritmos modernos de compressão modernos que são
-correntes que o próprio protocolo HTTP fornece.
-Demais detalhes, como todo o \fIoverhead\fP de negociação e
-transmissão do HTTP e protocolos subjacentes, é desconsiderado.
-.DRH
-.SP
-.PP
-\*[Err "FUCK, mas na verdade a compressão HTTP"]
-O experimento se preocupa exclusivamente com o tamanho dos arquivos
-transmitidos, desconsiderando inteiramente 
-o \fIoverhead\fP do protocolo HTTP e os
-protocolos subjacentes, e por consequência, quaisqueres vantagens de
-quaisqueres versões ou extensões.
-O arquivo SWF é exatamente o que um usuário baixa ao visualizar um
-conteúdo Flash na Internet.
-Por o arquivo SWF ser enxuto e comprimido por natureza, o experimento
-testa o tamanho comprimido dos arquivos da solução proposta, por
-justiça, sem fazer juz de algoritmos modernos.
-.DRH
-.SP
-.PP
-O arquivo SWF é bastante formidável, e foi chave numa indústria de
-anúncios que contava com sua .
-Uma vez que o arquivo SWF é especialmente marcante por sua formidável
-e estar numa indústria que estimulava economia, é essencial verificar
-que a solução proposta consegue continuar XXX, sem retrocesso, arte
-anterior.
-.PP
-O segundo experimento, de eficiência, comparou o tamanho dos
-arquivos SWF das animações do grupo amostral, que é exatamente o
-quanto um usuário originalmente baixava pela Internet para
-assisti-las, contra a soma do tamanho de todos os recursos Web que
-um usuário precisa baixar para assistir a animação reconstituída
-utilizando a técnica proposta, quando compilada para a Web.
-O experimento desconsidera a banda larga utilizada pelo protocolo
-HTTP, indiferente da versão que seja
-.PP
-O experimento utiliza Web, porque
-.PP
-Historicamente, a tecnologia Flash esteve intimamente conectado com
-.PP
-O experimento de eficiência 
-.DRH
-.SP
-.PP
-De acordo com \*[SteamDB it], para jogos distribuídos pela Steam,
-"cada arquivo é quebrado em pedaços de por volta de um megabyte, e
-cada pedaço é comprimido com LZMA e criptografado com uma chave AES
-256-bit".
-Ainda segundo \*[SteamDB it], "a chave de criptografia é única para o
-\fIdepot\fP e é a mesma para todos os usuários.
-Isso permite CDNs armazenarem em cache o conteúdo eficientemente, e
-permitir que caches de LAN funcionem."
-.PP
-\*[Err falar da porra de algoritmos modernos pipipipi].
-.PP
-Falar sobre APKs talvez.
-.DRH
-.SP
-.PP
-O segundo experimento
-.PP
-.\" Explícito
-O segundo experimento avalia se a solução proposta consegue não ser um
-retrocesso.
-.PP
-Discutir contexto do Flash.
-.PP
-Fuck.
-.PP
-A técnica proposta se propõe a transformar.
-Indiferente dos méritos [...]
-na prática, o que importa é a banda larga.
-.DRH
-.SP
+Somente o objeto JavaScript é comparado, pois é nele que residem as
+animações Flash, sendo os demais arquivos produzidos pelo Emscripten
+desprezados, por terem um peso diminuto e estável.
+A razão dos objetos JavaScript serem comprimidos para a comparação, é
+tornar a comparação justa, uma vez que o SWF tem compressão interna.
+Desse modo, são comparados três algoritmos de compressão disponíveis
+para o protocolo de Internet HTTP: \fCgzip\fP, Brotli e Zstandard.
 .PP
 Na realidade do início dos anos 2000, \*[BasedFlash it] define, entre
 outras características, que um "jogo `casual' [...] tem um tamanho
@@ -951,6 +939,7 @@ Muitos portais não aguentam jogos maiores que 10mb.
 Poucos patrocinadores se interessarão num jogo maior que isso.
 O tamanho médio de um jogo é 2mb.
 .CitacaoLongaE
+.if 0 \{
 .PP
 Não somente jogos em Flash são minúsculos, como também são
 distribuídos preferencialmente como um único arquivo
@@ -959,46 +948,22 @@ distribuídos preferencialmente como um único arquivo
 .\"um efeito viral que beneficia a todos os atores no sistema de anúncios
 .Fgl
 \&.
-.DRH
-.SP
+.\}
 .PP
-Donde.
-Parte-se disso que distribuição de jogos em Flash é simplificada
-.PP
-A tecnologia Flash é particularmente interessante, pois jogos
-de alta qualidade podiam ser acessados via Internet de baixa
-velocidade
-.PP
-O segundo experimento analisa o tamanho  
-.PP
-Essa comparação é interessante, pois já no início dos anos 2000, jogos
-em Flash eram distribuídos na Web 
-.PP
-Qualquer tecnologia menos que isso é um retrocesso, e diante disso, muito
-relevante analisar.
-.PP
-Há muitas plataformas onde um jogo pode ser distribuído.
-Há diferenças de hardware, forma de empacotar o jogo, modelo de
-negócios, 
-Um jogo precisa ser distribuído. Há muitas plataformas onde um jogo
-pode ser publicado para 
-.PP
-Jogos modernos são distribuídos
-.PP
-No contexto de jogos de computador, executáveis são empacotados de
-diversos modos, dependendo de como são distribuídos. Para simplificar
-o experimento, e visto que Flash é uma tecnologia especialmente
-presente na Web, e sua eficiência se destacava na transmissão via
-Internet em portais, o experimento compara o tamanho do arquivo SWF
-com o peso combinado dos arquivos Web comprimidos com Brotli, um dos
-algoritmos de compressão HTTP versão proposta.
-.PP
-A eficiência analisada diz respeito ao ... \" XXX Continue here.
-.PP
-O segundo experimento analisa a eficiência da solução proposta. O peso
-original de cada animação testada é comparada com o peso do arquivo
-wasm final comprimido com Brotli, que é uma opção de compressão para
-HTTP.
+Realizar o experimento no contexto da Web é a abordagem mais trivial,
+por ser padronizada, ubíqua e regular.
+Em outros contextos, a comparação é difusa devida a multiplicidade de
+lojas de jogos, lojas de aplicativos, instaladores, gerenciadores de
+pacotes e outros mecanismos de distribuição de executáveis.
+Por exemplo, de acordo com \*[SteamDB it], para jogos distribuídos
+pela Steam, "cada arquivo é quebrado em pedaços de por volta de um
+megabyte, e cada pedaço é comprimido com LZMA e criptografado com uma
+chave AES 256-bit".
+Ainda segundo \*[SteamDB it], "a chave de criptografia é única para o
+\fIdepot\fP e é a mesma para todos os usuários.
+Isso permite CDNs armazenarem em cache o conteúdo eficientemente, e
+permitir que caches de LAN funcionem."
+.if 0 \{\
 .HEADING 3 "Lilili"
 .PP
 Este projeto de pesquisa possui a seguinte metodologia de execução:
@@ -1035,6 +1000,8 @@ Tem que ver né.
 .HEADING 3 "Classificação quanto ao tipo de procedimento"
 .PP
 Pesquisa bibliográfica, documental, experimental, ação.
+.\}
+.if 0 \{\
 .HEADING 2 "Metas"
 .PP
 \*[Err "Acho que isso só importa no projeto/pré-TCC, remover?"]
@@ -1050,25 +1017,147 @@ Este projeto de pesquisa possui as seguintes metas:
 4.Promover padrões de maior calibre para 
 .br
 5.Criar novas possibilidades para aplicativos Web, de celular e em sistemas embarcado
-.HEADING 2 "Cronograma"
+.\}
+.HEADING 2 "Cronograma \*[Pronto]"
 .PP
-Para realizar este projeto, sugerem-se as seguintes atividades, que obedecem ao seguinte cronograma de execução:
-.FLOAT
-.TS
-allbox;
-lB c c c c c
-l c c c c c.
-Atividade	Mar.	Abril	Maio	Jun.	Jul.
+Segue uma relação aproximada de atividades previstas, ignorando
+tarefas já realizadas antes da elaboração do cronograma:
+.DOC_LEAD 12
+.TS BOXED H
+box;
+cBp10  s 2 lBp10 cBp10
+cBp10  s   ^  cBp10
+lp10 0 lp10 lp10 cp10.
+Ativi-	Descrição	Reali-
+dade		zado
 _
-Revisão bibliográfica e documental	\(OK	\(OK	\(OK	\(OK	\(OK
-Implementação do compilador	\(OK	\(OK	\(OK	\(OK	
-Testes visuais com produções clássicas	\(OK	\(OK	\(OK	\(OK	
-Implementação de jogo usando Flash e C				\(OK	\(OK
+.TH
+A	+\01	Contar recursos utilizados por cada animação do grupo amostral
+A	+\02	Obter versão do Flash usada por cada animação do grupo amostral
+A	+\03	Montar três ou mais tabelas discriminando recursos usados por \
+cada animação
+A	+\04	Descrever recursos do Flash e suas peculiaridades
+A	+\05	Discutir câmera virtual do Flash, citando Jazza
+.sp 0.5
+B	+\01	Escrever slides para apresentação à banca
+B	+\02	Formatar slides
+B	+\03	Reusar figuras contidas no text do TCC nos slides preparados
+.sp 0.5
+C	+\01	Realizar experimento com Cairo
+C	+\02	Gerar código de animações usando Cairo
+C	+\02	Transformar um quadro da animação em PDF usando Cairo
+C	+\03	Alterar o programa para carregar dinamicamente funções de animação
+C	+\04	Gerar figuras vetoriais para vários quadros de várias animações
+C	+\05	Salpicar figuras vetoriais no texto do TCC e na apresentação de slides
+.sp 0.5
+D	+\01	Clonar repositório \fIopen source\fP do Swivel	\(OK
+D	+\02	Instalar Haxe
+D	+\03	Compilar Swivel uma vez
+D	+\04	Atualizar versão do FFmpeg usada pelo Swivel
+D	+\05	Atualizar versão do Adobe AIR usada pelo Swivel
+D	+\06	Remover restrição de dimensões não-ímpares do Swivel 
+D	+\07	Adicionar opção de exportar fluxo cru de pixels RGB
+D	+\08	Adicionar Swivel no PATH do MSYS2
+D	+\09	Calcular Start Frame e End Frame de cada animação do grupo amostral
+D	+10	Gerar vídeos em resoluções 360p, 720p e 1080p para cada animação do \
+grupo amostral
+D	+11	Gerar um fluxo cru de RGB para cada animação do grupo amostral
+D	+12	Adicionar tamanho de vídeos na tabela de eficiência
+D	+13	Adicionar total de quadros e duração para tabela \
+listando animações selecionadas
+.sp 0.5
+E	+\01	Relatar limite técnico do Emscripten afogando em códigos gigantes	\(OK
+E	+\02	Adicionar opção de gerar código JavaScript	\(OK
+E	+\03	Montar caso de teste em JavaScript puro	\(OK
+.sp 0.5
+F	+\01	Exportar fluxo cru de RGB com programa de teste
+F	+\02	Computar SSM e PSNR para cada animação do grupo amostral \
+usando FFmpeg
+F	+\03	Adicionar dados de semelhança na tabela de semelhança
+.sp 0.5
+G	+\01	Aplicar negrito (ênfase) para dados relevantes de tabelas
+G	+\02	Adicionar pipeline de correção gramatical para o texto do TCC
+G	+\03	Revisar espaçamento entre linhas e tamanho da fonte \
+nos elementos pré-textuais
+G	+\04	Revisar listas de figuras
+G	+\05	Adicionar código de implementação nos anexos
+G	+\06	Formar corretamente vários elementos, na verdade
+G	+\07	Criar receitas Makefile para pular processamentos \
+pesados com dados provisórios
+G	+\08	Remover palavrões
+G	+\09	Comentar fora partes inacabadas do texto do TCC	\(OK
+G	+\09	Manter referências contíguas numa única página (usando \
+\fC.FLOAT\fP)
+.sp 0.5
+H	+\01	Analisar TCC de 2012 do Celito Muck Felipetto
+H	+\02	Analisar dissertação de mestrado de 2010 da Rosilane de L. Lorenzoni
+H	+\03	Analisar carta do Steve Jobs jurando de morte o Flash
+H	+\04	Analisar livro sobre Flash MX
+H	+\05	Analisar livro sobre Flash 2004
+H	+\06	Analisar \fIwiki\fP do Gnash
+.sp 0.5
+I	+\01	Comparar arquivos SVG
+I	+\02	Comparar arquivos Lottie
+I	+\03	Comparar arquivos da Rive
+I	+\04	Comparar arquivos PostScript (PS) e PDF
+.sp 0.5
+J	+\01	Analisar motores de renderização de gráficos vetoriais
+J	+\02	Analisar bibliotecas de leituras de SWF
+J	+\03	Enumerar bibliotecas de criação de janela 
+J	+\04	Analisar editores de animações que exportam ou não SWF
+J	+\05	Citar entrevista criticando editores modernos de animação
+J	+\06	Analisar motores de jogos que importam SWF, como o GameMaker e OpenFL
+J	+\07	Analisar motores de jogos que exportam SWF
+J	+\08	Analisar outras coisas que importam SWF, como o Autodesk Scaleform GFX
+J	+\09	Analisar o Adobe AIR da HARMAN (Samsung)
+J	+10	Analisar a situação chinesa do Flash
+J	+11	Analisar os \fIplayers\fP Ruffle, Lightspark, Gnash e CheerpX
+J	+12	Analisar lançamentos secretos do Flash (versões 33 e 34)
+J	+13	Analisar histórico de versões do Flash Player e editores Flash
+J	+14	Analisar tradutores de Flash, como Adobe CrossBridge (projeto Alchemy)
+.sp 0.5
+K	+\01	Corrigir erro de transformação
+K	+\02	Adicionar opção de transformação global
+K	+\03	Adicionar renderização de MovieClip/Sprite para HTML5
+.sp 0.5
+L	+\01	Conceber, implementar e descrever algoritmo de extrair polígonos simples
+L	+\02	Manter preenchimentos sólidos do Flash
+L	+\03	Gerar código para polígonos simples
+L	+\04	Gerar código para estilos de traçados
+.sp 0.5
+M		Montar tabela com peso e contagem de linhas de código gerado
+.sp 0.5
+N	+\01	Descrever Emscripten
+N	+\02	Descrever tipo experimental \fC__externref_t\fP
+N	+\03	Descrever macro \fCEM_JS\fP
+N	+\04	Descrever compilação condicional
+N	+\05	Descrever Macros X
+N	+\06	Descrever Rust
+N	+\07	Descrever m4
+.sp 0.5
+O	+\01	Descrever arquitetura da solução
+O	+\02	Descrever API da solução
+O	+\03	Montar diagrama explicando arquitetura
+O	+\04	Discutir JPEXS Free Flash Decompiler, crucial para depuração
+O	+\05	Discussão sobre gerar código versus gerar dados versus ler dados
+.sp 0.5
+P	+\01	Descrever brevemente monetização do Flash
+P	+\02	Buscar notícias e artigos discutindo morte do Flash
 .TE
-.FLOAT OFF
+.DOC_LEAD 21.6
+.if 0 \{\
 .HEADING 2 "Resultados esperados (literalmente hipóteses)"
 .PP
-Espera-se um compilador muito fácil de usar seja criado, para que artistas possam produzir suas animações sem nenhum conhecimento de programação, e programadores possam utilizar essas animações sem nenhum conhecimento de Flash. Ainda que o alvo primário seja o C, interfaces para outras linguagens é totalmente possível, para alcançar ainda mais mercado. Deseja-se que a interface gerada pelo compilador seja o mais simples possível, e empregando as APIs de mais alto desempenho de cada sistema, para escalabilidade máxima.
+Espera-se um conversor muito fácil de usar seja criado, para que
+artistas possam produzir suas animações sem nenhum conhecimento de
+programação, e programadores possam utilizar essas animações sem
+nenhum conhecimento de Flash. Ainda que o alvo primário seja o C,
+interfaces para outras linguagens é totalmente possível, para alcançar
+ainda mais mercado. Deseja-se que a interface gerada pelo conversor
+seja o mais simples possível, e empregando as APIs de mais alto
+desempenho de cada sistema, para escalabilidade máxima.
+.\}
+.if 0 \{\
 .HEADING 1 "Dump de informações"
 .PP
 Na UFSM, Flash já foi usado em dois trabalhos acadêmicos.
@@ -1204,70 +1293,226 @@ seção 5.1).
 .CitacaoLongaE
 .PP
 Os níveis de based são avassaladores. p. 27.
-.HEADING 2 "Mestrado em geologia"
+.HEADING 2 "Mestrado em geomática"
+.\}
 .HEADING 1 "Fundamentação teórica\*[Fazer]"
+.if 0 \{\
 .PP
 \*[Err discutir Harman e CheerpX].
 .PP
 \*[Err discutir CrossBridge AKA Alchemy, discutir Game Maker].
 .PP
 A tecnologia Flash possui duas máquinas virtuais, AVM1 e AVM2, que executa \fIbytecode\fP
+.\}
 .HEADING 2 "O formato SWF"
 .HEADING 3 "Representação dos dados no Flash"
 .PP
-De acordo com a especificação da Adobe (2013, p. 14, tradução nossa), “o formato de arquivo SWF armazena todas as coordenadas x-y como inteiros, geralmente numa unidade de medida chamada twip. No formato SWF, um twip são 1/20 de um pixel lógico”.
+De acordo com a especificação da Adobe (2013, p. 14, tradução nossa),
+"o formato de arquivo SWF armazena todas as coordenadas x-y como
+inteiros, geralmente numa unidade de medida chamada twip. No formato
+SWF, um twip são 1/20 de um pixel lógico".
 .PP
-Além de tipos inteiros com e sem sinal variando em comprimento, “o formato de arquivo SWF implementa dois tipos de número de ponto fixo: 32 bits e 16 bits.” (ADOBE, 2013, p. 15, tradução nossa).
+Além de tipos inteiros com e sem sinal variando em comprimento, "o
+formato de arquivo SWF implementa dois tipos de número de ponto fixo:
+32 bits e 16 bits."
+(ADOBE, 2013, p. 15, tradução nossa).
 .PP
-No Flash, “o formato para o valor de uma string é uma lista sequencial de bytes terminados pelo byte do caractere nulo”. (ADOBE, 2013, p. 19, tradução nossa).
+No Flash, "o formato para o valor de uma string é uma lista sequencial
+de bytes terminados pelo byte do caractere nulo".
+(ADOBE, 2013, p. 19, tradução nossa).
 .PP
-De acordo com Adobe (2013, p. 28, tradução nossa), “o cabeçalho é seguido por séries de blocos de dados etiquetados. Todas as etiquetas seguem um formato comum, então qualquer programa lendo um arquivo SWF pode pular blocos que não entende”. Ainda conforme Adobe (2013, p. 29, tradução nossa), “cada etiqueta começa com um tipo de etiqueta e um tamanho”, e há “duas categorias de etiquetas”: “etiquetas de definição” e “etiquetas de controle”.
+De acordo com Adobe (2013, p. 28, tradução nossa), "o cabeçalho é
+seguido por séries de blocos de dados etiquetados. Todas as etiquetas
+seguem um formato comum, então qualquer programa lendo um arquivo SWF
+pode pular blocos que não entende".
+Ainda conforme Adobe (2013, p. 29, tradução nossa), "cada etiqueta
+começa com um tipo de etiqueta e um tamanho", e há "duas categorias de
+etiquetas": "etiquetas de definição" e "etiquetas de controle".
 .HEADING 3 "Gráficos vetoriais do Flash"
 .PP
-O bloco com etiqueta DefineShape contém um caminho:
+O bloco com etiqueta DefineShape contém um caminho.
 .PP
-Um caminho pode ser fechado, onde o início e o fim do caminho se encontram para fechar a figura, ou aberto, quando o caminho forma um traço aberto. Um caminho pode conter uma mistura de arestas retas, arestas curvadas e comandos de ‘levante a caneta e mova’. Este último permite descrever múltiplas figuras desconectadas em uma única estrutura de forma. (ADOBE, 2013, p. 119, tradução nossa).
+Um caminho pode ser fechado, onde o início e o fim do caminho
+coincidem, fechando efetivamente a figura, ou aberto, quando o caminho
+forma um traço aberto.
+Um caminho pode conter uma mistura de arestas retas, arestas curvadas
+e comandos de `levante a caneta e mova'.
+Este último permite descrever múltiplas figuras desconectadas em uma
+única estrutura de forma.
+(ADOBE, 2013, p. 119, tradução nossa).
 .PP
 Ainda de acordo com Adobe (2013, p. 119), preenchimentos podem ser definidos para a área da figura ou o contorno dela, havendo um ou dois preenchimentos definidos por aresta, o que permite tratar casos de figuras com auto-intersecção.
 .PP
 Uma forma possui um identificador: “valor de 16 bits que unicamente identifica a forma como um ‘personagem’ no dicionário” (ADOBE, 2013, p. 119, tradução nossa). Depois de definido e presente no dicionário, um personagem pode ser posicionado na tela ou combinado com outros personagens em um ator usando DefineSprite.
 .HEADING 3 "Animações do SWF"
 .PP
-A frequência de quadros de um Flash é fixa, definida no cabeçalho pelo criador da animação. Valores populares variam de 12 a 60 FPS, sendo 31 o mais comum por razões históricas. Cada quadro da animação consiste em renderizar o conteúdo de um DisplayList de trás para frente, aplicando matrizes de transformação para cada personagem ou ator presente. O DisplayList é preservado entre um quadro e outro e vai sendo alterado aos poucos, para eficiência máxima.
-.HEADING 2 "Leitura de arquivos SWF"
+A frequência de quadros de um Flash é fixa, definida no cabeçalho pelo
+criador da animação.
+Valores populares variam de 12 a 60 FPS, sendo 31 o mais comum por
+razões históricas.
+Cada quadro da animação consiste em renderizar o conteúdo de um
+DisplayList de trás para frente, aplicando matrizes de transformação
+para cada personagem ou ator presente.
+O DisplayList é preservado entre um quadro e outro e vai sendo
+alterado aos poucos, para maximizar a eficiência.
+.HEADING 2 "Software de animação"
+.if 0 \{\
 .PP
-É utilizada a biblioteca \*[CODE]swf\*[CODE X] do projeto Ruffle para ler
-arquivos SWF. Conforme a Figura 1, há apenas três bibliotecas que leem SWF,
-sendo as outras duas escritas com a linguagem de programação Haxe. A decisão é
-por Rust estar na moda.
+Software de edição de animação
+.\}
+.FLOAT
+.FiguraCurta "Software de edição multimídia"
+.MSWORD_SIMPLE_12
+.TS H BOXED
+box;
+cB cB cB cB
+l n l l.
+Nome	Ano	Versão	Plataforma
+.TH
+.\" https://animatearchive.neocities.org/
+FutureSplash Animator	1996	Version 1.0	Windows e macOS (PPC)
+Macromedia Flash 5	2000	Version 5.0	Windows e macOS (PPC)
+Macromedia Flash MX	2002	Version 6.0	Windows e macOS (PPC)
+Macromedia Flash MX 2004	2003	Version 7.0	Windows e macOS (PPC)
+Macromedia Flash 8	2005	Version 8.0	Windows e macOS (PPC)
+Adobe Flash CS3 Professional	2007	Version 9.0	Windows e macOS (Intel)
+Adobe Flash CS4 Professional	2008	Version 10.0	Windows e macOS (Intel)
+Adobe Flash CS5 Professional	2010	Version 11.0	Windows e macOS (Intel)
+Adobe Flash CS5.5 Professional	2011	Version 11.5	Windows e macOS (Intel)
+Adobe Flash CS6 Professional	2012	Version 12.0	Windows e macOS (Intel)
+.\" https://www.newgrounds.com/wiki/creator-resources/animation-resources
+Adobe Animate	?	?	?
+Toon Boon Harmony	?	?	?
+Toonz	?	?	?
+OpenToonz	?	?	?
+TVPaint	?	?	?
+Wick Editor	?	?	?
+Krita	?	?	?
+Synfig	?	?	?
+Pencil2D	?	?	?
+Moho	?	?	?
+.\" Other I learned about
+Rive Editor	?	?	?
+Spine2D	?	?	?
+Spriter	?	?	?
+DragonBones	?	?	?
+.TE
+.MSWORD_ONEHALF_12
+.FLOAT OFF
+.HEADING 2 "Leitura de arquivos SWF"
+.if 0 \{\
+.PP
+É utilizada a biblioteca \*[CODE]swf\*[CODE X] do projeto Ruffle para
+ler arquivos SWF. Conforme a Figura 3, há apenas quatro bibliotecas
+que leem SWF, sendo duas escritas com a linguagem de programação Haxe
+e outra em Python.
+A decisão é por Rust estar na moda.
 .\" XXX Tirar isso aqui da fundamentação teórica e botar em outra seção de
 .\" arquitetura ou implementação.
 A Figura 1 apresenta as principais soluções para ler arquivos SWF. Destas, foi
 escolhida para a implementação a biblioteca \*[CODE]swf\*[CODE X] do projeto
 Ruffle, pois Rust está na moda e por ser uma biblitoeca.
+.\}
 .FLOAT
 .FiguraCurta "Programas que leem SWF"
-.TS H BOXED
-box;
-l l l.
-Nome	Natureza	Linguagem de programação
+.MSWORD_SIMPLE_12
+.TS H BOXED CENTER
+box center;
+cB cB cB cB
+^  ^  cB ^
+l  l  n.
+Nome	Natureza	Linguagem de	Licença
+		programação
 .TH
 swf (do Ruffle)	Biblioteca	Rust
 swf (do Haxe)	Biblioteca	Haxe
 format (do Haxe)	Biblioteca	Haxe
-JPEXS Free Flash Decompiler	Editor visual	Java
-Lightspark	Tocador	C++
-swftools	Ferramentas de lote	C
-Gnash	Tocador	C++
-ffmpeg	Conversor	C
+JPEXS Free Flash Decompiler	Ferramenta visual	Java
+Lightspark	Tocador	\&C++
+swftools	Ferramentas de lote	\&C
+Gnash	Tocador	\&C++
+ffmpeg	Conversor	\&C
+PYSWF	Biblioteca	Python
 .TE
+.MSWORD_ONEHALF_12
 .FLOAT OFF
-.HEADING 2 "Macros X
+.HEADING 2 "Plataformas"
+.if 0 \{\
 .PP
-\*[Err "Tira!"]
-.HEADING 2 "Plataforma Web"
+Gráficos vetoriais possuem muitas décadas de tradição.
+Obviamente, surgiram inúmeras soluções para renderizar primitivas
+vetoriais.
+A Figura X mostra algumas bibliotecas que realizam renderização.
+Destes, o presente trabalho interfaceia somente o PlutoVG, o Canvas e
+o Cairo. 
+.\}
+.\" Discutir licença, criador, backend
+.FLOAT
+.FiguraCurta "APIs para renderização de gráficos vetoriais"
+.MSWORD_SIMPLE_12
+.TS H BOXED CENTER
+box center;
+cB cB
+l  c.
+Nome	Licença
+.TH
+PlutoVG	MIT
+NanoVG
+Skia
+Cairo	GPL
+HTML CanvasRenderingContext2D
+Direct2D
+Impeller
+Blend2D
+Rive Renderer
+OpenVG
+SDL_gfx
+.TE
+.MSWORD_ONEHALF_12
+.FLOAT OFF
+.if 0 \{\
 .PP
-\*[Err "Capar fora!!!!!!!!!"]
+Além disso, o resultado da renderização deve ser exibida de algum
+modo.
+Isso varia de plataforma para plataforma, porém há inúmeras
+bibliotecas que abstraem essas diferenças.
+A Figura Y compara algumas possibilidades.
+Destes, o presente trabalho se preocupa exclusivamente com o SDL2.
+.\}
+.FLOAT
+.FiguraCurta "Bibliotecas de jogos"
+.MSWORD_SIMPLE_10
+.TS H BOXED CENTER
+box center;
+cB cB cB cB s  s  s  cB
+^  ^  ^  l  s  s  s  ^
+^  ^  ^  cB cB cB cB ^
+l  c  n  c  c  c  c  c.
+Nome	Licença	API	Plataforma	Alvo
+			_
+			Desktop	Web	Mobile	Console
+.TH
+SDL		\&C	\(OK	\(OK	\(OK	\(OK	\fCSDL_Texture\fP
+SFML		\&C++	\(OK
+Sokol		\&C	\(OK	\(OK
+GLFW		\&C++	\(OK	\(OK
+Freeglut		\&C	\(OK
+Raylib		\&C	\(OK	\(OK	Android
+Allegro		\&C	\(OK	\(OK	\(OK
+HTML		JavaScript	Se quiser	\(OK	Se quiser		\fCImageBitmap\fP
+Cocos2Dx
+.TE
+.MSWORD_ONEHALF_12
+.FLOAT OFF
+.HEADING 3 "Macros X
+.if 0 \{\
+.PP
+Utilizando Macros X, uma técnica de pré-processador, é possível manter
+os dados de modo genérico e expandi-los várias vezes para o que o
+usuário quiser.
+.\}
+.if 0 \{\
+.HEADING 3 "Plataforma Web"
 .PP
 Jogos para navegador não são mais relevantes \*[Err citar]. O
 \fImarketshare\fR \*[Err sic] predominante atualmente são redes sociais,
@@ -1294,17 +1539,45 @@ tecnologias Web. Não há dados publicados sobre a lucratividade de atividades
 do Discord \*[Err checar de verdade].
 .PP
 Com o Flash sendo defasado, surgiram inúmeras tecnologias HTML5 para.
+.\}
 .HEADING 3 "Emscripten"
+.if 0 \{\
 .PP
 Felizmente, não é necessário abraçar tecnologias Web para produzir jogos
 HTML5. Além dos vários motores como Unity e Godot, Emscripten.
+.\}
+.PP
+Dois recursos do Emscripten especialmente úteis são a macro
+\fCEM_JS\fP e o tipo experimental \fC__externref_t\fP, este habilitado
+pela opção de linha de comando \fC-mreference-types\fP.
+.PP
+A macro \fCEM_JS\fP permite definir um bloco de código JavaScript
+acessado através de uma função da linguagem C, com visibilidade
+interna.
+Isso permite chamar métodos do objeto \fCCanvasRenderingContext2D\fP
+diretamente com JavaScript, porém ter essa funcionalidade disponível
+em uma base de código C.
+Os parâmetros e valor de retorno possíveis são tipos inteiros,
+\fIstrings\fP, ponteiros e o tipo \fC__externref_t\fP.
+.PP
+O tipo experimental \fC__externref_t\fP armazena de modo opaco
+qualquer objeto JavaScript.
+O armazenamento do tipo é obrigatoriamente automático, limitando bastante
+sua flexibilidade, semelhante ao modificador depreciado \fCregister\fP.
+Porém é útil o suficiente em combinação com a macro \fCEM_JS\fP: com
+ele, é possível escrever uma função que obtém um objeto JavaScript, e
+várias funções que operam sobre o mesmo.
+.if 0 \{\
 .HEADING 3 "Bibliotecas C/C++ adaptadas para a Web"
 .PP
 SDL, Sokol, GLFW, Cocos2Dx.
+.\}
 .HEADING 3 "O Canvas HTML"
 .\" XXX Consultar esse suco https://blogs.igalia.com/carlosgc/
+.if 0 \{\
 .PP
 \*[Err "Esse quadro é necessário? Eu acho que não"].
+.\}
 .\"\&.clearRect()Limpa a tela
 .\"_
 .\"\&.beginPath()Começa um desenho
@@ -1326,6 +1599,7 @@ SDL, Sokol, GLFW, Cocos2Dx.
 .\"\*[CODE]CanvasRenderingContext2D\*[CODE X] e
 .\"\*[CODE]OffscreenCanvasRenderingContext2D\*[CODE X] e têm comportamento
 .\"idêntico.
+.if 0 \{\
 .PP
 No caso de uma \fIcutscene\fP ou uma interface gráfica, que variam bastante, é
 viável desenha-los no Canvas diretamente.
@@ -1338,6 +1612,8 @@ inicialização é uma técnica comum mesmo em jogos em Flash. Finalmente, talve
 seja desejado salvar o conteúdo de um Canvas no caso de um jogo 3D, onde
 a animação em Flash seja usada para objetos 2D dentro de um cenário 3D, como
 televisões, terminais, letreiros entre outros.
+.\}
+.FiguraCurta "Visão geral simplificada do Canvas HTML"
 .FT C
 .PT_SIZE 10
 .PS
@@ -1402,6 +1678,7 @@ line Canvas.s.y-OffCanvas.n.y-0.1
 .PT_SIZE 12
 .FT R
 .PP
+.if 0 \{
 .FLOAT
 .FiguraCurta "Métodos do Canvas HTML para acessar seu conteúdo renderizado"
 .TS H CENTER
@@ -1428,6 +1705,8 @@ _	_	_
 .\"OffscreenCanvasRenderingContext2D	\^	\^
 .\"_	_	_
 .FLOAT OFF
+.\}
+.if 0 \{\
 .PP
 Escrever código portátil significa criar abstrações e seguir abstrações
 \*[Citar]. Precisamos salvar tudo num buffer. Tudo bem o usuário passar
@@ -1453,6 +1732,8 @@ Há vários Canvas. O principal é o <canvas></canvas>.
 .PP
 Utilizando o tipo __externref_t descrito anteriormente.
 .PP
+.\}
+.if 0 \{\
 .HEADING 3 "A macro \f(CBEM_JS\fP e o tipo \f(CB__externref_t"
 .PP
 Mesmo que o código gerado use um \*[CODE]CanvasRenderingContext2D\*[CODE X]
@@ -1462,280 +1743,94 @@ resta o seguinte problema: como o código gerado vai
 .PP
 É implementação do tipo WebAssembly \*[CODE]externref\*[CODE OFF] e é bem
 poggers.
+.\}
 .HEADING 1 "Trabalhos relacionados\*[Fazer]"
+.if 0 \{\
 .PP
 As duas principais tentativas de tocar multimídia Flash é o Lightspark
 e o Ruffle.
 .PP
 O programa Scaleform GFx da Autodesk é relevante.
+.\}
 .HEADING 1 "Projeto e implementação da solução\*[Fazer]"
-.HEADING 2 "Tradutor\*[Fazer]"
+.HEADING 2 "Conversor\*[Fazer]"
+.if 0 \{\
+.PP
 Rust é a linguagem de programação utilizada para implementar o tradutor do
 presente trabalho. O tradutor inteiro é um código bastante simples, logo 
+.\}
 .\" Não há nada para ser dito, apenas mencionar Rust em outra seção sem
 .\" maiores explicações XXX
 .HEADING 3 "Leitura de arquivos SWF"
 .HEADING 2 "Runtime\*[Fazer]"
 .HEADING 2 "API\*[Fazer]"
+.if 0 \{\
 .PP
 Funções reentrantes, proteção de parâmetros etc.
 Pipipipipipipipipi. \"XXX
+.\}
 .HEADING 1 "Resultados\*[Fazer]"
-.\".PP
-.\"Essa tabela aqui é um verdadeiro nerd \fIsniping\fR. Caso clássico de QUERO
-.\"PROGRAMAR HURRR DUUUR sem
-.\".UNDERSCORE pensar
-.\"antes (chama-se metodologia).
-.\" XXX Essa porra aqui de tempo é OPCIONAL no trabalho. é apenas um
-.\" aperitivo. tipo, não importa pra pesquisa quanto tempo demora pra
-.\" compilar. Precisa falar que os tempos são mostrados à título de
-.\" curiosidade. ser enfático nisso!!!!!!!
-.\".FLOAT
-.\".TabelaCurta "Tamanho de artefatos para a animação There she is!!!"
-.\".\" XXX Diminuir espaçamento entre linhas do cabeçalho
-.\".\"     Ver opção v da especificação de colunas
-.\".so tamanhos.txt
-.\".FLOAT OFF
+.PP
+A Figura 7 não é confiável, pois ainda faltam inúmeros recursos a
+serem gerados em código, de modo que uma implementação mais
+compreensiva certamente inflará os tamanhos.
+Indiferentemente, é ilustrado que o peso de um vídeo equivalente ainda
+é várias ordens de magnitude maior que tanto o SWF quanto os objetos
+da solução proposta.
+.FLOAT
+.MSWORD_SIMPLE_10 \" XXX KLUDGE
+.FiguraCurta "Relação de peso de artefatos SWF"
+.MSWORD_SIMPLE_10
+.so movies_efficiency.txt
+.FLOAT OFF
+.MSWORD_ONEHALF_12
 .HEADING 1 "Conclusão"
+.PP
+Cinco hipóteses foram levantadas durante a elaboração do trabalho, as
+quatro primeiras referentes à fidelidade visual esperada, e a última
+sobre o peso dos artefatos gerados pela solução proposta.
+.PP
+Referente à fidelidade visual esperada, as primeiras duas hipóteses
+foram refutadas, e as outras duas não puderam ser avaliadas dentro do
+escopo do presente trabalho.
+Conforme a Figura 6, as métricas SSM e PSNR provam que a semelhança
+não ultrapassaram \*[Err X]%, muito longe dos 90% esperados.
+Ainda, análise das animações Xiao Xiao 7, \*[Err Y] e \*[Err Z]
+indicam um uso mínimo, porém imprescindível, de código ActionScript
+para a correta renderização, refutando a segunda hipótese.
+Finalmente, o presente trabalho não pôde adentrar na análise do
+ActionScript contido nas animações.
+.PP
+As animações do grupo amostral são anteriores a 2005.
+Considerando a introdução do ActionScript 2 em \*[Err 200X], uma
+técnica crucial e universalmente usada, são as câmeras virtuais,
+implementadas inteiramente em ActionScript.
+Porém, considerando o cenário da produção de um jogo, estar sem câmera
+virtual realmente afetaria \fIcutscenes\fP, porém todos os demais
+\fIsprites\fP são controlados pelo jogo, de modo que uma câmera
+virtual não faz sentido.
+.PP
+A respeito da eficiência, os resultados deixam claro que os artefatos
+gerados, mesmo comprimidos, ultrapassam significativamente o peso dos
+SWFs originais, porém em todos os casos, ainda são significamente mais
+leves que os vídeos correspondentes.
+Por causa disso, está claro que trabalhos futuros devem comparar
+alternativas, como talvez gerar dados ou interpretar o arquivo SWF
+diretamente.
+É questionável, porém, o quanto isso impactaria os jogadores que
+jogassem um jogo produzido usando a solução proposta.
+Por dois motivos: primeiro, o presente trabalho processou animações
+inteiras que duram múltiplos minutos, porém um jogo é uma coleção de
+objetos cujas animações duram apenas alguns segundos para cada ciclo.
+Além disso, o armazenamento, RAM e velocidades de Internet aumentaram
+significativamente, permitindo uma margem de lentidão passar
+desperbida.
+.if 0 \{\
 .PP
 \*[Err falar da porra do V-CAM, o tutorial do Jazza.]
 .PP
 Deve confirmar seção Objetivo.
-.HEADING 1 "Câncer abaixo"
-Coisas a se discutir:
-.LIST
-.ITEM
-Significado histórico do Flash
-.ITEM
-Por que o Flash morreu?
-.ITEM
-O formato SWF
-.ITEM
-Peculiaridades do formato SWF
-.LIST OFF
-.PP
-Software de edição multimídia ou de animação
-.FLOAT
-.FiguraCurta "Software de edição multimídia ou de animação"
-.TS H BOXED
-box;
-l l l l l
-l n l l l.
-Nome	Ano	Versão	Plataforma
-.TH
-.\" https://animatearchive.neocities.org/
-FutureSplash Animator	1996	Version 1.0	Windows e macOS (PPC)
-Macromedia Flash 5	2000	Version 5.0	Windows e macOS (PPC)
-Macromedia Flash MX	2002	Version 6.0	Windows e macOS (PPC)
-Macromedia Flash MX 2004	2003	Version 7.0	Windows e macOS (PPC)
-Macromedia Flash 8	2005	Version 8.0	Windows e macOS (PPC)
-Adobe Flash CS3 Professional	2007	Version 9.0	Windows e macOS (Intel)
-Adobe Flash CS4 Professional	2008	Version 10.0	Windows e macOS (Intel)
-Adobe Flash CS5 Professional	2010	Version 11.0	Windows e macOS (Intel)
-Adobe Flash CS5.5 Professional	2011	Version 11.5	Windows e macOS (Intel)
-Adobe Flash CS6 Professional	2012	Version 12.0	Windows e macOS (Intel)
-.\" https://www.newgrounds.com/wiki/creator-resources/animation-resources
-Adobe Animate	?	?	?
-Toon Boon Harmony	?	?	?
-Toonz	?	?	?
-OpenToonz	?	?	?
-TVPaint	?	?	?
-Wick Editor	?	?	?
-Krita	?	?	?
-Synfig	?	?	?
-Pencil2D	?	?	?
-Moho	?	?	?
-.\" Other I learned about
-Rive Editor	?	?	?
-Spine2D	?	?	?
-Spriter	?	?	?
-DragonBones	?	?	?
-.TE
-Fonte: autoria própria (SQN)
-.FLOAT OFF
-.PP
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-Software que lê SWF
-.PP
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-Software para gráficos vetoriais
-.\" Discutir licença, criador, backend
-.FLOAT
-.FiguraCurta "Software gráficos vetoriais"
-.TS H BOXED
-box;
-l.
-Nome
-.TH
-PlutoVG
-NanoVG
-Skia
-Cairo
-HTML CanvasRenderingContext2D
-Direct2D
-Impeller
-Blend2D
-Rive Renderer
-OpenVG
-SDL_gfx
-.TE
-.FLOAT OFF
-.PP
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-Bibliotecas de jogos:
-.FLOAT
-.FiguraCurta "Bibliotecas de jogos"
-.TS H BOXED CENTER
-box center;
-l.
-Nome
-.TH
-SDL
-SFML
-Sokol
-GLFW
-Freeglut
-Raylib
-Allegro
-HTML
-.TE
-.FLOAT OFF
+.\}
 .NEWPAGE
 .HEADING_STYLE 1 NO_NUMBER SIZE 12 CAPS FONT B QUAD CENTER BASELINE_ADJUST 0 NO_SPACE_AFTER
 .HEADING 1 "Referências"
@@ -1744,11 +1839,14 @@ HTML
 .DOC_LEAD 14.4
 .DOC_QUAD LEFT
 .PP
+.if 0 \{\
 .COLOR red
 Referências sendo usadas de verdade:
 .COLOR black
 .SP
+.\}
 .Bibliografia
+.if 0 \{\
 .SP -1v
 .COLOR red
 Lixo abaixo:
@@ -1786,6 +1884,7 @@ ______. Chapter 7: The Preprocessor. [S. l.: s. n.], [2010a]. Disponível em: ht
 ______. Chapter 4: Multi-File Programs, Abstraction, and the Preprocessor. [S. l.: s. n.], [2010b]. Disponível em: https://www.keithschwarz.com/cs106l/fall2010/course-reader/Ch4_MultiFileAbstractionPreprocessor.pdf. Acesso em: 16 jul. 2023.
 .SP
 WIRZENIUS, Lars. C Preprocessor Trick For Implementing Similar Data Types. [S. l.: s. n.], 17 jan. 2000. Disponível em: http://liw.iki.fi/liw/texts/cpp-trick.html. Acesso em: 14 jul. 2023.
+.\}
 .NEWPAGE
 .PARA_INDENT 1.25c
 .HEADING 1 "Apêndice A: Alguns Flashes marcantes"
@@ -1920,15 +2019,22 @@ Jogos visualmente fantásticos feitos em Flash para navegador:
 .HEADING 1 "Apêndice B: Revisão do texto"
 .SPACE 1.524c-1v
 .PP
-Essa merda sempre me confunde: eu escrevo "assim." Maiúscula ou
-"assim". Maiúscula?? FUCK. Obviamente o MDT 2021 dá as duas versões,
-sem explicações. FUCK.
+Isso sempre me confunde: como eu escrevo? onde bota o ponto?
+.LIST
+.ITEM
+"assim." Maiúscula
+.ITEM
+"assim". Maiúscula
+.LIST OFF
+O MDT 2021 dá as duas versões, sem explicações.
+.if 0 \{\
 .PP
 Não falar sobre todas as bulhufas de Makefile, m4, opções de linha de comando,
 nada! Razão: é perda de tempo. É tudo intermediário. Só vou saber qualquer
 depois de fazer um jogo
 .UNDERSCORE SUFFIX , complexo
 até lá é tudo intermediário. Falar o menos possível, o mínimo.
+.\}
 .PP
 Discriminar os seguintes termos e checar a consistência no uso em texto de:
 .LIST USER "\(en\ "
@@ -1945,16 +2051,16 @@ código vs. script vs. ações vs. \fIbytecode\fP;
 .ITEM
 \fIruntime\fP vs. máquina virtual;
 .ITEM
-compilador vs. técnica proposta vs. código gerado vs. presente trabalho vs.
+conversor vs. compilador vs. técnica proposta vs. código gerado vs. presente trabalho vs.
 solução proposta;
 .ITEM
-compilar vs. emitir vs. gerar vs. imprimir;
+converter vs. compilar vs. emitir vs. gerar vs. imprimir;
 .ITEM
 código[-fonte] [[[escrito] em] C];
 .ITEM
 jogo [de computador] vs. videogame vs. jogo eletrônico;
 .ITEM
-compilador vs. leitor;
+conversor vs. compilador vs. leitor;
 .ITEM
 integrar vs. incorporar vs. incluir vs. empregar vs. usar;
 .ITEM
@@ -1966,13 +2072,9 @@ fidelidade vs. correspondência;
 .ITEM
 peso vs. tamanho.
 .LIST OFF
-.PP
-Acho bom ter tudo explicadinho já na
-.PP
-Enfatizar jogos!
-.PDF_LINK Intro SUFFIX !! "Introdução"
 .da TOC_ENTRIES
 .\" Stuff seems reversed here. Go figure hahaha.
+.if 0 \{
 \!.COLLATE
 \!.PAGINATE OFF
 \!.NO_SHIM
@@ -1994,6 +2096,7 @@ Enfatizar jogos!
 \!.ST 2 L QUAD
 \!.Simbolo GHz Gigahertz
 \!.Simbolo ms Milissegundo
+.\}
 \!.COLLATE
 \!.NO_SHIM
 \!.NO_FLEX
@@ -2013,6 +2116,7 @@ Enfatizar jogos!
 \!.ST 1 L
 \!.ST 2 L QUAD
 \!.Sigla AES Advanced Encryption Standard
+\!.Sigla API Application Programming Interface
 \!.Sigla CDN Content distribution network
 \!.Sigla GCC Gnu Compiler Collection
 \!.Sigla HTTP HyperText Transfer Protocol
@@ -2021,7 +2125,7 @@ Enfatizar jogos!
 \!.Sigla PSNR Peak signal-to-noise ratio
 \!.Sigla SSIM Structural similarity index measure
 \!.Sigla SWF ShockWave File ou Small Web Format
-\!.Abreviatura MiB mebibyte
+\!.Abreviatura MiB Mebibyte
 \!.TQ
 .\"\!.LIST_OF_TABLES  TITLE_STRING "LISTA DE TABELAS"
 .\"\!.pdfbookmark 1 "Lista de tabelas"
