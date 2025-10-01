@@ -79,6 +79,19 @@ swf2c:main.rs
 	cp target/debug/swf2c ./
 	-cp target/debug/swf2c.pdb ./
 
+swf2pdf:swf2pdf.c
+	$(CC) $(BASIC_CFLAGS) $$(pkgconf --cflags --libs cairo-pdf) -DFEAT_WINDOWS -o $@ $<
+
+DLL_FLAGS=-std=c99 -ferror-limit=1 \
+	  -Wpedantic -Wall -Wextra -Wno-unused-function \
+	  $$(pkgconf --cflags --libs cairo) -DFEAT_CAIRO
+
+work/there_she_is.dll:work/there_she_is.c
+	$(CC) $(DLL_FLAGS) -o $@ -shared $<
+
+image.pdf:swf2pdf work/there_she_is.dll
+	./swf2pdf work/there_she_is.dll 2150 $@
+
 .SUFFIXES: .swf .c .h .o .zip .html .js
 
 .swf.c:

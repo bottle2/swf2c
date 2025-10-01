@@ -627,6 +627,79 @@ function {0}_info() {{
 #endif
 
 #endif
+
+#ifdef FEAT_CAIRO
+#include <cairo.h>
+#include <assert.h>
+
+// https://lists.freedesktop.org/archives/cairo/2010-April/019691.html
+static void
+helper_quadratic_to (cairo_t *cr,
+                     double x1, double y1,
+                     double x2, double y2)
+{{
+  double x0, y0;
+  cairo_get_current_point (cr, &x0, &y0);
+  x1 += x0;
+  y1 += y0;
+  x2 += x1;
+  y2 += y1;
+  cairo_curve_to (cr,
+                  2.0 / 3.0 * x1 + 1.0 / 3.0 * x0,
+                  2.0 / 3.0 * y1 + 1.0 / 3.0 * y0,
+                  2.0 / 3.0 * x1 + 1.0 / 3.0 * x2,
+                  2.0 / 3.0 * y1 + 1.0 / 3.0 * y2,
+                  x2, y2);
+}}
+
+#define M(X, Y) cairo_move_to(cr, (X), (Y));
+#define L(DX, DY) cairo_rel_line_to(cr, (DX), (DY));
+#define B(ADX, ADY, CDX, CDY) helper_quadratic_to(cr, (CDX), (CDY), (ADX), (ADY));
+#define X(ID, COUNT, CTOR) static void car##ID(cairo_t *cr) {{ CTOR }}
+SHAPE_XS
+#undef X
+#undef B
+#undef L
+#undef M
+
+// TODO Implement sprites for Cairo
+
+static void cairo_trans(cairo_t *cr, void (*r)(cairo_t *cr), double a, double b, double c, double d, double tx, double ty)
+{{
+ cairo_matrix_t matrix = {{a, b, c, d, tx, ty}};
+ cairo_set_matrix(cr, &matrix);
+ r(cr);
+ cairo_stroke(cr);
+}}
+
+void {0}_render_cairo(cairo_t *cr, int frame)
+{{
+ cairo_set_line_width(cr, 1);
+ cairo_set_source_rgb(cr, 0, 0, 0);
+ switch (frame)
+ {{
+  #define F(ID, CTOR) case ID: CTOR break;
+  #define PSH(ID, ...) cairo_trans(cr, car##ID, __VA_ARGS__);
+  #define PSP(...)
+  FRAME_XS
+  #undef PSP
+  #undef PSH
+  #undef F
+  default: assert(!"No such frame"); break;
+ }}
+}}
+
+#endif
+
+#ifndef FEAT_JAVASCRIPT
+void {0}_data(float *framerate, int *n_frame, int *width, int *height)
+{{
+    if (framerate) *framerate = {3};
+    if (n_frame)   *n_frame   = {4};
+    if (width)     *width     = {1};
+    if (height)    *height    = {2};
+}}
+#endif
 "#, lowername, pixel_width, pixel_height, le_framerate, le_n_frame);
 
     trace!("max x = {}\n", swf.header.stage_size().x_max.to_pixels());
