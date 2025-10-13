@@ -9,7 +9,6 @@ enum Object { Shape, Sprite }
 fn main()
 {
     let mut out = std::io::stdout().lock();
-    let mut err = std::io::stderr().lock();
 
     macro_rules! fuckprint {
         ($($x:tt)*) => {
@@ -18,20 +17,21 @@ fn main()
     }
     macro_rules! efuckprint {
         ($($x:tt)*) => {
-            write!(err, $($x)*).unwrap_or_else(|_| { std::process::exit(0)})
+            write!(std::io::stderr().lock(), $($x)*).unwrap_or_else(|_| { std::process::exit(0)})
         }
     }
 
-    let mut die = || -> ! {efuckprint!("Usage: swf2c -c|-h [-t] <file>\n"); std::process::exit(1);};
+    let die = || -> ! {efuckprint!("Usage: swf2c -c|-h|-s<n> <file>\n"); std::process::exit(1);};
 
-    let Ok(g) = getopt3::new(env::args().skip(1), "chts") else { die(); };
+    let Ok(g) = getopt3::new(env::args().skip(1), "chs:") else { die(); };
     let Ok(g) = getopt3::validate(g) else { die(); };
 
     if g.arguments.len() != 1 { die(); }
 
-    let is_trace = g.options.contains_key(&'t');
+    //let is_trace = g.options.contains_key(&'t');
     let is_header = g.options.contains_key(&'h');
     let is_source = g.options.contains_key(&'c');
+    let wants_stats = g.options.get(&'s');
 
     macro_rules! trace {
         ($($x:tt)*) => { if is_trace { efuckprint!($($x)*) }}
@@ -50,8 +50,8 @@ fn main()
         }
     } */
 
-    if is_header == is_source {
-        die();
+    if wants_stats.is_none() && is_header == is_source {
+            die();
     }
 
     //fuckprint!("hi baby\n");
@@ -111,13 +111,38 @@ fn main()
     let reader = BufReader::new(file);
     let swf_buf = swf::decompress_swf(reader).unwrap();
     let swf = swf::parse_swf(&swf_buf).unwrap();
-    trace!("The SWF is version {}.\n", swf.header.version());
-    trace!("The SWF has {} tags.\n", swf.tags.len());
+    //trace!("The SWF is version {}.\n", swf.header.version());
+    //trace!("The SWF has {} tags.\n", swf.tags.len());
 
     let le_framerate = swf.header.frame_rate();
     let le_n_frame = swf.header.num_frames();
     let pixel_width = (swf.header.stage_size().x_max - swf.header.stage_size().x_min).to_pixels();
     let pixel_height = (swf.header.stage_size().y_max - swf.header.stage_size().y_min).to_pixels();
+
+
+    if let Some(which) = wants_stats {
+        match which.as_str() {
+            "1" => {
+                let mut correct_framerate = format!("{}", le_framerate);
+                if correct_framerate.contains(".") {
+                    correct_framerate = correct_framerate
+                                        .trim_end_matches('0')
+                                        .trim_end_matches('.').replacen(".", "\\&,", 1);
+                }
+                fuckprint!("{}\t{}x{}\t{}", correct_framerate, pixel_width, pixel_height, swf.header.num_frames());
+                std::process::exit(0);
+            }
+            "2" => {
+                fuckprint!("{}\t{}", swf.header.version(), swf.tags.len());
+                std::process::exit(0);
+            }
+            "3" => {
+                fuckprint!("{}p {}p", pixel_width, pixel_height);
+                std::process::exit(0);
+            }
+            _ => die()
+        }
+    }
 
     if is_header {
         fuckprint!(r"#ifndef {}_H
@@ -141,6 +166,10 @@ void {}_render_html5(__externref_t CanvasRenderingContext2D, int frame);
 void {}_render_sdl_html5(__externref_t CanvasRenderingContext2D, int frame, void *pixels, int pitch);
 #endif
 
+#ifndef FEAT_NO_DATA
+void {}_data(float *framerate, int *n_frame, int *width, int *height);
+#endif
+
 // TODO Discuss rendering cutscenes, pre-rendering sprites, ImageBitmap etc.
 // TODO See Web Worker + OffscreenCanvasRenderingContext2D.
 // TODO Document pixel format expected.
@@ -148,9 +177,10 @@ void {}_render_sdl_html5(__externref_t CanvasRenderingContext2D, int frame, void
 // TODO Figure out parameter order
 // TODO Figure out some naming convention <swf>_{{init,free,render}}[_<framework>]_<engine>[_<variant>]
 // TODO Discuss thread safety and reentrancy
+// TODO Add suggested background color for user clearing
 
 #endif
-", uppername, uppername, lowername, le_framerate, lowername, le_n_frame, lowername, pixel_width, lowername, pixel_height, lowername, lowername, lowername, lowername, lowername);
+", uppername, uppername, lowername, le_framerate, lowername, le_n_frame, lowername, pixel_width, lowername, pixel_height, lowername, lowername, lowername, lowername, lowername, lowername);
 
         std::process::exit(0);
     }
@@ -179,9 +209,9 @@ void {}_render_sdl_html5(__externref_t CanvasRenderingContext2D, int frame, void
         match tag {
             swf::Tag::ExportAssets(exported_assets) => soft_todo!(),
             swf::Tag::ScriptLimits { max_recursion_depth, timeout_in_seconds } => soft_todo!(),
-            swf::Tag::ShowFrame => { trace!("frame {}\n", frame_i); display_lists.push(display_list.clone()); frame_i += 1; if frame_i >= limit { break;} },
-            swf::Tag::Protect(None) => trace!("no protect\n"),
-            swf::Tag::Protect(Some(swf_str)) => trace!("protect is {}\n", swf_str.to_string_lossy(encoding)),
+            swf::Tag::ShowFrame => { /*trace!("frame {}\n", frame_i);*/ display_lists.push(display_list.clone()); frame_i += 1; if frame_i >= limit { break;} },
+            swf::Tag::Protect(None) => /*trace!("no protect\n")*/(),
+            swf::Tag::Protect(Some(swf_str)) => /*trace!("protect is {}\n", swf_str.to_string_lossy(encoding))*/(),
             swf::Tag::CsmTextSettings(csm_text_settings) => soft_todo!(),
             swf::Tag::DebugId(_) => soft_todo!(),
             swf::Tag::DefineBinaryData(define_binary_data) => soft_todo!(),
@@ -199,16 +229,16 @@ void {}_render_sdl_html5(__externref_t CanvasRenderingContext2D, int frame, void
             swf::Tag::DefineFont4(font4) => soft_todo!(),
             swf::Tag::DefineFontAlignZones { id, thickness, zones } => soft_todo!(),
             swf::Tag::DefineFontInfo(font_info) => {
-                trace!("define font info. no {}\n", font_info.code_table.len());
+                /*trace!("define font info. no {}\n", font_info.code_table.len());*/()
             },
             swf::Tag::DefineFontName { id, name, copyright_info } => soft_todo!(),
             swf::Tag::DefineMorphShape(define_morph_shape) => soft_todo!(),
             swf::Tag::DefineScalingGrid { id, splitter_rect } => soft_todo!(),
-            swf::Tag::DefineShape(shape) => { trace!("defshape {}\n", shape.id); shapes.push(shape)},
+            swf::Tag::DefineShape(shape) => { /*trace!("defshape {}\n", shape.id);*/ shapes.push(shape)},
             swf::Tag::DefineSound(sound) => soft_todo!(),
             swf::Tag::DefineSprite(sprite) => {
                 /*ignored.push(sprite.id);*/
-                trace!("sprite {} with {} tags and {} frames\n", sprite.id, sprite.tags.len(), sprite.num_frames);
+                /*trace!("sprite {} with {} tags and {} frames\n", sprite.id, sprite.tags.len(), sprite.num_frames);*/
                 sprite_ids.push(sprite.id);
                 sprites.push(sprite);
             },
@@ -218,7 +248,7 @@ void {}_render_sdl_html5(__externref_t CanvasRenderingContext2D, int frame, void
             swf::Tag::DoAbc(items) => soft_todo!(),
             swf::Tag::DoAbc2(do_abc2) => soft_todo!(),
             swf::Tag::DoAction(items) => {
-                trace!("some {} actions\n", items.len());
+                /*trace!("some {} actions\n", items.len());*/
             },
             swf::Tag::DoInitAction { id, action_data } => soft_todo!(),
             swf::Tag::EnableDebugger(swf_str) => soft_todo!(),
@@ -242,38 +272,39 @@ void {}_render_sdl_html5(__externref_t CanvasRenderingContext2D, int frame, void
                 n_blending += place_object.blend_mode.is_some() as i32;
                 match place_object.action {
                     swf::PlaceObjectAction::Place(id) => {
-                        trace!("placeobj {}\n", id);
+                        /*trace!("placeobj {}\n", id);*/
                         if display_list.len() <= place_object.depth as usize {
                             display_list.resize(place_object.depth as usize + 1, None);
                         }
                         display_list[place_object.depth as usize] = Some((id, if sprite_ids.binary_search(&id).is_ok() {Object::Sprite} else {Object::Shape},  place_object.matrix));
                     },
                     swf::PlaceObjectAction::Modify => {
-                        trace!("modifyobj at depth {}\n", place_object.depth);
+                        /*trace!("modifyobj at depth {}\n", place_object.depth);*/
                         display_list[place_object.depth as usize]
                         = Some((display_list[place_object.depth as usize].clone().unwrap().0, display_list[place_object.depth as usize].clone().unwrap().1, place_object.matrix))
                     },
                     swf::PlaceObjectAction::Replace(id) => {
-                        trace!("replace id {}\n", id);
+                        /*trace!("replace id {}\n", id);*/
                         display_list[place_object.depth as usize] = Some((id, if sprite_ids.binary_search(&id).is_ok() {Object::Sprite} else {Object::Shape}, place_object.matrix));
                     },
                 };
-                if let Some(name) = place_object.name { trace!("Got name {} when placing\n", name.to_string_lossy(encoding)) };
-                if let Some(ratio) = place_object.ratio { trace!("Got ratio {}\n", ratio) }
+                if let Some(name) = place_object.name { /*trace!("Got name {} when placing\n", name.to_string_lossy(encoding))*/() };
+                if let Some(ratio) = place_object.ratio { /*trace!("Got ratio {}\n", ratio)*/() }
                 if let Some(actions) = place_object.clip_actions { for ca in actions.iter() {
                     // soft_todo The action data is in swf::OpCode
-                    trace!("clip action {} with {} data\n", ca.events.bits(), ca.action_data.len())
+                    /*trace!("clip action {} with {} data\n", ca.events.bits(), ca.action_data.len())*/
                 } }
             },
             swf::Tag::RemoveObject(remove_object) => {
-                trace!("remove\n");
+                /*trace!("remove\n");*/
                 display_list[remove_object.depth as usize] = None;
             },
             swf::Tag::VideoFrame(video_frame) => soft_todo!(),
             swf::Tag::FileAttributes(file_attributes) => soft_todo!(),
             swf::Tag::FrameLabel(frame_label) => {
-                trace!("frame label: {} (is anchor: {})\n", frame_label.label.to_str_lossy(encoding), frame_label.is_anchor);
+                /*trace!("frame label: {} (is anchor: {})\n", frame_label.label.to_str_lossy(encoding), frame_label.is_anchor);*/
                 // TODO What is the current frame? the previous rendered or the to-be-rendered?
+                ()
             },
             swf::Tag::DefineSceneAndFrameLabelData(define_scene_and_frame_label_data) => soft_todo!(),
             swf::Tag::ProductInfo(product_info) => soft_todo!(),
@@ -382,25 +413,25 @@ void {}_render_sdl_html5(__externref_t CanvasRenderingContext2D, int frame, void
                     // soft_todo This code has been copy&pasted!! Refactor!
                     match place_object.action {
                         swf::PlaceObjectAction::Place(id) => {
-                            trace!("placeobj {}\n", id);
+                            /*trace!("placeobj {}\n", id);*/
                             if display_list.len() <= place_object.depth as usize {
                                 display_list.resize(place_object.depth as usize + 1, None);
                             }
                             display_list[place_object.depth as usize] = Some((id, if sprite_ids.binary_search(&id).is_ok() {Object::Sprite} else {Object::Shape},  place_object.matrix));
                         },
                         swf::PlaceObjectAction::Modify => {
-                            trace!("modifyobj at depth {}\n", place_object.depth);
+                            /*trace!("modifyobj at depth {}\n", place_object.depth);*/
                             display_list[place_object.depth as usize]
                             = Some((display_list[place_object.depth as usize].clone().unwrap().0, display_list[place_object.depth as usize].clone().unwrap().1, place_object.matrix))
                         },
                         swf::PlaceObjectAction::Replace(id) => {
-                            trace!("replace id {}\n", id);
+                            /*trace!("replace id {}\n", id);*/
                             display_list[place_object.depth as usize] = Some((id, if sprite_ids.binary_search(&id).is_ok() {Object::Sprite} else {Object::Shape}, place_object.matrix));
                         },
                     };
                 },
                 swf::Tag::RemoveObject(remove_object) => {
-                    trace!("remove obj in sprite\n");
+                    /*trace!("remove obj in sprite\n");*/
                     display_list[remove_object.depth as usize] = None;
                 },
                 _ => soft_todo!("Unexpected tag {:?}", t),
@@ -692,6 +723,7 @@ void {0}_render_cairo(cairo_t *cr, int frame)
 #endif
 
 #ifndef FEAT_JAVASCRIPT
+#ifndef FEAT_NO_DATA
 void {0}_data(float *framerate, int *n_frame, int *width, int *height)
 {{
     if (framerate) *framerate = {3};
@@ -700,13 +732,14 @@ void {0}_data(float *framerate, int *n_frame, int *width, int *height)
     if (height)    *height    = {2};
 }}
 #endif
+#endif
 "#, lowername, pixel_width, pixel_height, le_framerate, le_n_frame);
 
-    trace!("max x = {}\n", swf.header.stage_size().x_max.to_pixels());
-    trace!("max y = {}\n", swf.header.stage_size().y_max.to_pixels());
-    trace!("min x = {}\n", swf.header.stage_size().x_min.to_pixels());
-    trace!("min y = {}\n", swf.header.stage_size().y_min.to_pixels());
-    trace!("decompressed tags: {} bytes\n", swf_buf.data.len());
+    /*trace!("max x = {}\n", swf.header.stage_size().x_max.to_pixels());*/
+    /*trace!("max y = {}\n", swf.header.stage_size().y_max.to_pixels());*/
+    /*trace!("min x = {}\n", swf.header.stage_size().x_min.to_pixels());*/
+    /*trace!("min y = {}\n", swf.header.stage_size().y_min.to_pixels());*/
+    /*trace!("decompressed tags: {} bytes\n", swf_buf.data.len());*/
     efuckprint!("n_solid = {} n_linear = {} n_radial = {}  n_focal = {} n_bitmap = {}\n", n_solid, n_linear, n_radial, n_focal, n_bitmap);
     efuckprint!("n_clipping = {} n_blending = {} n_fill0 = {} n_fill1 = {}\n", n_clipping, n_blending, n_fill0, n_fill1);
 }

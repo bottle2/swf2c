@@ -1,0 +1,18 @@
+.TS H BOXED CENTER
+box center;
+cB cB cB cB
+^  ^  cB ^
+l  l  n.
+Nome	Natureza	Linguagem de	Licença
+		programação
+.TH
+swf (do Ruffle)	Biblioteca	Rust
+swf (do Haxe)	Biblioteca	Haxe
+format (do Haxe)	Biblioteca	Haxe
+JPEXS Free Flash Decompiler	Ferramenta visual	Java
+Lightspark	\fIPlayer\fP	\&C++
+swftools	Ferramentas de lote	\&C
+Gnash	\fIPlayer\fP	\&C++
+ffmpeg	Conversor	\&C
+PYSWF	Biblioteca	Python
+.TE

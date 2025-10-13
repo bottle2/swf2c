@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <stdio.h>
+#include <string.h>
 
 #if defined(FEAT_WINDOWS)
 # include <libloaderapi.h>
@@ -27,11 +28,31 @@ int main(int argc, char *argv[])
     typedef void render(cairo_t *, int);
     typedef void data(float *, int *, int *, int *);
 
-    data *d = (data *)DL_EXTRACT(lib, "there_she_is_data");
-    render *r = (render *)DL_EXTRACT(lib, "there_she_is_render_cairo");
+    // TODO remove hardcoded function names
 
-    DL_CHECK(d, 3);
-    DL_CHECK(r, 4);
+    char name[1000];
+    int len;
+    {
+        char *slash = strrchr(argv[1], '/');
+        if (!slash) slash = argv[1];
+        else slash++;
+        char *dot = strchr(slash, '.');
+        if (!dot) dot = strchr(slash, '\0') - 1;
+        else dot--;
+        len = dot - slash + 1;
+        if (len > 900)
+            return 3;
+        memcpy(name, slash, len);
+    }
+
+    #define CRINGE_CPY(W) memcpy(name + len, (W), sizeof (W))
+    CRINGE_CPY("_data");
+    data *d = (data *)DL_EXTRACT(lib, name);
+    CRINGE_CPY("_render_cairo");
+    render *r = (render *)DL_EXTRACT(lib, name);
+
+    DL_CHECK(d, 4);
+    DL_CHECK(r, 5);
 
     int n_frame;
     int width;
@@ -42,16 +63,19 @@ int main(int argc, char *argv[])
     int frame = atoi(argv[2]);
 
     if (frame <= 0 || frame > n_frame)
-        return 5;
+        return 6;
 
     cairo_surface_t *pdf = cairo_pdf_surface_create(argv[3], width, height);
 
     if (cairo_surface_status(pdf) != CAIRO_STATUS_SUCCESS)
-        return 6;
+        return 7;
 
     cairo_t *cr = cairo_create(pdf);
 
     r(cr, frame - 1);
+
+    if (cairo_surface_status(pdf) != CAIRO_STATUS_SUCCESS)
+        return 8;
 
     DL_CLOSE(lib);
 

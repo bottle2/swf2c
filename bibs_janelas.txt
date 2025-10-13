@@ -1,0 +1,21 @@
+.TS H BOXED CENTER
+box center;
+cB cB cB cB s  s  s  cB
+^  ^  ^  l  s  s  s  ^
+^  ^  ^  cB cB cB cB ^
+l  c  n  c  c  c  c  c.
+Nome	Licença	API	Plataforma	Alvo
+			_
+			Desktop	Web	Mobile	Console
+.TH
+SDL		\&C	\(OK	\(OK	\(OK	\(OK	\fCSDL_Texture\fP
+SFML		\&C++	\(OK
+Sokol		\&C	\(OK	\(OK
+GLFW		\&C++	\(OK	\(OK
+Freeglut		\&C	\(OK
+Raylib		\&C	\(OK	\(OK	Android
+Allegro		\&C	\(OK	\(OK	\(OK
+HTML		JavaScript	Se quiser	\(OK	Se quiser		\fCImageBitmap\fP
+Cocos2Dx
+.TE
+

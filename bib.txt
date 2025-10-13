@@ -1,0 +1,61 @@
+.Referencia AdobeSpec "Adobe Systems Incorporated" 2012
+\!ADOBE SYSTEMS INCORPORATED. 2012.
+\!\fBSWF FILE FORMAT SPECIFICATION: Version 19\fR.
+\![\fIonline\fR]. Disponível em:
+\!.PDF_WWW_LINK https://open-flash.github.io/mirrors/swf-spec-19.pdf PREFIX < SUFFIX >.
+\!Acesso em: março de 2025.
+.Referencia BasedFlash Bilas 200-
+\!BILAS, Scott. 200-.
+\!\fBWhat About Flash? Can We Really Make Games With It?\fR
+\![\fIonline\fR]. Disponível em:
+\!.PDF_WWW_LINK https://web.archive.org/web/20080113212114/https://www.drizzle.com/~scottb/gdc/flash-paper.htm PREFIX < SUFFIX >.
+\!Acesso em: março de 2025.
+\!.CRACK
+.Referencia FFmpegFilters "os desenvolvedores do FFmpeg" 2025a
+.\" TODO Traduzir ou não o nome para português?
+.\"      Era The FFmpeg developers
+\!OS DESENVOLVEDORES DO FFMPEG, 2025a.
+\!\fBFFmpeg Filters Documentation\fP.
+\![\fIonline\fP].
+\!Disponível em:
+\!.PDF_WWW_LINK https://www.ffmpeg.org/ffmpeg-filters.html PREFIX < SUFFIX >.
+\!Acesso em: maio de 2025.
+.Referencia FFmpegFormats "os desenvolvedores do \%FFmpeg" 2025b
+\!______, 2025b.
+\!\fBFFmpeg Formats Documentation\fP.
+\![\fIonline\fP].
+\!Disponível em:
+\!.PDF_WWW_LINK https://ffmpeg.org/ffmpeg-formats.html PREFIX < SUFFIX >.
+\!Acesso em: junho de 2025.
+\!.CRACK
+.Referencia Swivel Newgrounds 201-
+\!NEWGROUNDS. 201-.
+\!\fBNewgrounds Wiki: Swivel - Flash to Video\fP.
+\![\fIonline\fP]. Disponível em:
+\!.PDF_WWW_LINK https://www.newgrounds.com/wiki/creator-resources/animation-resources/swivel-flash-to-video PREFIX < SUFFIX >.
+\!Acesso em: jun. de 2025.
+\!.CRACK
+.Referencia Fgl RoseDragon 201-
+\!ROSEDRAGON. 201-.
+\!\fBFGL Developer Newbie Guide\fP.
+\![\fIonline\fP].
+\!Disponível em:
+\!.PDF_WWW_LINK https://web.archive.org/web/20130510205857/https://www.fgl.com/view_library.php?page=devnewbieguide PREFIX < SUFFIX >.
+\!Acesso em: jun. de 2025.
+\!.CRACK
+.Referencia SteamDB "o time do SteamDB" 2020
+\!O TIME DO STEAMDB. 2013.
+\!\fBTaking a look at Steam's download and preload system\fP.
+\![\fIonline\fP].
+\!.PDF_WWW_LINK https://steamdb.info/blog/steam-download-system/ PREFIX < SUFFIX >.
+\!Acesso em: junho de 2025.
+.Referencia GettingSponsored Wilton 2013
+\!WILTON, Julian. 2013.
+\!\fBThe 5 Most Important Things to Consider When Getting Your Flash
+\!Game Sponsored\fP.
+\![\fIonline\fP].
+\!Disponível em:
+\!.PDF_WWW_LINK https://web.archive.org/web/20131012112913/http://gamedev.tutsplus.com/articles/business-articles/web-game-sponsorship/ PREFIX < SUFFIX >.
+\!Acesso em: junho de 2025.
+.Referencia OFF
+.\" vim:syntax=groff

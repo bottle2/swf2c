@@ -1,0 +1,843 @@
+.DOCTYPE SLIDES ASPECT 4:3
+.PAGE 25.4c 19.05c 1.75c 1.75c 5.07c+28p 0.5c
+.QUAD LEFT
+.PT_SIZE 28
+.LS 30
+.HEADERS
+.HEADER_LEFT_FONT B
+.HEADER_RULE OFF
+.HEADER_SIZE +12
+.HEADER_MARGIN 1.01c+40p
+.FOOTER_MARGIN 0
+.HEADING_STYLE 1 FONT R SIZE +30 LEAD +28 QUAD LEFT
+.HEADING_STYLE 2 FONT R SIZE +30 LEAD +28 QUAD LEFT
+.HEADING_STYLE 3 FONT R SIZE +30 LEAD +28 QUAD LEFT
+.HEADING_STYLE 4 FONT R SIZE +30 LEAD +28 QUAD LEFT
+.UNDERSCORE_WEIGHT 1.5
+.SKIP_PDF_OUTLINE
+.ds Qb \\v'-|1'\\h'|0'
+.ds Ad \\v'2'
+.de INTER
+.if dOnceInter .SP 10p
+.ds OnceInter
+..
+.de SECAO
+. HEADER_LEFT
+. NEWSLIDE
+. PP
+. ie '\\n(.$'2' .HEADING \\$1 "" "" "\\$2"
+. el .ie '\\n(.$'3' .HEADING \\$1 "" "\\$2" "\\$3"
+. el .HEADING \\$@
+. PP
+..
+.de TITULO
+.rs OnceInter
+.ie '\\n(.$'2' .HEADER_LEFT "\\*(Ad\\$2"
+.el .HEADER_LEFT "\\$2\\*(Qb\\$3"
+.NEWSLIDE
+.PDF_BOOKMARK \\$1 "\\$2 \\$3"
+.PP
+.RLD 1v+10p
+..
+.de NTITULO
+.rs OnceInter
+.ie '\\n(.$'3' \{\
+. ds Nombre "\\*(Ad\\$2
+. nr Total \\$3
+.\}
+.el \{\
+. ds Nombre "\\$2\\*(Qb\\$3
+. nr Total \\$4
+.\}
+.HEADER_LEFT "\\*[Nombre] (1/\\n[Total])"
+.NEWSLIDE
+.PDF_BOOKMARK \\$1 "\\*[Nombre]"
+.\".PDF_BOOKMARKS OFF
+.\".HEADING \\$1 "\\$2 (1/\\$3)"
+.PP
+.RLD 1v+10p
+.PDF_BOOKMARKS
+.nr Atual 1 1
+.nr Nivel \\$1
+..
+.de PTITULO
+.if \\n[Atual]>\\n[Total] .ab Excedeu
+.rs OnceInter
+.HEADER_LEFT "\\*[Nombre] (\\n+[Atual]/\\n[Total])"
+.if !'\\n(.$'1' \{\
+. NEWSLIDE
+. PP
+. RLD 1v+10p
+.\}
+..
+.de IPP
+.INTER
+.PP
+\\$*
+..
+.de OBULLET
+.LIST USER "\(bu\h'\w'\0.'u-\w'\(bu'u'"
+.INTER
+.ITEM
+\\$*
+.LIST OFF
+..
+.de SBULLET
+.INTER
+.LIST USER "\(bu\h'\w'\0.'u-\w'\(bu'u'"
+.ITEM
+\\$*
+..
+.de EBULLET
+.INTER
+.ITEM
+\\$*
+.LIST OFF
+..
+.de MBULLET
+.INTER
+.ITEM
+\\$*
+..
+.de SNUM
+.INTER
+.LIST DIGIT
+.ITEM
+\\$*
+..
+.de ENUM
+.INTER
+.ITEM
+\\$*
+.LIST OFF
+..
+.de MNUM
+.INTER
+.ITEM
+\\$*
+..
+.START
+.so pictures.txt
+.PDF_BOOKMARK 1 "Capa (título)"
+.CENTER
+.PT_SIZE 60
+.SP
+.SP
+.SP
+.SP
+.SP
+swf2c
+.PT_SIZE 24
+.SP
+.SP
+Bento Borges Schirmer
+.SP
+.RLD 0.66v
+Orientador: Dr. Cesar Tadeu Pozzer
+.SECAO 1 "Introdução"
+.if 0 \{\
+.NTITULO 2 "Jogos de computador" 3
+. IPP Presente em todas as plataformas
+. SBULLET Computador, console
+. EBULLET Celular, na Web
+. IPP Vários níveis de produção
+. SBULLET AAA: projetos massivos
+. MBULLET \fIIndie\fP: independente
+. MBULLET \fIShovelware\fP
+. EBULLET \fIGame jams\fP, \fIhackathons\fP
+.PTITULO
+. IPP É desejável criar jogos de computador
+. SBULLET Muitas lojas de jogos onde publicar
+.  SBULLET Steam, Epic Games
+.  EBULLET Play Store, Apple Store
+. MBULLET Minimizar tempo de desenvolvimento
+. MBULLET Maximizar vendas e monetização
+.  OBULLET Trabalhar de modo sustentável
+. LIST OFF
+.PTITULO
+. IPP Vários elementos envolvidos:
+. SBULLET Programação
+. MBULLET Artes visuais
+. MBULLET Música
+. MBULLET Efeitos sonoros
+. MBULLET Narrativa
+. MBULLET Divulgação, internacionalização
+. EBULLET Testes
+.NTITULO 2 "O trabalho do programador" 2
+. SBULLET Linguagens de programação e motor de jogo
+. MBULLET Mecânicas
+. MBULLET Física
+. MBULLET \fINetcode\fP, arquivos
+. MBULLET Inteligência artificial
+. MBULLET Eficiência, otimização
+. MBULLET \fIAnalytics\fP
+. EBULLET Integrar várias APIs
+. IPP Muitos anos se especializando
+.PTITULO
+. IPP Frequentemente se mistura com outras áreas
+. SBULLET \fIShaders\fP
+. MBULLET Interfaces gráficas
+. MBULLET Geração procedimental
+. EBULLET Áudio espacial
+. IPP Improvável se isolar na \(lqprogramação pura\(rq
+.TITULO 2 "O sucesso de um jogo"
+. SBULLET É possível fazer um jogo inteiramente sozinho?
+.  SBULLET Vai ser um jogo bom?
+.  EBULLET Quantos são bem sucedidos?
+. LIST OFF
+. IPP Trabalhar com outros profissionais
+. SBULLET Anos de experiência
+. MBULLET Qualidade e produtividade
+. INTER
+. ITEM
+. UNDERSCORE 5p "Uso de ferramentas especializadas"
+. EBULLET Distribuição de tarefas e metas
+.TITULO 2 "Identidade visual de um jogo"
+. IPP Muitos elementos
+. SBULLET \fIBackgrounds\fP
+. MBULLET Bonecos
+. MBULLET \fIProps\fP (objetos de cena)
+. MBULLET \fICutscenes\fP
+. EBULLET Interface gráfica
+. IPP Vários estilos visuais
+. OBULLET Sofisticação desafia limites de classificação
+.SECAO 2 "Exemplos de" "estilos artísticos"
+.TITULO 3 "Série Gretel & Hansel: feita" "inteiramente de aquerelas"
+.TITULO 3 "Série Rubble Trouble," "da Nitrome: pixel art"
+.TITULO 3 "Série Robokill: gráficos 3D" "realistas pré-renderizados"
+.TITULO 3 "Série Mass Mayhem:" "estilo cartum"
+. PIC_CUTE
+.TITULO 3 "Série 10 Gnomes:" "uso de fotografias"
+.TITULO 3 "Interlocked: gráficos 3D" "em tempo real"
+. PIC_FUCK
+.\}
+.NTITULO 2 "O que é o Flash" 2
+. if 0 . OBULLET Os exemplos anteriores foram feitos com Flash
+. IPP São três tecnologias
+. SNUM Um editor de animações
+.  OBULLET Conhecido simplesmente como \(lqo Flash\(rq
+. MNUM Um formato de arquivo chamado SWF
+.  OBULLET Significa Small Web Format
+. MNUM O Flash Player
+.  SBULLET A \fIruntime\fP que renderiza um SWF
+.  EBULLET Um \fIplugin\fP para navegadores de Internet
+. LIST OFF
+.PTITULO
+. IPP As três tecnologias formam um pipeline de produção de conteúdo
+. SNUM Criação
+. MNUM Distribuição
+. ENUM Reprodução
+. IPP Desse modo, o Flash sozinho é suficiente e \%completo para combinar os esforços de vários tipos de profissionais
+.TITULO 2 "Recursos do Flash"
+. SBULLET Desenhos e tipografia
+. MBULLET Animação
+. MBULLET Código com ActionScript
+. MBULLET Mixagem de sons e vídeos
+. MBULLET Elementos interativos
+.  SBULLET Botões e caixas de texto
+.  EBULLET Input do mouse e teclado
+. EBULLET Pipeline 3D através do Stage3D
+.TITULO 2 "História do Flash"
+. IPP Remonta 1993
+. SBULLET Protótipos da FutureWave
+. MBULLET Aquisição da Macromedia
+. MBULLET Aquisição da Adobe
+. EBULLET Período de descontinuação
+. IPP Evolução junto com a da Internet
+. OBULLET \fIPlugin\fP para navegadores, presença úbiqua
+.if 0 \{\
+.TITULO 2 "Modelo comercial do Flash"
+. SBULLET Ferramentas pagas
+.  SBULLET Contratos com escolas e universidaes
+.  EBULLET Uso por estúdios
+. MBULLET Compra do código-fonte da \fIruntime\fP
+.  SBULLET Esquema da Macromedia
+.  EBULLET Jogos para consoles
+. EBULLET \fIPlugin\fP e SDKs gratuitos
+.TITULO 2 "Usos e monetização com o Flash"
+. SBULLET Conteúdo para a Web
+.  SBULLET Venda e leilão de jogos virais
+.  MBULLET Anúncios e micro-transações
+.  EBULLET Coleta e venda de dados de usuários
+. MBULLET Produções para cinema e televisão
+.  SBULLET Desenhos animados
+.  EBULLET Aberturas e créditos em filmes e séries
+. EBULLET Rich Internet Applications (RIA)
+.\}
+.SECAO 2 "Morte do Flash"
+.NTITULO 3 "Carta de Steve Jobs: " "\fIThoughts on\fP Flash" 2
+. SBULLET Publicada em abril de 2010
+. MBULLET \(lqReflexões sobre o Flash\(rq
+. MBULLET Proibição do Flash no iPhone, iPod e iPad
+. EBULLET Seis críticas pontuais
+.PTITULO
+. SBULLET Adobe e Apple, aliadas no mercado criativo
+.  SBULLET Apple conheceu a Adobe em seus tempos de garagem
+.  MBULLET Apple foi primeiro grande cliente da Adobe
+.  MBULLET Adoção do PostScript para o Laserwriter
+.  EBULLET Apple controlou 20% das ações da Adobe por anos
+. LIST OFF
+.TITULO 4 "Crítica 1:" "Tecnologia proprietária, não aberta"
+. SBULLET Controle total pela Adobe
+. MBULLET Em constraste com HTML5, CSS e JavaScript
+.  SBULLET Controlado por comitê de padronização
+.  EBULLET Motor WebKit aberto criado pela Apple
+. LIST OFF
+.NTITULO 4 "Crítica 2: " "Acesso \(lqcompleto\(rq à Web" 2
+. SBULLET Flash como formato de vídeo
+. MBULLET Flash como \fIplayer\fP de vídeos
+. MBULLET Jogos em Flash
+. MBULLET Consumir Internet somente através do Flash
+.PTITULO
+. MBULLET Formato moderno de vídeo H.264
+.  SBULLET 40% dos vídeos do mundo no YouTube
+.   OBULLET Acessado por um aplicativo nativo
+.  MBULLET \c
+Vimeo, Netflix, Facebook, ABC,
+.BR
+CBS, CNN, MSNBC, Fox News, ESPN,
+NPR, Time, The New York Times,
+.BR
+The Wall Street Journal, Sports
+Illustrated, People, \%National\~\%Geographic
+.  LIST OFF
+. MBULLET 50000 jogos \fImobile\fP na Apple Store
+. LIST OFF
+.TITULO 4 "Crítica 3: Segurança," "confiabilidade e desempenho"
+. SBULLET Flash recordista de vulnerabilidades em 2009, segundo Symantec
+. MBULLET Maior causador de \fIcrashes\fP no Mac
+. EBULLET Desempenho terrível em dispositivos \fImobile\fP
+.TITULO 4 "Crítica 4:" "Duração da bateria"
+. SBULLET Decodificação via hardware crucial para preservar bateria
+. MBULLET Flash adotou H.264, mas todo conteúdo \%existente não usa
+.  OBULLET Esse conteúdo é renderizado em CPU
+. MBULLET Muito fácil recodificar vídeos para H.264
+. EBULLET Bateria dura 10 horas usando H.264 acelerado, 5 horas com Flash
+.TITULO 4 "Crítica 5:" "\fITouchscreen\fP"
+. SBULLET Flash foi projetado para desktops com mouse
+. MBULLET Interface Apple, interação com vários dedos
+. MBULLET Não existe interação \(lq\fIhover\fP\(rq para \fItouchscreen\fP
+. MBULLET Sites existentes feitos com Flash não \%funcionam para \fItouchscreen\fP
+.  OBULLET Se for reescrever, usar padrões abertos como HTML5, CSS e JavaScript
+. EBULLET Se Flash existisse para iPhones, iPods e iPads, conteúdo permaneceria inacessível
+.TITULO 4 "Crítica 6:" "Lentidão para se adaptar"
+. SBULLET Flash é uma ferramenta multi-plataforma
+.  OBULLET Somente o \(lqmenor denominador comum\(rq disponível
+. MBULLET Inovações da Apple nunca chegam no Flash
+. MBULLET Adobe foi a última empresa a adotar o Mac\~OS\~X
+.  OBULLET Flash CS5 adotou Cocoa após dez anos
+. EBULLET A Apple quer os melhores aplicativos possíveis
+.TITULO 3 "Descontinuação do Flash"
+. SBULLET Oficialmente depreciado em 2017
+. MBULLET Reconhecimento de padrões abertos
+.  OBULLET HTML5, WebGL e WebAssembly
+. MBULLET Colaboração entre Apple, Facebook, Google, Microsoft e Mozilla
+. MBULLET Remoção forçosa do Flash Player em 31\~de\~dezembro\~de\~2020
+. MBULLET O editor Flash passa a ser Adobe Animate
+.  OBULLET Se desvencilhar da reputação negativa
+. LIST OFF
+.TITULO 2 "Gráficos vetoriais"
+. SBULLET Características proeminente do Flash
+. MBULLET Representação eficiente
+. MBULLET Resolução infinita
+. MBULLET Poucas ferramentas produtivas para editar gráficos vetoriais
+.  OBULLET Menos ainda para animações
+. MBULLET Antes jogos podiam ser feitos em Flash
+. EBULLET Como usar animações vetoriais fora do Flash?
+.NTITULO 2 "Exemplo de gráficos vetoriais" 2
+. PIC_CUTE
+.PTITULO
+. PIC_FUCK
+.if 0 \{\
+.TITULO 2 "Motivação"
+. IPP Apesar do desfecho do Flash, é vital reconhecer:
+. SBULLET A sofisticação e abrangência do SWF
+. MBULLET A eficiência e poder dos gráficos vetoriais
+. MBULLET Ferramentas criativas que exportam SWF
+.  SBULLET Produtos da Adobe
+.  MBULLET Toon Boom Harmony
+.  EBULLET Toonz
+. EBULLET O vácuo do Flash para jogos de computador
+.\}
+.if 0 \{\
+.TITULO 2 "Editores de animações"
+. SBULLET Os editores clássicos Flash
+. MBULLET Adobe Animate
+. MBULLET Toon Boom (Harmony)
+. MBULLET Toonz
+.  OBULLET Seu sucessor OpenToonz resiste adicionar opção de exportação SWF
+. EBULLET Vários outros abertos ou pagos
+.\}
+.TITULO 2 "Objetivo"
+. IPP Converter animações do Flash para C
+. SBULLET Extrair dados do SWF
+.  SBULLET Objetos e sua composição geométrica
+.  EBULLET Cenas e suas transformações
+. MBULLET Transformar esses dados para uso universal, totalmente desentrelaçado do Flash
+.  SBULLET C compila para todas as plataformas \c
+.BR
+que existem
+.  EBULLET Todas as linguagens podem interagir com C
+. LIST OFF
+.SECAO 1 "Fundamentação teórica"
+.TITULO 2 "O formato de arquivo SWF"
+. SBULLET Extensão de arquivo é \fC.swf\fP
+. MBULLET Um único arquivo
+. MBULLET Em 2008 e 2009, Open Screen Project
+.  SBULLET Limitações legais de uso suspensas
+.  EBULLET Especificações publicadas,\c
+apesar de deficientes
+. MBULLET Amplamente estudado e compreendido,\c
+.BR
+mas não totalmente
+. EBULLET Pode ser renderizado enquanto é baixado
+.if 0 . EBULLET Recomendado nomear arquivo somente com letras, números, espaços e underline
+.NTITULO 3 "Tipos de dados" 2
+. SBULLET Inteiros de comprimento fixo ou variável
+.  SBULLET 8, 16, 32, 64 bits e outros
+.  EBULLET Com ou sem sinal, complemento de dois
+. MBULLET Números reais de ponto fixo
+.  OBULLET Formatos 16,16 ou 8,8
+. MBULLET Números reais de ponto flutuante
+.  OBULLET 16, 32 ou 64 bits
+.PTITULO
+. MBULLET Strings
+.  OBULLET Fim demarcado por caractere nulo
+. MBULLET Vetores
+. MBULLET Matrizes
+.  OBULLET Usado para transformar cena
+. MBULLET Tuplas de cores e retângulos
+. MBULLET Twips
+.  OBULLET 1/20 de um pixel lógico
+. LIST OFF
+.TITULO 3 "Cabeçalho do SWF"
+. SBULLET Primeiro byte indica compressão opcional
+. MBULLET Versão do Flash
+.  SBULLET Um único número, que aumenta
+.  EBULLET Diferente da versão do Flash Player
+. MBULLET Tamanho da janela, fixo
+. MBULLET Quantidade de quadros (não confiável)
+. MBULLET Frequência de quadros
+.  OBULLET Frequência 31,5 historicamente mágica
+. LIST OFF
+.NTITULO 3 "Estrutura das \fItags\fP" 2
+. IPP Restante do arquivo são \fItags\fP
+. IPP Compostas de três partes
+. SNUM Um inteiro que identifica o tipo
+.  SBULLET Únicos, imutáveis e permanentes para todas as versões do Flash
+.  MBULLET API nunca quebra
+.  EBULLET \fITags\fP mais avançadas são introduzidas sem remover ou alterar versões anteriores
+. PTITULO
+. MNUM Tamanho da \fItag\fP
+.  OBULLET Permite pular \fItags\fP desconhecidas
+.   OBULLET Efetivamente, confere \c
+compatibilidade \(lqpara frente\(rq
+. MNUM O conteúdo da \fItag\fP, o \fIpayload\fP
+.  SBULLET Partes da \fItag\fP tem alinhamento à bits
+.  EBULLET Utiliza bits para habilitar partes opcionais
+. LIST OFF
+. IPP A seguir, perceba a API inquebrável do Flash através
+de múltiplas versões de cada \fItag\fP
+.NTITULO 3 "Definição da cena" 2
+. SBULLET Cena é armazenada em um \fIdisplay list\fP
+.  SBULLET Objetos compõem a cena
+.  MBULLET Valor inteiro identifica objetos
+.  MBULLET Cena possui profundidade
+.   OBULLET Objetos mais à frente têm valores maiores
+.  LIST OFF
+. MBULLET A \fItag\fP ShowFrame renderiza a cena uma vez
+. EBULLET Todo quadro é definido como uma \%modificação do quadro anterior
+.PTITULO
+. SBULLET Adicionar objeto na cena
+.  OBULLET \fITag\fP PlaceObject
+. MBULLET Adicionar ou alterar objeto na cena
+.  OBULLET \fITags\fP PlaceObject2 e PlaceObject3
+. MBULLET Remover um objeto da cena
+.  OBULLET \fITags\fP RemoveObject e RemoveObject2
+. EBULLET Só pode referenciar objetos definidos \%fisicamente antes
+.NTITULO 2 "Definição de objetos" 2
+. SBULLET \fITags\fP DefineShape, DefineShape2, \%DefineShape3 e DefineShape4
+. MBULLET Objetos inteiramente definidos com \c
+.BR
+três primitivas
+.  SNUM Mova a posição de desenho sem desenhar
+.  MNUM Desenhe um segmento de reta
+.  ENUM Desenhe um curva de Bézier quadrática
+.  OBULLET Todas primitivas são definidas em valores relativos ao anterior
+.PTITULO
+. MBULLET Dicionário de estilos de preenchimentos
+. MBULLET Preenchimentos servem também para o traçado 
+. MBULLET Para cada primitiva 
+.  SBULLET Preenchimento único à direita
+.  MBULLET Preenchimento único à esquerda
+.  EBULLET Estilo e preenchimento únicos para traçado
+. EBULLET Objetos de qualquer complexidade são inteiramente definidos numa única \fItag\fP
+.TITULO 3 "Preenchimentos"
+. SBULLET Sólido
+.  OBULLET Pode ser transparente
+. MBULLET Gradiente linear ou radial
+.  SBULLET Até 15 pontos de controle
+.   OBULLET Cada um sujeito à transformações de matriz únicas
+.  EBULLET Pode usar um ponto focal
+. EBULLET Com textura
+. IPP Todos podem ter transparência
+.TITULO 2 "Definição de MovieClips/Sprites"
+. SBULLET \fITag\fP DefineSprite
+. MBULLET Confere propriedade de hierarquia de cena recursiva
+. MBULLET Define um objeto a partir de objetos \%anteriormente definidos
+. MBULLET Abrangem vários quadros
+.  OBULLET Portanto, tem acesso à \fItags\fP de manipulação de \fIdisplay list\fP
+. LIST OFF
+.NTITULO 2 "Outras \fItags\fP não tratadas" 3
+. SBULLET Texturas
+.  OBULLET \fITags\fP DefineBits, DefineBitsLossless e DefineBitsLossless2
+. MBULLET Fontes (tipografia)
+.  OBULLET \fITags\fP DefineFont, DefineFont2, DefineFont3 e DefineFont4
+.PTITULO
+. MBULLET Texto e elementos interativos
+.  OBULLET DefineText, DefineText2, DefineButton, DefineButton2 e DefineEditText
+. MBULLET Interpolação automática
+.  OBULLET \fITags\fP DefineMorphShape e DefineMorphShape2
+. MBULLET Dados brutos arbitrários com DefineBinaryData
+.PTITULO
+. MBULLET Áudio
+.  OBULLET \fITags\fP DefineSound, StartSound \c
+.BR
+e \%StartSound2
+. MBULLET ActionScript
+.  OBULLET \fITags\fP ScriptLimits, SymbolClass, DoAction, DoInitAction e DoABC
+. MBULLET Vídeo
+.  OBULLET \fITags\fP DefineVideoStream e VideoFrame
+. LIST OFF
+.SECAO 1 "Trabalhos relacionados"
+.TITULO 2 "GameMaker"
+. SBULLET Motor de jogo
+.  OBULLET Voltado à iniciantes
+. MBULLET Permite incluir SWFs
+. MBULLET Permite incluir animações esqueletais Spine
+. MBULLET Programação visual, ou com GML
+. MBULLET Inclui editor e IDE próprios
+. MBULLET Multi-plataforma
+. EBULLET Planos gratuitos e pagos
+.NTITULO 2 "\fIPlayers\fP de Flash" 5
+. SBULLET O famigerado Flash Player, oficial
+.  SBULLET Descontinuado na versão 32.0.0.465
+.  MBULLET Nunca foi descontinuado na China
+.   OBULLET Mantido por Zhongcheng
+.  MBULLET Atualmente na versão 34.0.0.330
+.   SBULLET Lançada em 10 de junho de 2025
+.   EBULLET Também usado internamente em \c
+produtos Adobe
+.  LIST OFF
+. LIST OFF
+.PTITULO
+. SBULLET Gnash
+.  SBULLET Primeira alternativa livre
+.  EBULLET Possui espírito Davi e Golias
+. MBULLET Lightspark
+.  OBULLET Sucessor do Gnash, escrito em C++
+. LIST OFF
+.PTITULO
+. SBULLET Ruffle
+.  SBULLET Escrito na linguagem \(lqsegura\(rq Rust
+.  MBULLET Projeto aberto
+.  MBULLET Financiado por estúdios e portais de jogos
+.  MBULLET Focado em preservar conteúdo existente
+.   OBULLET Adotado pelo Internet Archive
+.  EBULLET Busca também modernizar o Flash
+. LIST OFF
+.PTITULO
+. SBULLET Autodesk Scaleform GFX
+.  SBULLET Utilizado para criar interfaces gráficas
+.  MBULLET Baseado num esforço inicial \c
+.BR
+chamado \fCgameswf\fP
+.if 0 .   SBULLET Contou com contribuições de Vitaly
+.   SBULLET Possuia licença permissiva
+.    OBULLET Autodesk transformou em produto
+.   LIST OFF
+.  EBULLET Aposentado por ser lento, e um \c
+gargalo em jogos
+. LIST OFF
+.PTITULO
+. IPP Após descontinuação
+. SBULLET Distribuição HARMAN
+.  SBULLET Até 1000 dólares por ano, por empregado
+.  MBULLET HARMAN é um laboratório da Samsung
+.   OBULLET Conhecida por produtos de áudio
+.  LIST OFF
+. MBULLET CheerpX
+.  SBULLET 2000 dólares por ano, em 2020
+.HEADER_LEFT
+.  EBULLET Deve ser o código-fonte do Flash compilado com Emscripten
+. LIST OFF
+.if 0 \{\
+.TITULO 2 "Outras tecnologias" "que lidam com SWF"
+. SBULLET Haxe
+.  SBULLET OpenFL
+.  MBULLET Stencyl
+.  EBULLET HaxeFlixel
+. MBULLET SWFTools (PHP)
+. EBULLET Adobe CrossBridge (projeto Alchemy)
+.TITULO 2 "Tecnologias que utilizam SWF"
+. SBULLET Adobe AIR
+. MBULLET GameMaker
+. EBULLET Haxe
+.\}
+.SECAO 2 "Outros formatos" "de arquivos" "para gráficos vetoriais"
+.TITULO 3 "Formatos textuais"
+. SBULLET SVG
+.  SBULLET Originado em 2001
+.  EBULLET Animações com CSS, SMIL ou JavaScript
+. MBULLET Lottie
+.  SBULLET Originado em 2015
+.  MBULLET Serializado com JSON
+.  MBULLET Áudio deve ser tratado separadamente
+.  EBULLET Bastante usado em sistemas embarcados
+. LIST OFF
+.TITULO 3 "Formatos binários"
+. SBULLET PostScript e PDF
+.  OBULLET Não é animado
+. MBULLET Rive
+.  OBULLET Mesmo espírito do Flash
+. LIST OFF
+. IPP Animação esqueletal para bonecos
+. SBULLET Spine
+. MBULLET Spriter
+. EBULLET DragonBones
+.SECAO 2 "Flash na UFSM"
+.TITULO 3 "Decadium Studios"
+. SBULLET Fundada em 2003 por cinco alunos de Ciência\~da Computação
+.  OBULLET Fernando Bevilacqua e outros
+. MBULLET Filial na Alemanha
+. MBULLET Produziu 27 jogos casuais em Flash
+. MBULLET Produziu três MMOs
+. EBULLET Serviços para BigPoint, UOL e BigFish Games
+.TITULO 3 "TCC sobre salas P2P"
+. SBULLET Celito Muck Felipetto
+. MBULLET Orientado pelo professor Pozzer
+. MBULLET Defendido em 2012
+. MBULLET Fox
+. EBULLET Sistemas de salas multiplayer peer-to-peer usando UDP maluco do Flash
+.TITULO 3 "Dissertação de mestrado" "em Geomática"
+. SBULLET Dissertação de mestrado em Geomática de Fulana
+. MBULLET Defendido em 2010
+. EBULLET 70 telas
+.SECAO 1 "Metodologia"
+.NTITULO 2 "Grupo amostral" 3
+. SBULLET Exercício da solução proposta
+. MBULLET 26 animações famosas do portal Newgrounds
+. MBULLET Publicadas antes de 2005 
+. MBULLET Sete autores, sete séries
+. MBULLET Algumas resoluções ímpares
+. MBULLET Duração de cerca de dois e três minutos
+. MBULLET Contagem de quadros, efeitos do ActionScript
+. EBULLET Frequência de quadros especial 31,5
+.PTITULO
+. PT_SIZE 13
+. LS 17
+. RLD -0.02i
+.so movies_geral.txt
+.TITULO 2 "Swivel"
+. SBULLET Ferramenta visual da Newgrounds
+.  OBULLET Escrita com Haxe e Adobe AIR
+. MBULLET Converte Flash em vídeos
+. MBULLET Insere mutações no SWF
+. MBULLET Usada para ambos experimentos
+. MBULLET Uso manual
+.  OBULLET Alguns Flash exigirem interação manual
+. EBULLET Representação original das animações
+.NTITULO 2 "Experimento de fidelidade" 2
+. SBULLET Medidas computadas usando FFmpeg
+.  SBULLET Semelhança estrutural (SSIM)
+.  EBULLET Relação sinal-ruído de pico (PSNR)
+. EBULLET Vídeos de referência e candidato
+.PTITULO
+. SBULLET Swivel modificado
+.  SBULLET Removida restrição de resoluções pares
+.  EBULLET Obtenção de vídeos crus
+. MBULLET Código usando PlutoVG
+.  OBULLET Exportar vídeo cru da solução proposta
+. LIST OFF
+.NTITULO 2 "Experimento de eficiência" 3
+. SBULLET Banda larga consumida para acessar conteúdo
+.  SBULLET Em 2005, em média de 3 a 10 MB por SWF
+.  EBULLET Em 2011, em média 2 MB, no máximo 5 MB
+. MBULLET Solução comparada em sua versão Web
+.  SBULLET Trivial e mesmo contexto
+.  MBULLET Demais contextos é mais complicado
+.   SBULLET Montar um APK para Android?
+.    OBULLET Compilação para quatro arquiteturas
+.PTITULO NAT
+.   EBULLET Simular CDN da Steam?
+.  LIST OFF
+. MBULLET Compara JavaScript emitido pelo Emscripten
+.  OBULLET Demais artefatos gerados são desprezíveis
+. MBULLET Comprime JavaScript para tornar comparação mais justa
+. MBULLET Protocolo HTTP possui compressão
+.  SBULLET gzip, GNU, 1992, disponível desde 1999
+.  MBULLET Brotli, Google, 2013, disponível em 2015
+.  EBULLET Zstandard (Zstd), Facebook, 2015, disponível em 2021
+. LIST OFF
+.PTITULO
+. SBULLET Exportados vídeos usando Swivel
+. MBULLET Formato MP4 H.264 e perfil Baseline 
+. MBULLET Cortados para resolução par
+. MBULLET Mantida proporção original, sem \fIletterbox\fP
+.  OBULLET Poucos vídeos 2160p são 4K
+. MBULLET Áudio AAC
+.  SBULLET 96 e 128 kbps para vídeos 360p e 720p
+.  EBULLET 192 kbps para vídeos 1080p e 2160p
+. LIST OFF
+.SECAO 1 "Arquitetura"
+.TITULO 2 "Conversor"
+. SBULLET Ler partes relevantes do arquivo SWF
+. MBULLET Imprimir código C 
+.  SBULLET Código gerado usa bibliotecas existentes para realizar renderização
+.  MBULLET API gerada é no máximo cinco funções e quatro constantes
+.   SNUM Inicialização e liberação de memória
+.   MNUM Renderização de um quadro
+.   ENUM Dados da animação
+.  LIST OFF
+. LIST OFF
+.TITULO 2 "Compilação condicional"
+. SBULLET Código gerado possui todas as implementações ao mesmo tempo
+. MBULLET Usuário define macros para escolher quais \c
+.BR
+das APIs geradas usar
+. EBULLET Diretivas \fC#ifdef\fP e \fC#endif\fP habilitam compilação apenas do necessário
+.TITULO 2 "Macros X"
+. SBULLET Técnica de pré-processador
+. MBULLET Dados de animações são armazenados em listas definidas como macros
+. MBULLET \c
+Listas são expandidas múltiplas vezes de modos diferentes para gerar
+cada implementação em C
+. MBULLET Torna trivial gerar código para várias APIs
+. EBULLET Evita inflar tamanho do código-fonte
+.if 0 \{\
+.TITULO 2 "Algoritmo de extração" "de polígonos simples"
+.\}
+.SECAO 1 "Implementação"
+.TITULO 2 "Bibliotecas para leitura de SWF"
+. PT_SIZE 16
+. LS 20
+.so bibs_leitura.txt
+. PT_SIZE 28
+. LS 30
+. SBULLET Escolhida a biblioteca \fCswf\fP em Rust
+.  OBULLET Portanto, o conversor é escrito em Rust
+. LIST OFF
+.NTITULO 2 "Bibliotecas de gráficos vetoriais" 3
+. PT_SIZE 20
+. LS 24
+.so bibs_vector.txt
+.PTITULO
+. IPP APIs exercitadas
+. SBULLET PlutoVG
+.  SBULLET Muito fácil de compilar
+.  EBULLET Usado para execução nativa em tempo real
+. MBULLET Canvas do HTML
+.  SBULLET Facilita demonstrar a solução proposta
+.  EBULLET Navegadores de Internet otimizam renderização de gráficos vetoriais
+.PTITULO
+. MBULLET Cairo
+.  SBULLET Disponível em gerenciadores de pacotes
+.  EBULLET Permite exportar quadros do Flash para PDF
+. MBULLET Canvas do HTML com JavaScript puro
+.  OBULLET Foi necessário para relatar um bug
+. LIST OFF
+.TITULO 2 "Bibliotecas de janelas"
+. PT_SIZE 13.5
+. LS 17
+.so bibs_janelas.txt
+. PT_SIZE 28
+. LS 30
+. OBULLET Apenas SDL e HTML (JavaScript) é exercitado
+.TITULO 2 "Emscripten"
+. SBULLET Compilador
+. MBULLET Transforma C em WebAssembly e JavaScript
+. MBULLET Macro \fCEM_JS\fP permite escrever JavaScript dentro do C
+. MBULLET Tipo experimental \fC__externref_t\fP através da opção \fC-mreference-types\fP
+.  SBULLET Armazena objetos JavaScript dentro do C
+.  EBULLET Semântica semelhante à do especificador legado \fIregister\fP
+. LIST OFF
+.TITULO 2 "Tempo de compilação"
+. IPP Conforme discussão em lista de e-mail do GCC
+. SBULLET Jamais gerar código repetido
+. MBULLET Maximizar quantidade de funções reusáveis
+. MBULLET Tempo de compilação pode cair de 1 hora \c
+.BR
+e meia para apenas 40 segundos
+. LIST OFF
+.NTITULO 2 "Aparência da API" 2
+.nf
+.PT_SIZE 20
+.LS 24
+.CODE
+.so there_she_is.h
+.CODE OFF
+.fi
+.SECAO 1 "Resultados preliminares"
+.TITULO 2 "Análise de fidelidade"
+.if 0 \{\
+.PT_SIZE 14
+.LS 17
+.RLD -0.02i
+.IPP TODO
+.\}
+. SBULLET Gerados 80,8 GB de dados de referência
+. EBULLET Experimento ainda não realizado
+.NTITULO 2 "Análise de eficiência" 4
+. SBULLET Vídeos mais pesados que os SWF originais
+. MBULLET Resultados enganosos
+.  SBULLET Apenas certeza de There She Is!!! \c
+.BR
+ser representativo
+.  MBULLET Demais estão muito leves por não implementarem MovieClips/Sprites
+.  EBULLET Compreende apenas uma fração do Flash
+.PTITULO
+. MBULLET Artefatos significativamente pesados
+.  SBULLET Solução proposta desfaz propriedades compactas do SWF
+.  MBULLET Duas representações textuais a partir de \c
+.BR
+um formato binário
+.   SBULLET Código C gerado
+.   EBULLET JavaScript emitido pelo Emscripten
+.  LIST OFF
+. EBULLET Taxas de compressão significativas 
+.PTITULO
+.PT_SIZE 14
+.LS 17
+.RLD -0.02i
+.so movies_efficiency.txt
+.NTITULO 1 "Trabalhos futuros" 2
+. SBULLET Nenhuma animação utiliza câmera virtual
+.  SBULLET Implementada com ActionScript 2+
+.  EBULLET Não seria necessária no contexto de jogos
+. MBULLET Várias animações, mesmo as mais simples, contém algum ActionScript
+.  SBULLET ActionScript 1 é, supostamente, \c
+.BR
+um autômato finito
+.  EBULLET Talvez haja um subconjunto determístico
+.PTITULO
+. MBULLET Avançar mais a renderização
+.  OBULLET Caso contrário, nenhum jogo será feito
+. MBULLET Demais avanços só importam após fazer alguns jogos
+.  SBULLET Eficiência
+.  MBULLET Otimizações
+.  EBULLET Ergonomia da API gerada
+. LIST OFF
+.TITULO 1 "Cronograma"
+. PT_SIZE 19
+. LS 27
+.so cronograma.txt
+.NTITULO 1 "Referências" 5
+.so bib.txt
+.de CRACK
+.PTITULO
+.RLD 1v
+..
+.Bibliografia
+.HEADER_LEFT
+.SECAO 1 "Obrigado" "pela atenção"
+.\" vim: syntax=groff tw=70

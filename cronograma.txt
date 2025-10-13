@@ -1,0 +1,16 @@
+.TS H BOXED
+allbox expand;
+cB cBe cBe
+l  c   c.
+Atividade	out.	nov.
+.TH
+Realizar revisão bibliográfica	\(OK	\(OK
+Contar recursos usados por animações	\(OK
+Contar linhas de código geradas	\(OK
+Realizar experimento de fidelidade	\(OK
+Corrigir transformações	\(OK
+Implementar algoritmo de extração de polígonos simples	\(OK	\(OK
+Renderizar preenchimentos	\(OK	\(OK
+Expandir uso de MovieClip/Sprites	\(OK
+Adicionar verificação gramatical e ortográfica	\(OK
+.TE

@@ -176,11 +176,41 @@ External efforts:
 
 ## License
 
-Not decided yet!
+Not decided yet! To be free software.
 
 ## Contact
 
 Get in touch preferably through Newgrounds: https://detergent1.newgrounds.com/
+
+## Thesis
+
+TODO: discuss mess and lore of videos
+
+Open JPEXS Free Flash Decompiler as admin.
+
+com.newgrounds.swivel/Swivel
+
+Experimental ActionScript editor doesn't work.
+
+Middle panel, ActionScript source, go to lines 328/329 and click any
+
+Rightmost panel changes specific to `updateOutputSize`
+
+Edit P-code
+
+Remove line range 76-97 (inclusive)
+
+Save on panel.
+
+Save on top bar.
+
+If it borks, just reinstall.
+
+---
+
+$ make proxy
+
+to obtain raw videos, replace ffmpeg.exe from Swivel/ffmpeg/win64/ with proxy.exe, but rename to ffmpeg.exe. do a backup etc.
 
 ## References
 

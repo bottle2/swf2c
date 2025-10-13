@@ -48,62 +48,7 @@
 .de y-from-bot-up
 .  sp |\\n[.p]u-\\$1-\\n[.v]u
 ..
-.Referencia AdobeSpec "Adobe Systems Incorporated" 2012
-\!ADOBE SYSTEMS INCORPORATED. 2012.
-\!\fBSWF FILE FORMAT SPECIFICATION: Version 19\fR.
-\![\fIonline\fR]. Disponível em:
-\!.PDF_WWW_LINK https://open-flash.github.io/mirrors/swf-spec-19.pdf PREFIX < SUFFIX >.
-\!Acesso em: março de 2025.
-.Referencia BasedFlash Bilas 200-
-\!BILAS, Scott. 200-.
-\!\fBWhat About Flash? Can We Really Make Games With It?\fR
-\![\fIonline\fR]. Disponível em:
-\!.PDF_WWW_LINK https://web.archive.org/web/20080113212114/https://www.drizzle.com/~scottb/gdc/flash-paper.htm PREFIX < SUFFIX >.
-\!Acesso em: março de 2025.
-.Referencia FFmpegFilters "os desenvolvedores do FFmpeg" 2025a
-.\" TODO Traduzir ou não o nome para português?
-.\"      Era The FFmpeg developers
-\!OS DESENVOLVEDORES DO FFMPEG, 2025a.
-\!\fBFFmpeg Filters Documentation\fP.
-\![\fIonline\fP].
-\!Disponível em:
-\!.PDF_WWW_LINK https://www.ffmpeg.org/ffmpeg-filters.html PREFIX < SUFFIX >.
-\!Acesso em: maio de 2025.
-.Referencia FFmpegFormats "os desenvolvedores do \%FFmpeg" 2025b
-\!______, 2025b.
-\!\fBFFmpeg Formats Documentation\fP.
-\![\fIonline\fP].
-\!Disponível em:
-\!.PDF_WWW_LINK https://ffmpeg.org/ffmpeg-formats.html PREFIX < SUFFIX >.
-\!Acesso em: junho de 2025.
-.Referencia Swivel Newgrounds 201-
-\!NEWGROUNDS. 201-.
-\!\fBNewgrounds Wiki: Swivel - Flash to Video\fP.
-\![\fIonline\fP]. Disponível em:
-\!.PDF_WWW_LINK https://www.newgrounds.com/wiki/creator-resources/animation-resources/swivel-flash-to-video PREFIX < SUFFIX >.
-\!Acesso em: jun. de 2025.
-.Referencia Fgl RoseDragon 201-
-\!ROSEDRAGON. 201-.
-\!\fBFGL Developer Newbie Guide\fP.
-\![\fIonline\fP].
-\!Disponível em:
-\!.PDF_WWW_LINK https://web.archive.org/web/20130510205857/https://www.fgl.com/view_library.php?page=devnewbieguide PREFIX < SUFFIX >.
-\!Acesso em: jun. de 2025.
-.Referencia SteamDB "o time do SteamDB" 2020
-\!O TIME DO STEAMDB. 2013.
-\!\fBTaking a look at Steam's download and preload system\fP.
-\![\fIonline\fP].
-\!.PDF_WWW_LINK https://steamdb.info/blog/steam-download-system/ PREFIX < SUFFIX >.
-\!Acesso em: junho de 2025.
-.Referencia GettingSponsored Wilton 2013
-\!WILTON, Julian. 2013.
-\!\fBThe 5 Most Important Things to Consider When Getting Your Flash
-\!Game Sponsored\fP.
-\![\fIonline\fP].
-\!Disponível em:
-\!.PDF_WWW_LINK https://web.archive.org/web/20131012112913/http://gamedev.tutsplus.com/articles/business-articles/web-game-sponsorship/ PREFIX < SUFFIX >.
-\!Acesso em: junho de 2025.
-.Referencia OFF
+.so bib.txt
 .PRINTSTYLE TYPESET
 .L_MARGIN 3c
 .R_MARGIN 2c
@@ -218,6 +163,7 @@ Escrito mais no final.
 .\" Este trabalho visa desenvolver um "conversor" de aniamcoes feitas
 .\" em linguagem Flash para ....... A solucao proposta extrai.......
 .\" Expande o teu texto. 
+.if 0 \{\
 A técnica proposta é extrair recursos relevantes do arquivo Flash,
 como gráficos vetoriais e animações, e armazena-las em estruturas de
 dados em nível de pré-processador, que são expandidas múltiplas vezes
@@ -228,6 +174,7 @@ para renderizar cenários, personagens e \fIcutscenes\fP.
 Outras aplicações incluem aplicações Web e de celular, e sistemas
 embarcados, devido a versatilidade da linguagem C interagir com todas
 as plataformas.
+.\}
 .if 0 .UNDERSCORE SUFFIX . Contribuição
 .SPACE 2
 \fBPalavras-chave:\fR Computação Gráfica. Gráficos Vetoriais. Animações. Compiladores.
@@ -502,7 +449,7 @@ Deve-se descrever as contribuições que foram atingidas com a pesquisa desenvol
 artigos, dissertações e teses.
 .\}
 .NEWPAGE
-.HEADING 1 "Contextualização"
+.if 0 .HEADING 1 "Contextualização"
 .SPACE -1v
 .nr FiguraContador 0 +1
 .nr TabelaContador 0 +1
@@ -593,11 +540,13 @@ Tabela \\n[TabelaContador]\ \(en\ \\$*
 . TabelaEntradas
 . TQ
 ..
+.if 0 \{\
 .HEADING 2 "Tema \*[Pronto]"
 .PP
 Renderização de animações com gráficos vetoriais.
-.HEADING 2 "Delimitação do tema"
+.\}
 .if 0 \{\
+.HEADING 2 "Delimitação do tema"
 .PP
 O ambiente de desenvolvimento é um ambiente UNIX
 se perder em recursos modernos que, por mais convenientes e poderosos, não
@@ -778,229 +727,6 @@ o tempo de tocadores de Flash renderizarem um \
 quadro e o tempo da técnica proposta"]
 .LIST OFF
 .\}
-.HEADING 2 "Metodologia"
-.PP
-Foram realizados dois experimentos, o primeiro avaliando a fidelidade
-visual da solução proposta, e o segundo avaliando o peso de transmitir
-a animação pela Internet para um usuário, doravante denominado
-simplesmente "experimento de eficiência".
-.PP
-.if 0 \{\
-.red
-Explicar aqui porque animações e não jogos. O que muda. Ah, é porque é
-visualmente lalala, \fIcutscene\fP, pipipipipipi.
-.black
-\&
-.\}
-.PP
-A amostra usada nos dois experimentos são 26 animações,
-listadas na Figura\~1, publicadas no site Newgrounds por cinco autores
-diferentes, todas anteriores a 2005.
-Esse ano li\%mi\%te foi escolhido para contemplar a animação There she
-is!!!, mas sem incluir animações posteriores, esperando enfrentar
-arquivos Flash de menor complexidade.
-.if 0 \{
-De fato, conforme a Figura 1, a versão mínima \*[Err do Flash] para
-reproduzir as animações da amostra varia de \*[Err X] a versão
-\*[Err Y], sendo que a última versão é a \*[Err Z, datada de 2018].
-.\}
-.\", para que o trabalho pudesse se concentrar em
-.\"demonstrar a viabilidade da técnica proposta sem maiores complicações.
-.PP
-.FLOAT
-.MSWORD_SIMPLE_10 \" XXX KLUDGE
-.FiguraCurta "Animações Flash publicadas na Newgrounds usadas como casos de teste"
-.MSWORD_SIMPLE_10
-.so movies_geral.txt
-.FLOAT OFF
-.MSWORD_ONEHALF_12
-.HEADING 3 "Experimento de fidelidade visual"
-.\" https://github.com/Netflix/vmaf/blob/master/libvmaf/tools/README.md
-.\" Não vamos usar o VMAF da Netflix, porque foda-se a Netflix
-.\" (qualidade de merda, o caralho).
-.\" cheias de artefatos e blocões gigantes uuuuuuhhhrrrrrrr
-.PP
-Para a solução proposta ser útil em um projeto real, é necessário que
-seja confiável, honrando a visão artística dos profissionais
-envolvidos, sem distorções.
-Isso é avaliado comparando se a animação renderizada pela solução
-proposta reproduz a qualidade original do Flash Player.
-Essa avaliação constitui o experimento de fidelidade visual, que foi
-realizado automaticamente.
-.PP
-Para avaliar a fidelidade visual da solução proposta, é utilizado o
-conversor multimídia em lotes FFmpeg.
-Entre várias opções disponíveis, FFmpeg pode "obter a PSNR
-(Relação Sinal\%-Ruído de Pico) médio, máximo e mínimo entre dois
-vídeos" e "obter a SSIM (Métrica de Similaridade Estrutural) entre
-dois vídeos" \*[FFmpegFilters t]\&.
-.\"Desse modo, para cada animação do conjunto amostral, foi gerado um par
-.\"de gravações referência e candidato. 
-.\"Ambas são métricas de referência completa, ou seja, comparam quadro a
-.\"quadro um vídeo candidato contra um vídeo referência.
-.PP
-.\" A situação do Swivel é bem fodida, então por enquanto vamos omitir
-.\" detalhes, porque são realmente infernais e não resolvidos.
-Para gravar o vídeo de referência, que representa a qualidade original
-da animação, foi utilizado a ferramenta Swivel, que é "a melhor
-solução para converter seus filmes Adobe Flash em vídeos de alta
-definição" e "sem perder quadros" \*[Swivel t]\&.
-.PP
-Para o vídeo candidato, correspondente à solução proposta, o programa
-de teste foi adaptado para imprimir na saída padrão dados brutos de
-seus quadros.
-Essa abordagem é viável, pois FFmpeg apresenta o \fIdemuxer\fP
-\*[CODE]rawvideo\*[CODE X], que "permite ler dados brutos de vídeo.
-Como não há cabeçalho especificando os parâmetros presumidos de vídeo,
-o usuário deve especificá-los para decodificar os dados corretamente."
-.FFmpegFormats t
-.\" NÃO UTILIZADO:
-.\", e ser configurado para
-.\""salvar o PSNR de cada quadro individual" e também "salvar o SSIM de
-.\"cada quadro individual" \*[FFmpegFilters t]\&.
-.\" NÃO UTILIZADO:
-.\".PP
-.\".red
-.\"Os dados são então processados com AWK e plotados com gnuplot para
-.\"análise.
-.\".COLOR black
-.PP
-Para computar a PSNR e SSIM com FFmpeg, "ambos vídeos devem
-ter a mesma re\%solução [...] e também se pressupõe que ambos tem a
-mesma quantidade de quadros, que são comparados um a um"
-.FFmpegFilters t
-\&. Essas restrições são atendidas, pois conforme
-\*[AdobeSpec ip 28],
-os campos
-.\" Poderia citar algum dos livros retirados da biblioteca
-.\".ie 0 \{\
-.\"\*[CODE]FrameSize\*[CODE X], \*[CODE]FrameRate\*[CODE X] e
-.\"\*[CODE]FrameCount\*[CODE X]
-.\".\}
-.\".el FrameSize, FrameRate e FrameCount
-FrameSize e FrameRate
-do cabeçalho do SWF especificam va\%lo\%res
-fixos para, respectivamente, a resolução do "\fIon-screen display\fP"
-e frequência de quadros.
-.PP
-Ainda, \*[Swivel iG] adverte que "\fBpara filmes com um
-\f(BIpreloader\fB ou outros menus,\fR você pode pular esses segmentos
-alterando as configurações Start Frame e End Frame" da ferramenta
-Swivel.
-Quando foi esse o caso para qualquer uma das animações do grupo
-amostral, o mesmo corte foi repetido no programa de teste, para manter
-a mesma quantidade de quadros e garantir a correspondência de um para
-um.
-.if 0 \{
-.PP
-.red
-Wrap it all up.
-Falar do significado das métricas.
-Qual número quer dizer que estamos fodidos, qual número quer dizer que
-vencemos.
-Vai ter que citar algum dos dez mil artigos publicados a
-respeito dessa merda.
-Fuck. Significância.
-Essa merda chega a ser teste de hipótese estatístico?
-Fuck.
-Fuck.
-Eu não lembro mais dessa merda.
-Duvido que haja números publicados.
-.black
-\&
-.\}
-.HEADING 3 "Experimento de eficiência"
-.PP
-O segundo experimento comparou o tamanho dos arquivos SWF das
-animações do grupo amostral, que é exatamente o quanto um usuário
-baixa pela Internet para assisti-las, contra o tamanho comprimido de
-um objeto JavaScript que o compilador Emscripten produz, quando cada
-animação do grupo amostral é compilada para a Web usando a solução
-proposta.
-Somente o objeto JavaScript é comparado, pois é nele que residem as
-animações Flash, sendo os demais arquivos produzidos pelo Emscripten
-desprezados, por terem um peso diminuto e estável.
-A razão dos objetos JavaScript serem comprimidos para a comparação, é
-tornar a comparação justa, uma vez que o SWF tem compressão interna.
-Desse modo, são comparados três algoritmos de compressão disponíveis
-para o protocolo de Internet HTTP: \fCgzip\fP, Brotli e Zstandard.
-.PP
-Na realidade do início dos anos 2000, \*[BasedFlash it] define, entre
-outras características, que um "jogo `casual' [...] tem um tamanho
-entre 3 e 10 megabytes (usuários de modem 56K geralmente não
-conseguirão ou não terão vontade de baixar nada maior)".
-Uma década depois, \*[Fgl it], recomenda restrições ainda maiores:
-.CitacaoLongaS
-Tamanho do arquivo importa.
-Se o seu jogo for maior que 5mb, você deve con\%si\%de\%rar
-cuidadosamente se vale a pena remover recursos ou música para
-conseguir um tamanho menor.
-Muitos portais não aguentam jogos maiores que 10mb.
-Poucos patrocinadores se interessarão num jogo maior que isso.
-O tamanho médio de um jogo é 2mb.
-.CitacaoLongaE
-.if 0 \{
-.PP
-Não somente jogos em Flash são minúsculos, como também são
-distribuídos preferencialmente como um único arquivo
-.\", para que
-.\"milhares de portais roubem jogos uns dos outros facilmente, causando
-.\"um efeito viral que beneficia a todos os atores no sistema de anúncios
-.Fgl
-\&.
-.\}
-.PP
-Realizar o experimento no contexto da Web é a abordagem mais trivial,
-por ser padronizada, ubíqua e regular.
-Em outros contextos, a comparação é difusa devida a multiplicidade de
-lojas de jogos, lojas de aplicativos, instaladores, gerenciadores de
-pacotes e outros mecanismos de distribuição de executáveis.
-Por exemplo, de acordo com \*[SteamDB it], para jogos distribuídos
-pela Steam, "cada arquivo é quebrado em pedaços de por volta de um
-megabyte, e cada pedaço é comprimido com LZMA e criptografado com uma
-chave AES 256-bit".
-Ainda segundo \*[SteamDB it], "a chave de criptografia é única para o
-\fIdepot\fP e é a mesma para todos os usuários.
-Isso permite CDNs armazenarem em cache o conteúdo eficientemente, e
-permitir que caches de LAN funcionem."
-.if 0 \{\
-.HEADING 3 "Lilili"
-.PP
-Este projeto de pesquisa possui a seguinte metodologia de execução:
-.br
-1.Pesquisa aplicada;
-.br
-2.Pesquisa descritiva;
-.br
-3.Pesquisa quali-qualitativa;
-.br
-4.Método indutivo;
-.br
-5.Pesquisa bibliográfica;
-.br
-6.Pesquisa documental;
-.br
-7.Pesquisa experimental;
-.br
-8.Estudo de caso.
-.PP
-O principal caso de teste utiliza a animação musical coreana There She Is!!!, publicada em 2003, durando cerca de três minutos e meio. Os resultados da implementação proposta foram comparados à animação original para priorizar os próximos recursos a serem implementados e verificar visualmente a fidedignidade.
-.HEADING 3 "Classificação quanto a finalidade do estudo"
-.PP
-??
-.HEADING 3 "Classificação quanto aos objetivos do estudo"
-.PP
-Tem que ver né.
-.HEADING 3 "Classificação quanto aos tipos de abordagem"
-.PP
-É quantitativo.
-.HEADING 3 "Classificação quanto ao método"
-.PP
-\*[Err "Método indutivo"].
-.HEADING 3 "Classificação quanto ao tipo de procedimento"
-.PP
-Pesquisa bibliográfica, documental, experimental, ação.
-.\}
 .if 0 \{\
 .HEADING 2 "Metas"
 .PP
@@ -1018,133 +744,6 @@ Este projeto de pesquisa possui as seguintes metas:
 .br
 5.Criar novas possibilidades para aplicativos Web, de celular e em sistemas embarcado
 .\}
-.HEADING 2 "Cronograma \*[Pronto]"
-.PP
-Segue uma relação aproximada de atividades previstas, ignorando
-tarefas já realizadas antes da elaboração do cronograma:
-.DOC_LEAD 12
-.TS BOXED H
-box;
-cBp10  s 2 lBp10 cBp10
-cBp10  s   ^  cBp10
-lp10 0 lp10 lp10 cp10.
-Ativi-	Descrição	Reali-
-dade		zado
-_
-.TH
-A	+\01	Contar recursos utilizados por cada animação do grupo amostral
-A	+\02	Obter versão do Flash usada por cada animação do grupo amostral
-A	+\03	Montar três ou mais tabelas discriminando recursos usados por \
-cada animação
-A	+\04	Descrever recursos do Flash e suas peculiaridades
-A	+\05	Discutir câmera virtual do Flash, citando Jazza
-.sp 0.5
-B	+\01	Escrever slides para apresentação à banca
-B	+\02	Formatar slides
-B	+\03	Reusar figuras contidas no text do TCC nos slides preparados
-.sp 0.5
-C	+\01	Realizar experimento com Cairo
-C	+\02	Gerar código de animações usando Cairo
-C	+\02	Transformar um quadro da animação em PDF usando Cairo
-C	+\03	Alterar o programa para carregar dinamicamente funções de animação
-C	+\04	Gerar figuras vetoriais para vários quadros de várias animações
-C	+\05	Salpicar figuras vetoriais no texto do TCC e na apresentação de slides
-.sp 0.5
-D	+\01	Clonar repositório \fIopen source\fP do Swivel	\(OK
-D	+\02	Instalar Haxe
-D	+\03	Compilar Swivel uma vez
-D	+\04	Atualizar versão do FFmpeg usada pelo Swivel
-D	+\05	Atualizar versão do Adobe AIR usada pelo Swivel
-D	+\06	Remover restrição de dimensões não-ímpares do Swivel 
-D	+\07	Adicionar opção de exportar fluxo cru de pixels RGB
-D	+\08	Adicionar Swivel no PATH do MSYS2
-D	+\09	Calcular Start Frame e End Frame de cada animação do grupo amostral
-D	+10	Gerar vídeos em resoluções 360p, 720p e 1080p para cada animação do \
-grupo amostral
-D	+11	Gerar um fluxo cru de RGB para cada animação do grupo amostral
-D	+12	Adicionar tamanho de vídeos na tabela de eficiência
-D	+13	Adicionar total de quadros e duração para tabela \
-listando animações selecionadas
-.sp 0.5
-E	+\01	Relatar limite técnico do Emscripten afogando em códigos gigantes	\(OK
-E	+\02	Adicionar opção de gerar código JavaScript	\(OK
-E	+\03	Montar caso de teste em JavaScript puro	\(OK
-.sp 0.5
-F	+\01	Exportar fluxo cru de RGB com programa de teste
-F	+\02	Computar SSM e PSNR para cada animação do grupo amostral \
-usando FFmpeg
-F	+\03	Adicionar dados de semelhança na tabela de semelhança
-.sp 0.5
-G	+\01	Aplicar negrito (ênfase) para dados relevantes de tabelas
-G	+\02	Adicionar pipeline de correção gramatical para o texto do TCC
-G	+\03	Revisar espaçamento entre linhas e tamanho da fonte \
-nos elementos pré-textuais
-G	+\04	Revisar listas de figuras
-G	+\05	Adicionar código de implementação nos anexos
-G	+\06	Formar corretamente vários elementos, na verdade
-G	+\07	Criar receitas Makefile para pular processamentos \
-pesados com dados provisórios
-G	+\08	Remover palavrões
-G	+\09	Comentar fora partes inacabadas do texto do TCC	\(OK
-G	+\09	Manter referências contíguas numa única página (usando \
-\fC.FLOAT\fP)
-.sp 0.5
-H	+\01	Analisar TCC de 2012 do Celito Muck Felipetto
-H	+\02	Analisar dissertação de mestrado de 2010 da Rosilane de L. Lorenzoni
-H	+\03	Analisar carta do Steve Jobs jurando de morte o Flash
-H	+\04	Analisar livro sobre Flash MX
-H	+\05	Analisar livro sobre Flash 2004
-H	+\06	Analisar \fIwiki\fP do Gnash
-.sp 0.5
-I	+\01	Comparar arquivos SVG
-I	+\02	Comparar arquivos Lottie
-I	+\03	Comparar arquivos da Rive
-I	+\04	Comparar arquivos PostScript (PS) e PDF
-.sp 0.5
-J	+\01	Analisar motores de renderização de gráficos vetoriais
-J	+\02	Analisar bibliotecas de leituras de SWF
-J	+\03	Enumerar bibliotecas de criação de janela 
-J	+\04	Analisar editores de animações que exportam ou não SWF
-J	+\05	Citar entrevista criticando editores modernos de animação
-J	+\06	Analisar motores de jogos que importam SWF, como o GameMaker e OpenFL
-J	+\07	Analisar motores de jogos que exportam SWF
-J	+\08	Analisar outras coisas que importam SWF, como o Autodesk Scaleform GFX
-J	+\09	Analisar o Adobe AIR da HARMAN (Samsung)
-J	+10	Analisar a situação chinesa do Flash
-J	+11	Analisar os \fIplayers\fP Ruffle, Lightspark, Gnash e CheerpX
-J	+12	Analisar lançamentos secretos do Flash (versões 33 e 34)
-J	+13	Analisar histórico de versões do Flash Player e editores Flash
-J	+14	Analisar tradutores de Flash, como Adobe CrossBridge (projeto Alchemy)
-.sp 0.5
-K	+\01	Corrigir erro de transformação
-K	+\02	Adicionar opção de transformação global
-K	+\03	Adicionar renderização de MovieClip/Sprite para HTML5
-.sp 0.5
-L	+\01	Conceber, implementar e descrever algoritmo de extrair polígonos simples
-L	+\02	Manter preenchimentos sólidos do Flash
-L	+\03	Gerar código para polígonos simples
-L	+\04	Gerar código para estilos de traçados
-.sp 0.5
-M		Montar tabela com peso e contagem de linhas de código gerado
-.sp 0.5
-N	+\01	Descrever Emscripten
-N	+\02	Descrever tipo experimental \fC__externref_t\fP
-N	+\03	Descrever macro \fCEM_JS\fP
-N	+\04	Descrever compilação condicional
-N	+\05	Descrever Macros X
-N	+\06	Descrever Rust
-N	+\07	Descrever m4
-.sp 0.5
-O	+\01	Descrever arquitetura da solução
-O	+\02	Descrever API da solução
-O	+\03	Montar diagrama explicando arquitetura
-O	+\04	Discutir JPEXS Free Flash Decompiler, crucial para depuração
-O	+\05	Discussão sobre gerar código versus gerar dados versus ler dados
-.sp 0.5
-P	+\01	Descrever brevemente monetização do Flash
-P	+\02	Buscar notícias e artigos discutindo morte do Flash
-.TE
-.DOC_LEAD 21.6
 .if 0 \{\
 .HEADING 2 "Resultados esperados (literalmente hipóteses)"
 .PP
@@ -1416,24 +1015,7 @@ Ruffle, pois Rust está na moda e por ser uma biblitoeca.
 .FLOAT
 .FiguraCurta "Programas que leem SWF"
 .MSWORD_SIMPLE_12
-.TS H BOXED CENTER
-box center;
-cB cB cB cB
-^  ^  cB ^
-l  l  n.
-Nome	Natureza	Linguagem de	Licença
-		programação
-.TH
-swf (do Ruffle)	Biblioteca	Rust
-swf (do Haxe)	Biblioteca	Haxe
-format (do Haxe)	Biblioteca	Haxe
-JPEXS Free Flash Decompiler	Ferramenta visual	Java
-Lightspark	Tocador	\&C++
-swftools	Ferramentas de lote	\&C
-Gnash	Tocador	\&C++
-ffmpeg	Conversor	\&C
-PYSWF	Biblioteca	Python
-.TE
+.so bibs_leitura.txt
 .MSWORD_ONEHALF_12
 .FLOAT OFF
 .HEADING 2 "Plataformas"
@@ -1450,24 +1032,7 @@ o Cairo.
 .FLOAT
 .FiguraCurta "APIs para renderização de gráficos vetoriais"
 .MSWORD_SIMPLE_12
-.TS H BOXED CENTER
-box center;
-cB cB
-l  c.
-Nome	Licença
-.TH
-PlutoVG	MIT
-NanoVG
-Skia
-Cairo	GPL
-HTML CanvasRenderingContext2D
-Direct2D
-Impeller
-Blend2D
-Rive Renderer
-OpenVG
-SDL_gfx
-.TE
+.so bibs_vector.txt
 .MSWORD_ONEHALF_12
 .FLOAT OFF
 .if 0 \{\
@@ -1482,26 +1047,7 @@ Destes, o presente trabalho se preocupa exclusivamente com o SDL2.
 .FLOAT
 .FiguraCurta "Bibliotecas de jogos"
 .MSWORD_SIMPLE_10
-.TS H BOXED CENTER
-box center;
-cB cB cB cB s  s  s  cB
-^  ^  ^  l  s  s  s  ^
-^  ^  ^  cB cB cB cB ^
-l  c  n  c  c  c  c  c.
-Nome	Licença	API	Plataforma	Alvo
-			_
-			Desktop	Web	Mobile	Console
-.TH
-SDL		\&C	\(OK	\(OK	\(OK	\(OK	\fCSDL_Texture\fP
-SFML		\&C++	\(OK
-Sokol		\&C	\(OK	\(OK
-GLFW		\&C++	\(OK	\(OK
-Freeglut		\&C	\(OK
-Raylib		\&C	\(OK	\(OK	Android
-Allegro		\&C	\(OK	\(OK	\(OK
-HTML		JavaScript	Se quiser	\(OK	Se quiser		\fCImageBitmap\fP
-Cocos2Dx
-.TE
+.so bibs_janelas.txt
 .MSWORD_ONEHALF_12
 .FLOAT OFF
 .HEADING 3 "Macros X
@@ -1752,6 +1298,229 @@ e o Ruffle.
 .PP
 O programa Scaleform GFx da Autodesk é relevante.
 .\}
+.HEADING 1 "Metodologia"
+.PP
+Foram realizados dois experimentos, o primeiro avaliando a fidelidade
+visual da solução proposta, e o segundo avaliando o peso de transmitir
+a animação pela Internet para um usuário, doravante denominado
+simplesmente "experimento de eficiência".
+.PP
+.if 0 \{\
+.red
+Explicar aqui porque animações e não jogos. O que muda. Ah, é porque é
+visualmente lalala, \fIcutscene\fP, pipipipipipi.
+.black
+\&
+.\}
+.PP
+A amostra usada nos dois experimentos são 26 animações,
+listadas na Figura\~1, publicadas no site Newgrounds por cinco autores
+diferentes, todas anteriores a 2005.
+Esse ano li\%mi\%te foi escolhido para contemplar a animação There she
+is!!!, mas sem incluir animações posteriores, esperando enfrentar
+arquivos Flash de menor complexidade.
+.if 0 \{
+De fato, conforme a Figura 1, a versão mínima \*[Err do Flash] para
+reproduzir as animações da amostra varia de \*[Err X] a versão
+\*[Err Y], sendo que a última versão é a \*[Err Z, datada de 2018].
+.\}
+.\", para que o trabalho pudesse se concentrar em
+.\"demonstrar a viabilidade da técnica proposta sem maiores complicações.
+.PP
+.FLOAT
+.MSWORD_SIMPLE_10 \" XXX KLUDGE
+.FiguraCurta "Animações Flash publicadas na Newgrounds usadas como casos de teste"
+.MSWORD_SIMPLE_10
+.so movies_geral.txt
+.FLOAT OFF
+.MSWORD_ONEHALF_12
+.HEADING 2 "Experimento de fidelidade visual"
+.\" https://github.com/Netflix/vmaf/blob/master/libvmaf/tools/README.md
+.\" Não vamos usar o VMAF da Netflix, porque foda-se a Netflix
+.\" (qualidade de merda, o caralho).
+.\" cheias de artefatos e blocões gigantes uuuuuuhhhrrrrrrr
+.PP
+Para a solução proposta ser útil em um projeto real, é necessário que
+seja confiável, honrando a visão artística dos profissionais
+envolvidos, sem distorções.
+Isso é avaliado comparando se a animação renderizada pela solução
+proposta reproduz a qualidade original do Flash Player.
+Essa avaliação constitui o experimento de fidelidade visual, que foi
+realizado automaticamente.
+.PP
+Para avaliar a fidelidade visual da solução proposta, é utilizado o
+conversor multimídia em lotes FFmpeg.
+Entre várias opções disponíveis, FFmpeg pode "obter a PSNR
+(Relação Sinal\%-Ruído de Pico) médio, máximo e mínimo entre dois
+vídeos" e "obter a SSIM (Métrica de Similaridade Estrutural) entre
+dois vídeos" \*[FFmpegFilters t]\&.
+.\"Desse modo, para cada animação do conjunto amostral, foi gerado um par
+.\"de gravações referência e candidato. 
+.\"Ambas são métricas de referência completa, ou seja, comparam quadro a
+.\"quadro um vídeo candidato contra um vídeo referência.
+.PP
+.\" A situação do Swivel é bem fodida, então por enquanto vamos omitir
+.\" detalhes, porque são realmente infernais e não resolvidos.
+Para gravar o vídeo de referência, que representa a qualidade original
+da animação, foi utilizado a ferramenta Swivel, que é "a melhor
+solução para converter seus filmes Adobe Flash em vídeos de alta
+definição" e "sem perder quadros" \*[Swivel t]\&.
+.PP
+Para o vídeo candidato, correspondente à solução proposta, o programa
+de teste foi adaptado para imprimir na saída padrão dados brutos de
+seus quadros.
+Essa abordagem é viável, pois FFmpeg apresenta o \fIdemuxer\fP
+\*[CODE]rawvideo\*[CODE X], que "permite ler dados brutos de vídeo.
+Como não há cabeçalho especificando os parâmetros presumidos de vídeo,
+o usuário deve especificá-los para decodificar os dados corretamente."
+.FFmpegFormats t
+.\" NÃO UTILIZADO:
+.\", e ser configurado para
+.\""salvar o PSNR de cada quadro individual" e também "salvar o SSIM de
+.\"cada quadro individual" \*[FFmpegFilters t]\&.
+.\" NÃO UTILIZADO:
+.\".PP
+.\".red
+.\"Os dados são então processados com AWK e plotados com gnuplot para
+.\"análise.
+.\".COLOR black
+.PP
+Para computar a PSNR e SSIM com FFmpeg, "ambos vídeos devem
+ter a mesma re\%solução [...] e também se pressupõe que ambos tem a
+mesma quantidade de quadros, que são comparados um a um"
+.FFmpegFilters t
+\&. Essas restrições são atendidas, pois conforme
+\*[AdobeSpec ip 28],
+os campos
+.\" Poderia citar algum dos livros retirados da biblioteca
+.\".ie 0 \{\
+.\"\*[CODE]FrameSize\*[CODE X], \*[CODE]FrameRate\*[CODE X] e
+.\"\*[CODE]FrameCount\*[CODE X]
+.\".\}
+.\".el FrameSize, FrameRate e FrameCount
+FrameSize e FrameRate
+do cabeçalho do SWF especificam va\%lo\%res
+fixos para, respectivamente, a resolução do "\fIon-screen display\fP"
+e frequência de quadros.
+.PP
+Ainda, \*[Swivel iG] adverte que "\fBpara filmes com um
+\f(BIpreloader\fB ou outros menus,\fR você pode pular esses segmentos
+alterando as configurações Start Frame e End Frame" da ferramenta
+Swivel.
+Quando foi esse o caso para qualquer uma das animações do grupo
+amostral, o mesmo corte foi repetido no programa de teste, para manter
+a mesma quantidade de quadros e garantir a correspondência de um para
+um.
+.if 0 \{
+.PP
+.red
+Wrap it all up.
+Falar do significado das métricas.
+Qual número quer dizer que estamos fodidos, qual número quer dizer que
+vencemos.
+Vai ter que citar algum dos dez mil artigos publicados a
+respeito dessa merda.
+Fuck. Significância.
+Essa merda chega a ser teste de hipótese estatístico?
+Fuck.
+Fuck.
+Eu não lembro mais dessa merda.
+Duvido que haja números publicados.
+.black
+\&
+.\}
+.HEADING 2 "Experimento de eficiência"
+.PP
+O segundo experimento comparou o tamanho dos arquivos SWF das
+animações do grupo amostral, que é exatamente o quanto um usuário
+baixa pela Internet para assisti-las, contra o tamanho comprimido de
+um objeto JavaScript que o compilador Emscripten produz, quando cada
+animação do grupo amostral é compilada para a Web usando a solução
+proposta.
+Somente o objeto JavaScript é comparado, pois é nele que residem as
+animações Flash, sendo os demais arquivos produzidos pelo Emscripten
+desprezados, por terem um peso diminuto e estável.
+A razão dos objetos JavaScript serem comprimidos para a comparação, é
+tornar a comparação justa, uma vez que o SWF tem compressão interna.
+Desse modo, são comparados três algoritmos de compressão disponíveis
+para o protocolo de Internet HTTP: \fCgzip\fP, Brotli e Zstandard.
+.PP
+Na realidade do início dos anos 2000, \*[BasedFlash it] define, entre
+outras características, que um "jogo `casual' [...] tem um tamanho
+entre 3 e 10 megabytes (usuários de modem 56K geralmente não
+conseguirão ou não terão vontade de baixar nada maior)".
+Uma década depois, \*[Fgl it], recomenda restrições ainda maiores:
+.CitacaoLongaS
+Tamanho do arquivo importa.
+Se o seu jogo for maior que 5mb, você deve con\%si\%de\%rar
+cuidadosamente se vale a pena remover recursos ou música para
+conseguir um tamanho menor.
+Muitos portais não aguentam jogos maiores que 10mb.
+Poucos patrocinadores se interessarão num jogo maior que isso.
+O tamanho médio de um jogo é 2mb.
+.CitacaoLongaE
+.if 0 \{
+.PP
+Não somente jogos em Flash são minúsculos, como também são
+distribuídos preferencialmente como um único arquivo
+.\", para que
+.\"milhares de portais roubem jogos uns dos outros facilmente, causando
+.\"um efeito viral que beneficia a todos os atores no sistema de anúncios
+.Fgl
+\&.
+.\}
+.PP
+Realizar o experimento no contexto da Web é a abordagem mais trivial,
+por ser padronizada, ubíqua e regular.
+Em outros contextos, a comparação é difusa devida a multiplicidade de
+lojas de jogos, lojas de aplicativos, instaladores, gerenciadores de
+pacotes e outros mecanismos de distribuição de executáveis.
+Por exemplo, de acordo com \*[SteamDB it], para jogos distribuídos
+pela Steam, "cada arquivo é quebrado em pedaços de por volta de um
+megabyte, e cada pedaço é comprimido com LZMA e criptografado com uma
+chave AES 256-bit".
+Ainda segundo \*[SteamDB it], "a chave de criptografia é única para o
+\fIdepot\fP e é a mesma para todos os usuários.
+Isso permite CDNs armazenarem em cache o conteúdo eficientemente, e
+permitir que caches de LAN funcionem."
+.if 0 \{\
+.HEADING 3 "Lilili"
+.PP
+Este projeto de pesquisa possui a seguinte metodologia de execução:
+.br
+1.Pesquisa aplicada;
+.br
+2.Pesquisa descritiva;
+.br
+3.Pesquisa quali-qualitativa;
+.br
+4.Método indutivo;
+.br
+5.Pesquisa bibliográfica;
+.br
+6.Pesquisa documental;
+.br
+7.Pesquisa experimental;
+.br
+8.Estudo de caso.
+.PP
+O principal caso de teste utiliza a animação musical coreana There She Is!!!, publicada em 2003, durando cerca de três minutos e meio. Os resultados da implementação proposta foram comparados à animação original para priorizar os próximos recursos a serem implementados e verificar visualmente a fidedignidade.
+.HEADING 3 "Classificação quanto a finalidade do estudo"
+.PP
+??
+.HEADING 3 "Classificação quanto aos objetivos do estudo"
+.PP
+Tem que ver né.
+.HEADING 3 "Classificação quanto aos tipos de abordagem"
+.PP
+É quantitativo.
+.HEADING 3 "Classificação quanto ao método"
+.PP
+\*[Err "Método indutivo"].
+.HEADING 3 "Classificação quanto ao tipo de procedimento"
+.PP
+Pesquisa bibliográfica, documental, experimental, ação.
+.\}
 .HEADING 1 "Projeto e implementação da solução\*[Fazer]"
 .HEADING 2 "Conversor\*[Fazer]"
 .if 0 \{\
@@ -1769,7 +1538,7 @@ presente trabalho. O tradutor inteiro é um código bastante simples, logo
 Funções reentrantes, proteção de parâmetros etc.
 Pipipipipipipipipi. \"XXX
 .\}
-.HEADING 1 "Resultados\*[Fazer]"
+.HEADING 1 "Resultados preliminares\*[Fazer]"
 .PP
 A Figura 7 não é confiável, pois ainda faltam inúmeros recursos a
 serem gerados em código, de modo que uma implementação mais
@@ -1825,6 +1594,136 @@ objetos cujas animações duram apenas alguns segundos para cada ciclo.
 Além disso, o armazenamento, RAM e velocidades de Internet aumentaram
 significativamente, permitindo uma margem de lentidão passar
 desperbida.
+.HEADING 1 "Cronograma \*[Pronto]"
+.PP
+Segue uma relação aproximada de atividades previstas, ignorando
+tarefas já realizadas antes da elaboração do cronograma:
+.DOC_LEAD 12
+.TS BOXED H
+box;
+cBp10  s 2 lBp10 cBp10
+cBp10  s   ^  cBp10
+lp10 0 lp10 lp10 cp10.
+Ativi-	Descrição	Reali-
+dade		zado
+_
+.TH
+A	+\01	Contar recursos utilizados por cada animação do grupo amostral
+A	+\02	Obter versão do Flash usada por cada animação do grupo amostral	\(OK
+A	+\03	Montar três ou mais tabelas discriminando recursos usados por \
+cada animação
+A	+\04	Descrever recursos do Flash e suas peculiaridades
+A	+\05	Discutir câmera virtual do Flash, citando Jazza
+.sp 0.5
+B	+\01	Escrever slides para apresentação à banca
+B	+\02	Formatar slides
+B	+\03	Reusar figuras contidas no text do TCC nos slides preparados
+.sp 0.5
+C	+\01	Realizar experimento com Cairo	\(OK
+C	+\02	Gerar código de animações usando Cairo	\(OK
+C	+\02	Transformar um quadro da animação em PDF usando Cairo	\(OK
+C	+\03	Alterar o programa para carregar dinamicamente funções de animação	\(OK
+C	+\04	Gerar figuras vetoriais para vários quadros de várias animações
+C	+\05	Salpicar figuras vetoriais no texto do TCC e na apresentação de slides
+.sp 0.5
+D	+\01	Clonar repositório \fIopen source\fP do Swivel	\(OK
+D	+\02	Instalar Haxe	\(OK
+D	+\03	Compilar Swivel uma vez	\(OK
+D	+\04	Atualizar versão do FFmpeg usada pelo Swivel	\(OK
+D	+\05	Atualizar versão do Adobe AIR usada pelo Swivel	\(OK
+D	+\06	Remover restrição de dimensões não-ímpares do Swivel	\(OK
+D	+\07	Adicionar opção de exportar fluxo cru de pixels RGB	\(OK
+D	+\08	Adicionar Swivel no PATH do MSYS2
+D	+\09	Calcular Start Frame e End Frame de cada animação do grupo amostral	\(OK
+D	+10	Gerar vídeos em resoluções 360p, 720p e 1080p para cada animação do \
+grupo amostral
+D	+11	Gerar um fluxo cru de RGB para cada animação do grupo amostral	\(OK
+D	+12	Adicionar tamanho de vídeos na tabela de eficiência
+D	+13	Adicionar total de quadros e duração para tabela \
+listando animações selecionadas
+.sp 0.5
+E	+\01	Relatar limite técnico do Emscripten afogando em códigos gigantes	\(OK
+E	+\02	Adicionar opção de gerar código JavaScript	\(OK
+E	+\03	Montar caso de teste em JavaScript puro	\(OK
+.sp 0.5
+F	+\01	Exportar fluxo cru de RGB com programa de teste
+F	+\02	Computar SSM e PSNR para cada animação do grupo amostral \
+usando FFmpeg
+F	+\03	Adicionar dados de semelhança na tabela de semelhança
+.sp 0.5
+G	+\01	Aplicar negrito (ênfase) para dados relevantes de tabelas
+G	+\02	Adicionar pipeline de correção gramatical para o texto do TCC
+G	+\03	Revisar espaçamento entre linhas e tamanho da fonte \
+nos elementos pré-textuais
+G	+\04	Revisar listas de figuras
+G	+\05	Adicionar código de implementação nos anexos
+G	+\06	Formar corretamente vários elementos, na verdade
+G	+\07	Criar receitas Makefile para pular processamentos \
+pesados com dados provisórios
+G	+\08	Remover palavrões
+G	+\09	Comentar fora partes inacabadas do texto do TCC	\(OK
+G	+\09	Manter referências contíguas numa única página (usando \
+\fC.FLOAT\fP)
+.sp 0.5
+H	+\01	Analisar TCC de 2012 do Celito Muck Felipetto
+H	+\02	Analisar dissertação de mestrado de 2010 da Rosilane de L. Lorenzoni
+H	+\03	Analisar carta do Steve Jobs jurando de morte o Flash
+H	+\04	Analisar livro sobre Flash MX
+H	+\05	Analisar livro sobre Flash 2004
+H	+\06	Analisar \fIwiki\fP do Gnash
+.sp 0.5
+I	+\01	Comparar arquivos SVG
+I	+\02	Comparar arquivos Lottie
+I	+\03	Comparar arquivos da Rive
+I	+\04	Comparar arquivos PostScript (PS) e PDF
+.sp 0.5
+J	+\01	Analisar motores de renderização de gráficos vetoriais
+J	+\02	Analisar bibliotecas de leituras de SWF
+J	+\03	Enumerar bibliotecas de criação de janela 
+J	+\04	Analisar editores de animações que exportam ou não SWF
+J	+\05	Citar entrevista criticando editores modernos de animação
+J	+\06	Analisar motores de jogos que importam SWF, como o GameMaker e OpenFL
+J	+\07	Analisar motores de jogos que exportam SWF
+J	+\08	Analisar outras coisas que importam SWF, como o Autodesk Scaleform GFX
+J	+\09	Analisar o Adobe AIR da HARMAN (Samsung)
+J	+10	Analisar a situação chinesa do Flash
+J	+11	Analisar os \fIplayers\fP Ruffle, Lightspark, Gnash e CheerpX
+J	+12	Analisar lançamentos secretos do Flash (versões 33 e 34)
+J	+13	Analisar histórico de versões do Flash Player e editores Flash
+J	+14	Analisar tradutores de Flash, como Adobe CrossBridge (projeto Alchemy)
+J	+15	Analisar Apache Royale
+J	+16	Analisar OpenFL e AwayFL
+.sp 0.5
+K	+\01	Corrigir erro de transformação
+K	+\02	Adicionar opção de transformação global
+K	+\03	Adicionar renderização de MovieClip/Sprite para HTML5
+K	+\04	Adicionar cor de fundo desejado pra API
+.sp 0.5
+L	+\01	Conceber, implementar e descrever algoritmo de extrair polígonos simples
+L	+\02	Manter preenchimentos sólidos do Flash
+L	+\03	Gerar código para polígonos simples
+L	+\04	Gerar código para estilos de traçados
+.sp 0.5
+M		Montar tabela com peso e contagem de linhas de código gerado
+.sp 0.5
+N	+\01	Descrever Emscripten
+N	+\02	Descrever tipo experimental \fC__externref_t\fP
+N	+\03	Descrever macro \fCEM_JS\fP
+N	+\04	Descrever compilação condicional
+N	+\05	Descrever Macros X
+N	+\06	Descrever Rust
+N	+\07	Descrever m4
+.sp 0.5
+O	+\01	Descrever arquitetura da solução
+O	+\02	Descrever API da solução
+O	+\03	Montar diagrama explicando arquitetura
+O	+\04	Discutir JPEXS Free Flash Decompiler, crucial para depuração
+O	+\05	Discussão sobre gerar código versus gerar dados versus ler dados
+.sp 0.5
+P	+\01	Descrever brevemente monetização do Flash
+P	+\02	Buscar notícias e artigos discutindo morte do Flash
+.TE
+.DOC_LEAD 21.6
 .if 0 \{\
 .PP
 \*[Err falar da porra do V-CAM, o tutorial do Jazza.]
@@ -1846,6 +1745,10 @@ Referências sendo usadas de verdade:
 .SP
 .\}
 .Bibliografia
+.PDF_WWW_LINK https://www.adobe.com/creativecloud/file-types/video/container/swf.html
+.BR
+.PDF_WWW_LINK https://blog.free-decompiler.com/posts/
+.BR
 .PDF_WWW_LINK https://web.archive.org/web/20151011103841/http://www.kaourantin.net/2005/08/implementing-blur-filter-in-flash.html
 .if 0 \{\
 .SP -1v

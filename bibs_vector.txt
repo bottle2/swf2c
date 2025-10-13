@@ -1,0 +1,18 @@
+.TS H BOXED CENTER
+box center;
+cB cB
+l  c.
+Nome	Licença
+.TH
+PlutoVG	MIT
+NanoVG
+Skia
+Cairo	GPL
+HTML CanvasRenderingContext2D
+Direct2D
+Impeller
+Blend2D
+Rive Renderer
+OpenVG
+SDL_gfx
+.TE

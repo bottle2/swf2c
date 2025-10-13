@@ -33,12 +33,14 @@
 .\" Just like any other diversion, you can .rm Bibliografia to reset
 .\" the list
 .de Referencia
-. if '\\n[.z]'Bibliografia' .nop \!.SP
+. ds SomeReferencia
+.\". if '\\n[.z]'Bibliografia' .nop \!.SP
 . if 1=\\n[.$] \{\
-.  nop \!.SP
+.\".  nop \!.SP
 .  da
 .  return
 . \}
+. if dSomeReferencia .nop \!.SP
 . als \\$1 Citacao
 . ds \\$1_AUTOR \\$2
 . if (4=\\n(.$):(5=\\n(.$) \{\
