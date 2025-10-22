@@ -1,0 +1,50 @@
+.Referencia Animate Adobe 2023
+\!ADOBE. 2023.
+\!\fBHow to export files from Animate\fP.
+\![\fIonline\fP]. Disponível em:
+\!.PDF_WWW_LINK https://helpx.adobe.com/animate/using/exporting-content.html PREFIX < SUFFIX >. \%https://helpx.adobe.com/animate/using/exporting-content.html
+\!Acesso em: outubro de 2025.
+.Referencia Bilas Bilas 2005
+\!BILAS. 2005.
+\![\fIonline\fP]. Disponível em:
+\!Acesso em: outubro de 2025.
+.Referencia Fgl FGL 2013
+\!FGL. 2013.
+\![\fIonline\fP]. Disponível em:
+\!Acesso em: outubro de 2025.
+.Referencia Scaleform MobyGames 2025
+\!MOBYGAMES. 2025.
+\!\fBMiddleware\fP: Scaleform GFx SDK
+\![\fIonline\fP]. Disponível em:
+\!.PDF_WWW_LINK PREFIX https://www.mobygames.com/group/8075/middleware-scaleform-gfx-sdk/ < SUFFIX >. \%https://www.mobygames.com/group/8075/middleware-scaleform-gfx-sdk/
+\!Acesso em: outubro de 2025.
+.Referencia Thoughts "Steve Jobs" u JOBS 2010
+\!JOBS, Steve. 2010.
+\![\fIonline\fP]. Disponível em:
+\!Acesso em: outubro de 2025.
+.Referencia Scaleform3D "Scaleform" 2010
+\!SCALEFORM 3D Interface (3Di).
+\![\fIS\fP. \fIl\fP.: \fIs\fP. \fIn\fP.], 2010.
+\!1 vídeo (2 min).
+\!Publicado pelo canal scaleformpress.
+\!Disponível em:
+\!.PDF_WWW_LINK https://www.youtube.com/watch?v=zKDuzVbi50Q PREFIX < SUFFIX >. \%https://www.youtube.com/watch?v=zKDuzVbi50Q
+\!Acesso em: 22 de out. de 2025.
+.Referencia ToonBoom "Toon Boom Animation Inc." 2025
+\!TOON BOOM ANIMATION INC. 2025.
+\!\fBExporting Flash (SWF) Movies\fP.
+\![\fIonline\fP]. Disponível em:
+\!.PDF_WWW_LINK https://docs.toonboom.com/help/harmony-25/premium/export/export-swf-movie.html PREFIX < SUFFIX >. \%https://docs.toonboom.com/help/harmony-25/premium/export/export-swf-movie.html
+\!Acesso em: outubro de 2025.
+.Referencia WikiProds "Wikipedia" 2025
+\!WIKIPEDIA. 2025.
+\![\fIonline\fP]. Disponível em:
+\!Acesso em: outubro de 2025.
+.Referencia GameMaker "YoYo\~Games\~Ltd." 2024
+\!YOYO GAMES LTD. 2024.
+\!\fBNon-Bitmap Sprites\fP.
+\![\fIonline\fP]. Disponível em:
+\!.PDF_WWW_LINK https://manual.gamemaker.io/lts/en/Settings/Texture_Information/Non-Bitmap_Sprites.htm PREFIX < SUFFIX >. \%https://manual.gamemaker.io/lts/en/Settings/Texture_Information/Non-Bitmap_Sprites.htm
+\!Acesso em: outubro de 2025.
+.Referencia OFF
+.\" vim:syntax=groff

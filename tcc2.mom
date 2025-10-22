@@ -1,0 +1,1245 @@
+.PAPER A4
+.\" Line spacing in Word maybe means 120% the current font size.
+.de MSWORD_SIMPLE_10
+.DOC_PT_SIZE 10
+.DOC_LEAD 12
+..
+.de MSWORD_SIMPLE_12
+.PT_SIZE 12
+.LS 14.4
+..
+.de MSWORD_ONEHALF_12
+.DOC_PT_SIZE 12
+.\".LS 21.6
+.DOC_LEAD 21.6
+..
+.de MSWORD_SIMPLE_14
+.PT_SIZE 14
+.LS 16.8
+..
+.de MSWORD_SIMPLE_16
+.PT_SIZE 16
+.LS 19.2
+..
+.de CitacaoLongaS
+.RLD 0.5v
+.DOC_LEAD 14.4
+.IL 4c
+.PP
+.DOC_PT_SIZE 10
+..
+.de CitacaoLongaM
+.PP
+.PT_SIZE 10
+..
+.de CitacaoLongaE
+.ILX CLEAR
+.MSWORD_ONEHALF_12 \" XXX We should be smart instead, but fuck it.
+..
+.ds Err \\*[red]\\$*\\*[black]
+.ds Citar \\*[Err \(lBcitar\(rB]
+.ds FonteEu Fonte: elaboração própria.
+.\" Source: https://www.gnu.org/software/groff/manual/groff.html.node/Manipulating-Spacing.html
+.de y-from-bot-up
+.  sp |\\n[.p]u-\\$1-\\n[.v]u
+..
+.\".so bib.txt
+.PRINTSTYLE TYPESET
+.L_MARGIN 3c
+.R_MARGIN 2c
+.T_MARGIN 3c
+.B_MARGIN 2c
+.NO_SHIM
+.NO_FLEX
+.XCOLOR black
+.XCOLOR red
+.PDF_LINK_COLOR black
+.TOC_PT_SIZE 12
+.TOC_LEAD 21.6
+.TOC_HEADER_SIZE +0
+.TOC_HEADER_QUAD CENTER
+.TOC_HEADER_CAPS
+.TOC_HEADER_V_POS 3c+1v
+.TOC_HEADER_STRING "Sumário"
+.PAGINATE_TOC OFF
+.TOC_ENTRY_STYLE 1 SIZE 12 CAPS   FONT B INDENT 0
+.TOC_ENTRY_STYLE 2 SIZE 12 CAPS   FONT R INDENT 0
+.TOC_ENTRY_STYLE 3 SIZE 12 NO_CAPS FONT B INDENT 0
+.TOC_ENTRY_STYLE 4 SIZE 12 NO_CAPS FONT R INDENT 0
+.TOC_ENTRY_STYLE 5 SIZE 12 NO_CAPS FONT I INDENT 0
+.HEADING_STYLE 1 NUMBER SIZE 12 CAPS   FONT B
+.HEADING_STYLE 2 NUMBER SIZE 12 CAPS   FONT R
+.HEADING_STYLE 3 NUMBER SIZE 12 NOCAPS FONT B
+.HEADING_STYLE 4 NUMBER SIZE 12 NOCAPS FONT R
+.HEADING_STYLE 5 NUMBER SIZE 12 NOCAPS FONT I
+.LISTS_STYLE TITLE_QUAD CENTER PT_SIZE 12 TITLE_SIZE 0 LEAD 21.6 NO_PAGINATION
+.MSWORD_SIMPLE_12
+.PARA_INDENT 1.25c
+.INDENT_FIRST_PARAS
+.DOCHEADER OFF
+.HEADERS OFF
+.FOOTERS OFF
+.\" XXX MDT 2021 doesn't specify exact position of pagination.
+.PAGINATE OFF
+.ds Autor Bento Borges Schirmer
+.de Titulo
+Renderização de preenchimentos coloridos
+para desenhos do SWF usando
+bibliotecas comuns de gráficos vetoriais\c
+..
+.so bib2.txt
+.so pictures.txt
+.TITLE "fakenews"
+.SKIP_PDF_OUTLINE
+.ds Subtitulo
+.de Local
+Santa Maria, RS
+2025
+..
+.ds Orientador Cesar Tadeu Pozzer
+.START
+.CENTER
+.MSWORD_SIMPLE_14
+.PDF_BOOKMARK 1 "Capa"
+\*[S+2]UNIVERSIDADE FEDERAL DE SANTA MARIA
+CENTRO DE TECNOLOGIA
+CURSO DE GRADUAÇÃO EM CIÊNCIA DA COMPUTAÇÃO
+.MSWORD_SIMPLE_12
+.SPACE 8
+.MSWORD_SIMPLE_14
+\*[Autor]
+.MSWORD_SIMPLE_12
+.SPACE 8
+.\" MDT 2021 does not specify font size for title and subtitle.
+.MSWORD_SIMPLE_16
+\*[UC]\fB\*[Titulo]\fR\*[LC]
+.y-from-bot-up (2c+16.8p+16.8p)
+.MSWORD_SIMPLE_14
+\*[Local]
+.NEWPAGE
+.PDF_BOOKMARK 1 "Folha de rosto"
+.MSWORD_SIMPLE_12
+\*[UC]\*[Autor]\*[LC]
+.SPACE 7
+\*[UC]\fB\*[Titulo]\fR\*[LC]
+.SPACE 7
+.IL 8c \" Interpretação indica ser 7c, 7.5c ou 8c.
+.JUSTIFY
+Trabalho de Conclusão de Curso apresentado
+ao Curso de Graduação em Ciência da Computação
+da Universidade Federal de Santa Maria
+(UFSM, RS), como requisito parcial para obtenção
+do grau de \fBBacharel em Ciência da Computação\fR.
+.IQ CLEAR
+.CENTER
+.SPACE 10
+Orientador: Prof. Dr. \*[Orientador]
+.y-from-bot-up (2c+14.4p+14.4p)
+\*[Local]
+.PDF_BOOKMARK 1 "Resumo em língua vernácula"
+.CENTER
+.MSWORD_SIMPLE_12
+\fBRESUMO\fR
+.SPACE 2
+\*[UC]\fB\*[Titulo]\fR: \*[Subtitulo]\*[LC]
+.SPACE 2
+AUTOR: \*[Autor]
+ORIENTADOR: \*[Orientador]
+.SPACE 2
+.JUSTIFY
+.if 0 \{\
+Escrito mais no final.
+1) Introdução ao assunto,
+2) Falar que tem muitas soluções e trabalhos relacionados,
+3) Falar do problema em questão, limitações das soluções existentes,
+4) Foco genérico da pesquisa,
+5) Foco específico,
+6)
+.sp
+.\}
+.\" Pozzer: 
+.\" O que eh a tecnica? Fala um pouco mais. Ex: (rascunho)
+.\" 
+.\" Este trabalho visa desenvolver um "conversor" de aniamcoes feitas
+.\" em linguagem Flash para ....... A solucao proposta extrai.......
+.\" Expande o teu texto. 
+.if 0 \{\
+A técnica proposta é extrair recursos relevantes do arquivo Flash,
+como gráficos vetoriais e animações, e armazena-las em estruturas de
+dados em nível de pré-processador, que são expandidas múltiplas vezes
+para utilizar várias APIs de desenho, como Skia e
+CanvasRenderingContext2D.
+O código gerado pelo conversor pode ser usado em programas como jogos
+para renderizar cenários, personagens e \fIcutscenes\fP.
+Outras aplicações incluem aplicações Web e de celular, e sistemas
+embarcados, devido a versatilidade da linguagem C interagir com todas
+as plataformas.
+.\}
+.if 0 .UNDERSCORE SUFFIX . Contribuição
+.SPACE 2
+\fBPalavras-chave:\fR Computação Gráfica. Gráficos Vetoriais. Animações.
+.NEWPAGE
+.PDF_BOOKMARK 1 "Resumo em língua estrangeira"
+.CENTER
+.MSWORD_SIMPLE_12
+\fBABSTRACT\fR
+.SPACE 2
+\*[UC]\fB\*[Titulo]\fR: \*[Subtitulo]\*[LC]
+.SPACE 2
+AUTHOR: \*[Autor]
+ADVISOR: \*[Orientador]
+.SPACE 2
+.JUSTIFY
+.if 0 \{\
+LAlalalalalalalalala
+.\}
+.SPACE 2
+\fBKeywords:\fR Computer Graphics. Vector graphics. Animations.
+.de Sigla
+.TAB 1
+\\$1\\*[TB+]
+.shift
+\\$*
+..
+.als Abreviatura Sigla
+.als Acronimo Sigla
+.als Simbolo Sigla
+.TOC_AFTER_HERE
+.PAGINATE
+.PAGENUM_POS TOP RIGHT
+.PAGENUM_HYPHENS OFF
+.PAGENUMBER 8 \"XXX Defined manually, one less before Introdução
+.NEWPAGE
+.NO_SHIM OFF
+.nr TocDesired \w'2.7.5'/1m
+.TOC_PADDING 2
+.MSWORD_ONEHALF_12
+.JUSTIFY
+.nr FiguraContador 0 +1
+.nr TabelaContador 0 +1
+.de FiguraEntrar
+. da FiguraEntradas
+\!.TAB 1
+\!Figura\\\\*[TB+]
+.\"\!.TN
+\!\\$1\ \(en\\\\*[TB+]
+.\"\!.TN
+. shift
+\!\\$*\\*[LEADER]
+\!.TN
+\!\\n[#PAGENUMBER]
+. da
+..
+.de TabelaEntrar
+. da TabelaEntradas
+\!.TAB 1
+\!Tabela\\\\*[TB+]
+.\"\!.TN
+\!\\$1\ \(en\\\\*[TB+]
+.\"\!.TN
+. shift
+\!\\$*\\*[LEADER]
+\!.TN
+\!\\n[#PAGENUMBER]
+. da
+..
+.de FiguraCurta
+. FiguraEntrar \\n+[FiguraContador] \\$*
+. PT_SIZE 10
+. CENTER
+Figura \\n[FiguraContador]\ \(en\ \\$*
+. PT_SIZE
+. PP
+. RLD 12p
+..
+.de TabelaCurta
+. TabelaEntrar \\n+[TabelaContador] \\$*
+. PT_SIZE 10
+. CENTER
+Tabela \\n[TabelaContador]\ \(en\ \\$*
+. PT_SIZE
+. PP
+. RLD 12p
+..
+.\".de FiguraLonga
+.\". FiguraEntrar \\n+[FiguraContador] \\$*
+.\". PT_SIZE 10
+.\".\". SILENT
+.\".\". PAD "\\*[ST1]Figura\ \\n[FiguraContador]\ \(en\\*[ST1X]\ \\*[ST2]#\\*[ST2X]"
+.\".\". SILENT OFF
+.\". PAD "Figura\ \\n[FiguraContador]\ \(en\ \\*[ST1]#\\*[ST1X]" NOBREAK
+.\". EL
+.\". ST 1 J QUAD
+.\". TAB 1
+.\".\"Figura \\n[FiguraContador] \(en\\*[TB+]
+.\"\\$*
+.\". PT_SIZE
+.\". TQ
+.\"..
+.de ListaFiguras
+. SILENT
+. PAD "\\*[ST1]Figura\\*[ST1X]\ \\*[ST2]\0\ \(en\\*[ST2X]\ \\*[ST3]#\\*[ST3X]\ \*[ST4]\0\0\*[ST4X]"
+. char \[leader] " .
+. LEADER_CHARACTER \[leader]
+. SILENT OFF
+. ST 1 L
+. ST 2 R
+. ST 3 J QUAD
+. ST 4 C
+. TAB 1
+. FiguraEntradas
+. TQ
+..
+.de ListaTabelas
+. SILENT
+. PAD "\\*[ST1]Tabela\\*[ST1X]\ \\*[ST2]\0\ \(en\\*[ST2X]\ \\*[ST3]#\\*[ST3X]\ \*[ST4]\0\0\*[ST4X]"
+. char \[leader] " .
+. LEADER_CHARACTER \[leader]
+. SILENT OFF
+. ST 1 L
+. ST 2 R
+. ST 3 J QUAD
+. ST 4 C
+. TAB 1
+. TabelaEntradas
+. TQ
+..
+.HEADING 1 NAMED Intro "Introdução"
+.\" O TCC não é um truque de mágica, que tu descobre só no final o que
+.\" aconteceu!!
+.PP
+Jogos de computador são a combinação de várias especialidades
+artísticas e técnicas que visa entregar uma experiência interativa e
+cativante a um público mundial, abrangendo áreas como música, efeitos
+sonoros, narrativa, código, artes visuais, teste e marketing.
+.\"
+Para um jogo ser desenvolvido, não basta ter uma ideia e ser dedicado,
+é necessário que os esforços de cada profissional envolvido possam ser
+integrados de modo efetivo, e a viabilidade disso depende das
+ferramentas criativas utilizadas, e a escolha do motor de jogo.
+Como consequência, muitas vezes o escopo de um jogo acaba reduzido
+somente por causa das limitações das tecnologias envolvidas.
+.PP
+Um conversor experimental em desenvolvimento, chamada \fCswf2c\fP,
+busca fazer uma ponte entre artista e programador, com fins de
+desenvolvimento de jogos.
+.\"
+Como o nome su\%ge\%re, o conversor emite código na linguagem de
+programação C, que ao ser compilado e executado, renderiza animações.
+.\"
+As animações são obtidas lendo um arquivo SWF, que é exportado por
+editores modernos como o Adobe Animate \*[Animate ""]\& e o
+Toon\~Boom\~\%Harmony \*[ToonBoom ""]\&.
+.PP
+O conversor \fCswf2c\fP foi concebido, em primeiro lugar, por o SWF
+se tratar de um formato de arquivo bastante completo e, ao mesmo
+tempo, simples.
+.\"
+O SWF faz uso de gráficos vetoriais, que é uma representação
+matemática da arte, apresentando propriedades como re\%so\%lu\%ção
+ilimitada e eficiência, e é especialmente adequada para estilos
+artísticos reminiscentes do cartum e do anime, transmitidos na
+televisão.
+Além da parte visual, o SWF também contém áudio e texto \(em
+outros recursos que podem ser explorados.
+.PP
+Um dos problemas mais elementares é a renderização de preenchimentos
+coloridos.
+.\"
+Ao emitir código, o conversor \fCswf2c\fP usa automaticamente alguma
+biblioteca existente de renderização de gráficos vetoriais, contudo os
+dados extraídos do SWF não podem ser utilizados exatamente como se
+apresentam, pois são armazenados de modo compacto, ao passo que
+bibliotecas comuns presumem uma definição simplificada de
+preenchimento.
+.if 0 \{\
+.\"
+Portanto, o presente trabalho apresenta um algoritmo que realiza a adaptação
+necessária para que bibliotecas de gráficos vetoriais possam ser
+alimentadas com dados do SWF, e demonstra diversos exemplos
+renderizados com a solução proposta.
+.\}
+.if 0 \{\
+.\"
+Há muitas opções para a identidade visual do jogo, e um dos fatores
+que impactam na decisão de qual adotar, é como integrar o trabalho do
+artista dentro do programa do jogo.
+.\"
+Um dos 
+.PP
+Não obstante o desfecho do Flash Player, é precipitado desmerecer os
+méritos outrora responsáveis por alavancar o Flash na Internet em
+primeiro lugar.
+.\"
+Há muitas ferramentas de desenho criativo.
+Poucas ferramentas permitem criar animações.
+Menos ainda fazem uso de gráficos vetoriais.
+.\}
+.if 0 \{\
+Poucas ferramentas permitem desenho criativo com gráficos vetoriais.
+Menos ainda \*[Err lend themselves to] animação com gráficos vetoriais.
+.\}
+.\"
+.if 0\{\
+A característica única do Flash foi, não somente ser construído em
+cima de gráficos vetoriais, foi o formato de arquivo SWF, usado para
+distribuição de conteúdo Flash, também ser vetorial.
+.\}
+.if 0 \{\
+.Citar
+\c
+.red
+ pesou o clima. ver certinho essa porra. conduzir o argumento de modo
+bagualíssimo
+.black
+\c
+.PP
+Em vista disso
+.PP
+Antes, Flash era uma solução para integrar desenhistas, músicos e
+programadores para produzir jogos casuais empregando gráficos
+vetoriais.
+Com o Flash Player descontinuado, optar pelo Flash é arriscado.
+diferentes tipos de
+profissionais para a produção de jogos
+Durante duas décadas, Flash era a solução para criar jogos casuais
+empregando gráficos vetoriais
+Com o Flash Player descontinuado, 
+como desenvolvedores podem criar.
+.PP
+O motor de jogos GameMaker ataca esse problema diretamente.
+De acordo com \*[GameMaker it], "".
+.PP
+Um conversor experimental em desenvolvimento, chamada swf2c, também
+busca fazer a ponte entre artista e programador.
+O conversor, escrita em na linguagem de programação segura Rust,
+utiliza uma biblioteca do projeto Ruffle para ler arquivos SWF, e
+então extrai dados de animações dos mesmos e os transforma em código
+C, que depois pode ser compilado em um programa para renderizar
+animações, sem nenhuma dependência com o Flash.
+.PP
+O presente trabalho busca
+.PP
+Um projeto em andamento busca simplificar integração artista
+programador
+.PP
+Uma das tarefas iniciais é preenchimento
+.\}
+.HEADING 2 "Objetivos"
+.HEADING 3 "Objetivo geral"
+.PP
+Adicionar o recurso básico de preenchimento colorido para um conversor
+experimental, permitindo que programas escritos em C possam renderizar
+animações com gráficos vetoriais contidas no SWF.
+.\"é o elemento que resume e apresenta a ideia
+.\"central do trabalho. Deve ser claro e demonstrar qual a intenção daquela
+.\"projeto de pesquisa
+.HEADING 3 "Objetivos específicos"
+.LIST USER "\(en\ "
+.SHIFT_LIST 1.25c
+.ITEM
+Compreender como informações de preenchimento são armazenadas
+no SWF.
+.ITEM
+Verificar como bibliotecas comuns de gráficos vetoriais são utilizadas
+para renderizar preenchimentos.
+.ITEM
+Conceber e implementar um algoritmo que transforma os dados de
+preenchimento do SWF em uma representação viável para bibliotecas
+comuns de gráficos vetoriais consumirem.
+.ITEM
+Avaliar qualitativamente o resultado visual com \*[Err N] casos de
+teste renderizados com a solução proposta.
+.if 0 \{\
+, em comparação com a
+qualidade original do Flash Player, que é principal forma de processar
+arquivos SWF.
+.\}
+.LIST OFF
+.NEWPAGE
+.HEADING 1 "Fundamentação teórica"
+.HEADING 2 "História do Flash"
+.PP
+Flash é uma tecnologia proprietária inventada pela FutureSplash em
+1993, depois adquirida pela Macromedia em \*[Err 1996], e finalmente
+adquirida pela Adobe em \*[Err 2006].
+.\"
+Flash compreende três componentes:
+1) um editor de animações pago, conhecido simplesmente como "o\~Flash";
+2) um formato de arquivo exportado por esse editor, denominado SWF;
+e 3) o Flash\~Player, um programa que renderiza o conteúdo Flash,
+estando já em 2006 \*[Citar] ins\%ta\%la\%do em \*[Err 99,8%] de todos
+os computadores pessoais do mundo.
+.if 0 \{\
+.red
+Esses três componentes, então, essencialmente controlam criação,
+distribuição e reprodução de conteúdo para consumo.
+.black
+\c
+.\}\" Not quite bright eh
+.PP
+Enquanto ferramenta criativa para animações, \*[WikiProds i] enumera
+cerca de \*[Err 250] desenhos animados para televisão produzidos com
+Flash entre \*[Err 1995 e 2025], e ainda conforme \*[WikiProds i], no
+mesmo período de tempo, por volta de \*[Err 100] filmes utilizaram
+Flash para produzir sequências de abertura, créditos ou interlúdios.
+.PP
+Fora da televisão e do cinema, a evolução do Flash esteve intimamente
+ligada à evolução da Internet.
+.\"
+Contando com inúmeros recursos, inclusive uma linguagem de programação
+chamada ActionScript, Flash cumpriu vários papéis na Internet, sendo
+utilizado para veicular anúncios, coletar dados de usuários, construir
+partes de websites, ou mesmo construir websites inteiros, porém o
+fenômeno mais notável foram os jogos 2D para na\%ve\%ga\%do\%res de
+Internet criados com Flash.
+.\"
+De acordo com \*[Fgl i], que mediava venda e leilões de licenças para
+jogos em Flash, em seus \*[Err X] anos de atividade, \*[Err Y] jogos
+casuais foram negociados entre \*[Err Z] desenvolvedores e \*[Err 6000]
+portais cadastrados, movimentado mais de \*[Err 13] milhões de
+dólares.
+.PP
+O sucesso do Flash Player na Internet, no entanto, começa a ser
+abalado pela ascensão dos smartphones.
+Um dos acontecimentos mais importantes foi uma carta publicada
+oficialmente pela Apple, denominada "Reflexões sobre o Flash", onde
+\*[Thoughts i] discute seis razões para o Flash Player ter sido
+bloqueado no iPhone, iPad e iPod, lançando luz sobre
+questões de desempenho, segurança, instabilidade, consumo de bateria,
+usabilidade com touchscreen, controle da propriedade intelectual e
+atrasos causados à adoção de inovações.
+.PP
+Em junho 2017, a Adobe anuncia a descontinuação do Flash Player, e
+para proteger o editor de animações Flash da reputação negativa, o
+renomeia para Adobe Animate.
+.\"
+Em 31 de dezembro de 2020, em um esforço combinado da Adobe, Google,
+Microsoft, Mozilla, Apple e \*[Err X], o Flash Player é globalmente
+removido e passa a ser bloqueado ativamente em todos os computadores
+em nível de sistema operacional e de navegador de Internet.
+.HEADING 2 "O formato de arquivo SWF"
+.if 0 \{\
+.PP
+O arquivo SWF é dividido por um cabeçalho com dados básicos, como
+largura e altura da janela, seguido por um fluxo
+.PP
+A animação do SWF é definida em termos de uma sequência de quadros,
+simplificando sua interpretação, uma vez que jogos de computador, e na
+verdade todos os programas gráficos, renderizam em termos de quadros.
+.\"
+Além disso, apesar da frequência de quadros ser fixa para cada
+animação Flash, a \fItag\fP DefineMorphShape viabiliza calcular
+quadros intermediários, de modo que as animações podem se adaptar a
+monitores com taxas de atualizações altas, como 90 Hz e 144 Hz.
+.\"
+Além da parte visual, o SWF também contém áudio sincronizado
+unicamente com cada objeto presente na cena da animação, ou
+diretamente na linha de tempo principal.
+.PP
+Em 2008, foram suspensas restrições legais de seu uso.
+.PP
+Atualmente é bem conhecido, e projeto experimental utiliza uma
+biblioteca escrita na linguagem segura Rust para leitura do mesmo.
+.PP
+Apesar de ser uma sequência de quadros, com uma frequência de quadros
+pré-definida e imutável, a \fItag\fP DefineMorphShape permite como
+interpolar dois objetos entre dois ou mais quadros, de modo que, caso
+o artista faça uso desse recurso, uma animação, mesmo que projetada
+para uma taxa 12, em um monitor de alta frequência, como 144, o Flash
+Player pode interpolar quantos quadros for computacionalmente
+possível, para maximizar a redondinha.
+Do ponto de vista do artista, a opção correspondente se chama Tween no
+editor e no Toon Boom Harmony, se chama morph.
+.\}
+.HEADING 2 "Representação de objetos no Flash"
+.HEADING 2 "Tipos de preenchimentos de objetos no Flash"
+.if 0 \{\
+.PP
+Sólido
+.PP
+Gradiente radial e linear
+.PP
+Bitmap
+.\}
+.HEADING 2 "Bibliotecas de gráficos vetoriais"
+.HEADING 1 "Trabalhos relacionados"
+.HEADING 2 "GameMaker"
+.\" Que CU achar UM lugar com TODAS as informações relevantes sobre o
+.\" GameMaker que não seja a Wikipédia. FUCK. AMADORES.
+.PP
+GameMaker é um motor de jogos comercial com um plano gratuito,
+utilizado através de um editor gráfico, que permite montagem das cenas
+do jogo e programação, e exporta jogos para todas as plataformas
+relevantes, como Web, PC, \fImobile\fP e console.
+.\"
+Entre várias ca\%rac\%te\%rís\%ti\%cas que apresenta, inclusive
+programação visual, de acordo com \*[GameMaker itG],
+"Atualmente, GameMaker possui funcionalidade \fIlimitada\fP de
+\fIsprites\fP vetoriais. e [sic] consegue somente importar imagens
+vetoriais a partir de arquivos \fBSWF\fP".
+.PP
+\*[GameMaker it] discute vários benefícios dos gráficos vetoriais,
+como o fato de que
+.\"
+"geralmente, \fIsprites\fP vetoriais são muito menores que seus
+equivalentes \fIbitmap\fP",
+.\"
+e que "uma vez que \fIsprites\fP vetoriais desenham apenas os pixels
+necessários, podem ser mais eficientes do ponto de vista da GPU",
+.\"
+concluindo que 
+.\"
+"muita memória pode ser potencialmente economizada usando
+\fIsprites\fP vetoriais".
+.\"
+\*[GameMaker it] alerta que,
+.\"
+"em contrapartida, \fIsprites\fP vetoriais consomem mais tempo de CPU
+para desenhar do que \fIsprites bitmap\fP, e essa diferença de
+velocidade aumenta com a complexidade da animação".
+.PP
+A renderização de gráficos vetoriais pode ser configurada no
+GameMaker.
+\*[GameMaker itG] informa que "você pode definir a \fIqualidade\fP
+do \fIsprite\fP vetorial quando desenhado usando o \fIslider\fP \fBSWF
+Precision\fP no topo.
+Isso simplesmente reduzirá ou aumentará a quantidade de triângulos
+usados para gerar o \fIsprite\fP" e que "você também pode definir
+diferentes valores de \fIanti-serrilhamento\fP (AA) para \fIsprites\fP
+SWF sendo desenhados".
+.PP
+Finalmente, oito limitações e efeitos inusitados são documentadas a
+respeito dos \fIsprites\fP vetoriais do GameMaker.
+Conforme \*[GameMaker it], são eles:
+.LIST DIGIT )
+.SHIFT_LIST 1.25c
+.ITEM
+"ActionScript não funciona";
+.ITEM
+"todas as animações devem estar na linha de tempo primária";
+.ITEM
+"buraco e triângulos podem aparecer [...] por causa de geometrias
+colapsando em escalas pequenas";
+.ITEM
+"se você tiver qualquer presente na cena, porém fora dos limites da
+cena, ainda será desenhado";
+.ITEM
+"O tamanho da cena afeta o tamanho das camadas de colisão geradas,
+então se você tiver uma cena grande com muitos quadros na sua
+animação, você pode acabar consumindo muita memória";
+.ITEM
+"transparência não funciona exatamente como esperado";
+.ITEM
+"se você usar preenchimento \fItiled\fP com \fIbitmap\fP como parte do
+seu arquivo SWF, você deve garantir que o \fIbitmap\fP é uma potência
+de dois em tamanho";
+.ITEM
+"Renderiação de texto funciona, porém você precisa embutir a fonte no
+seu arquivo SWF [...] Além disso, por enquanto apenas texto alinhado à
+esquerda funciona".
+.LIST OFF
+.PP
+\*[Err "[fechar com um parágrafo próprio]"].
+.if 0 \{\
+"permitem adicionar gráficos animados enormes que com \fIsprites\fP
+\fIbitmap\fP tradicionais impossível"
+.\"
+"impõe limitações no tamanho e quantidade de quadros possíveis num
+\fIsprite\fP antes do consumo de memória se tornar proibitivo."
+.\}
+.HEADING 2 "GAF"
+.HEADING 2 "Scaleform GFx"
+.PP
+.red
+De acordo com \*[Scaleform it]:
+.black
+\c
+.CitacaoLongaS
+Scaleform GFx é um motor de
+renderização de gráficos vetoriais usado para interfaces gráficas,
+HUDs e texturas animadas baseadas em Adobe Flash em jogos para
+Windows, Mac, Linux, Xbox 360, PlayStation 2 / Portable / 3 e sistemas
+Wii.
+.CitacaoLongaM
+Em 1 de março de 2011, foi adquirido pela Autodesk junto com a própria
+companhia [Scaleform]. Compras de licenças foram descontinuadas, junto
+com vários outros produtos \fImiddleware\fP da Autodesk para jogos, em
+12 de julho de 2017.
+.CitacaoLongaE
+.if 0 \{\
+.PP
+Estando integrado em vários motores de jogos, inúmeros jogos AAA \(em
+jogos com um orçamento bastante grande \(em, fizeram uso indireto do
+Flash para interface gráfica.
+.PP
+Vários títulos de jogos AAA, que são jogos com um orçamento bastante
+grande, fizeram uso do Scaleform GFx. \*[Scaleform i] lista alguns
+como:
+.PP
+Com vários motores de jogos integrando o Scaleform GFx, \*[Scaleform i]
+lista mais de duas centenas de jogos AAA que fizeram uso indireto
+do Flash para interface gráficas:
+.\}
+.PP
+.red
+\*[Scaleform i] lista 325 lançamentos que utilizaram Scaleform GFx
+para cons\%tru\%ir suas interfaces gráficas e HUDs.
+A Figura 1 mostra o editor de animações Flash sendo usado para
+construir uma interface gráfica 3D, que depois pode ser integrada a um
+jogo através do Scaleform GFx.
+.black
+\c
+.if 0 \{\
+.\"
+Alien: Isolation e : Colonial Marines
+.\"
+Série de jogos Batman (Arkham Asylum, Arkham City, Arkham Knight e
+Arkham origin)
+.\"
+Battlefield 3
+.\"
+Bioshock: Infinite
+.\"
+Borderlands 2
+.\"
+Company of Heroes 2
+.\"
+Crysis 1, 2, 3 e : Warhead
+.\"
+Dead by Daylight
+.\"
+Deus Ex: Human Evolution
+.\"
+Dishonored
+.\"
+Divinity II: Ego Draconis e : The Dragon Knight Saga
+.\"
+Dragon Age II e : Inquisition
+.\"
+Elite: Dangerous
+.\"
+Fallout 4\"XXX mixed
+.\"
+Hitman: Absolution e 2 e III
+.\"
+Just Cause 3\"XXX mixed
+.\"
+Killing Floor 2\"XXX mixed
+.\"
+Mass Effect 1, 2 e 3
+.\"
+Medal of Honor (e : Warfighter)
+.\"
+Might & Magic: Heroes VI e VII
+.\"
+Mortal Kombat X
+.\"
+Need for Speen: The Run
+.\"
+Prototype 1 e 2
+.\"
+Quake: Champions
+.\"
+Sekiro: Shadows Die Twice
+.\"
+Sid Meier's Civilization IV (e : Colonization)
+.\"
+Starcraft II: Campaign Collection e Wings of Liberty
+.\"
+Street Fighter V e X
+.\"
+Tekken 7
+.\"
+The Crew 1 e 2
+.\"
+The Elder Scrolls V: Skyrim
+.\"
+The Sims 4
+.\"
+Thief\"XXX mixed
+.\"
+Tom Clancy's\"FUCK
+.\"
+ALL OF TOMB RAIDER (??)
+.\"
+FUCKING WARHAMMER
+.\"
+Wolfenstein
+.\"
+XCOM: Enemy Unknown
+.\"
+Gears of War 3,
+.\"
+.\}
+.FLOAT
+.FiguraCurta "Interface gráfica de jogo sendo criada com Flash"
+.RLD 1v
+.PIC_3DI SCALE 30
+.RLD 1v
+.ce
+.PT_SIZE 10
+Fonte: \*[Scaleform3D ""]
+.FLOAT OFF
+.PP
+.red
+A Figura 2 mostra um menu do jogo Borderlands 2, um de muitos títulos
+AAA que utilizaram Flash para construir a interface gráfica.
+.black
+\c
+.FLOAT
+.FiguraCurta "Menu de habilidades do jogo Borderlands 2, lançado em 2012"
+.RLD 1v
+.PIC_BORDERLANDS2 SCALE 30
+.RLD 0.5v
+.ce
+.PT_SIZE 10
+Fonte: \*[Err MobyGames]
+.FLOAT OFF
+.HEADING 2 "Ruffle"
+.if 0 \{\
+.PP
+Existem várias implementações alternativas do Flash Player,
+visto que o preenchimento é um dos recursos mais básicos, qualquer
+implementação possui sua abordagem.
+Implementação proprietárias
+Ruffle é o projeto
+.\}
+.HEADING 2 "Arquivos Lottie"
+.if 0 \{\
+.PP
+Arquivos Lottie são primariamente exportados com o \fIplugin\fP
+bodymovin para Adobe After Effects.
+.PP
+O formato é textual, usando JSON, curto.
+.\}
+.HEADING 2 "Arquivos SVG"
+.if 0 \{\
+.PP
+Tipos para salvar preenchimentos e aplicar várias vezes.
+.\}
+.HEADING 2 "A tecnologia Rive"
+.if 0 \{\
+.HEADING 2 "Animação esqueletal"
+.PP
+TODO
+.\}
+.HEADING 1 "Metodologia"
+.if 0 \{\
+.PP
+É utilizado alguns frames da animação There she is!!!, publicada no
+dia tal no portal Newgrounds.
+.\}
+.HEADING 1 "Algoritmo"
+.if 0 \{\
+.PP
+As informações de preenchimento são mantidas em listas exatamente como
+obtidas do arquivo SWF, sem modificação, e posteriormente código é
+gerado imprimindo esses dados exatamente como eles aparecem no arquivo
+SWF, porém traduzidos em texto claro na linguagem de programação C.
+.PP
+.\}
+.HEADING 1 "Implementação"
+.HEADING 2 "Macros X"
+.if 0 \{\
+.PP
+O código gerado pela ferramenta experimental \fCswf2c\fP faz uso
+extensivo de uma técnica chamada Macros X.
+.PP
+Essa técnica é utilizada por três razões principais: 1) reduzir
+drasticamente o tamanho do código gerado, 2) facilitar a geração de
+código, e 3) facilitar integração de novas bibliotecas.
+.\"permeia
+.\"extensivo
+.\"central
+.\"cerne
+.\"inextricável
+.PP
+A Listagem X é um exemplo clássico de Macros X, que ilustra algumas
+características do mesmo.
+A Listagem X declara uma enumeração com algumas cores, define um vetor
+com os valores dessas cores, e define uma função que devolve uma
+\fIstring\fP com o nome da cor informada por parâmetro.
+.if 0 \{\
+.PP
+A primeira linha da Listagem X declara uma macro chamada
+\fCCOLOR_XS\fP, cuja definição são as seis linhas seguintes.
+A definição de uma macro pode durar tantas linhas quanto necessário,
+bastando colocar um contrabarra no final da linha.
+De modo simplificado, pode-se interpretar essa macro como uma tabela
+.\}
+.PP
+Todas as diretivas de pré-processador, como o \fC#define\fP,
+devem ser inteiramente contidos em uma única linha, porém a linguagem
+C define que uma linha "continua" na próxima linha, caso um
+contrabarra seja digitado imediatamente antes do final de uma linha.
+Por essa razão, se explica a presença pervasia de contrabarras em
+todas as listagens do presente trabalho.
+.FLOAT
+.CODE BR
+#define COLOR_XS \e
+X(BURLYWOOD , DE, B8, 87) \e
+X(CADET_BLUE, 5F, 9E, A0) \e
+X(CRIMSON   , DC, 14, 3C) \e
+X(MAROON    , B0, 30, 60) \e
+X(MOCCASIN  , FF, E4, B5) \e
+X(SIENNA    , A0, 52, 2D)
+
+#define X(N, ...) COLOR_##N,
+enum color { COLOR_XS N_COLOR };
+#undef X
+
+struct vec3 { float a[3]; };
+
+#define X(N, R, G, B) {0x##R, 0x##G, 0x##B},
+struct vec3 colors[] = { COLOR_XS };
+#undef X
+
+char *color_name(enum color c) {
+    switch (c) {
+        #define X(N, ...) case COLOR_##N: return #N;
+        COLOR_XS
+        #undef X
+        default: return NULL;
+    }
+}
+.FLOAT OFF
+.PP
+Citar algo X11
+.PP
+A primeira vantagem é a representação compacta.
+Como discutido nos trabalhos relacionados, isso aproxima o código C
+gerado com a sucinteza do SVG e do Lottie \(em os outros textuais mais
+proeminentes.
+.PP
+A segunda razão é expandir várias vezes, informações repetidas.
+.PP
+A notação usada nas demais listagens, porém substitui os parâmetros
+mais internos por letras
+.FLOAT
+.CODE BR
+#define POLYGON_XS \e
+X(\f(CIX\fP,\f(CIY\fP) X(\f(CIX\fP,\f(CIY\fP) X(\f(CIX\fP,\f(CIY\fP) /*...*/ X(\f(CIX,\f(CIY\fP)
+.FLOAT OFF
+.\}
+.HEADING 2 "Armazenamento das informações de preenchimento"
+.if 0 \{\
+.PP
+Todos os preenchimentos 
+.PP
+Conforme, estilos de preenchimento individuais são armazenados
+específicos para cada objeto.
+A implementação toma a liberdade de, caso vários objetos utilizem
+exatamente o mesmo tipo de preenchimento, então apenas um
+preenchimento é declarado, e vários objetos diferentes utilizam.
+Isso ocasiona o ID referenciado por objetos na solução proposta
+diferenciar dos IDs usados no Flash.
+.PP
+Primeiro parâmetro é um ID, seguido de seis parâmetros com valores da
+matriz, e o último parâmetro é o preenchimento em si, que é um dos
+quatro tipos possíveis: 1) \fCS\fP para sólido, 2) \fCGL\fP para gradiente
+linear, 3) \fCGR\fP para gradiente radial e \fCB\fP para bitmap.
+.PP
+A macro para o preenchimento sólido \fCS\fP possui simplesmente
+quatro parâmetros informado as cores básicas e transparência, e a
+macro para o preencimento com textura possui dados brutos no formato
+PNG, usando base decimal para todos os valores, pois no C digitar
+valores em hexadecimal requer o prefixo 0x que é dispendioso em termos
+de tamanho de arquivo.
+.PP
+Para as macros \fCGL\fP e \fCGR\fP, de preenchimento com gradientes,
+seu primeiro e único parâmetro são uma lista de macros \fCR\fP que
+contém as razões.
+Há no mínimo uma razão, e conforme a especificação do Flash, são
+geradas no máximo oito ou quinze razões.
+Ainda que interpretadas diferentemente para linear
+ou radial, as razões são as mesmas, portanto se usa a mesmo macro para
+micro-otimizar as expansões.
+.FLOAT
+.CODE BR
+#define FILL_XS \e
+X(ID, A, B, C, D, TX, TY, S(R, G, B, A)) \e
+X(ID, A, B, C, D, TX, TY, GL( \e
+ R(V, R, G, B, A) \e
+ R(V, R, G, B, A) \e
+ R(V, R, G, B, A))) \e
+X(ID, A, B, C, D, TX, TY, GR( \e
+ R(V, R, G, B, A) \e
+ R(V, R, G, B, A) \e
+ R(V, R, G, B, A))) \e
+X(ID, A, B, C, D, TX, TY, B(...))
+// Reordenar transformação pro final
+.FLOAT OFF
+.PP
+Em seguida, a macro \fCSHAPE_XS\fP passa a ser gerada conforme a
+listagem.
+O primeiro parâmetro é um ID único que depois pode ser referenciado
+por sprites ou quadros nas macros \fCSPRITE_XS\fP e \fCFRAME_XS\fP.
+O segundo parâmetro é uma lista de comandos de desenho, primeiro
+preenchimentos \fCP\fP, e depois de traçados \fCS\fP.
+Para ambos tipos, o primeiro parâmetro referencia um preenchimento
+definido na macro discutida anteriormente, \fCFILL_XS\fP.
+.PP
+O segundo parâmetro de ambos é uma lista de comandos de construção de
+caminho, que podem ser um dos quatro: 1) \fCM\fP move a posição
+desenho sem desenhar até o \fIoffset\fP, 2) L linear, 3) C curva de
+bézier quadrática, 4) E fecha o caminho sendo construído até então.
+.PP
+Uma vez que as bibliotecas permitem
+.PP
+A listagem contém apenas um objeto, mas como explicado na seção, e os
+casos de teste facilmente contém milhare sd
+.FLOAT
+.CODE BR
+#define SHAPE_XS \
+X(ID, \e
+ P(FID, \e
+  M(X,Y)L(X,Y)C(AX,AY,TX,TY)E) \e
+ P(FID, \e
+  M(X,Y)L(X,Y)C(AX,AY,TX,TY)E) \e
+ P(FID, \e
+  M(X,Y)L(X,Y)C(AX,AY,TX,TY)E) \e
+ S(FID, \e
+  M(X,Y)L(X,Y)C(AX,AY,TX,TY)E) \e
+ S(FID, \e
+  M(X,Y)L(X,Y)C(AX,AY,TX,TY)E) \e
+)
+.FLOAT OFF
+.HEADING 3 "Uso do Cairo"
+.PP
+Esse busca maior simplicidade, pois esse é usado exclusivamente para
+gerar figuras em formato PDF para inclusão no corpo de texto do
+presente trabalho, e como isso é feito usando Makefile e apenas
+algumas figuras são geradas por caso de teste, então todos os dados
+são transformados em função para construir as informações uma única
+vez conforme são necessários, já que o programa é invocado apenas uma
+vez.
+.PP
+O código usado para expandir as macros descritas é relativamente
+ilegível, e pode ser melhor descrito como write-only.
+.PP
+Aqui é feita uma descrição de alto nível da versão Cairo, usada para
+gerar as figuras do presente corpo de texto. 
+.PP
+A macro FILL_XS é expandida uma primeira vez para gerar variáveis
+globais com visibilidade interna (de modo a não poluir o namespace
+global)
+.PP
+Em seguida, a macro FILL_XS é expandida mais uma vez para 
+.HEADING 3 "Canvas do HTML"
+.PP
+A versão 
+.\}
+.HEADING 1 "Resultados"
+.if 0 \{\
+.PP
+Essa parte é divertida, um monte de imagens!!
+.\}
+.HEADING 1 "Conclusão"
+.if 0 \{\
+.PP
+Hey.
+.\}
+.NEWPAGE
+.HEADING_STYLE 1 NO_NUMBER SIZE 12 CAPS FONT B QUAD CENTER BASELINE_ADJUST 0 NO_SPACE_AFTER
+.HEADING 1 "Referências"
+.SPACE 1.524c-1v
+.PARA_INDENT 0
+.DOC_LEAD 14.4
+.DOC_QUAD LEFT
+.PP
+.if 0 \{\
+.COLOR red
+Referências sendo usadas de verdade:
+.COLOR black
+.SP
+.\}
+.QUAD LEFT
+.Bibliografia
+.SP
+.PDF_WWW_LINK https://www.adobe.com/creativecloud/file-types/video/container/swf.html
+.BR
+.PDF_WWW_LINK https://blog.free-decompiler.com/posts/
+.BR
+.PDF_WWW_LINK https://web.archive.org/web/20151011103841/http://www.kaourantin.net/2005/08/implementing-blur-filter-in-flash.html
+.if 0 \{\
+.SP -1v
+.COLOR red
+Lixo abaixo:
+.COLOR black
+.SP
+.PP
+ANSI X3J11 TECHNICAL COMMITTEE. Programming language C. Rascunho do comitê X3.???-1988. [S. l.], 1988. Disponível em: <https://web.archive.org/web/20161223125339/http://flash-gordon.me.uk/ansi.c.txt>. Acesso em: 16 jul. 2023. Popularmente conhecido como ANSI C, ISO C, C89 e C90.
+.SP
+BEAL, Stephan. Supermacros: powerful, maintainable preprocessor macros in C++. [S. l.: s. n.], 22 aug. 2004. Disponível em: <http://wanderinghorse.net/computing/papers/supermacros_cpp.pdf>. Acesso em: 15 jul. 2023.
+.SP
+BRIGHT, Walter. The X Macro. [S. l.]: Digital Mars, 24 jun. 2010. Disponível em: <https://digitalmars.com/articles/b51.html>. Acesso em: 14 jul. 2023.
+.SP
+ISO/IEC 9899:201x. Programming languages: C. Rascunho do comitê. [S. l.], 12 abr. 2011. Disponível em: <https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf>. Acesso em: 16 jul. 2023. N1570. Popularmente conhecido como C11.
+.SP
+ISO/IEC 9899:2023. Programming languages: C. Rascunho de trabalho. [S. l.], 1 abr. 2023. Disponível em: <https://www.open-std.org/jtc1/sc22/wg14/www/docs/n3096.pdf>. Acesso em: 16 jul. 2023. N3096. Popularmente conhecido como C23.
+.SP
+ISO/IEC 9899:202x (E). Programming languages: C. Rascunho. [S. l.], 6 nov. 2018. Disponível em: <https://www.open-std.org/jtc1/sc22/wg14/www/docs/n2310.pdf>. Acesso em: 16 jul. 2023. N2310. Popularmente conhecido como C17 e C18.
+.SP
+ISO/IEC 9899:TC3. Programming languages: C. Rascunho do comitê. [S. l.], 7 set. 2007. Disponível em: <https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf>. Acesso em: 16 jul. 2023. WG14/N1256. Popularmente conhecido como C99.
+.SP
+LUCAS, Andrew. Reduce C-language coding errors with X macros: Part 1. [S. l.]: Embedded, 1 jan. 2013a. Disponível em: <https://www.embedded.com/reduce-c-language-coding-errors-with-x-macros-part-1/>. Acesso em: 15 jul. 2023.
+.SP
+______. Reduce C- language coding errors with X-macros: Part 2. [S. l.]: Embedded, 20 jan. 2013b. Disponível em: <https://www.embedded.com/reduce-c-language-coding-errors-with-x-macros-part-2/>. Acesso em: 15 jul. 2023.
+.SP
+______. Reduce C language coding errors with X macros: Part 3. [S. l.]: Embedded, 2 mar. 2013c. Disponível em: <https://www.embedded.com/reduce-c-language-coding-errors-with-x-macros-part-3/>. Acesso em: 15 jul. 2023.
+.SP
+MEYERS, Randy. The new C: X Macros. [S. l.]: Dr. Dobbs’, 1 maio 2001. Disponível em: <https://www.drdobbs.com/the-new-c-x-macros/184401387>. Acesso em: 14 jul. 2023.
+.SP
+SCHWARZ, Keith. Advanced Preprocessor Techniques. [S. l.: s. n.], 2 out. 2008. Disponível em: <https://www.keithschwarz.com/cs106l/fall2008/handouts/060_Preprocessor_2.pdf>. Acesso em: 16 jul. 2023.
+.SP
+______. Advanced Preprocessor Techniques. [S. l.: s. n.], 16 abr. 2009. Disponível em: https://www.keithschwarz.com/cs106l/spring2009/handouts/080_Preprocessor_2.pdf. Acesso em: 16 jul. 2023.
+.SP
+______. Chapter 7: The Preprocessor. [S. l.: s. n.], [2010a]. Disponível em: https://www.keithschwarz.com/cs106l/spring2010/course-reader/Ch7-ThePreprocessor.pdf. Acesso em: 16 jul. 2023.
+.SP
+______. Chapter 4: Multi-File Programs, Abstraction, and the Preprocessor. [S. l.: s. n.], [2010b]. Disponível em: https://www.keithschwarz.com/cs106l/fall2010/course-reader/Ch4_MultiFileAbstractionPreprocessor.pdf. Acesso em: 16 jul. 2023.
+.SP
+WIRZENIUS, Lars. C Preprocessor Trick For Implementing Similar Data Types. [S. l.: s. n.], 17 jan. 2000. Disponível em: http://liw.iki.fi/liw/texts/cpp-trick.html. Acesso em: 14 jul. 2023.
+.\}
+.NEWPAGE
+.PARA_INDENT 1.25c
+.HEADING 1 "Apêndice A: Revisão do texto"
+.SPACE 1.524c-1v
+.PP
+De acordo com ABNT NBR 10520, ponto é sempre fora, depois da aspas
+duplas.
+.if 0 \{\
+.PP
+Não falar sobre todas as bulhufas de Makefile, m4, opções de linha de comando,
+nada! Razão: é perda de tempo. É tudo intermediário. Só vou saber qualquer
+depois de fazer um jogo
+.UNDERSCORE SUFFIX , complexo
+até lá é tudo intermediário. Falar o menos possível, o mínimo.
+.\}
+.PP
+Discriminar os seguintes termos e checar a consistência no uso em texto de:
+.LIST USER "\(en\ "
+.SHIFT_LIST 1.25c
+.ITEM
+animação Flash vs. animação em Flash vs. animação do Flash vs. animação feita
+em Flash;
+.ITEM
+renderizar vs. reproduzir;
+.ITEM
+interpretar vs. avaliar vs. executar;
+.ITEM
+código vs. script vs. ações vs. \fIbytecode\fP;
+.ITEM
+\fIruntime\fP vs. máquina virtual;
+.ITEM
+conversor vs. compilador vs. técnica proposta vs. código gerado vs. presente trabalho vs.
+solução proposta;
+.ITEM
+converter vs. compilar vs. emitir vs. gerar vs. imprimir;
+.ITEM
+código[-fonte] [[[escrito] em] C];
+.ITEM
+jogo [de computador] vs. videogame vs. jogo eletrônico;
+.ITEM
+conversor vs. compilador vs. leitor;
+.ITEM
+integrar vs. incorporar vs. incluir vs. empregar vs. usar;
+.ITEM
+formato de arquivo [do] Flash vs. arquivo Flash vs. SWF;
+.ITEM
+animação vetorial vs. animação com gráficos vetoriais;
+.ITEM
+fidelidade vs. correspondência;
+.ITEM
+peso vs. tamanho.
+.LIST OFF
+.da TOC_ENTRIES
+.\" Stuff seems reversed here. Go figure hahaha.
+.if 0 \{
+\!.COLLATE
+\!.PAGINATE OFF
+\!.NO_SHIM
+\!.NO_FLEX
+\!.MSWORD_SIMPLE_12
+\!.START
+\!.pdfbookmark 1 "Lista de símbolos"
+\!.CENTER
+\!\fBLISTA DE SÍMBOLOS\fR
+\!.MSWORD_ONEHALF_12
+\!.SPACE
+\!.SPACE
+\!.JUSTIFY
+\!.SILENT
+.\" XXX Write longest symbol here!! 
+\!.PAD "\*[ST1]GHz\*[ST1X]\ \ \*[ST2]#\*[ST2X]"
+\!.SILENT OFF
+\!.ST 1 L
+\!.ST 2 L QUAD
+\!.Simbolo GHz Gigahertz
+\!.Simbolo ms Milissegundo
+.\}
+\!.COLLATE
+\!.NO_SHIM
+\!.NO_FLEX
+\!.MSWORD_SIMPLE_12
+\!.START
+\!.pdfbookmark 1 "Lista de abreviaturas e siglas"
+\!.CENTER
+\!\fBLISTA DE ABREVIATURAS E SIGLAS\fR
+\!.MSWORD_ONEHALF_12
+\!.SPACE
+\!.SPACE
+\!.JUSTIFY
+\!.SILENT
+.\" XXX Write longest acronym here!! 
+\!.PAD "\*[ST1]LZMA\*[ST1X]\ \ \*[ST2]#\*[ST2X]"
+\!.SILENT OFF
+\!.ST 1 L
+\!.ST 2 L QUAD
+\!.Sigla AES Advanced Encryption Standard
+\!.Sigla API Application Programming Interface
+\!.Sigla CDN Content distribution network
+\!.Sigla GCC Gnu Compiler Collection
+\!.Sigla HTTP HyperText Transfer Protocol
+\!.Sigla LAN Local area network
+\!.Sigla LZMA Lempel-Ziv-Markov chain algorithm \" XXX Traduzir?
+\!.Sigla PSNR Peak signal-to-noise ratio
+\!.Sigla SSIM Structural similarity index measure
+\!.Sigla SWF ShockWave File ou Small Web Format
+\!.Abreviatura MiB Mebibyte
+\!.TQ
+.\"\!.LIST_OF_TABLES  TITLE_STRING "LISTA DE TABELAS"
+.\"\!.pdfbookmark 1 "Lista de tabelas"
+.\"\!.LIST_OF_FIGURES TITLE_STRING "LISTA DE ILUSTRAÇÕES"
+.\"\!.pdfbookmark 1 "Lista de ilustrações"
+\!.COLLATE
+\!.PAGINATE OFF
+\!.NO_SHIM
+\!.NO_FLEX
+\!.MSWORD_SIMPLE_12
+\!.START
+\!.pdfbookmark 1 "Lista de tabelas"
+\!.CENTER
+\!\fBLISTA DE TABELAS\fR
+\!.MSWORD_ONEHALF_12
+\!.SPACE
+\!.SPACE
+\!.ListaTabelas
+\!.COLLATE
+\!.PAGINATE OFF
+\!.NO_SHIM
+\!.NO_FLEX
+\!.MSWORD_SIMPLE_12
+\!.START
+\!.pdfbookmark 1 "Lista de ilustrações"
+\!.CENTER
+\!\fBLISTA DE ILUSTRAÇÕES\fR
+\!.MSWORD_ONEHALF_12
+\!.SPACE
+\!.SPACE
+\!.ListaFiguras
+.da
+.TOC
+.\" TODO Lista de Ilustrações pode ser desemembrada em Lista de
+.\"      Listagens, Lista de Quadros, Lista de Gráficos etc.
+.\" vim:syntax=groff tw=70

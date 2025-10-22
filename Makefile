@@ -114,8 +114,11 @@ slides.pdf:slides.mom $(TABLES) bib.txt pictures.txt $(PICTURES)
 
 pictures.d:pictures.m4
 	m4 -Dgen=AS_MAKE_LIST $< > $@ && m4 -Dgen=AS_MAKE_RECIPE $< >> $@
-pictures.txt:pictures.m4 swf2c $(PICTURES)
+pictures.txt:pictures.m4 swf2c $(PICTURES) hack.sh
 	m4 -Dgen=AS_MOM $< > $@
+
+tcc2.pdf:tcc2.mom om.tmac abnt.tmac bib2.txt pictures.txt
+	soelim $< | pdfmom -Kutf8 -M. -pt -mabnt > $@
 
 proxy:proxy.c
 	$(CC) -std=c11 -O3 -o $@ $<

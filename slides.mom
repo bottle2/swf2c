@@ -337,17 +337,22 @@ Illustrated, People, \%National\~\%Geographic
 .  OBULLET Se desvencilhar da reputação negativa
 . LIST OFF
 .TITULO 2 "Gráficos vetoriais"
-. SBULLET Características proeminente do Flash
+. SBULLET Característica proeminente do Flash
 . MBULLET Representação eficiente
-. MBULLET Resolução infinita
-. MBULLET Poucas ferramentas produtivas para editar gráficos vetoriais
-.  OBULLET Menos ainda para animações
-. MBULLET Antes jogos podiam ser feitos em Flash
-. EBULLET Como usar animações vetoriais fora do Flash?
+. EBULLET Resolução infinita
 .NTITULO 2 "Exemplo de gráficos vetoriais" 2
 . PIC_CUTE
 .PTITULO
 . PIC_FUCK
+.TITULO 2 "Editores de animação"
+. SBULLET Poucas ferramentas produtivas para editar gráficos vetoriais
+.  SBULLET Menos ainda para animações
+.   OBULLET Além do Flash, Toon Boom Harmony \c
+.BR
+e Toonz
+.  LIST OFF
+. MBULLET Antes jogos podiam ser feitos em Flash
+. EBULLET Como usar animações vetoriais fora do Flash?
 .if 0 \{\
 .TITULO 2 "Motivação"
 . IPP Apesar do desfecho do Flash, é vital reconhecer:
@@ -438,16 +443,19 @@ compatibilidade \(lqpara frente\(rq
 . LIST OFF
 . IPP A seguir, perceba a API inquebrável do Flash através
 de múltiplas versões de cada \fItag\fP
-.NTITULO 3 "Definição da cena" 2
-. SBULLET Cena é armazenada em um \fIdisplay list\fP
+.SECAO 3 "Funcionamento" "do Flash"
+.NTITULO 4 "Definição da cena" 2
+. SBULLET A animação é uma sequência de quadros
+. MBULLET Todo quadro é definido como uma \%modificação do quadro anterior
+. MBULLET A \fItag\fP ShowFrame renderiza a cena uma vez
+. MBULLET Cena é armazenada em um \fIdisplay list\fP
 .  SBULLET Objetos compõem a cena
 .  MBULLET Valor inteiro identifica objetos
 .  MBULLET Cena possui profundidade
+.PTITULO NAT
 .   OBULLET Objetos mais à frente têm valores maiores
 .  LIST OFF
-. MBULLET A \fItag\fP ShowFrame renderiza a cena uma vez
-. EBULLET Todo quadro é definido como uma \%modificação do quadro anterior
-.PTITULO
+. LIST OFF
 . SBULLET Adicionar objeto na cena
 .  OBULLET \fITag\fP PlaceObject
 . MBULLET Adicionar ou alterar objeto na cena
@@ -455,7 +463,7 @@ de múltiplas versões de cada \fItag\fP
 . MBULLET Remover um objeto da cena
 .  OBULLET \fITags\fP RemoveObject e RemoveObject2
 . EBULLET Só pode referenciar objetos definidos \%fisicamente antes
-.NTITULO 2 "Definição de objetos" 2
+.NTITULO 4 "Definição de objetos" 2
 . SBULLET \fITags\fP DefineShape, DefineShape2, \%DefineShape3 e DefineShape4
 . MBULLET Objetos inteiramente definidos com \c
 .BR
@@ -472,7 +480,7 @@ três primitivas
 .  MBULLET Preenchimento único à esquerda
 .  EBULLET Estilo e preenchimento únicos para traçado
 . EBULLET Objetos de qualquer complexidade são inteiramente definidos numa única \fItag\fP
-.TITULO 3 "Preenchimentos"
+.TITULO 5 "Preenchimentos"
 . SBULLET Sólido
 .  OBULLET Pode ser transparente
 . MBULLET Gradiente linear ou radial
@@ -481,14 +489,14 @@ três primitivas
 .  EBULLET Pode usar um ponto focal
 . EBULLET Com textura
 . IPP Todos podem ter transparência
-.TITULO 2 "Definição de MovieClips/Sprites"
+.TITULO 4 "Definição de MovieClips/Sprites"
 . SBULLET \fITag\fP DefineSprite
 . MBULLET Confere propriedade de hierarquia de cena recursiva
 . MBULLET Define um objeto a partir de objetos \%anteriormente definidos
 . MBULLET Abrangem vários quadros
 .  OBULLET Portanto, tem acesso à \fItags\fP de manipulação de \fIdisplay list\fP
 . LIST OFF
-.NTITULO 2 "Outras \fItags\fP não tratadas" 3
+.NTITULO 4 "Outras \fItags\fP não tratadas" 3
 . SBULLET Texturas
 .  OBULLET \fITags\fP DefineBits, DefineBitsLossless e DefineBitsLossless2
 . MBULLET Fontes (tipografia)
@@ -613,16 +621,22 @@ gargalo em jogos
 . MBULLET Produziu 27 jogos casuais em Flash
 . MBULLET Produziu três MMOs
 . EBULLET Serviços para BigPoint, UOL e BigFish Games
-.TITULO 3 "TCC sobre salas P2P"
+.TITULO 3 "TCC sobre partidas de \fImultiplayer\fP" "montadas com P2P"
 . SBULLET Celito Muck Felipetto
 . MBULLET Orientado pelo professor Pozzer
 . MBULLET Defendido em 2012
-. MBULLET Fox
-. EBULLET Sistemas de salas multiplayer peer-to-peer usando UDP maluco do Flash
-.TITULO 3 "Dissertação de mestrado" "em Geomática"
-. SBULLET Dissertação de mestrado em Geomática de Fulana
+. MBULLET Tecnologia para a Decadium Studios
+. MBULLET Servidor \fImultiplayer\fP Smart Fox
+. MBULLET Real Time Media Flow Protocol (RTMFP)
+. EBULLET Monta partidas \fImultiplayer\fP com algoritmo \fI\%peer-to-peer\fP (P2P)
+.TITULO 3 "Dissertação de mestrado sobre" "objetos de aprendizagem ambiental"
+. SBULLET Dissertação de mestrado em Geomática
+. MBULLET Rosilãne de Lourenço Lorenzoni
+. MBULLET Orientada por Meri Lourdes Bezzi
 . MBULLET Defendido em 2010
-. EBULLET 70 telas
+. MBULLET Jogo educativo sobre resíduos sólidos domésticos
+. MBULLET Macromedia Flash CS3
+. EBULLET 35 telas montadas desenvolvidas
 .SECAO 1 "Metodologia"
 .NTITULO 2 "Grupo amostral" 3
 . SBULLET Exercício da solução proposta
