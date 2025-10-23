@@ -564,20 +564,77 @@ Bitmap
 .\}
 .HEADING 2 "Bibliotecas de gráficos vetoriais"
 .HEADING 1 "Trabalhos relacionados"
+.if 0 \{\"XXX Fuck it, deixa quieto.
+.PP
+São discutidas as tecnologias GameMaker, Generic Animation Format
+(GAF) e \%Scaleform\~GFx, que buscam integrar diretamente arte
+produzida com Flash para renderizar partes de jogos, e uma vez que o
+Flash está descontinuado, são também discutidos os formatos de
+arquivos Scalable Vector Graphics (SVG), Lottie e Rive, que cumprem
+papel se\%me\%lhan\%te ao do SWF. 
+.\}
+.if 0 \{\
+.PP
+Não são discutidos:
+.LIST USER "\(en\ "
+.SHIFT_LIST 1.25c
+.ITEM
+\fISpritesheets\fP tradicionais e tecnologias afins, como atlas de
+texturas, empacotamento de texturas.
+.ITEM
+Soluções de animação esqueletal com cinemática inversa, como Spine,
+Spriter e DragonBones, geralmente empregados para bonecos e objetos de
+cena.
+.ITEM
+Editores de mapas, sejam os específicos de cada motor de jogos, ou
+externos como o Tiled.
+.ITEM
+Toda a tecnologia 3D.
+.ITEM
+\fIFrameworks\fP para construção de interfaces gráficas, como Dear ImGUI.
+.ITEM
+Tecnologias de tipografia avançada.
+.ITEM
+Formatos de arquivos georreferenciados, como Shapefile ou KML, cuja
+aplicação em jogos é incomum, porém plausível.
+.LIST OFF
+.\}\"XXX Se ninguém falar, ninguém vai sentir falta
+.if 0 \{\
+.PP
+Não é discutido nenhum \fIplayer\fP alternativo que surgiu durante a
+história do Flash, como o Gnash, o Lightspark, o Ruffle e o CheerpX.
+.\"
+Finalmente, também não são discutidas as tecnologias construídas em
+cima do Flash Player e do Adobe AIR (atualmente HARMAN AIR), como
+Haxe, Starling, Flixel, Adobe Flex (atualmente Apache Flex), OpenFL e
+CrossBridge (anteriormente projeto Alchemy).
+.\}
 .HEADING 2 "GameMaker"
 .\" Que CU achar UM lugar com TODAS as informações relevantes sobre o
 .\" GameMaker que não seja a Wikipédia. FUCK. AMADORES.
 .PP
-GameMaker é um motor de jogos comercial com um plano gratuito,
-utilizado através de um editor gráfico, que permite montagem das cenas
-do jogo e programação, e exporta jogos para todas as plataformas
-relevantes, como Web, PC, \fImobile\fP e console.
+GameMaker é um motor de jogos comercial com um plano gratuito, voltado
+a um público iniciante para criação de jogos 2D casuais.
 .\"
+É utilizado através de um editor gráfico, que permite montagem
+interativa das cenas do jogo e inclui um editor de código embutido.
+.\"
+Jogos feitos com GameMaker podem ser exportados para todas as
+plataformas relevantes, como Web, PC, \fImobile\fP e console.
+.PP
 Entre várias ca\%rac\%te\%rís\%ti\%cas que apresenta, inclusive
 programação visual, de acordo com \*[GameMaker itG],
-"Atualmente, GameMaker possui funcionalidade \fIlimitada\fP de
-\fIsprites\fP vetoriais. e [sic] consegue somente importar imagens
-vetoriais a partir de arquivos \fBSWF\fP".
+"Atualmente, GameMaker pos\%sui funcionalidade \fIlimitada\fP de
+\fIsprites\fP vetoriais. e [sic] consegue importar imagens vetoriais
+somente a partir de arquivos \fBSWF\fP".
+.\"
+\*[GameMaker it] rei\%te\%ra inúmeros benefícios conhecidos dos
+gráficos vetoriais, porém alerta que
+"em contrapartida, \fIsprites\fP vetoriais consomem mais tempo de CPU
+para desenhar do que \fIsprites bitmap\fP, e essa diferença de
+velocidade aumenta com a complexidade da animação", e informa
+limitações, principalmente a de que "ActionScript não funciona".
+.if 0 \{\
 .PP
 \*[GameMaker it] discute vários benefícios dos gráficos vetoriais,
 como o fato de que
@@ -598,6 +655,7 @@ concluindo que
 "em contrapartida, \fIsprites\fP vetoriais consomem mais tempo de CPU
 para desenhar do que \fIsprites bitmap\fP, e essa diferença de
 velocidade aumenta com a complexidade da animação".
+.\}
 .PP
 A renderização de gráficos vetoriais pode ser configurada no
 GameMaker.
@@ -608,6 +666,7 @@ Isso simplesmente reduzirá ou aumentará a quantidade de triângulos
 usados para gerar o \fIsprite\fP" e que "você também pode definir
 diferentes valores de \fIanti-serrilhamento\fP (AA) para \fIsprites\fP
 SWF sendo desenhados".
+.if 0 \{\
 .PP
 Finalmente, oito limitações e efeitos inusitados são documentadas a
 respeito dos \fIsprites\fP vetoriais do GameMaker.
@@ -622,8 +681,8 @@ Conforme \*[GameMaker it], são eles:
 "buraco e triângulos podem aparecer [...] por causa de geometrias
 colapsando em escalas pequenas";
 .ITEM
-"se você tiver qualquer presente na cena, porém fora dos limites da
-cena, ainda será desenhado";
+"se você tiver qualquer coisa presente na cena, porém fora dos limites
+da cena, ainda será desenhado";
 .ITEM
 "O tamanho da cena afeta o tamanho das camadas de colisão geradas,
 então se você tiver uma cena grande com muitos quadros na sua
@@ -635,12 +694,13 @@ animação, você pode acabar consumindo muita memória";
 seu arquivo SWF, você deve garantir que o \fIbitmap\fP é uma potência
 de dois em tamanho";
 .ITEM
-"Renderiação de texto funciona, porém você precisa embutir a fonte no
+"Renderização de texto funciona, porém você precisa embutir a fonte no
 seu arquivo SWF [...] Além disso, por enquanto apenas texto alinhado à
 esquerda funciona".
 .LIST OFF
+.\}
 .PP
-\*[Err "[fechar com um parágrafo próprio]"].
+\*[Err "[parágrafo fechando]"].
 .if 0 \{\
 "permitem adicionar gráficos animados enormes que com \fIsprites\fP
 \fIbitmap\fP tradicionais impossível"
@@ -649,24 +709,130 @@ esquerda funciona".
 \fIsprite\fP antes do consumo de memória se tornar proibitivo."
 .\}
 .HEADING 2 "GAF"
-.HEADING 2 "Scaleform GFx"
+.PP
+De acordo com \*[GafIntro it]:
+.CitacaoLongaS
+GAF significa Generic Animation Format. GAF é projetado para
+armazenar animações do Flash em um formato aberto multi-plataforma
+para reprodução posterior [...]
+GAF trabalha com 99% do que pode ser criado com Flash, então seus
+artistas e animadores não precisam planejar ou preparar
+especialmente seus arquivos SWF antes da conversão.
+.CitacaoLongaE
+.PP
+O arquivo GAF é gerado com a aplicação GAF Converter, após ser
+alimentado com arte em formato SWF
+.GafIntro
+\&.
+Além disso, \*[GafIntro it] explica que
+"O processo de conversão GAF tem várias otimizações para aumentar o
+desempenho de reprodução em todas as plataformas e \fIframeworks\fP. O
+desempenho das \fIruntimes\fP do GAF é muito melhor do que o do Flash
+Player".
+Segundo \*[GafIntro i], há \fIruntimes\fP do GAF disponíveis para os
+motores de jogos Cocos2d, Cocos2d-x e Starling, e na Unity um
+\fI\%plugin\fP pode ser obtido diretamente através da Unity Asset Store.
+.PP
+.if 0 \{\
+Com um repertório anterior de jogos feitos inteiramente para Flash
+Player,
+.\}
+.if 0 como Knightmare Tower, GOBTRON e Feed the King,
+.\"
+\*[GafJuicy i] detalha como o estúdio usou GAF com o motor de jogos
+Unity, para lançar o jogo Burrito Bison: Launcha Libre para Android e
+iOS, em 2016, alcançando um crescente público \fImobile\fP.
+.if 0 \{\
+e,
+efetivamente, fugindo da esfera de jogos Web, então em declínio.
+.\}
+De acordo com \*[GafJuicy it], GAF permitiu que o estúdio continuasse
+contando com sua expertise em Flash para criar todas as animações, e
+enalteceu a facilidade de usá-las na Unity através do GAF, pois cada
+uma pôde "ser exportada como um GameObject que usa exatamente a mesma
+hierarquia e lógica como qualquer outro GameObject".
+.if 0 \{\
+ao passo que para adotar Spine \(em descrito como "um grande software
+de animação" \(em,
+"realmente aprender a trabalhar profissionalmente nele seria custoso
+demais para o tempo e dinheiro que tínhamos disponível".
+.\"tipo assim. XXX. queremos adentrar nisso? é valioso a crítica
+.\"sensível que fazem ao Spine e módulo Unity. talvez depois.
+Knightmare Tower, os dois primeiros títulos da série Burrito Bison,
+Feed the King e \%GOBTRON.
+.\"
+observando \fIspritesheets\fP apresentarem um peso proibitivo, e o
+módulo de animação da Unity ser impraticável.
+.\}
+.if 0 \{\
+.PP
+.\"
+"Por outro lado, o arquivo de animações GAF armazena apenas as partes
+únicas da animação em um atlas de textura, e [sic] um arquivo de
+configuração binário altamente comprimido descrevendo objetos e
+transformações".
+.BR
+"O Conversor GAF é uma aplicação independente que funciona diretamente
+em computadores Windows e Mac".
+.BR
+"As \fIruntimes\fP do GAF são bibliotecas (ou \fIplugins\fP) de código
+aberto, que permitem que o seu \fItoolkit\fP de jogos carregue e
+renderize animações em seus jogos".
+.PP
+Juicy Beast é um estúdio de jogos que lançou diversos jogos bem
+sucedidos durante a era de jogos do Flash, desde jogos simples como
+GOBTRON e Feed the King, bem como jogos sofisticados como Knightmare
+Tower e a série de jogos Burrito Bison, Burrito Bison Revenge e
+Burrito Bison: Launcha Libre.
+A respeito desse último, \*[GafJuicy it] discute o uso do GAF
+.\}
 .PP
 .red
-De acordo com \*[Scaleform it]:
+A solução GAF é muito semelhante à do presente trabalho [detalhar]
+[botar figura]\c
 .black
-\c
+\&.
+.HEADING 2 "Scaleform GFx"
+.PP
+A vocação do Flash para interfaces gráficas não é acidental, pois
+tendo nascido junto à Internet, a criação de aplicações Web esteve
+entre os fatores que moldaram sua evolução.
+.\"XXX pular ladainha de botões e tipografia e mouse e ActionScript
+.if 0 \{\
+introduzidos no Flash tipografia avançada e elementos interativos como
+botões e caixas de texto, e acesso à mouse e teclado
+Em consequência do Flash ser simultaneamente uma ferramenta de desenho
+e animação, e também possuir tipografia avançada e elementos
+interativos como botões e caixas de texto, e tudo isso poder ser
+misturado e manipulado, a ideia de usar Flash para criar interfaces
+gráficas não é rara.
+.\"
+Apesar de ser, primariamente, uma ferramenta de desenho e animação,
+por o Flash contar com botões e recursos de tipografia avançados
+.\}
+.\"
+Não demorou para que o Flash chegasse à motores de jogos como
+CryEngine, Unreal Engine e Unity, através de um produto chamado
+Scaleform GFx, cujos usos e história é resumido por \*[Scaleform it]:
+.FLOAT FORCE
 .CitacaoLongaS
-Scaleform GFx é um motor de
-renderização de gráficos vetoriais usado para interfaces gráficas,
-HUDs e texturas animadas baseadas em Adobe Flash em jogos para
-Windows, Mac, Linux, Xbox 360, PlayStation 2 / Portable / 3 e sistemas
-Wii.
+Scaleform GFx é um motor de renderização de gráficos vetoriais usado
+para interfaces gráficas, HUDs e texturas animadas baseadas em Adobe
+Flash em jogos para Windows, Mac, Linux, Xbox 360, PlayStation 2 /
+Portable / 3 e sistemas Wii.
 .CitacaoLongaM
 Em 1 de março de 2011, foi adquirido pela Autodesk junto com a própria
 companhia [Scaleform]. Compras de licenças foram descontinuadas, junto
 com vários outros produtos \fImiddleware\fP da Autodesk para jogos, em
 12 de julho de 2017.
 .CitacaoLongaE
+.FLOAT OFF
+.if 0 \{\
+.\"XXX Isso é muito estranho, mas fico muito largado deixar no texto.
+.PP
+A descontinuação do produto ocorre 13 dias antes da Adobe anunciar a
+descontinuação do Flash Player inteiramente.
+.\}
 .if 0 \{\
 .PP
 Estando integrado em vários motores de jogos, inúmeros jogos AAA \(em
@@ -681,15 +847,18 @@ Com vários motores de jogos integrando o Scaleform GFx, \*[Scaleform i]
 lista mais de duas centenas de jogos AAA que fizeram uso indireto
 do Flash para interface gráficas:
 .\}
+.SP
 .PP
-.red
-\*[Scaleform i] lista 325 lançamentos que utilizaram Scaleform GFx
-para cons\%tru\%ir suas interfaces gráficas e HUDs.
-A Figura 1 mostra o editor de animações Flash sendo usado para
-construir uma interface gráfica 3D, que depois pode ser integrada a um
-jogo através do Scaleform GFx.
-.black
-\c
+Desse modo, Scaleform GFx possibilita uma divisão de tarefas, onde
+desenhistas podem se responsabilizar inteiramente pela interface
+gráfica, trabalhando com o Flash \(em uma ferramenta familiar e
+produtiva \(em, com o resto da equipe livre para agregar valor em
+outras partes centrais do jogo, como a história, gráficos, mecânicas e
+conteúdo.
+.\"
+Na Figura 1, é mostrado o editor de animações Flash aberto, com uma
+interface gráfica 3D em construção, que depois pode ser renderizada em
+um jogo através do Scaleform GFx.
 .if 0 \{\
 .\"
 Alien: Isolation e : Colonial Marines
@@ -772,6 +941,25 @@ XCOM: Enemy Unknown
 Gears of War 3,
 .\"
 .\}
+.PP
+\*[Scaleform i] lista 325 lançamentos para PC e console, cujo uso do
+\%Scaleform\~GFx é conhecido; a grande maioria títulos AAA, que são jogos
+produzidos com um grande orçamento, buscando apelo massivo.
+.\"
+A Figura 2 mostra uma captura de tela de um desses jogos, o
+Borderlands 2, publicado em 2012, que utilizou extensivamente o
+Scaleform GFx.
+.\"
+Na Figura 2, pode-se observar um menu onde o jogador gasta pontos
+acumulados para desbloquear habilidades em seu personagem.
+.\"
+A interface gráfica mostrada na Figura 2 não somente é ricamente
+elaborada, como possui uma distoração 3D, camadas sobrepostas e
+transparência para melhor se integrar na ambientação imersiva do jogo.
+.PP
+.Err discutir relação com trabalho (complexidade, ActionScript, \
+propósitos etc.)
+\c
 .FLOAT
 .FiguraCurta "Interface gráfica de jogo sendo criada com Flash"
 .RLD 1v
@@ -780,24 +968,20 @@ Gears of War 3,
 .ce
 .PT_SIZE 10
 Fonte: \*[Scaleform3D ""]
-.FLOAT OFF
-.PP
-.red
-A Figura 2 mostra um menu do jogo Borderlands 2, um de muitos títulos
-AAA que utilizaram Flash para construir a interface gráfica.
-.black
-\c
-.FLOAT
 .FiguraCurta "Menu de habilidades do jogo Borderlands 2, lançado em 2012"
 .RLD 1v
 .PIC_BORDERLANDS2 SCALE 30
 .RLD 0.5v
 .ce
 .PT_SIZE 10
-Fonte: \*[Err MobyGames]
+Fonte: \*[Borderlands ""]
+.RLD 1v
 .FLOAT OFF
-.HEADING 2 "Ruffle"
+.\"Outros jogos com screenshots boas: Batman: Arkham Asylym, Company
+.\"of Heroes 2, algum Crysis (1, Warhead, 2 ou 3), Dishonored, Mass
+.\"Effect 2, XCOM: Enemy Unknown, Prototype, Prey ou Wolfenstein.
 .if 0 \{\
+.HEADING 2 "Ruffle"
 .PP
 Existem várias implementações alternativas do Flash Player,
 visto que o preenchimento é um dos recursos mais básicos, qualquer
@@ -1116,6 +1300,10 @@ depois de fazer um jogo
 .UNDERSCORE SUFFIX , complexo
 até lá é tudo intermediário. Falar o menos possível, o mínimo.
 .\}
+.PP
+Harmonizar referências.
+.PP
+Ver quando uma abreviatura/sigla é explicada pela primeira vez.
 .PP
 Discriminar os seguintes termos e checar a consistência no uso em texto de:
 .LIST USER "\(en\ "

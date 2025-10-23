@@ -12,15 +12,41 @@
 \!FGL. 2013.
 \![\fIonline\fP]. Disponível em:
 \!Acesso em: outubro de 2025.
-.Referencia Scaleform MobyGames 2025
-\!MOBYGAMES. 2025.
-\!\fBMiddleware\fP: Scaleform GFx SDK
+.Referencia GafIntro "GAF Media" 2025
+\!GAF MEDIA. 2025.
+\!\fBAbout GAF\fP.
 \![\fIonline\fP]. Disponível em:
-\!.PDF_WWW_LINK PREFIX https://www.mobygames.com/group/8075/middleware-scaleform-gfx-sdk/ < SUFFIX >. \%https://www.mobygames.com/group/8075/middleware-scaleform-gfx-sdk/
+\!.PDF_WWW_LINK https://www.gafmedia.com/about PREFIX < SUFFIX >. \%https://www.gafmedia.com/about
+\!Acesso em: outubro de 2025.
+.if 0 \{\
+.Referencia GafForamt "GAF Media" 2025b
+\!______. 2025b.
+\!\fBWhat is GAF Format?\fP
+\![\fIonline\fP]. Disponível em:
+\!.PDF_WWW_LINK https://gafmedia.com/documentation/what-is-gaf-format PREFIX < SUFFIX >. \%https://gafmedia.com/documentation/what-is-gaf-format
+\!Acesso em: outubro de 2025.
+.\}
+.Referencia GafJuicy "Juicy Beast" 2016
+\!JUICY BEAST. 2016.
+\!\fBComplex animations and cinematics in Unity2D\fP
+\![\fIonline\fP]. Disponível em:
+\!.PDF_WWW_LINK https://gafmedia.com/developer-insights/JuicyBeast-experience PREFIX < SUFFIX >. \%https://gafmedia.com/developer-insights/JuicyBeast-experience
 \!Acesso em: outubro de 2025.
 .Referencia Thoughts "Steve Jobs" u JOBS 2010
 \!JOBS, Steve. 2010.
 \![\fIonline\fP]. Disponível em:
+\!Acesso em: outubro de 2025.
+.Referencia Borderlands MegaMegaMan 2012
+\!MEGAMEGAMAN. 2012.
+\!\fBBorderlands 2 (Windows) screenshot\fP: Skill points menu.
+\![\fIonline\fP]. Disponível em:
+\!.PDF_WWW_LINK PREFIX https://www.mobygames.com/game/57909/borderlands-2/screenshots/windows/592385/ PREFIX < SUFFIX >. \%https://www.mobygames.com/game/57909/borderlands-2/screenshots/windows/592385/
+\!Acesso em: outubro de 2025.
+.Referencia Scaleform MobyGames 2025
+\!MOBYGAMES. 2025.
+\!\fBMiddleware\fP: Scaleform GFx SDK
+\![\fIonline\fP]. Disponível em:
+\!.PDF_WWW_LINK https://www.mobygames.com/group/8075/middleware-scaleform-gfx-sdk/ PREFIX < SUFFIX >. \%https://www.mobygames.com/group/8075/middleware-scaleform-gfx-sdk/
 \!Acesso em: outubro de 2025.
 .Referencia Scaleform3D "Scaleform" 2010
 \!SCALEFORM 3D Interface (3Di).
