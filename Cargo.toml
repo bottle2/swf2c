@@ -1,10 +1,15 @@
 [package]
 name = "swf2c"
+version = "0.1.0"
+edition = "2021"
+description = "Generate C code that plays Flash animations"
+readme = "README.md"
+repository = "https://github.com/bottle2/swf2c"
+license = "GPL-3.0-or-later"
+include = ["main.rs"]
 [[bin]]
 name = "swf2c"
 path = "main.rs"
-version = "0.1.0"
-edition = "2021"
 
 [dependencies]
 swf = "0.2.2"

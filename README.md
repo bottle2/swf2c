@@ -2,15 +2,13 @@
 
 <!--See [swf2c(1)](swf2c.1.md) for command invocation,
 see [swf2c(7)](swf2c.7.md) for API usage.-->
-Usage instructions to come.
 
 Do you want prints? A video? Boring! Check out this LIVE and ONLINE demo instead: https://www.newgrounds.com/projects/games/6419340/preview
 
-The remainder of this document concerns development exclusively.
-
+<!--
 ## News
 
-I post in this thread: https://www.newgrounds.com/bbs/topic/1540199/999
+I post in this thread: https://www.newgrounds.com/bbs/topic/1540199/999-->
 
 ## Supported backends
 
@@ -220,3 +218,6 @@ The Gnash wiki is a goldmine, but unfortunately it is offline and can only be br
 - https://web.archive.org/web/20210310120920/https://www.adobe.com/content/dam/acom/en/devnet/pdf/swf-file-format-spec.pdf
 - https://open-flash.github.io/mirrors/swf-spec-19.pdf
 - https://web.archive.org/web/20080113212114/https://www.drizzle.com/~scottb/gdc/flash-paper.htm
+
+What is this?
+https://sembiance.com/fileFormatSamples/archive/swf/
