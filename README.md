@@ -178,7 +178,6 @@ The following projects also parse SWF:
 - Text
 - Non-seekable APIs (supposedly with a lower footprint)
 - Write tool and API manual
-- Be friendly with C++
 <!--- Integration with physics engines such as [Chipmunk2D](https://chipmunk-physics.net/)-->
 <!--- Support for sound-->
 <!--- Some barebones action support (I don't know yet)-->

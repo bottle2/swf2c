@@ -220,8 +220,12 @@ fn main() {
 
     if is_header {
         fuckprint!(
-            r"#ifndef {}_H
+            r#"#ifndef {}_H
 #define {}_H
+
+#ifdef __cplusplus
+extern "C" {{
+#endif
 
 #define {}_framerate {}
 enum {{
@@ -263,8 +267,12 @@ void {}_transform(double,double,double,double,double,double);
 // TODO Figure out some naming convention <swf>_{{init,free,render}}[_<framework>]_<engine>[_<variant>]
 // TODO Discuss thread safety and reentrancy
 
+#ifdef __cplusplus
+}}
 #endif
-",
+
+#endif
+"#,
             uppername,
             uppername,
             lowername,
