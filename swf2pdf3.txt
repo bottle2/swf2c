@@ -1,0 +1,81 @@
+T{
+.nf
+\01
+\02
+\03
+
+\04
+\05
+
+\06
+
+\07
+\08
+\09
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+T}	T{
+.nf
+#include <assert.h>
+#include <stdio.h>
+#include <stdlib.h>
+\0
+#include <cairo.h>
+#include <cairo-pdf.h>
+
+#include \(dq\f(CBthere_she_is.h\fP\(dq
+
+int main(int argc, char *argv[])
+{
+\0\0if (argc != 3)
+\0\0\0\0return 1;
+
+\0\0int frame = atoi(argv[1]);
+
+\0\0if (frame <= 0 || frame > \f(CBthere_she_is_n_frame\fP)
+\0\0\0\0return 2;
+
+\0\0cairo_surface_t *pdf = cairo_pdf_surface_create(
+\0\0\0\0\0\0\0\0\0\0argv[2], \f(CBthere_she_is_width\fP, \f(CBthere_she_is_height\fP);
+
+\0\0if (cairo_surface_status(pdf) != CAIRO_STATUS_SUCCESS)
+\0\0\0\0return 3;
+
+\0\0cairo_t *cr = cairo_create(pdf);
+
+\0\0\f(CBthere_she_is_render_cairo\fP(cr, frame);
+
+\0\0if (cairo_surface_status(pdf) != CAIRO_STATUS_SUCCESS)
+\0\0\0\0return 4;
+
+\0\0cairo_destroy(cr);
+\0\0assert(1 == cairo_surface_get_reference_count(pdf));
+\0\0cairo_surface_destroy(pdf);
+
+\0\0return 0;
+}
+T}

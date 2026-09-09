@@ -1,76 +1,552 @@
+.if 0 \{\
+.Referencia Cebolinha "A RUA" 2014
+\!A RUA do Cebolinha | Turma da Mônica.
+\![\fIS\fP. \fIl\fP.: \fIs\fP. \fIn\fP.], 2014.
+\!1 vídeo (3 min).
+\!Publicado pelo canal Turma da Mônica.
+\!Disponível em:
+\!.PDF_WWW_LINK https://www.youtube.com/watch?v=mqsaeWEpXkM PREFIX < SUFFIX >. \%https://www.youtube.com/watch?v=mqsaeWEpXkM
+\!Acesso em: 27 out. 2025.
+.\}
 .Referencia Animate Adobe 2023
-\!ADOBE. 2023.
-\!\fBHow to export files from Animate\fP.
-\![\fIonline\fP]. Disponível em:
-\!.PDF_WWW_LINK https://helpx.adobe.com/animate/using/exporting-content.html PREFIX < SUFFIX >. \%https://helpx.adobe.com/animate/using/exporting-content.html
-\!Acesso em: outubro de 2025.
+.RefTit \fBHow to export files from Animate\fP
+\!\&.
+.Link1 https://helpx.adobe.com/animate/using/exporting-content.html
+.Link2 \%https://\:helpx\:.adobe\:.com\:/animate/using/exporting-content.html
+\!Acesso em: 28 out. 2025.
+.Referencia TheFuture "Adobe Corporate Communications" 2017
+.RefTit \fBFlash & The Future of Interactive Content\fP
+\!\&.
+.Link1 https://web.archive.org/web/20171202123704/https://theblog.adobe.com/adobe-flash-update/
+.Link2 \%https://blog.adobe.com/en\:/publish\:/2017\:/07\:/25\:/adobe\:-flash-update
+\!Acesso em: 28 out. 2025.
+.Referencia Spec "Adobe Systems Incorporated" 2012
+.RefTit \fBSWF FILE FORMAT SPECIFICATION: \%Version 19\fR
+\!\&.
+.Link1 https://open-flash.github.io/mirrors/swf-spec-19.pdf
+.Link2 \%https://open-flash.github.io/mirrors/swf-spec-19.pdf
+\!Acesso em: 15 mar. 2025.
+.Referencia Sus Avloire 2025
+.RefTit \fBHTML5 Game Development Company\fP
+\!\&.
+.Link1 https://www.avloiregames.ae/html5-game-development.html
+.Link2 \%https://\:www.avloiregames.ae/html5-game-development.html
+\!Acesso em: 29 out. 2025.
+.PTITULO2
+.Referencia CongFlash "Bi\%bli\%o\%te\%ca do Con\%gres\%so dos Estados Unidos" 2024a
+.RefTit \fBFlash SWF File Format Family\fP
+\!\&.
+.Link1 https://www.loc.gov/preservation/digital/formats/fdd/fdd000629.shtml
+.Link2 \%https://www.loc.gov/preservation\:/digital\:/formats\:/fdd/fdd000629.shtml
+\!Acesso em: 3 nov. 2025.
+.Referencia Congress "Bi\%bli\%o\%te\%ca do Con\%gres\%so dos Estados Unidos" 2024b
+.RefTit R \fBScalable Vector Graphics (SVG) File Format Family\fP
+\!\&.
+.Link1 https://www.loc.gov/preservation/digital/formats/fdd/fdd000515.shtml
+.Link2 \%https://www.loc.gov/preservation/digital/formats/fdd/fdd000515.shtml
+\!Acesso em: 28 out. 2025.
 .Referencia Bilas Bilas 2005
-\!BILAS. 2005.
+.RefTit \fBWhat About Flash? Can We Really Make Games With It?\fP
+\!
+.Link1 https://web.archive.org/web/20080113212114/https://www.drizzle.com/~scottb/gdc/flash-paper.htm
+.Link2 \%https://www.drizzle.com/~scottb/gdc/flash-paper.htm
+\!Acesso em: 28 out. 2025.
+.PTITULO2
+.Referencia FlashSvg "Tom Byrne" u BYRNE 2021
+.RefFull BYRNE, Tom
+.RefTit \fBFlash2Svg\fP
+\!\&.
+.Link1 https://github.com/TomByrne/Flash2Svg
+.Link2 \%https://github\:.com\:/TomByrne\:/Flash2Svg
+\!Acceso em: 29 de out. de 2025.
+.if 0 \{\
+.Referencia Chowdren "MP2 Games" 202-
+\!MP2 GAMES. 202-.
+\!\fBChowdren\fP.
 \![\fIonline\fP]. Disponível em:
-\!Acesso em: outubro de 2025.
-.Referencia Fgl FGL 2013
-\!FGL. 2013.
-\![\fIonline\fP]. Disponível em:
-\!Acesso em: outubro de 2025.
+\!.PDF_WWW_LINK https://mp2.dk/chowdren/ PREFIX < SUFFIX >. \%https://mp2.dk/chowdren/
+\!Acesso em: 30 out. 2025.
+.\}
+.Referencia Cacani "CACANi Pte Ltd." 2019
+.RefTit C \fBCACANi 2.0 User Manual 2019.04.26\fP
+\!\&.
+.Link1 https://cacani.sg/CACANi_manual.pdf
+.Link2 \%https://cacani.sg/CACANi_manual.pdf
+\!Acesso em: 30 out. 2025.
+.Referencia Friction "Colaboradores do Friction" 2024
+.RefTit \fBFriction\fP
+\!\&.
+.Link1 https://friction.graphics/
+.Link2 \%https://\:friction\:.graphics/
+\!Acesso em: 30 out. 2025.
+.Referencia Trick27 CSS-Tricks 2021
+.RefTit \fBAnimating SVG with JavaScript | CSS-Tricks\fP
+\!\&.
+.Link1 https://css-tricks.com/lodge/svg/27-animating-svg-javascript/
+.Link2 \%https://css-tricks.com/lodge/svg/27-animating-svg-javascript/
+\!Acesso em: 28 out. 2025.
+.PTITULO2
+.Referencia Dad Dad's 2004
+.ie dRefSPECIAL \{\
+.da
+.PP
+SAKUPEN (Ray Pencil). 2004.
+.BR
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/195918 "\fBDad's Home\fP"
+.SP
+.da Bibliografia
+.\}
+.el \{\
+\!DAD'S Home. [\fIS\fP. \fIl\fP.: \fIs\fP. \fIn\fP.], 2004. 1 vídeo (3 min).
+\!Publicado por Sakupen (Ray Pencil).
+.if 0 \{\
+\!SAKUPEN (Ray Pencil). 2004.
+\!\fBDad's Home\fP
+\![\fIonline\fP].
+.\}
+\!Disponível em:
+\!.PDF_WWW_LINK https://www.newgrounds.com/portal/view/195918 PREFIX < SUFFIX >. \%https://www\:.newgrounds\:.com\:/portal/view/195918
+\!Acesso em: 16 nov. 2025.
+.\}
+.Referencia WhatLottie "Design Barn Inc." 2025
+.RefTit C \fBWhat is a Lottie?\fP
+\!
+.Link1 https://lottiefiles.com/what-is-lottie
+.Link2 \%https://lottiefiles\:.com\:/what-is-lottie
+\!Acesso em: 2 nov. 2025.
+.Referencia Pan "Richard Entlich" u ENTLICH 2004
+.RefFull ENTLCIH, Richard
+.RefTit \fBFlash in the Pan or Around for the Long Haul?\fP Assessing Macromedia's Flash Technology
+\!\&.
+.Link1 https://worldcat.org/arcviewer/1/OCC/2007/08/08/0000070519/viewer/file2034.html
+.Link2 \%https://worldcat.org/arcviewer\:/1\:/OCC\:/2007/08/08/0000070519/viewer/file2034.html
+\!Acesso em: 3 nov. 2025.
+.Referencia Expressive "Expressive Suite SRL" 2025
+.RefTit \fBDocumentation\fP \(en Expressive Animator
+\!\&.
+.Link1 "https://expressive.app/expressive-animator/docs/v1/"
+.Link2 \%https://expressive.app/expressive-animator/docs/v1/
+\!Acesso em: 29 out. 2025.
+.PTITULO2
+.Referencia Fgl FGL 2014
+.RefTit \fBFGL.com\fP
+\!\&.
+.Link1 https://web.archive.org/web/20141211022751/https://www.fgl.com/index.php
+.Link2 \%https://www.fgl.com/index.php
+\!Acesso em: 31 out. 2025.
+.Referencia Flashpoint "Flashpoint Archive" 2025
+.RefTit \fBStatistics\fP
+\!\&.
+.Link1 https://flashpointproject.github.io/flashpoint-database/statistics/
+.Link2 \%https://\:flashpointproject\:.github.io\:/flashpoint-database\:/statistics/
+\!Acesso em: 5 nov. 2025.
 .Referencia GafIntro "GAF Media" 2025
-\!GAF MEDIA. 2025.
-\!\fBAbout GAF\fP.
-\![\fIonline\fP]. Disponível em:
-\!.PDF_WWW_LINK https://www.gafmedia.com/about PREFIX < SUFFIX >. \%https://www.gafmedia.com/about
-\!Acesso em: outubro de 2025.
+.RefTit \fBAbout GAF\fP
+\!\&.
+.Link1 https://www.gafmedia.com/about
+.Link2 \%https://www.gafmedia.com\:/about
+\!Acesso em: 31 out. 2025.
 .if 0 \{\
 .Referencia GafForamt "GAF Media" 2025b
 \!______. 2025b.
 \!\fBWhat is GAF Format?\fP
 \![\fIonline\fP]. Disponível em:
 \!.PDF_WWW_LINK https://gafmedia.com/documentation/what-is-gaf-format PREFIX < SUFFIX >. \%https://gafmedia.com/documentation/what-is-gaf-format
-\!Acesso em: outubro de 2025.
+\!Acesso em: 31 out. 2025.
 .\}
+.Referencia Gtk GTK 2025
+.RefTit \fBGtk.Svg\fP
+\!\&.
+.Link1 https://docs.gtk.org/gtk4/class.Svg.html
+.Link2 \%https://docs.gtk.org/gtk4/class.Svg.html
+\!Acesso em: 30 out. 2025.
+.PTITULO2
+.Referencia Gumball Gumball 2018
+.ie dRefSPECIAL \{\
+.da
+.PP
+The Amazing World of Gumball. 2018.
+.BR
+.PDF_WWW_LINK https://www.youtube.com/watch?v=1-R_p-xlFeE "\fBThe Void\fP"
+.SP
+.da Bibliografia
+.\}
+.el \{\
+\!GUMBALL | The Void | Cartoon Network.
+\![\fIS\fP. \fIl\fP.: \fIs\fP. \fIn\fP.], 2018.
+\!1 vídeo (5 min).
+\!Publicado pelo canal The Amazing World of Gumball.
+\!Disponível em:
+\!.PDF_WWW_LINK https://www.youtube.com/watch?v=1-R_p-xlFeE PREFIX < SUFFIX >. \%https://\:www\:.youtube\:.com\:/watch\:?v=1-R_p-xlFeE
+\!Acesso em: 27 out. 2025.
+.\}
+.Referencia Jazza "I Love" 2013
+.ie dRefSPECIAL \{\
+.da
+.PP
+JAZZA. 2013.
+.BR
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/622144 "\fBI Love Dota 2\fP"
+.SP
+.da Bibliografia
+.\}
+.el \{\
+\!I LOVE Dota 2.
+\![\fIS\fP. \fIl\fP.: \fIs\fP. \fIn\fP.], 2013.
+\!1 vídeo (1 min).
+\!Publicado por Jazza.
+\!Dis\%po\%ní\%vel em:
+\!.PDF_WWW_LINK https://www.newgrounds.com/portal/view/622144 PREFIX < SUFFIX >. \%https://\:www.newgrounds.com/portal/view/622144
+\!Acesso em: 29 out. 2025.
+.\}
+.Referencia Jarek Jarek 2023
+.RefTit \fBBoxy SVG 4 released\fP
+\!\&.
+.Link1 https://boxy-svg.com/blog/21/boxy-svg-4-released
+.Link2 \%https://boxy-svg.com\:/blog\:/21\:/boxy-svg-4-released
+\!Acesso em: 29 out. 2025.
 .Referencia GafJuicy "Juicy Beast" 2016
-\!JUICY BEAST. 2016.
-\!\fBComplex animations and cinematics in Unity2D\fP
-\![\fIonline\fP]. Disponível em:
-\!.PDF_WWW_LINK https://gafmedia.com/developer-insights/JuicyBeast-experience PREFIX < SUFFIX >. \%https://gafmedia.com/developer-insights/JuicyBeast-experience
-\!Acesso em: outubro de 2025.
+.RefTit \fBComplex animations and cinematics in Unity2D\fP
+\!\&.
+.Link1 https://gafmedia.com/developer-insights/JuicyBeast-experience
+.Link2 \%https://gafmedia.com/developer-insights/JuicyBeast-experience
+\!Acesso em: 31 out. 2025.
+.PTITULO2
 .Referencia Thoughts "Steve Jobs" u JOBS 2010
-\!JOBS, Steve. 2010.
-\![\fIonline\fP]. Disponível em:
-\!Acesso em: outubro de 2025.
+.RefFull JOBS, Steve
+.RefTit \fBThoughts on Flash\fP
+\!\&.
+.Link1 https://web.archive.org/web/20170615060422/https://www.apple.com/hotnews/thoughts-on-flash/
+.Link2 \%https://www.apple.com\:/hotnews\:/thoughts-on-flash/
+\!Acesso em: 31 out. 2025.
+.Referencia Brasil "Bianca Becker Lepikson" u "LEPIKSON" 2013
+.ie dRefSPECIAL \{\
+.da
+.PP
+LEPIKSON, Bianca Becker. 2013.
+.BR
+.PDF_WWW_LINK https://pospsi.ufba.br/sites/pospsi.ufba.br/files/bianca_lepikson.pdf \
+"\fBBrincando na Web:\fP \
+Descrição e análise das atividades lúdicas desempenhadas por crianças de \
+cinco a 12 anos na Internet"
+.SP
+.da Bibliografia
+.\}
+.el \{\
+\!LEPIKSON, Bianca Becker.
+\!\fBBrincando na Web:\fP
+\!Descrição e análise das atividades lúdicas desempenhadas por crianças de
+\!cinco a 12 anos na Internet.
+\!2013. Dissertação (Mestrado em Psicologia do Desenvolvimento)
+\!\(en Intituto de Psicologia, Universidade Federal da Bahia, Salvador, BA, 2013.
+\!Dis\%po\%ní\%vel em:
+\!.PDF_WWW_LINK https://pospsi.ufba.br/sites/pospsi.ufba.br/files/bianca_lepikson.pdf PREFIX < SUFFIX >. \%https://pospsi.ufba.br/sites\:/pospsi.ufba.br\:/files\:/bianca_lepikson.pdf
+\!Acesso em: 5 nov. 2025.
+.\}
+.Referencia LottieImpl "\%Lottie Animation Community" 202-
+.RefTit \fBImplementations\fP: A curated list of awesome things related to Lottie
+\!\&.
+.Link1 https://lottie.github.io/implementations/
+.Link2 \%https://lottie.github.io/implementations/
+\!Acesso em: 2 nov. 2025.
+.PTITULO2
 .Referencia Borderlands MegaMegaMan 2012
-\!MEGAMEGAMAN. 2012.
-\!\fBBorderlands 2 (Windows) screenshot\fP: Skill points menu.
-\![\fIonline\fP]. Disponível em:
-\!.PDF_WWW_LINK PREFIX https://www.mobygames.com/game/57909/borderlands-2/screenshots/windows/592385/ PREFIX < SUFFIX >. \%https://www.mobygames.com/game/57909/borderlands-2/screenshots/windows/592385/
-\!Acesso em: outubro de 2025.
+.RefTit \fBBorderlands 2 (Windows) screenshot\fP: Skill points menu
+\!\&.
+.Link1 https://www.mobygames.com/game/57909/borderlands-2/screenshots/windows/592385/
+.Link2 \%https://www.mobygames.com/game/57909/borderlands-2\:/screenshots\:/windows\:/592385/
+\!Acesso em: 31 out. 2025.
+.Referencia Codegen Microsoft 2021
+.RefTit \fBJSON versus Codegen\fP
+\!\&.
+.Link1 https://learn.microsoft.com/en-us/windows/communitytoolkit/animations/lottie-scenarios/json_codegen
+.Link2 \%https://\:learn\:.microsoft\:.com/\:en-us\:/windows/communitytoolkit/animations/lottie-scenarios/\:json_codegen
+\!Acesso em: 2 nov. 2025.
 .Referencia Scaleform MobyGames 2025
-\!MOBYGAMES. 2025.
-\!\fBMiddleware\fP: Scaleform GFx SDK
-\![\fIonline\fP]. Disponível em:
-\!.PDF_WWW_LINK https://www.mobygames.com/group/8075/middleware-scaleform-gfx-sdk/ PREFIX < SUFFIX >. \%https://www.mobygames.com/group/8075/middleware-scaleform-gfx-sdk/
-\!Acesso em: outubro de 2025.
+.RefTit \fBMiddleware\fP: Scaleform GFx SDK
+\!\&.
+.Link1 https://www.mobygames.com/group/8075/middleware-scaleform-gfx-sdk/
+.Link2 \%https://\:www\:.mobygames.com/group/8075/middleware-scaleform-gfx-sdk/
+\!Acesso em: 31 out. 2025.
+.PTITULO2
+.Referencia Incredibles "Pixar" 2015
+.ie dRefSPECIAL \{\
+.da
+.PP
+COOPER HEWITT. 2015.
+.BR
+.PDF_WWW_LINK https://www.youtube.com/watch?v=oLJd2mP9zAw "\fBPixar \(en The Incredibles Credits Design\fP"
+.SP
+.da Bibliografia
+.\}
+.el \{\
+\!PIXAR \(en The Incredibles Credits Design.
+\![\fIS\fP. \fIl\fP.: \fIs\fP. \fIn\fP.], 2015.
+\!1 vídeo (1 min).
+\!Publicado pelo canal Cooper Hewitt.
+\!Dis\%po\%ní\%vel em:
+\!.PDF_WWW_LINK https://www.youtube.com/watch?v=oLJd2mP9zAw PREFIX < SUFFIX >. \%https://www.youtube.com/watch?v=oLJd2mP9zAw
+\!Acesso em: 27 out. 2025.
+.\}
+.Referencia QtGroup "Qt Company Ltd." e 2025
+.RefTit C \fBRendering SVG Files\fP
+\!\&.
+.Link1 https://doc.qt.io/qt-6/svgrendering.html
+.Link2 \%https://\:doc\:.qt\:.io\:/qt-6/svgrendering.html
+\!Acesso em: 30 out. 2025.
+.if 0 \{\
+.Referencia Ratalaika Ratalaika 202-
+.RefTit \fBServices\fP
+\!\&.
+.Link1 https://www.ratalaikagames.com/services.php
+.Link2 \%https://www.ratalaikagames.com/services.php
+\!Acesso em: 30 out. 2025.
+.\}
+.Referencia RiveFeats "Rive, Inc." 2025
+.RefTit C \fBAn end-to-end pipeline for interactive graphics\fP
+\!\&.
+.Link1 https://rive.app/features
+.Link2 \%https://rive.app/features
+\!Acesso em: 3 nov. 2025.
+.Referencia FglTut RoseDragon 201-
+.RefTit \fBFGL Developer Newbie Guide\fP
+\!\&.
+.Link1 https://web.archive.org/web/20130510205857/https://www.fgl.com/view_library.php?page=devnewbieguide
+.Link2 \%https://\:www\:.fgl.com/view_library.php?page=devnewbieguide
+\!Acesso em: 30 jun. 2025.
+.PTITULO2
+.Referencia RiveOrigin "Guido Rosso" u "ROSSO" 2019
+.RefFull ROSSO, Guido
+.RefTit \fBAnnouncing Rive\fP: Consolidating Flare and 2Dimensions Into One Brand
+\!\&.
+.Link1 https://medium.com/rive/announcing-rive-1326ad92e403
+.Link2 \%https://medium.com/rive/announcing-rive-1326ad92e403
+\!Acesso em: 3 nov. 2025.
+.if 0 https://betalist.com/startups/2dimensions
+.PTITULO2
 .Referencia Scaleform3D "Scaleform" 2010
+.ie dRefSPECIAL \{\
+.da
+.PP
+SCALEFORMPRESS. 2010.
+.BR
+.PDF_WWW_LINK https://www.youtube.com/watch?v=zKDuzVbi50Q "\fBScaleform 3D Interface (3Di)\fP"
+.SP
+.da Bibliografia
+.\}
+.el \{\
 \!SCALEFORM 3D Interface (3Di).
 \![\fIS\fP. \fIl\fP.: \fIs\fP. \fIn\fP.], 2010.
 \!1 vídeo (2 min).
 \!Publicado pelo canal scaleformpress.
-\!Disponível em:
+\!Dis\%po\%ní\%vel em:
 \!.PDF_WWW_LINK https://www.youtube.com/watch?v=zKDuzVbi50Q PREFIX < SUFFIX >. \%https://www.youtube.com/watch?v=zKDuzVbi50Q
-\!Acesso em: 22 de out. de 2025.
+\!Aces\%so em: 22 de out. de 2025.
+.\}
+.if 0 \{\
+.Referencia Foster "Aaron Simpson" u "SIMPSON" 2009
+\!SIMPSON, Aaron. 2009.
+\!\fBPowerpuff Girls 10th Anniversary Interview With Creator Craig McCracken\fP.
+\![\fIonline\fP]. Disponível em:
+\!.PDF_WWW_LINK https://web.archive.org/web/20090122072238/http://coldhardflash.com/2009/01/powerpuff-girls-10th-anniversary-interview-with-creator-craig-mccracken.html PREFIX < SUFFIX >. \%http://coldhardflash.com/2009/01/powerpuff-girls-10th-anniversary-interview-with-creator-craig-mccracken.html
+\!Aces\%so em: 28 out. de 2025.
+.\}
+.Referencia EvaHallo "Miss.Dynamite Halloween" 2000a
+.ie dRefSPECIAL \{\
+.da
+.PP
+SIRKOWSKI. 2000a.
+.BR
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/6854 "\fBMiss.Dynamite Halloween\fP"
+.SP
+.da Bibliografia
+.\}
+.el \{\
+.if 0 \{\
+\!SIRKOWSKI. 2000a.
+\!\fBMiss.Dynamite Halloween\fP.
+\![\fIonline\fP].
+.\}
+\!MISS.DYNAMITE HALLOWEEN. [\fIS\fP. \fIl\fP.: \fIs\fP. \fIn\fP.], 2000.
+\!1 vídeo (1 min).
+\!Publicado por \%Sirkowski.
+\!Dis\%po\%ní\%vel em:
+\!.PDF_WWW_LINK https://www.newgrounds.com/portal/view/6854 PREFIX < SUFFIX >. \%https://\:www\:.newgrounds.com\:/portal/view/6854
+\!Acesso em: 16 nov. 2025.
+.\}
+.Referencia EvaX "Miss.Dynamite X" 2000
+.ie dRefSPECIAL \{\
+.da
+.PP
+______. 2000b.
+.BR
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/6224 "\fBMiss.Dynamite X\fP"
+.SP
+.da Bibliografia
+.\}
+.el \{\
+.if 0 \{\
+\!______. 2000b.
+\!\fBMiss.Dynamite X\fP.
+\![\fIonline\fP].
+.\}
+\!MISS.DYNAMITE X. [\fIS\fP. \fIl\fP.: \fIs\fP. \fIn\fP.], 2000.
+\!1 vídeo (3 min).
+\!Publicado por Sirkowski.
+\!Dis\%po\%ní\%vel em:
+\!.PDF_WWW_LINK https://www.newgrounds.com/portal/view/6224 PREFIX < SUFFIX >. \%https://www.newgrounds.com\:/portal/view/6224
+\!Acesso em: 16 nov. 2025.
+.\}
+.Referencia EvaXiv "Miss.Dynamite XIV" 2001
+.ie dRefSPECIAL \{\
+.da
+.PP
+______. 2001.
+.BR
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/35686 "\fBMiss.Dynamite XIV\fP"
+.da Bibliografia
+.\}
+.el \{\
+.if 0 \{\
+\!______. 2001.
+\!\fBMiss.Dynamite XIV\fP.
+\![\fIonline\fP].
+.\}
+\!MISS.DYNAMITE XIV. [\fIS\fP. \fIl\fP.: \fIs\fP. \fIn\fP.], 2000.
+\!1 vídeo (3 min).
+\!Publicado por Sirkowski.
+\!Dis\%po\%ní\%vel em:
+\!.PDF_WWW_LINK https://www.newgrounds.com/portal/view/35686 PREFIX < SUFFIX >. \%https://www.newgrounds.com\:/portal/view/35686
+\!Acesso em: 16 nov. 2025.
+.\}
+.PTITULO2
+.Referencia EvaXv "Miss.Dynamite XV" 2003
+.ie dRefSPECIAL \{\
+.da
+.PP
+______. 2003.
+.BR
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/117239 "\fBMiss.Dynamite XV\fP"
+.SP
+.da Bibliografia
+.\}
+.el \{\
+.if 0 \{\
+\!______. 2003.
+\!\fBMiss.Dynamite XV\fP.
+\![\fIonline\fP].
+.\}
+\!MISS.DYNAMITE XV. [\fIS\fP. \fIl\fP.: \fIs\fP. \fIn\fP.], 2003.
+\!1 vídeo (5 min).
+\!Publicado por Sirkowski.
+\!Dis\%po\%ní\%vel em:
+\!.PDF_WWW_LINK https://www.newgrounds.com/portal/view/117239 PREFIX < SUFFIX >. \%https://www.newgrounds.com\:/portal/view/117239
+\!Acesso em: 11 nov. 2025.
+.\}
+.Referencia SvgGator SVGator 2025
+.RefTit \fBCreate interactive SVG animations easily\fP
+\!\&.
+.Link1 https://www.svgator.com/interactive-svg-animation
+.Link2 \%https://www.svgator.com/interactive-svg-animation
+\!Acesso em: 29 out. 2025.
+.Referencia Beautiful "The-Swain, JohnnyUtah e Stamper" u "THE-SWAIN; JOHNNYUTAH; STAMPER" 2009
+.ie dRefSPECIAL \{\
+.da
+.PP
+THE-SWAIN (Michael Swain);
+.BR
+JOHNNYUTAH (Jeff Bandelin);
+.BR
+STAMPER, Will.
+.BR
+2009.
+.BR
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/520768 "\fBChing Chong Beautiful\fP"
+.SP
+.da Bibliografia
+.\}
+.el \{\
+\!THE-SWAIN (Michael Swain); JOHNNYUTAH (Jeff Bandelin); STAMPER, Will. 2009.
+\!\fBChing Chong Beautiful\fP.
+.if 0 \![\fIonline\fP].
+.if 0 \!CHING Chong Beautiful.
+\![\fIS\fP. \fIl\fP.: \fIs\fP. \fIn\fP.], 2009.
+\!1 jogo eletrônico.
+\!Disponível em:
+\!.PDF_WWW_LINK https://www.newgrounds.com/portal/view/520768 PREFIX < SUFFIX >. \%https://\:www\:.newgrounds\:.com/portal\:/view\:/520768
+\!Acesso em: 5 nov. 2025.
+.\}
+.\".Referencia There SamBakZa 2004
+.Referencia There There 2004
+.ie dRefSPECIAL \{\
+.da
+.PP
+SAMBAKZA. 2004.
+.BR
+.PDF_WWW_LINK https://www.newgrounds.com/portal/view/161181 "\fBThere She Is!!!\fP"
+.SP
+.da Bibliografia
+.\}
+.el \{\
+.if 0 \{\
+\!SAMBAKZA. 2004.
+\!\fBThere She Is!!!\fP
+\![\fIonline\fP].
+.\}
+\!THERE She Is!!! [\fIS\fP. \fIl\fP.: \fIs\fP. \fIn\fP.], 2004.
+\!1 vídeo (3 min).
+\!Publicado por SamBakZa.
+\!Disponível em:
+\!.PDF_WWW_LINK https://www.newgrounds.com/portal/view/161181 PREFIX < SUFFIX >. \%https://www.newgrounds.com\:/portal/view/161181
+\!Acesso em: 11 nov. 2025.
+.\}
+.PTITULO2
 .Referencia ToonBoom "Toon Boom Animation Inc." 2025
-\!TOON BOOM ANIMATION INC. 2025.
-\!\fBExporting Flash (SWF) Movies\fP.
+.RefTit C \fBExporting Flash (SWF) Movies\fP
+\!\&.
+.Link1 https://docs.toonboom.com/help/harmony-25/premium/export/export-swf-movie.html
+.Link2 \%https://docs.toonboom.com/help/harmony-25/premium/export/export-swf-movie\:.html
+\!Acesso em: 31 out. 2025.
+.Referencia FuckingRive "Valerie Veveto" u VEVETO 2024
+.RefFull VEVETO, Valerie
+.RefTit \fBA new era for software\fP: production-ready design
+\!\&.
+.Link1 https://rive.app/blog/a-new-graphics-format-for-the-interactive-era
+.Link2 \%https://rive.app/blog/a-new-graphics-format-for-the-interactive-era
+\!Acesso em: 3 nov. 2025.
+.if 0 \{\
+.Referencia WikiAdobe Wikipédia 2025a
+\!WIKIPÉDIA. 2025a.
+\!\fBAdobe Flash\fP
 \![\fIonline\fP]. Disponível em:
-\!.PDF_WWW_LINK https://docs.toonboom.com/help/harmony-25/premium/export/export-swf-movie.html PREFIX < SUFFIX >. \%https://docs.toonboom.com/help/harmony-25/premium/export/export-swf-movie.html
-\!Acesso em: outubro de 2025.
-.Referencia WikiProds "Wikipedia" 2025
-\!WIKIPEDIA. 2025.
-\![\fIonline\fP]. Disponível em:
-\!Acesso em: outubro de 2025.
+\!.PDF_WWW_LINK https://en.wikipedia.org/wiki/Adobe_Flash PREFIX < SUFFIX >. \%https://en.wikipedia.org/wiki/Adobe_Flash
+\!Acesso em: 31 out. 2025.
+.\}
+.Referencia WikiFilm "Wikipédia" 2025a
+.RefTit \fBList of Flash animated films\fP
+\!\&.
+.Link1 https://en.wikipedia.org/wiki/List_of_Flash_animated_films
+.Link2 \%https://\:en\:.wikipedia.org/wiki/List_of_Flash_animated_films
+\!Acesso em: 31 out. 2025.
+.PTITULO2
+.Referencia WikiAnime "Wikipédia" 2025b
+.RefTit R \fBList of Flash animated television series\fP
+\!\&.
+.Link1 https://en.wikipedia.org/wiki/List_of_Flash_animated_television_series
+.Link2 \%https://\:en\:.wikipedia.org/wiki/List_of_Flash_animated_television_series
+\!Acesso em: 31 out. 2025.
 .Referencia GameMaker "YoYo\~Games\~Ltd." 2024
-\!YOYO GAMES LTD. 2024.
-\!\fBNon-Bitmap Sprites\fP.
-\![\fIonline\fP]. Disponível em:
-\!.PDF_WWW_LINK https://manual.gamemaker.io/lts/en/Settings/Texture_Information/Non-Bitmap_Sprites.htm PREFIX < SUFFIX >. \%https://manual.gamemaker.io/lts/en/Settings/Texture_Information/Non-Bitmap_Sprites.htm
-\!Acesso em: outubro de 2025.
+.RefTit C \fBNon-Bitmap Sprites\fP
+\!\&.
+.Link1 https://manual.gamemaker.io/lts/en/Settings/Texture_Information/Non-Bitmap_Sprites.htm
+.Link2 \%https://\:manual\:.gamemaker.io/lts/en/Settings/Texture_Information\:/Non-Bitmap_Sprites.htm
+\!Acesso em: 31 out. 2025.
+.Referencia ReignColor "Ramin Zahed" u "ZAHED" 2011
+.RefFull ZAHED, Ramin
+.RefTit \fBGumball Begins Reign of Color\fP
+\!\&.
+.Link1 https://www.animationmagazine.net/2011/05/gumball-begins-reign-of-color/
+.Link2 \%https://\:www.animationmagazine.net/2011/05/gumball-begins-reign-of-color/
+\!Acesso em: 27 out. 2025.
 .Referencia OFF
 .\" vim:syntax=groff

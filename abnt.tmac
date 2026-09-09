@@ -41,11 +41,12 @@
 .  return
 . \}
 . if dSomeReferencia .nop \!.SP
+. ds RefLast \\$1
 . als \\$1 Citacao
 . ds \\$1_AUTOR \\$2
 . if (4=\\n(.$):(5=\\n(.$) \{\
 .  if 'e'\\$3' \{\
-.   ds \\$1_ET_AL " et al.
+.   ds \\$1_ET_AL " \fIet al\fP.
 .   nr Localish_OKAY 1
 .  \}
 .  if 'u'\\$3' \{\
@@ -173,5 +174,49 @@
 .   nop \*[UC]\\*[\\$1_AUTOR]\*[LC]\\*[\\$1_ET_AL]\c
 .  \}
 . \}
+..
+.\"
+.de RefFull
+. ds TheFull \\$*
+..
+.de RefTit2
+. ie dTheFull \{\
+.  nop \!\\*[TheFull]\c
+.  rm TheFull
+. \}
+. el \{\
+.  ie '\\$1'R' \{\
+.   nop \!______\c
+.   shift
+.  \}
+.  el \{\
+.   ie d \\*[RefLast]_CUSTOM_UPPER .nop \!\\*[\\*[RefLast]_CUSTOM_UPPER]\c
+.   el \{\
+.    nop \!.UC
+.    nop \!\\*[\\*[RefLast]_AUTOR]\c
+.    nop \!.LC
+.    nop \!\\*[\\*[RefLast]_ET_AL]\c
+.   \}
+.  \}
+. \}
+. ie '\\$1'C' \{\
+.  shift
+.  nop \!
+. \}
+. el .nop \!\&.
+. nop \!\\*[\\*[RefLast]_ANO]\c
+. nop \!\&.
+. ds LeTitle \\$*
+..
+.de RefTit
+. RefTit2 \\$@
+. nop \!\\*[LeTitle]\c
+..
+.de Link1
+. ds BibCurLink \\$*
+..
+.de Link2
+. nop \![\fIonline\fP]. Dis\%po\%n\('i\%vel em:
+. nop \!.PDF_WWW_LINK \\*[BibCurLink] PREFIX < SUFFIX >. "\\$*"
 ..
 .\" vim:syntax=groff tw=70

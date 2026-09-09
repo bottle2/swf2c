@@ -1,0 +1,50 @@
+1	PathCount = 1	43	procedure DumpShape(Areas, Strokes, Styles) {
+2		44	\0\0\fBfor\fP (i = 0, i < Areas.length, i += 1)
+3	enum { Forward, Backward }	45	\0\0\0\0CollectPaths(Areas[i], Styles.FillStyles[i])
+4		46	\0\0\fBfor\fP (i = 0, i < Strokes.length, i += 1)
+5	procedure CollectPaths(Edges, Style) {	47	\0\0\0\0CollectPaths(Strokes[i], Styles.LineStyles[i])
+6	\0\0if (0 == Edges.length) return	48	}
+7	\0\0	49
+8	\0\0EmitPath(PathCount, Style)	50	\fBprocedure\fP RelativeToAbsolute(Edge, Current) {
+9	\0\0	51	\0\0Edge.Start = Current
+10	\0\0PathCount += 1	52	\0\0\fBif\fP (Edge is Straight)
+11	\0\0	53	\0\0\0\0Edge.End = Current + Straight.Delta
+12	\0\0while (Edges.length > 0) {	54	\0\0\fBif\fP (Edge is Curved) {
+13	\0\0\0\0Current = Edges[0].End	55	\0\0\0\0Edge.End = Current + Curved.Anchor
+14	\0\0\0\0EmitEdge(Edges[0], Forward)	56	\h'\w'\0\0\0\0Edge.End = Current 'u'+ Curved.Control
+15	\0\0\0\0Edges.remove(0)	57	\0\0\0\0Edge.Control = Current + Curved.Control
+16	\0\0\0\0	58	\0\0}
+17	\0\0\0\0loop {	59	\0\0Current = Edge.End
+18	\0\0\0\0\0\0found = false	60	}
+19	\0\0\0\0\0\0	61	
+20	\0\0\0\0\0\0for (Edge in Edges) {	62	\fBprocedure\fP CollectShapes(Shapes) {
+21	\0\0\0\0\0\0\0\0if (Edge.Start == Current) {	63	\0\0\fBfor\fP (Shape in Shapes) {
+22	\0\0\0\0\0\0\0\0\0\0Current = Edge.Fim	64	\0\0\0\0Styles = Shape.Styles
+23	\0\0\0\0\0\0\0\0\0\0EmitEdge(Edge, Forward)	65	\0\0\0\0Areas.length = Styles.FillStyles.length
+24	\0\0\0\0\0\0\0\0\0\0found = true	66	\0\0\0\0Strokes.length = Styles.LineStyles.length
+25	\0\0\0\0\0\0\0\0\0\0Edges.remove(Edge)	67	\0\0\0\0fs0 = 0, fs1 = 0, ls = 0
+26	\0\0\0\0\0\0\0\0}	68	\0\0\0\0Current = None
+27	\0\0\0\0\0\0\0\0else if (Edge.End == Current) {	69	\0\0\0\0\fBfor\fP (Record in Shape.Records) {
+28	\0\0\0\0\0\0\0\0\0\0Current = Edge.Start	70	\0\0\0\0\0\0\fBif\fP (Record is Edge) {
+29	\0\0\0\0\0\0\0\0\0\0EmitEdge(Edge, Backward)	71	\0\0\0\0\0\0\0\0RelativeToAbsolute(Edge, Current)
+30	\0\0\0\0\0\0\0\0\0\0found = true	72	\0\0\0\0\0\0\0\0\fBif\fP (ls > 0) Strokes[ls-1].insert(Edge)
+31	\0\0\0\0\0\0\0\0\0\0Edges.remove(Edge)	73	\0\0\0\0\0\0\0\0\fBif\fP (fs0 \(!= fs1) {
+32	\0\0\0\0\0\0\0\0}	74	\0\0\0\0\0\0\0\0\0\0\fBif\fP (fs0 > 0) Areas[fs0-1].insert(Edge)
+33	\0\0\0\0\0\0}	75	\0\0\0\0\0\0\0\0\0\0\fBif\fP (fs1 > 0) Areas[fs1-1].insert(Edge)
+34	\0\0\0\0\0\0	76	\0\0\0\0\0\0\0\0}
+35	\0\0\0\0\0\0if (!found) {	80	\0\0\0\0\0\0} \fBelse if\fP (Record is StyleChange) {
+36	\0\0\0\0\0\0\0\0if (Style is not LineStyle)	81	\0\0\0\0\0\0\0\0Current ?= StyleChange.MoveTo
+37	\0\0\0\0\0\0\0\0\0\0EmitClose()	82	\0\0\0\0\0\0\0\0fs0\h'\w'Current'u-\w'fs0'u' ?= StyleChange.FillStyle0
+38	\0\0\0\0\0\0\0\0break	83	\0\0\0\0\0\0\0\0fs1\h'\w'Current'u-\w'fs1'u' ?= StyleChange.FillStyle1
+39	\0\0\0\0\0\0}	84	\0\0\0\0\0\0\0\0ls\h'\w'Current'u-\w'ls'u' ?= StyleChange.LineStyle
+40	\0\0\0\0}	85	\0\0\0\0\0\0\0\0\fBif\fP (StyleChange.NewStyles) {
+41	\0\0}	86	\0\0\0\0\0\0\0\0\0\0DumpShape(Areas, Strokes, Styles)
+42	}	87	\0\0\0\0\0\0\0\0\0\0Styles = NewStyles
+		88	\0\0\0\0\0\0\0\0\0\0Areas.length = Styles.FillStyles.length
+		89	\0\0\0\0\0\0\0\0\0\0Strokes.length = Styles.LineStyles.length
+		90	\0\0\0\0\0\0\0\0}
+		91	\0\0\0\0\0\0}
+		92	\0\0\0\0}
+		93	\0\0\0\0DumpShape(Areas, Strokes, Styles)
+		94	\0\0}
+		95	}

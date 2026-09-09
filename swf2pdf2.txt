@@ -1,0 +1,38 @@
+xx #include <assert.h>
+xx #include <stdio.h>
+xx #include <stdlib.h>
+ 
+xx #include <cairo.h>
+xx #include <cairo-pdf.h>
+
+xx #include \(dq\f(CBthere_she_is.h\fP\(dq
+
+xx int main(int argc, char *argv[])
+xx {
+xx   if (argc != 3)
+xx     return 1;
+xx 
+xx   int frame = atoi(argv[1]);
+xx 
+xx   if (frame <= 0 || frame > \f(CBthere_she_is_n_frame\fP)
+xx     return 2;
+xx 
+xx   cairo_surface_t *pdf = cairo_pdf_surface_create(
+xx           argv[2], \f(CBthere_she_is_width\fP, \f(CBthere_she_is_height\fP);
+xx 
+xx   if (cairo_surface_status(pdf) != CAIRO_STATUS_SUCCESS)
+xx     return 3;
+xx 
+xx   cairo_t *cr = cairo_create(pdf);
+xx 
+xx   \f(CBthere_she_is_render_cairo\fP(cr, frame);
+xx 
+xx   if (cairo_surface_status(pdf) != CAIRO_STATUS_SUCCESS)
+xx     return 4;
+xx 
+xx   cairo_destroy(cr);
+xx   assert(1 == cairo_surface_get_reference_count(pdf));
+xx   cairo_surface_destroy(pdf);
+xx 
+xx   return 0;
+xx }

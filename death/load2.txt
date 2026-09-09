@@ -1,0 +1,29 @@
+T{
+.nf
+1
+2
+
+3
+
+4
+
+5
+6
+7
+
+8
+T}	T{
+.nf
+#ifndef LOAD_H
+#define LOAD_H
+
+#include <cairo.h>
+
+int load(char *anime, float *framerate,
+\0\0\0\0\0\0\0\0int *n_frame, int *w, int *h);
+void render(int frame, cairo_surface_t *s);
+void unload(void);
+extern void (*transform)(double,double,double,
+\0\0\0\0\0\0\0\0double,double,double);
+#endif
+T}

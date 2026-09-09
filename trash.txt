@@ -1,0 +1,12 @@
+xx $ cc -DFEAT_JAVASCRIPT -E -P there_she_is.c > there_she_is.js
+xx $ cc -DFEAT_PLUTOVG \(gapkg-config --cflags --libs SDL2 PlutoVG\(ga \e
+xx      -o demo.exe main.c there_she_is.c
+xx $ cc \(gapkg-config --cflags --libs cairo\(ga swf2pdf.c -o swf2pdf.exe
+xx $ cc \(gapkg-config --cflags --libs cairo\(ga -DFEAT_CAIRO \e
+xx      -o there_she_is.dll -shared there_she_is.c
+xx $ ./swf2pdf there_she_is.dll 2150 there_she_is.pdf
+xx $ NODE_OPTIONS=--max-old-space-size-percentage=90 emcc \e
+xx      -mreference-types -DFEAT_HTML5 \e
+xx      \(gapkg-config --cflags --libs SDL2\(ga \e
+xx      main.c there_she_is.c \e
+xx      -sALLOW_MEMORY_GROWTH

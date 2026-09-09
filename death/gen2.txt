@@ -1,0 +1,9 @@
+T{
+.nf
+1
+2
+T}	T{
+.nf
+\f(CB$\fP ./swf2c -c there_she_is.swf > there_she_is.c
+\f(CB$\fP ./swf2c -h there_she_is.swf > there_she_is.h
+T}

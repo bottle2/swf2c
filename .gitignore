@@ -9,3 +9,7 @@ movies*
 om.tmac
 *.pdf
 *.png
+swfs.zip
+swf2c
+node_modules/
+revisao/

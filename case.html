@@ -13,7 +13,8 @@
     <script src="there_she_is.js"></script>
     <script>
       "use strict";
-      const { framerate, n_frame, width, height } = there_she_is_info();
+      const { framerate, n_frame, width, height }
+          = there_she_is_info();
 
       const canvas = document.getElementById("canvas")
 
@@ -21,9 +22,10 @@
       canvas.height = height;
       const context = canvas.getContext('2d');
 
-      document.getElementById("info").innerText =  "Running as fast as possible"
-                                                + ` (framerate ${framerate} ignored).`
-                                                + ` Width: ${width}. Height: ${height}.`;
+      document.getElementById("info").innerText
+          =  "Running as fast as possible"
+          + ` (framerate ${framerate} ignored).`
+          + ` Width: ${width}. Height: ${height}.`;
 
       const progress = document.getElementById("progress");
 

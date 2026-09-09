@@ -1,0 +1,171 @@
+.de PIC_CUTE
+. PDF_IMAGE -C work/there_she_is_2150.pdf 550p 281p \\$*
+..
+.de PIC_TOILET
+. PDF_IMAGE -C work/there_she_is_1354.pdf 550p 281p \\$*
+..
+.de PIC_CUTE2
+. PDF_IMAGE -C res/there_cute.pdf 550p 281p \\$*
+..
+.de PIC_TOILET2
+. PDF_IMAGE -C res/toilet.pdf 550p 281p \\$*
+..
+.de PIC_HEART
+. PDF_IMAGE -C res/137.pdf 52p 41p \\$*
+..
+.de PIC_BRUXA
+. PDF_IMAGE -C work/bitey_of_brackenwood_4686.pdf 500p 337p \\$*
+..
+.de PIC_BRUXA2
+. PDF_IMAGE -C res/bruxa.pdf 500p 337p \\$*
+..
+.de PIC_IMPALA
+. PDF_IMAGE -C work/miss_dynamite_x_3430.pdf 780p 400p \\$*
+..
+.de PIC_INTER
+. PDF_IMAGE -C work/miss_dynamite_x_4174.pdf 780p 400p \\$*
+..
+.de PIC_IMPALA2
+. PDF_IMAGE -C res/impala.pdf 780p 400p \\$*
+..
+.de PIC_GOSTOSA
+. PDF_IMAGE -C work/miss_dynamite_xiv_1817.pdf 750p 329p \\$*
+..
+.de PIC_GOSTOSA2
+. PDF_IMAGE -C res/1817.pdf 562p 246p \\$*
+..
+.de PIC_COMUNISMO
+. PDF_IMAGE -C work/miss_dynamite_xv_7000.pdf 750p 320p \\$*
+..
+.de PIC_BAGUN
+. PDF_IMAGE -C work/dad_s_home_880.pdf 550p 400p \\$*
+..
+.de PIC_POLICIA
+. PDF_IMAGE -C work/dad_s_home_3604.pdf 550p 400p \\$*
+..
+.de PIC_BAGUN2
+. PDF_IMAGE -C res/bagun.pdf 550p 400p \\$*
+..
+.de PIC_POLICIA2
+. PDF_IMAGE -C res/policia.pdf 550p 400p \\$*
+..
+.de PIC_PISTOLA
+. PDF_IMAGE -C work/de_aztec_2318.pdf 550p 400p \\$*
+..
+.de PIC_MATRIX
+. PDF_IMAGE -C work/de_dust_1132.pdf 550p 400p \\$*
+..
+.de PIC_DUST1
+. PDF_IMAGE -C work/de_dust_179.pdf 550p 400p \\$*
+..
+.de PIC_MONSTER
+. PDF_IMAGE -C work/miss_dynamite_halloween_1369.pdf 780p 400p \\$*
+..
+.de PIC_MONSTER2
+. PDF_IMAGE -C res/monster.pdf 585p 300p \\$*
+..
+.de PIC_STREAM
+. PDF_IMAGE -C res/stream.pdf 938p 105p \\$*
+..
+.de PIC_3DI
+. PDF_IMAGE -C res/snapshot.pdf 1280p 720p \\$*
+..
+.de PIC_BORDERLANDS2
+. PDF_IMAGE -C res/borderlands2.pdf 1200p 678p \\$*
+..
+.de PIC_BURRITO
+. PDF_IMAGE -C res/juicy.pdf 580p 660p \\$*
+..
+.de PIC_GUMBALL
+. PDF_IMAGE -C res/snapshot3.pdf 1920p 1080p \\$*
+..
+.de PIC_INCREDIBLES
+. PDF_IMAGE -C res/snapshot4.pdf 1920p 1080p \\$*
+..
+.de PIC_CEBOLINHA
+. PDF_IMAGE -C res/snapshot5.pdf 640p 480p \\$*
+..
+.de PIC_DOTA2
+. PDF_IMAGE -C res/dota8-cropped.pdf 541p 306p \\$*
+..
+.de PIC_BEAUTIFUL
+. PDF_IMAGE -C res/ching2.pdf 864p 576p \\$*
+..
+.de PIC_BEAUTIFUL2
+. PDF_IMAGE -C res/chong.pdf 863p 576p \\$*
+..
+.de PIC_BEAUTIFUL3
+. PDF_IMAGE -C res/intro2.pdf 719p 479p \\$*
+..
+.de PIC_TRANS
+. PDF_IMAGE -C res/134.pdf 320p 316p \\$*
+..
+.de PIC_MDXVa
+. PDF_IMAGE -C res/md502.pdf 281p 137p \\$*
+..
+.de PIC_MDXVz
+. PDF_IMAGE -C res/md503.pdf 57p 32p \\$*
+..
+.de PIC_MDXVa
+. PDF_IMAGE -C res/md505.pdf 423p 261p \\$*
+..
+.de PIC_MDXVb
+. PDF_IMAGE -C res/md506.pdf 332p 238p \\$*
+..
+.de PIC_MDXVc
+. PDF_IMAGE -C res/md507.pdf 105p 66p \\$*
+..
+.de PIC_MDXVx
+. PDF_IMAGE -C res/md509.pdf 286p 217p \\$*
+..
+.de PIC_MDXVd
+. PDF_IMAGE -C res/md511.pdf 331p 249p \\$*
+..
+.de PIC_MDXVe
+. PDF_IMAGE -C res/md512.pdf 263p 235p \\$*
+..
+.de PIC_MDXVf
+. PDF_IMAGE -C res/md514.pdf 327p 244p \\$*
+..
+.de PIC_CIRCGRAD
+. PDF_IMAGE -C res/circ.pdf 200p 200p \\$*
+..
+.de PIC_RECTGRAD
+. PDF_IMAGE -C res/rect.pdf 200p 200p \\$*
+..
+.de PIC_OMG_CONTORNO1
+. PDF_IMAGE -C res/omg/contorno1.pdf 237p 229p \\$*
+..
+.de PIC_OMG_CONTORNO2
+. PDF_IMAGE -C res/omg/ns_contorno-1.pdf 226p 284p \\$*
+..
+.de PIC_OMG_FULL
+. PDF_IMAGE -C res/omg/full.pdf 361p 214p \\$*
+..
+.de PIC_OMG_AAA
+. PDF_IMAGE -C res/omg/fs1_ruim.pdf 235p 217p \\$*
+..
+.de PIC_OMG_AAB
+. PDF_IMAGE -C res/omg/fs1_bom.pdf 235p 217p \\$*
+..
+.de PIC_OMG_AAC
+. PDF_IMAGE -C res/omg/fs2_ruim.pdf 111p 111p \\$*
+..
+.de PIC_OMG_AAD
+. PDF_IMAGE -C res/omg/fs2_bom.pdf 111p 111p \\$*
+..
+.de PIC_OMG2_GOOD
+. PDF_IMAGE -C res/omg2/good.pdf 492p 282p \\$*
+..
+.de PIC_OMG2_TUDO
+. PDF_IMAGE -C res/omg2/tudo.pdf 492p 282p \\$*
+..
+.de PIC_OMG2_FULL
+. PDF_IMAGE -C res/omg2/1030.pdf 425p 213p \\$*
+..
+.de PIC_JUEGOS
+. PDF_IMAGE -C res/portal.pdf 691p 386p \\$*
+..
+.de PIC_KONG
+. PDF_IMAGE -C res/kong.pdf 690p 386p \\$*
+..

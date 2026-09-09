@@ -1,0 +1,94 @@
+xx PathCount = 1
+
+xx enum { Forward, Backward }
+
+xx procedure CollectPaths(Edges, Style) {
+xx   if (0 == Edges.length) return
+xx   
+xx   EmitPath(PathCount, Style)
+xx   
+xx   PathCount += 1
+xx   
+xx   while (Edges.length > 0) {
+xx     Current = Edges[0].End
+xx     EmitEdge(Edges[0], Forward)
+xx     Edges.remove(0)
+xx     
+xx     loop {
+xx       found = false
+xx       
+xx       for (Edge in Edges) {
+xx         if (Edge.Start == Current) {
+xx           Current = Edge.Fim
+xx           EmitEdge(Edge, Forward)
+xx           found = true
+xx           Edges.remove(Edge)
+xx         }
+xx         else if (Edge.End == Current) {
+xx           Current = Edge.Start
+xx           EmitEdge(Edge, Backward)
+xx           found = true
+xx           Edges.remove(Edge)
+xx         }
+xx       }
+xx       
+xx       if (!found) {
+xx         if (Style is not LineStyle)
+xx           EmitClose()
+xx         break
+xx       }
+xx     }
+xx   }
+xx }
+NN
+xx procedure DumpShape(Areas, Strokes, Styles) {
+xx   for (i = 0, i < Areas.length, i += 1)
+xx     CollectPaths(Areas[i], Styles.FillStyles[i])
+xx   for (i = 0, i < Strokes.length, i += 1)
+xx     CollectPaths(Strokes[i], Styles.LineStyles[i])
+xx }
+
+xx procedure RelativeToAbsolute(Edge, Current) {
+xx   Edge.Start = Current
+xx   if (Edge is Straight)
+xx     Edge.End = Current + Straight.Delta
+xx   if (Edge is Curved) {
+xx     Edge.End = Current + Curved.Anchor
+xx \h'\w'    Edge.End = Current 'u'+ Curved.Control
+xx     Edge.Control = Current + Curved.Control
+xx   }
+xx   Current = Edge.End
+xx }
+
+xx procedure CollectShapes(Shapes) {
+xx   for (Shape in Shapes) {
+xx     Styles = Shape.Styles
+xx     Areas.length = Styles.FillStyles.length
+xx     Strokes.length = Styles.LineStyles.length
+xx     fs0 = 0, fs1 = 0, ls = 0
+xx     Current = None
+xx
+xx     for (Record in Shape.Records) {
+xx       if (Record is Edge) {
+xx         RelativeToAbsolute(Edge, Current)
+xx         if (ls > 0) Strokes[ls-1].insert(Edge)
+xx         if (fs0 \(!= fs1) {
+xx           if (fs0 > 0) Areas[fs0-1].insert(Edge)
+xx           if (fs1 > 0) Areas[fs1-1].insert(Edge)
+xx         }
+xx       } else if (Record is StyleChange) {
+xx         Current ?= StyleChange.MoveTo
+xx         fs0\h'\w'Current'u-\w'fs0'u' ?= StyleChange.FillStyle0
+xx         fs1\h'\w'Current'u-\w'fs1'u' ?= StyleChange.FillStyle1
+xx         ls\h'\w'Current'u-\w'ls'u' ?= StyleChange.LineStyle
+xx         if (StyleChange.NewStyles) {
+xx           DumpShape(Areas, Strokes, Styles)
+xx           Styles = NewStyles
+xx           Areas.length = Styles.FillStyles.length
+xx           Strokes.length = Styles.LineStyles.length
+xx         }
+xx       }
+xx     }
+xx     DumpShape(Areas, Strokes, Styles)
+xx   }
+xx }

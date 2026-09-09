@@ -95,6 +95,9 @@ work/$'`1.js.zst:work/$'`1.js
 	zstd -f19 -no-progress $<
 	touch $`'@
 ')')
+define(`AS_DEP_RUST',`define(`MI',`dnl
+work/$'`1.c:swf2c
+')')
 
 define(`AS_INCLUDE',`define(`MI',`#include "$'`1.h"
 ')')
@@ -135,6 +138,8 @@ MOVIES_JAVASCRIPT =MOVIES(`AS_JAVASCRIPT')
 MOVIES_COMPRESSED =MOVIES(`AS_COMPRESSED_MACRO')
 
 MOVIES(`AS_COMPRESSED_RECIPE')
+
+MOVIES(`AS_DEP_RUST')
 ',gen,`h',`dnl
 #ifndef MOVIES_H
 #define MOVIES_H

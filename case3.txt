@@ -1,0 +1,87 @@
+T{
+.nf
+\01
+\02
+\03
+\04
+\05
+\06
+\07
+\08
+\09
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+T}	T{
+.nf
+<!doctype html>
+<html lang=\(dqen-us\(dq>
+\0\0<head>
+\0\0\0\0<meta charset=\(dqutf-8\(dq>
+\0\0\0\0<title>Gargantuan switch..case test</title>
+\0\0</head>
+\0\0<body>
+\0\0\0\0<h1>Gargantuan switch..case test</h1>
+\0\0\0\0<p id=\(dqinfo\(dq>Wait...</p>
+\0\0\0\0<p id=\(dqprogress\(dq>Loading...</p>
+\0\0\0\0<canvas id=\(dqcanvas\(dq></canvas>
+\0\0\0\0<script src=\(dq\f(CBthere_she_is.js\fP\(dq></script>
+\0\0\0\0<script>
+\0\0\0\0\0\0\(dquse strict\(dq;
+\0\0\0\0\0\0const { framerate, n_frame, width, height }
+\0\0\0\0\0\0\0\0\0\0= \f(CBthere_she_is_info\fP();
+
+\0\0\0\0\0\0const canvas = document.getElementById(\(dqcanvas\(dq)
+
+\0\0\0\0\0\0canvas.width  = width;
+\0\0\0\0\0\0canvas.height = height;
+\0\0\0\0\0\0const context = canvas.getContext(\(dq2d\(dq);
+
+\0\0\0\0\0\0document.getElementById(\(dqinfo\(dq).innerText
+\0\0\0\0\0\0\0\0\0\0=  \(dqRunning as fast as possible\(dq
+\0\0\0\0\0\0\0\0\0\0+ \(ga (framerate ${framerate} ignored).\(ga
+\0\0\0\0\0\0\0\0\0\0+ \(ga Width: ${width}. Height: ${height}.\(ga;
+
+\0\0\0\0\0\0const progress = document.getElementById(\(dqprogress\(dq);
+
+\0\0\0\0\0\0let i = 0;
+\0\0\0\0\0\0function render(timestamp) {
+\0\0\0\0\0\0\0\0progress.innerText = \(gaFrame ${i + 1}/${n_frame}.\(ga;
+\0\0\0\0\0\0\0\0\f(CBthere_she_is_render\fP(context, i);
+\0\0\0\0\0\0\0\0i = i < n_frame - 1 ? i + 1 : 0;
+\0\0\0\0\0\0\0\0window.requestAnimationFrame(render);
+\0\0\0\0\0\0}
+\0\0\0\0\0\0window.requestAnimationFrame(render);
+\0\0\0\0</script>
+\0\0</body>
+</html>
+T}

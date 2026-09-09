@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "acorn": "^8.15.0",
+    "html-pdf-chrome": "^0.8.4"
+  }
+}

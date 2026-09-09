@@ -1,0 +1,2 @@
+xx \f(CB$\fP ./swf2c -c there_she_is.swf > there_she_is.c
+xx \f(CB$\fP ./swf2c -h there_she_is.swf > there_she_is.h

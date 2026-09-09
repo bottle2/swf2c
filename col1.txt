@@ -1,0 +1,50 @@
+1	PathCount = 1
+2	
+3	enum { Forward, Backward }
+4	
+5	procedure CollectPaths(Edges, Style) {
+6	\0\0if (0 == Edges.length) return
+7	\0\0
+8	\0\0EmitPath(PathCount, Style)
+9	\0\0
+10	\0\0PathCount += 1
+11	\0\0
+12	\0\0while (Edges.length > 0) {
+13	\0\0\0\0Current = Edges[0].End
+14	\0\0\0\0EmitEdge(Edges[0], Forward)
+15	\0\0\0\0Edges.remove(0)
+16	\0\0\0\0
+17	\0\0\0\0loop {
+18	\0\0\0\0\0\0found = false
+19	\0\0\0\0\0\0
+20	\0\0\0\0\0\0for (Edge in Edges) {
+21	\0\0\0\0\0\0\0\0if (Edge.Start == Current) {
+22	\0\0\0\0\0\0\0\0\0\0Current = Edge.Fim
+23	\0\0\0\0\0\0\0\0\0\0EmitEdge(Edge, Forward)
+24	\0\0\0\0\0\0\0\0\0\0found = true
+25	\0\0\0\0\0\0\0\0\0\0Edges.remove(Edge)
+26	\0\0\0\0\0\0\0\0}
+27	\0\0\0\0\0\0\0\0else if (Edge.End == Current) {
+28	\0\0\0\0\0\0\0\0\0\0Current = Edge.Start
+29	\0\0\0\0\0\0\0\0\0\0EmitEdge(Edge, Backward)
+30	\0\0\0\0\0\0\0\0\0\0found = true
+31	\0\0\0\0\0\0\0\0\0\0Edges.remove(Edge)
+32	\0\0\0\0\0\0\0\0}
+33	\0\0\0\0\0\0}
+34	\0\0\0\0\0\0
+35	\0\0\0\0\0\0if (!found) {
+36	\0\0\0\0\0\0\0\0if (Style is not LineStyle)
+37	\0\0\0\0\0\0\0\0\0\0EmitClose()
+38	\0\0\0\0\0\0\0\0break
+39	\0\0\0\0\0\0}
+40	\0\0\0\0}
+41	\0\0}
+42	}
+	
+	
+	
+	
+	
+	
+	
+	

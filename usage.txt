@@ -1,0 +1,5 @@
+xx $ ./swf2c -c there_she_is.swf > there_she_is.c
+xx $ ./swf2c -h there_she_is.swf > there_she_is.h
+xx $ cc \(gapkg-config --cflags --libs cairo\(ga -DFEAT_CAIRO \e
+xx      -o swf2pdf.exe swf2pdf.c there_she_is.c
+xx $ ./swf2pdf 2150 there_she_is.pdf

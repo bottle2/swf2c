@@ -1,0 +1,41 @@
+xx <!doctype html>
+xx <html lang=\(dqen-us\(dq>
+xx   <head>
+xx     <meta charset=\(dqutf-8\(dq>
+xx     <title>Gargantuan switch..case test</title>
+xx   </head>
+xx   <body>
+xx     <h1>Gargantuan switch..case test</h1>
+xx     <p id=\(dqinfo\(dq>Wait...</p>
+xx     <p id=\(dqprogress\(dq>Loading...</p>
+xx     <canvas id=\(dqcanvas\(dq></canvas>
+xx     <script src=\(dq\f(CBthere_she_is.js\fP\(dq></script>
+xx     <script>
+xx       \(dquse strict\(dq;
+xx       const { framerate, n_frame, width, height }
+xx           = \f(CBthere_she_is_info\fP();
+xx 
+xx       const canvas = document.getElementById(\(dqcanvas\(dq)
+xx 
+xx       canvas.width  = width;
+xx       canvas.height = height;
+xx       const context = canvas.getContext(\(dq2d\(dq);
+xx 
+xx       document.getElementById(\(dqinfo\(dq).innerText
+xx           =  \(dqRunning as fast as possible\(dq
+xx           + \(ga (framerate ${framerate} ignored).\(ga
+xx           + \(ga Width: ${width}. Height: ${height}.\(ga;
+xx 
+xx       const progress = document.getElementById(\(dqprogress\(dq);
+xx 
+xx       let i = 0;
+xx       function render(timestamp) {
+xx         progress.innerText = \(gaFrame ${i + 1}/${n_frame}.\(ga;
+xx         \f(CBthere_she_is_render\fP(context, i);
+xx         i = i < n_frame - 1 ? i + 1 : 0;
+xx         window.requestAnimationFrame(render);
+xx       }
+xx       window.requestAnimationFrame(render);
+xx     </script>
+xx   </body>
+xx </html>

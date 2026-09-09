@@ -1,0 +1,4 @@
+.nr gay \w'\0'*8
+.ds gayrow "\v'-0.10'\v'-0.15'\D'c 0.75'\v'0.15'\h'-0.67'\*S[-4]\(->\*S[+4]\v'+0.10'
+.nr gayhalf (\w'\0'*4)-(\w'\*[gayrow]'/2)
+.ds gaytab "\kx\h'\n[gayhalf]u'\*[gayrow]\h'|\nxu'\h'\n[gay]u'

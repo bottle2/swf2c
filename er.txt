@@ -1,0 +1,192 @@
+.PS
+[
+define adj {(0.05,0)}
+define exclher {
+line down 0.25 from last box.s
+"\0\0t"
+$1: [line right 0.2 down 0.2 then left 0.4 then up 0.2 right 0.2]
+move down 0.25
+}
+define los {
+[ line up 0.1 right 0.2 then down 0.1 right 0.2 then down 0.1 left 0.2 then up 0.1 left 0.2 ]
+}
+box "Animação"
+line up 0.3 at last box.n
+circle fill 1 rad 0.05
+"Nome\0" rjust at last circle.w
+line left 0.3 at 1/4 <last box.nw,last box.sw>
+circle rad 0.05
+"Frequência de quadros\0" rjust at last circle.w
+line left 0.3 at 2/4 <last box.nw,last box.sw>
+circle rad 0.05
+"Altura\0" rjust at last circle.w
+line left 0.3 at 3/4 <last box.nw,last box.sw>
+circle rad 0.05
+"Largura\0" rjust at last circle.w
+line right 0.25 from last box.e
+los()
+"(1,1)\0" "" at last [].nw
+"\0(1,n)" "" at last [].ne
+line up 0.3 from last [].n
+circle rad 0.05
+"\0Cor de fundo" ljust at last circle.e
+line thick 2 right 0.25 from last [].e
+QUAD: box "Quadro"
+line up 0.3 at 2/3 <last box.nw,last box.ne>
+circle fill 1 rad 0.05
+"\0Qual" ljust at last circle.e
+line down 0.25 from last box.s
+los()
+"\0(0,n)" "" at last [].ne
+"" "\0(0,n)" at last [].se
+line up (0.5*1/4-0.05) from last [].w + (0.1,0.05)
+line left 0.3+0.1
+circle rad 0.05
+"Transformação\0" rjust at last circle.w
+line down (0.5*1/4-0.05) from last [].w + (0.1,-0.05)
+line left 0.3+0.1
+circle rad 0.05
+"Idade\0" rjust at last circle.w
+line left 0.3 from last [].w
+circle fill 1 rad 0.05
+"Profundidade\0" rjust at last circle.w
+line down 0.25 from last [].s
+box "Objeto"
+line left 0.3 from last box.w
+circle fill 1 rad 0.05
+"Código\0" rjust at last circle.w
+ exclher(OBJ)
+ OBJS: [
+  right
+  DES: box "Desenho"
+  move down 0.2 from DES.s
+  PRE: box "Preenchi-" "mento"
+  line right 0.3 at last box.e
+  circle fill 1 rad 0.05
+  "\0Código" ljust
+  exclher(PREENC)
+  move right 0.1 from DES.e
+  SPR: box "\fISprite\fP"
+ ]
+ line from last [].DES.n to OBJ.sw + adj
+ line from last [].SPR.n to OBJ.se - adj
+ PRES: [
+  right
+  TR: box "Gradiente"
+  exclher(GRADIE)
+  move right 0.1 from TR.e
+  SOL: box "Sólido"
+  move 0.1
+  BIT: box "\fIBitmap\fP"
+ ] with .n at OBJS.PREENC.s-(0,0.25)
+ line up 0.3 from 1/4 <PRES.TR.nw,PRES.TR.ne>
+ circle rad 0.05
+ "\0Transfor-" ljust "\0mação" ljust at last circle.e
+ line from last [].SOL.n to OBJS.PREENC.s
+ line from last [].TR.n to OBJS.PREENC.sw + adj
+ line from last [].BIT.n to OBJS.PREENC.se - adj
+ line down 0.3 from PRES.SOL.s
+ circle rad 0.05
+ "\0Cor" ljust at last circle.e
+ line down 0.3 from 2/3 <PRES.BIT.sw,PRES.BIT.se>
+ circle rad 0.05
+ "\0Referência" ljust "\0de textura" ljust at last circle.e
+ line down 0.3+0.5/2 from 1/3 <PRES.BIT.sw,PRES.BIT.se>
+ circle rad 0.05
+ "\0Transformação" ljust ljust at last circle.e
+pussy = 0.6
+line left pussy/2 from OBJS.DES.w
+fuck = 0.25+0.15-0.5/3
+line down fuck
+line left pussy/2
+los()
+"\0(1,1)" "" at last [].ne
+"(0,n)\0" "" at last [].nw
+FU: line thick 2 pussy from last [].w
+line left pussy/2 from OBJS.PRE.w
+line up fuck
+line left pussy/2
+los()
+"" "\0(1,1)" at last [].se
+"" "(0,n)\0" at last [].sw
+FU2: line pussy from last[].w
+ CAM: box "Caminho" with .e at 1/2 <FU2.w,FU.w> #with .e at 1/2 <OBJS.DES.w,OBJS.PRE.w>-(1.5,0)
+ exclher(CAMS)
+ [
+  right
+  AREA: box "Área"
+  move 0.1
+  TRA: box "Contorno"
+ ]
+  line up 0.3 from 2/3 <last [].TRA.nw,last [].TRA.ne>
+  circle rad 0.05
+  "\0Grossura" ljust at last circle.e
+ line from last [].AREA.n to CAMS.sw + adj
+ line from last [].TRA.n to CAMS.se - adj
+AR: [ ARES: box "Aresta"
+ line left 0.3 at 1/3 <last box.nw,last box.sw>
+ circle fill 1 rad 0.05
+ "Próximo ponto\0" rjust
+ exclher(ARE)
+ FUCK: [
+  right
+  RE: box "Reta"
+  move 0.1
+  CUR: box "Curva"
+ ]
+ line from last [].RE.n to ARE.sw + adj
+ line from last [].CUR.n to ARE.se - adj
+] with .s at CAM.n + (0,0.2)
+  line up 0.3 at 3/4 <last [].FUCK.CUR.nw,last [].FUCK.CUR.ne>
+  circle rad 0.05
+  "\0Ponto de" ljust "\0controle" ljust at last circle.e
+line right 0.2 from OBJS.SPR.e
+line up (QUAD.e.y-OBJS.SPR.e.y)/2-0.1
+los()
+"\0(1,n)" "" at last [].ne
+"" "\0(1,1)" at last [].se
+line thick 2 to (last [].n.x,QUAD.e.y) from last [].n
+line thick 2 to QUAD.e
+dist = AR.ARES.sw.y+0.5*1/3-CAM.nw.y+0.5*1/4
+line left 0.75 from 1/4 <CAM.nw,CAM.sw>
+line up dist/2-0.1
+los()
+"(0,n)\0" "" at last [].nw
+"" "(1,1)\0" at last [].sw
+line thick 2 up dist/2-0.1 from last [].n
+line thick 2 to AR.ARES.sw+(0,0.5/3)
+line left 0.3 from 2/4 <CAM.nw,CAM.sw>
+circle fill 1 rad 0.05
+"Profundidade\0" rjust at last circle.w
+line left 0.3 from 3/4 <CAM.nw,CAM.sw>
+circle rad 0.05
+"Primeiro ponto\0" rjust at last circle.w
+ GRADS: [
+  right
+  LIN: box "Linear"
+  move 0.1
+  RAD: box "Radial"
+ ] with .n at PRES.GRADIE.s-(0,0.25)
+ line from last [].LIN.n to PRES.GRADIE.sw + adj
+ line from last [].RAD.n to PRES.GRADIE.se - adj
+ line right 0.3 from GRADS.RAD.e
+ circle rad 0.05
+ "\0Ponto focal" ljust
+line left 0.25/2 from 2/3 <PRES.TR.nw,PRES.TR.sw>
+line down 0.25
+line left 0.25/2
+los()
+"" "(1,15)\0" at last [].sw
+"" "\0(0,n)" at last [].se
+line thick 2 left 0.25 from last [].w
+box "Ponto de" "controle"
+line down 0.3 from 2/3 <last box.sw, last box.se>
+circle fill 1 rad 0.05
+"\0Razão" ljust at last circle.e
+line down 0.3+0.5/3 from 1/3 <last box.sw, last box.se>
+circle rad 0.05
+"\0Cor" ljust at last circle.e
+]
+"\*[FonteEu]" at last [].s-(0,0.2)
+"Figura 10 \(en \*[CaptionEr]" at last [].n+(0,0.2)
+.PE

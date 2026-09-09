@@ -1,0 +1,15 @@
+T{
+.nf
+1
+2
+3
+4
+5
+T}	T{
+.nf
+\f(CB$ \fP./swf2c -c there_she_is.swf > there_she_is.c
+\f(CB$ \fP./swf2c -h there_she_is.swf > there_she_is.h
+\f(CB$ \fPcc \(gapkg-config --cflags --libs cairo\(ga -DFEAT_CAIRO \e
+\0\0\0\0\0-o swf2pdf.exe swf2pdf.c there_she_is.c
+\f(CB$ \fP./swf2pdf 2150 there_she_is.pdf
+T}

@@ -1,0 +1,77 @@
+T{
+.nf
+\01
+\02
+
+\03
+\04
+\05
+\06
+\07
+\08
+
+\09
+10
+
+11
+12
+
+13
+14
+15
+16
+17
+18
+
+19
+20
+21
+22
+23
+
+24
+25
+26
+27
+28
+
+29
+T}	T{
+.nf
+#ifndef THERE_SHE_IS_H
+#define THERE_SHE_IS_H
+
+#define there_she_is_framerate 12
+enum {
+\0\0\0\0there_she_is_n_frame = 2548,
+\0\0\0\0there_she_is_width   = 550,
+\0\0\0\0there_she_is_height  = 281
+};
+
+#ifdef FEAT_CAIRO
+#include <cairo.h>
+
+void there_she_is_render_cairo(cairo *cr, int frame);
+#endif
+
+#ifdef FEAT_PLUTOVG
+void there_she_is_init_plutovg(void);
+void there_she_is_free_plutovg(void);
+void there_she_is_render_sdl_plutovg(
+\0\0\0\0\0\0\0\0void *pixels, int pitch, int frame);
+#endif
+
+#ifdef FEAT_HTML5
+void there_she_is_render_html5(
+\0\0\0\0\0\0\0\0__externref_t CanvasRenderingContext2D,
+\0\0\0\0\0\0\0\0int frame);
+#endif
+
+#ifndef FEAT_NO_DATA
+void there_she_is_data(
+\0\0\0\0\0\0\0\0float *framerate, int *n_frame,
+\0\0\0\0\0\0\0\0int *width, int *height);
+#endif
+
+#endif
+T}

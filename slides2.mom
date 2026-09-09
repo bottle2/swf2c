@@ -1,0 +1,1025 @@
+.DOCTYPE SLIDES ASPECT 4:3
+.PAGE 25.4c 19.05c 1.75c 1.75c 5.07c+28p 0.5c
+.QUAD LEFT
+.PT_SIZE 28
+.LS 30
+.PIC_TEXT_STYLE SIZE -16
+.HEADERS
+.HEADER_LEFT_FONT B
+.HEADER_RULE OFF
+.HEADER_SIZE +12
+.HEADER_MARGIN 1.01c+40p
+.FOOTER_MARGIN 0
+.HEADING_STYLE 1 FONT R SIZE +30 LEAD +28 QUAD LEFT
+.HEADING_STYLE 2 FONT R SIZE +30 LEAD +28 QUAD LEFT
+.HEADING_STYLE 3 FONT R SIZE +30 LEAD +28 QUAD LEFT
+.HEADING_STYLE 4 FONT R SIZE +30 LEAD +28 QUAD LEFT
+.UNDERSCORE_WEIGHT 1.5
+.SKIP_PDF_OUTLINE
+.ds Qb \\v'-|1'\\h'|0'
+.ds Ad \\v'2'
+.de INTER
+.if dOnceInter .SP 10p
+.ds OnceInter
+..
+.de SECAO
+. HEADER_LEFT
+. NEWSLIDE
+. PP
+. ie '\\n(.$'2' .HEADING \\$1 "" "" "\\$2"
+. el .ie '\\n(.$'3' .HEADING \\$1 "" "\\$2" "\\$3"
+. el .HEADING \\$@
+. PP
+..
+.de TITULO
+.rs OnceInter
+.ie '\\n(.$'2' .HEADER_LEFT "\\*(Ad\\$2"
+.el .HEADER_LEFT "\\$2\\*(Qb\\$3"
+.NEWSLIDE
+.PDF_BOOKMARK \\$1 "\\$2 \\$3"
+.PP
+.RLD 1v+10p
+..
+.de NTITULO
+.rs OnceInter
+.ie '\\n(.$'3' \{\
+. ds Nombre "\\*(Ad\\$2
+. nr Total \\$3
+.\}
+.el \{\
+. ds Nombre "\\$2\\*(Qb\\$3
+. nr Total \\$4
+.\}
+.HEADER_LEFT "\\*[Nombre] (1/\\n[Total])"
+.NEWSLIDE
+.PDF_BOOKMARK \\$1 "\\*[Nombre]"
+.\".PDF_BOOKMARKS OFF
+.\".HEADING \\$1 "\\$2 (1/\\$3)"
+.PP
+.RLD 1v+10p
+.PDF_BOOKMARKS
+.nr Atual 1 1
+.nr Nivel \\$1
+..
+.de PTITULO
+.if \\n[Atual]>\\n[Total] .ab Excedeu
+.rs OnceInter
+.HEADER_LEFT "\\*[Nombre] (\\n+[Atual]/\\n[Total])"
+.if !'\\n(.$'1' \{\
+. NEWSLIDE
+. PP
+. RLD 1v+10p
+.\}
+..
+.de IPP
+.INTER
+.PP
+\\$*
+..
+.ds Death "\(bu\h'\w'\0.'u-\w'\(bu'u'
+.de OBULLET
+.LIST USER "\*[Death]"
+.INTER
+.ITEM
+\\$*
+.LIST OFF
+..
+.de SBULLET
+.INTER
+.LIST USER "\*[Death]"
+.ITEM
+\\$*
+..
+.de EBULLET
+.INTER
+.ITEM
+\\$*
+.LIST OFF
+..
+.de MBULLET
+.INTER
+.ITEM
+\\$*
+..
+.de SNUM
+.INTER
+.LIST DIGIT
+.ITEM
+\\$*
+..
+.de ENUM
+.INTER
+.ITEM
+\\$*
+.LIST OFF
+..
+.de MNUM
+.INTER
+.ITEM
+\\$*
+..
+.START
+.so pictures.txt
+.PDF_BOOKMARK 1 "Capa (título)"
+.CENTER
+.PT_SIZE 60
+.SP
+.LS 40
+.PT_SIZE 40
+Renderização de preenchimentos
+sólidos para desenhos do
+Flash Player usando Cairo
+.LS 30
+.PT_SIZE 24
+.SP
+.SP
+Bento Borges Schirmer
+.SP
+.RLD 0.66v
+Orientador: Dr. Cesar Tadeu Pozzer
+.TITULO 1 "Introdução"
+. SBULLET Flash Player
+.  SBULLET \fIPlugin\fP para navegadores de Internet
+.  EBULLET Descontinuado e bloqueado
+. MBULLET Jogos casuais gratuitos para a Web
+. MBULLET Adobe Animate e Toon Boom Harmony
+. MBULLET Recuperar arte vetorial do Flash, sem Flash
+. MBULLET Conversor que transforma Flash em código C
+. EBULLET Biblioteca Cairo de gráficos vetoriais
+.TITULO 2 "Recursos do Flash"
+. SBULLET Desenhos e tipografia
+. MBULLET Animação
+. MBULLET Código com ActionScript
+. MBULLET Mixagem de sons e vídeos
+. MBULLET Elementos interativos
+.  SBULLET Botões e caixas de texto
+.  EBULLET Input do mouse e teclado
+. EBULLET Pipeline 3D através do Stage3D
+.TITULO 2 "Gráficos vetoriais"
+. SBULLET Característica proeminente do Flash
+. MBULLET Representação eficiente
+. MBULLET Resolução infinita
+. MBULLET Memorização de rasterização elimina
+.BR
+custo de renderização
+.LIST OFF
+.TITULO 2 "Objetivo"
+. SBULLET Compreender armazenamento de desenhos
+.BR
+no Flash
+. MBULLET Algoritmo para adaptação da representação
+. MBULLET Renderizar desenhos usando Cairo
+. MBULLET Avaliação visual do algoritmo
+.  OBULLET Cinco animações dos anos 2000
+. LIST OFF
+.SECAO 1 "Fundamentação teórica"
+.SECAO 2 "Visão geral" "do Flash"
+.NTITULO 3 "O que é o Flash" 2
+. IPP São três tecnologias
+. SNUM Um editor de animações
+.  OBULLET Conhecido simplesmente como \(lqo Flash\(rq
+. MNUM Um formato de arquivo chamado SWF
+.  OBULLET Significa Small Web Format
+. MNUM O Flash Player
+.  SBULLET A \fIruntime\fP que renderiza um SWF
+.  EBULLET Um \fIplugin\fP para navegadores de Internet
+. LIST OFF
+.PTITULO
+. IPP As três tecnologias formam um pipeline de produção de conteúdo
+. SNUM Criação
+. MNUM Distribuição
+. ENUM Reprodução
+. IPP Desse modo, o Flash sozinho é suficiente e \%completo para combinar os esforços de vários tipos de profissionais
+.TITULO 3 "História do Flash"
+. SBULLET Inventado pela FutureMedia
+. MBULLET Adquirido pela Macromedia em 1996
+. EBULLET Adquirido pela Adobe em 2005
+. IPP Nos anos 2000, Flash Player instalado em 97% dos computadores pessoais dos EUA
+.if 0 \{\
+.TITULO 3 "Modelo comercial do Flash"
+. SBULLET Ferramentas pagas
+.  SBULLET Contratos com escolas e universidaes
+.  EBULLET Uso por estúdios
+. MBULLET Compra do código-fonte da \fIruntime\fP
+.  SBULLET Esquema da Macromedia
+.  EBULLET Jogos para consoles
+. EBULLET \fIPlugin\fP e SDKs gratuitos
+.TITULO 3 "Usos e monetização com o Flash"
+. SBULLET Conteúdo para a Web
+.  SBULLET Venda e leilão de jogos virais
+.  MBULLET Anúncios e micro-transações
+.  EBULLET Coleta e venda de dados de usuários
+. MBULLET Produções para cinema e televisão
+.  SBULLET Desenhos animados
+.  EBULLET Aberturas e créditos em filmes e séries
+. EBULLET Rich Internet Applications (RIA)
+.\}
+.TITULO 3 "Produção cinematográfica"
+. SBULLET 505 desenhos animados para televisão
+.  OBULLET Desde 1993 até atualmente
+. MBULLET 138 filmes de longa-metragem
+. MBULLET Sequências feitas em Flash em 163 filmes
+.  OBULLET Abertura, créditos e outras cenas
+. LIST OFF
+.TITULO 4 "Cena do desenho animado" "O Incrível Mundo de Gumball"
+. PIC_GUMBALL SCALE 25
+.TITULO 4 "Créditos do filme Os Incríveis"
+. PIC_INCREDIBLES SCALE 25
+.TITULO 3 "Flash na Internet"
+. OBULLET Evolução junto com a da Internet
+. SNUM Anúncios
+. MNUM Coleta de dados
+. MNUM Componentes para \fIwebsites\fP
+. MNUM \fIWebsites\fP inteiros
+. MNUM Jogos casuais gratuitos online
+.  OBULLET Maior fenômeno
+. LIST OFF
+.NTITULO 4 "Jogo de plataforma em Flash" "Ching Chong Beautiful" 2
+. PIC_BEAUTIFUL3 SCALE 60
+.PTITULO
+. PIC_BEAUTIFUL2 SCALE 50
+.TITULO 4 "Portais na Internet"
+. SBULLET Movimentar mais anúncios
+.  OBULLET Gerar mais renda
+. MBULLET Retenção de usuários
+. MBULLET Hospedagem de jogos em Flash gratuitos
+. MBULLET Distribuição \(lqviral\(rq
+. MBULLET Mais de 130 mils jogos em Flash
+. MBULLET Mais de 7000 portais ao redor do mundo
+. EBULLET Portais em pelo menos 105 países
+.TITULO 5 "Portais populares no Brasil"
+. SBULLET Mestrado de 2013, de Bianca Becker Lepikson
+. EBULLET Crianças entre cinco e 13 anos
+.TS
+a0s0s0 a0s0s0 a0s0s0
+a0s0s0 a0s0s0 a0s0s0
+a0s0s0 a0s0s0 a0s0s0
+a0s0s0s0 a0s0s0s0
+a0s0s0s0 a0s0s0s0.
+\*[Death]Cartoon Network	\*[Death]Girlsgogames	\*[Death]Kizi
+\*[Death]Monsterhigh	\*[Death]Discovery Kids	\*[Death]Polly
+\*[Death]Click Jogos	\*[Death]Jogos de Vestir	\*[Death]FRIV
+\*[Death]OJogos.com.br	\*[Death]Barbie
+\*[Death]Gamegape	\*[Death]Iguinho
+.TE
+.TITULO 5 "Portal latino JuegosJuegos.com," "remontando 2003"
+. PIC_JUEGOS SCALE 75
+.TITULO 5 "Kongregate," "portal moderno de 2011"
+. PIC_KONG SCALE 75
+.NTITULO 3 "Carta de Steve Jobs: " "\fIThoughts on\fP Flash" 2
+. SBULLET Publicada em abril de 2010
+. MBULLET \(lqReflexões sobre o Flash\(rq
+. MBULLET Proibição do Flash no iPhone, iPod e iPad
+. EBULLET Seis críticas pontuais
+.if 0 \{\
+.PTITULO
+. SBULLET Adobe e Apple, aliadas no mercado criativo
+.  SBULLET Apple conheceu a Adobe em seus tempos de garagem
+.  MBULLET Apple foi primeiro grande cliente da Adobe
+.  MBULLET Adoção do PostScript para o Laserwriter
+.  EBULLET Apple controlou 20% das ações da Adobe por anos
+. LIST OFF
+.\}
+.PTITULO
+. SNUM Tecnologia proprietária, não aberta
+. MNUM Acesso \(lqcompleto\(rq à Web
+. MNUM Segurança, confiabilidade e desempenho
+. MNUM Duração da bateria
+. MNUM \fITouchscreen\fP
+. ENUM Lentidão para se adaptar
+.if 0 \{\
+.TITULO 4 "Crítica 1:" ""
+. SBULLET Controle total pela Adobe
+. MBULLET Em constraste com HTML5, CSS e JavaScript
+.  SBULLET Controlado por comitê de padronização
+.  EBULLET Motor WebKit aberto criado pela Apple
+. LIST OFF
+.NTITULO 4 "Crítica 2: " "Acesso \(lqcompleto\(rq à Web" 2
+. SBULLET Flash como formato de vídeo
+. MBULLET Flash como \fIplayer\fP de vídeos
+. MBULLET Jogos em Flash
+. MBULLET Consumir Internet somente através do Flash
+.PTITULO
+. MBULLET Formato moderno de vídeo H.264
+.  SBULLET 40% dos vídeos do mundo no YouTube
+.   OBULLET Acessado por um aplicativo nativo
+.  MBULLET \c
+Vimeo, Netflix, Facebook, ABC,
+.BR
+CBS, CNN, MSNBC, Fox News, ESPN,
+NPR, Time, The New York Times,
+.BR
+The Wall Street Journal, Sports
+Illustrated, People, \%National\~\%Geographic
+.  LIST OFF
+. MBULLET 50000 jogos \fImobile\fP na Apple Store
+. LIST OFF
+.TITULO 4 "Crítica 3: Segurança," "confiabilidade e desempenho"
+. SBULLET Flash recordista de vulnerabilidades em 2009, segundo Symantec
+. MBULLET Maior causador de \fIcrashes\fP no Mac
+. EBULLET Desempenho terrível em dispositivos \fImobile\fP
+.TITULO 4 "Crítica 4:" "Duração da bateria"
+. SBULLET Decodificação via hardware crucial para preservar bateria
+. MBULLET Flash adotou H.264, mas todo conteúdo \%existente não usa
+.  OBULLET Esse conteúdo é renderizado em CPU
+. MBULLET Muito fácil recodificar vídeos para H.264
+. EBULLET Bateria dura 10 horas usando H.264 acelerado, 5 horas com Flash
+.TITULO 4 "Crítica 5:" "\fITouchscreen\fP"
+. SBULLET Flash foi projetado para desktops com mouse
+. MBULLET Interface Apple, interação com vários dedos
+. MBULLET Não existe interação \(lq\fIhover\fP\(rq para \fItouchscreen\fP
+. MBULLET Sites existentes feitos com Flash não \%funcionam para \fItouchscreen\fP
+.  OBULLET Se for reescrever, usar padrões abertos como HTML5, CSS e JavaScript
+. EBULLET Se Flash existisse para iPhones, iPods e iPads, conteúdo permaneceria inacessível
+.TITULO 4 "Crítica 6:" "Lentidão para se adaptar"
+. SBULLET Flash é uma ferramenta multi-plataforma
+.  OBULLET Somente o \(lqmenor denominador comum\(rq disponível
+. MBULLET Inovações da Apple nunca chegam no Flash
+. MBULLET Adobe foi a última empresa a adotar o Mac\~OS\~X
+.  OBULLET Flash CS5 adotou Cocoa após dez anos
+. EBULLET A Apple quer os melhores aplicativos possíveis
+.\}
+.TITULO 3 "Descontinuação do Flash"
+. SBULLET Depreciação oficial em 25 de julho de 2017
+. MBULLET Reconhecimento de padrões abertos
+.  OBULLET HTML5, WebGL e WebAssembly
+. MBULLET Colaboração entre Adobe, Apple, Facebook, Google, Microsoft e Mozilla
+. MBULLET Remoção forçosa do Flash Player em 31\~de\~dezembro\~de\~2020
+. MBULLET O editor Flash passa a ser Adobe Animate
+.  OBULLET Se desvencilhar da reputação negativa
+. LIST OFF
+.if 0 \{\
+.TITULO 2 "Editores de animação"
+. SBULLET Poucas ferramentas produtivas para editar gráficos vetoriais
+.  SBULLET Menos ainda para animações
+.   OBULLET Além do Flash, Toon Boom Harmony \c
+.BR
+e Toonz
+.  LIST OFF
+. MBULLET Antes jogos podiam ser feitos em Flash
+. EBULLET Como usar animações vetoriais fora do Flash?
+.\}
+.if 0 \{\
+.TITULO 2 "Motivação"
+. IPP Apesar do desfecho do Flash, é vital reconhecer:
+. SBULLET A sofisticação e abrangência do SWF
+. MBULLET A eficiência e poder dos gráficos vetoriais
+. MBULLET Ferramentas criativas que exportam SWF
+.  SBULLET Produtos da Adobe
+.  MBULLET Toon Boom Harmony
+.  EBULLET Toonz
+. EBULLET O vácuo do Flash para jogos de computador
+.\}
+.if 0 \{\
+.TITULO 2 "Editores de animações"
+. SBULLET Os editores clássicos Flash
+. MBULLET Adobe Animate
+. MBULLET Toon Boom (Harmony)
+. MBULLET Toonz
+.  OBULLET Seu sucessor OpenToonz resiste adicionar opção de exportação SWF
+. EBULLET Vários outros abertos ou pagos
+.\}
+.if 0 \{\
+.TITULO 2 "Objetivo"
+. IPP Converter animações do Flash para C
+. SBULLET Extrair dados do SWF
+.  SBULLET Objetos e sua composição geométrica
+.  EBULLET Cenas e suas transformações
+. MBULLET Transformar esses dados para uso universal, totalmente desentrelaçado do Flash
+.  SBULLET C compila para todas as plataformas \c
+.BR
+que existem
+.  EBULLET Todas as linguagens podem interagir com C
+. LIST OFF
+.\}
+.SECAO 2 "Funcionamento" "do Flash"
+.TITULO 3 "O formato de arquivo SWF"
+. SBULLET Formato binário
+. MBULLET Eficiência máxima
+. EBULLET Retrocompatibilidade e extensível
+.if 0 \{\
+.NTITULO 3 "Tipos de dados" 2
+. SBULLET Inteiros de comprimento fixo ou variável
+.  SBULLET 8, 16, 32, 64 bits e outros
+.  EBULLET Com ou sem sinal, complemento de dois
+. MBULLET Números reais de ponto fixo
+.  OBULLET Formatos 16,16 ou 8,8
+. MBULLET Números reais de ponto flutuante
+.  OBULLET 16, 32 ou 64 bits
+.PTITULO
+. MBULLET Strings
+.  OBULLET Fim demarcado por caractere nulo
+. MBULLET Vetores
+. MBULLET Matrizes
+.  OBULLET Usado para transformar cena
+. MBULLET Tuplas de cores e retângulos
+. MBULLET Twips
+.  OBULLET 1/20 de um pixel lógico
+. LIST OFF
+.\}
+.TITULO 3 "Cabeçalho do SWF"
+. SNUM Compressão opcional ZLIB ou ZLMA
+. MNUM Versão do Flash
+. MNUM Tamanho do arquivo descomprimido
+. MNUM Tamanho da janela
+. MNUM Frequência de quadros
+. ENUM Total de quadros na \fItimeline\fP principal
+.TITULO 3 "\fITags\fP"
+. IPP Restante do arquivo são \fItags\fP
+. IPP Compostas de três partes
+. SNUM Um inteiro que identifica o tipo
+.if 0 \{\
+.  SBULLET Únicos, imutáveis e permanentes para todas as versões do Flash
+.  MBULLET API nunca quebra
+.  EBULLET \fITags\fP mais avançadas são introduzidas sem remover ou alterar versões anteriores
+.PTITULO
+.\}
+. MNUM Tamanho da \fItag\fP
+.if 0 \{\
+.  OBULLET Permite pular \fItags\fP desconhecidas
+.   OBULLET Efetivamente, confere \c
+compatibilidade \(lqpara frente\(rq
+.\}
+. MNUM O conteúdo da \fItag\fP, o \fIpayload\fP
+.if 0 \{\
+.  SBULLET Partes da \fItag\fP tem alinhamento à bits
+.  EBULLET Utiliza bits para habilitar partes opcionais
+.\}
+. LIST OFF
+.if 0 \{\
+. IPP A seguir, perceba a API inquebrável do Flash através
+de múltiplas versões de cada \fItag\fP
+.\}
+.TITULO 3 "O \fIdisplay list\fP"
+. SBULLET A animação é uma sequência de quadros
+. MBULLET Todo quadro é definido como uma \%modificação do quadro anterior
+. MBULLET A \fItag\fP ShowFrame renderiza a cena uma vez
+. MBULLET Cena é armazenada em um \fIdisplay list\fP
+.  SBULLET Cada elemento é uma profundidade
+.  MBULLET Elementa referencia objeto
+.  EBULLET Renderiza do início ao fim, em ordem
+. LIST OFF
+.TITULO 4 "Exemplos de objetos"
+.PS
+le_wid = ((25.4-1.75-1.75)*72/2.54/5-7.2)
+[
+box invis wid le_wid/72 ht le_wid*32/57/72
+sprintf("\X'pdf: pdfpic res/md503.pdf -L %f 0'",le_wid) at last box.nw+(0,2/72)
+
+box invis wid le_wid/72 ht le_wid*66/105/72 with .nw at last box.ne + (0.2,0)
+sprintf("\X'pdf: pdfpic res/md507.pdf -L %f 0'",le_wid) at last box.nw+(0,2/72)
+
+box invis wid le_wid/72 ht le_wid*137/281/72 with .nw at last box.ne + (0.2,0)
+sprintf("\X'pdf: pdfpic res/md502.pdf -L %f 0'",le_wid) at last box.nw+(0,2/72)
+
+box invis wid le_wid/72 ht le_wid*217/286/72 with .nw at last box.ne+(0.2,0)
+sprintf("\X'pdf: pdfpic res/md509.pdf -L %f 0'",le_wid) at last box.nw+(0,2/72)
+
+box invis wid le_wid/72 ht le_wid*235/263/72 with .nw at last box.ne+(0.2,0)
+sprintf("\X'pdf: pdfpic res/md512.pdf -L %f 0'",le_wid) at last box.nw+(0,2/72)
+]
+
+le_wid = ((25.4-1.75-1.75)*72/2.54/4-7.2)
+[
+box invis wid le_wid/72 ht le_wid*249/331/72
+sprintf("\X'pdf: pdfpic res/md511.pdf -L %f 0'",le_wid) at last box.nw+(0,2/72)
+
+box invis wid le_wid/72 ht le_wid*238/332/72 with .nw at last box.ne+(0.2,0)
+sprintf("\X'pdf: pdfpic res/md506.pdf -L %f 0'",le_wid) at last box.nw+(0,2/72)
+
+box invis wid le_wid/72 ht le_wid*244/327/72 with .nw at last box.ne+(0.2,0)
+sprintf("\X'pdf: pdfpic res/md514.pdf -L %f 0'",le_wid) at last box.nw+(0,2/72)
+
+box invis wid le_wid/72 ht le_wid*261/423/72 with .nw at last box.ne+(0.2,0)
+sprintf("\X'pdf: pdfpic res/md505.pdf -L %f 0'",le_wid) at last box.nw+(0,2/72)
+] with .nw at last [].sw - (0,0.4)
+.PE
+.TITULO 3 "Modificação do \fIdisplay list\fP"
+. SBULLET Adicionar objeto na cena
+.  OBULLET \fITag\fP PlaceObject
+. MBULLET Adicionar ou alterar objeto na cena
+.  OBULLET \fITags\fP PlaceObject2 e PlaceObject3
+. MBULLET Remover um objeto da cena
+.  OBULLET \fITags\fP RemoveObject e RemoveObject2
+. EBULLET Só podem referenciar objetos definidos \%fisicamente antes
+.TITULO 4 "Exemplo de sequência de ação"
+.RLD 1v
+.PS
+le_wid = ((25.4-1.75-1.75)*72/2.54/2-7.2)
+[
+box invis wid le_wid/72 ht le_wid*319/749/72
+sprintf("\X'pdf: pdfpic res/suicide1.pdf -L %f 0'",le_wid) at last box.nw+(0,2.5/72)
+
+box invis wid le_wid/72 ht le_wid*319/749/72 with .nw at last box.ne+(0.2,0)
+sprintf("\X'pdf: pdfpic res/suicide2.pdf -L %f 0'",le_wid) at last box.nw+(0,2.5/72)
+]
+
+box invis wid le_wid/72 ht le_wid*319/749/72 with .n at last [].s-(0,0.2)
+sprintf("\X'pdf: pdfpic res/suicide3.pdf -L %f 0'",le_wid) at last box.nw+(0,2.5/72)
+.PE
+.TITULO 3 "Hierarquia de cena"
+. SBULLET Todo objeto é posicionado com uma \%transformação de matriz
+. MBULLET Objetos podem ser agrupados em \fIsprites\fP com a \fItag\fP DefineSprite
+.  SBULLET Objetos num \fIsprite\fP também têm \%transformação de matriz
+.  EBULLET Um \fIsprite\fP pode abranger vários quadros
+. EBULLET Concatenação das transformações da \fItimeline\fP principal e dos \fIsprites\fP
+.NTITULO 3 "Definição de objetos" 2
+. SBULLET \fITags\fP DefineShape, DefineShape2, \%DefineShape3 e DefineShape4
+. MBULLET Objetos inteiramente definidos com \c
+.BR
+três primitivas
+.  SNUM Mova a posição de desenho sem desenhar
+.  MNUM Desenhe um segmento de reta
+.  ENUM Desenhe um curva de Bézier quadrática
+.  OBULLET Coordenadas relativas e precisas
+.PTITULO
+. MBULLET Dicionário de estilos de preenchimentos
+. MBULLET Preenchimentos servem também para o traçado 
+. MBULLET Para cada primitiva 
+.  SBULLET Preenchimento único à direita
+.  MBULLET Preenchimento único à esquerda
+.  EBULLET Estilo e preenchimento únicos para traçado
+. EBULLET Objetos de qualquer complexidade são inteiramente definidos numa única \fItag\fP
+.TITULO 4 "Análise de arestas individuais"
+.RLD 1v
+.PS 0 4.125
+[
+[
+box thick 1 shaded "cadetblue" wid 100/72 ht 100/72
+box thick 1 shaded "indianred" wid 100/72 ht 100/72 with .nw at last box.nw+(50/72,-50/72)
+box thick 1 shaded "forestgreen" wid 50/72 ht 50/72 with .sw at last box.w
+]
+"(a) Três quadrados coloridos sobrepostos" at last [].s - (0,0.15)
+move from last [].e
+[
+box invis wid 1.75
+"FillStyle #0 = Nenhum" ljust \
+"FillStyle #1 = Vermelho indiano" ljust \
+"FillStyle #2 = Verde floresta" ljust \
+"FillStyle #3 = Azul cadete" ljust \
+at last box.w
+move down
+[
+arrowwid=0.075
+up
+line thick 1 47.5/72
+"" "" "\0fs0=3" ljust "\0fs1=0" ljust at last line.end
+arrow arrowwid at last line.c
+left
+line thick 1 100/72 from last line.end
+"fs0=3" "fs1=0" "" "" at last line.center+(0,2/72)
+arrow arrowwid at 1/3 <last line.start,last line.end>
+arrow arrowwid at 2/3 <last line.start,last line.end>
+down
+line thick 1 100/72 from last line.end
+"fs0=3\0" rjust "fs1=0\0" rjust at last line.center
+arrow arrowwid at 1/3 <last line.start,last line.end>
+arrow arrowwid at 2/3 <last line.start,last line.end>
+right
+line thick 1 47.5/72 from last line.end
+"" "" "" "fs0=3" ljust "fs1=0" ljust at last line.start
+arrow arrowwid at last line.c
+move 2.5/72 from last line.end
+up
+move 2.5/72
+line thick 1 47.5/72
+"" "" "fs0=3\0" rjust "fs1=2\0" rjust at last line.end
+arrow arrowwid at last line.c
+right
+line thick 1 47.5/72 from last line.end
+"fs0=3" ljust "fs1=2" ljust "" "" at last line.start+(0,2/72)
+arrow arrowwid at last line.c
+move 2.5/72 from last line.end
+line thick 1 50/72
+"fs0=0" rjust "fs1=1" rjust "" "" at last line.end+(0,2/72)
+arrow arrowwid at last line.c
+down
+line thick 1 100/72 from last line.end
+"\0fs0=0" ljust "\0fs1=1" ljust at last line.center
+arrow arrowwid at 1/3 <last line.start,last line.end>
+arrow arrowwid at 2/3 <last line.start,last line.end>
+left
+line thick 1 100/72 from last line.end
+"" "" "" "fs0=0" "fs1=1" at last line.center
+arrow arrowwid at 1/3 <last line.start,last line.end>
+arrow arrowwid at 2/3 <last line.start,last line.end>
+up
+line thick 1 50/72 from last line.end
+"fs0=0\0" rjust "fs1=1\0" rjust "" at last line.start
+arrow arrowwid at last line.c
+right
+line thick 1 50/72 from last line.end
+"" "" "" "fs0=2" rjust "fs1=1" rjust at last line.end
+arrow arrowwid at last line.c
+up
+line thick 1 47.5/72 from last line.end
+"\0fs0=2" ljust "\0fs1=1" ljust "" at last line.start
+arrow arrowwid at last line.c
+] with .n at last box.s-(0,0.5)
+"(b) Arestas individuais e seus preenchimentos" at last [].s -(0,0.5)
+]
+]
+.PE
+.TITULO 3 "Preenchimentos"
+. SNUM Sólido
+. MNUM Gradiente linear, radial ou radial focal
+.  SBULLET Até 15 pontos de controle
+.  EBULLET Caixa de amostragem
+. ENUM \fIBitmap\fP
+. SBULLET Todos podem ter transparência
+. EBULLET Gradiente e \fIbitmap\fP têm matriz de \%transformação
+.TITULO 4 "Exemplo de gradiente linear"
+.EQ
+delim $$
+define n125  %{ \0\0\00 roman{","} 125 }%
+define n0    %{ \0\0\00 roman{","} 000 }%
+define n2048 %{ 2048    roman{","} 000 }%
+define matrix %
+left {
+  ~~lpile { n125 above n0 above n2048 }
+~~~~lpile { n0 above n125 above n2048 }
+~~right }
+%
+.EN
+.PS
+fuck = 200
+[
+[
+box invis wid fuck/72 ht fuck/72
+sprintf("\X'pdf: pdfpic res/rect.pdf -L %f 0'",fuck) at last box.nw+(0,2/72)
+box invis wid fuck/2/72 ht fuck/2/72 at last box.e+(1,0)
+sprintf("\X'pdf: pdfpic res/circ.pdf -L %f 0'",fuck/2) at last box.nw+(0,2/72)
+box thick 1 wid fuck/2/72 ht fuck/2/72 outline "green" with .nw at last box.nw
+line thick 1 outline "green" from 1st box.nw to last box.nw
+line thick 1 outline "green" from 1st box.ne to last box.ne
+line thick 1 outline "green" from 1st box.sw to last box.sw
+line thick 1 outline "green" from 1st box.se to last box.se
+"(-16384,-16384)" "" "" at 1st box.nw-(0,0.02)
+"" "" "(-16384,16384)" at 1st box.sw
+"" "" "(16384,16384)" at 1st box.se
+"(16384,-16384)" "" "" at 1st box.ne-(0,0.02)
+"" "(0,0)\0" rjust at last box.nw
+"\0(4096,4096)" ljust "" at last box.se
+]
+"(a) Visualização do mapeamento de coordenadas" at last [].s-(0,0.4)
+"$matrix$" at last [].se+(1,-0.3)
+"(b) Matrix 2x3 que realiza o mapeamento" at last [].se+(1,-0.8)
+]
+.PE
+.EQ
+delim off
+.EN
+.SECAO 1 "Trabalhos relacionados"
+.SECAO 2 "Integrações de Flash" "em motores de jogos"
+.TITULO 3 "GameMaker"
+. SBULLET Motor de jogo
+.  OBULLET Voltado à iniciantes
+. MBULLET Permite incluir SWFs para \fIsprites\fP vetoriais
+.  OBULLET Bastante limitado
+. MBULLET Programação visual, ou com código
+. MBULLET Editor e IDE próprios
+. MBULLET Multi-plataforma
+. EBULLET Planos gratuitos e pagos
+.TITULO 3 "GAF"
+. SBULLET Generic Animation Format
+. MBULLET Formato binário, comprimido e aberto
+. MBULLET Rasteriza totalmente animações Flash
+.  OBULLET Implementa 99% do Flash
+. MBULLET Várias resoluções para várias plataformas
+. MBULLET Unity, Cocos2d, Starling e outros
+. EBULLET Presente trabalho preserva dados vetoriais
+.TITULO 4 "Boneco animado com Flash no jogo" "Burrito Bison: Launcha Libre"
+.PS
+define alone {
+box invis wid $2/72 ht $2*$4/$3/72 $5
+sprintf("\X'pdf: pdfpic $1.pdf -L %f 0'", $2) at last box.nw+(0,2/72)
+}
+ alone(res/juicy1,((25.4-1.75-1.75)*72/2.54/4-7.2),140,160)
+ move to last box.e+(0.2,0)
+ alone(res/juicy2,((25.4-1.75-1.75)*72/2.54/4-7.2),140,160)
+ move to last box.e+(0.2,0)
+ alone(res/juicy3,((25.4-1.75-1.75)*72/2.54/4-7.2),140,160)
+ move to last box.e+(0.2,0)
+ alone(res/juicy4,((25.4-1.75-1.75)*72/2.54/4-7.2),140,160)
+.PE
+.SBULLET Juicy Beast
+.MBULLET Lançado em 2016
+.EBULLET Editor de cena da Unity
+.NTITULO 3 "Scaleform GFx" 2
+. SBULLET Utilizado para criar interfaces gráficas
+.  OBULLET Funcionalidades 3D
+. MBULLET \fIPlayer\fP avançado de Flash
+. MBULLET SDK para Unity, Unreal Engine e Crytek
+. EBULLET Artista trabalha independentemente no Flash
+.PTITULO
+. SBULLET Adquirido pela Autodesk em 2011
+. MBULLET Descontinuado em 12 de julho de 2017
+.  OBULLET 13 dias antes do Flash ser descontinuado
+. MBULLET 325 lançamentos, a maioria títulos AAA
+.  SBULLET Windows, Mac, Linux
+.  MBULLET Xbox 360
+.  MBULLET PlayStation 2/Portable/3
+.  EBULLET Sistemas Wii
+. LIST OFF
+.TITULO 4 "Interface montada com Flash"
+.PIC_3DI SCALE 40
+.TITULO 4 "Menu de habilidades do jogo" "Borderlands 2, de 2012"
+.PIC_BORDERLANDS2 SCALE 40
+.SECAO 2 "Outros formatos" "de arquivos" "para gráficos vetoriais"
+.TITULO 3 Lottie
+. SBULLET \fIPlugin\fP Bodymovin para After Effects, 2015
+. MBULLET Airbnb, 2017, iOS e Android
+. MBULLET Bibliotecas para todas plataformas relevantes
+.  SBULLET Sistemas embarcados e \fIsmart\fP TVs
+.  MBULLET Qt, Skia e ThorVG
+.  EBULLET Duas bibliotecas, escritas em C++ e Rust
+. MBULLET Serializado como JSON
+. EBULLET Editores Synfig, Keyshape e Glaxnimate
+.TITULO 4 "Opção de \fIcodegen\fP para Lottie"
+. SBULLET Biblioteca Windows Community Toolkit
+. MBULLET Ferramenta de linha de comando
+. MBULLET Converte Lottie em C# ou C++
+. MBULLET Recomendado pelo desempenho
+. MBULLET Não serve para animações baixadas
+.BR
+da Internet
+. EBULLET Abordagem idêntica à solução proposta
+.TITULO 3 "SVG"
+. SBULLET Scalable Vector Graphics
+. MBULLET Serializado como XML
+. MBULLET SVG 1.0, 2001
+. MBULLET SVG 1.1, 2003
+. EBULLET SVG 2 em desenvolvimento
+.TITULO 4 "Animações SVG"
+.TS
+cB cB
+l l.
+Abordagem	Característica
+CSS	Incompleta
+JavaScript	Completa, confiável e lenta
+SMIL	Completa
+.TE
+.RLD 1.5v
+.TS
+expand;
+cB cB cB cB
+l c c c.
+Editores de animação	CSS	JavaScript	SMIL
+SVGator	\(OK	\(OK
+Expressive Animator	\(OK	\(OK	\(OK
+Boxy SVG	\(OK
+Friction		\(OK	\(OK
+.TE
+.TITULO 4 "Bibliotecas JavaScript"
+. SBULLET De animação
+.RLD 0.25v
+.TS
+lll.
+\*[Death]Snap.svg	\*[Death]Raphäel	\*[Death]SVG.js
+\*[Death]D3.js	\*[Death]GreenSock	\*[Death]Velocity.js
+.TE
+.RLD 1v
+. MBULLET De jogos
+.RLD 0.25v
+.TS
+lll.
+\*[Death]Phaser.js	\*[Death]Pixi.js	\*[Death]Three.js
+\*[Death]CreateJS	\*[Death]Construct 3	\*[Death]Babylon.js
+.TE
+.RLD 1v
+. MBULLET Cordova e Electron
+.  SBULLET Empacotam jogo HTML5
+.  EBULLET Smartphones e PC
+. LIST OFF
+.TITULO 4 "Animações SVG: além do HTML5"
+. SBULLET GTK renderiza subconjunto do SVG
+.  OBULLET Mistura de SMIL e extensões
+. MBULLET Qt renderiza SVG 1.2 Tiny
+.  OBULLET Algumas animações com CSS e SMIL
+. LIST OFF
+.TITULO 4 "Animações SVG: última opção"
+. SBULLET Exportar animação como sequência de SVGs
+.  OBULLET CACANi e Expressive Animator
+. MBULLET Bibliotecas para renderizar SVG estático
+. EBULLET Carregar todos SVGs e renderizar um por vez
+.TITULO 4 "SVG animado usando Flash?"
+. PIC_DOTA2 SCALE 60
+. SBULLET \fIPlugin\fP Flash2Svg para Adobe Animate
+. MBULLET I Love Dota 2, Jazza, 2013
+. EBULLET SMIL, áudio e "High FPS"
+.NTITULO 3 "Rive" 2
+. SBULLET 2018
+. MBULLET Modelo de negócios idêntico ao do Flash
+. MBULLET Formato de arquivo
+. EBULLET Ênfase em \fIopen source\fP
+.PTITULO
+. OBULLET Várias \fIruntimes\fP ao invés de um \fIplayer\fP
+. RLD 0.25v
+.TS
+center;
+a0s0a0s0a0s
+a0s0a0s0a0s
+a0s0a0s0a0s
+a0s0s0a0s0s
+a0s0s0a0s0s.
+\*[Death]Unity	\*[Death]Unreal Engine	\*[Death]Defold
+\*[Death]React	\*[Death]React Native	\*[Death]Flutter
+\*[Death]Framer	\*[Death]Wix Studio	\*[Death]Webflow
+\*[Death]Web	\*[Death]C++ genérico
+\*[Death]Android	\*[Death]Apple
+.TE
+.SECAO 1 "Algoritmo"
+.TITULO 2 "API do Cairo"
+. SBULLET Biblioteca tradicional de gráficos vetoriais
+. MBULLET Preenche área e contorno de uma única vez
+.  OBULLET Isso é inútil
+. MBULLET Preenche várias áreas ao mesmo tempo
+. EBULLET Trata buracos corretamente
+.TITULO 2 "Oportunidades do Flash"
+. SBULLET Não existe sobreposição de áreas
+. MBULLET Não existe auto-intersecção de arestas
+. EBULLET Ordem de renderização não importa
+.TITULO 2 "Quadro 1030 da animação" "There She Is!!!"
+. PIC_OMG2_FULL
+.TITULO 2 "Todas arestas de" "uma área preenchimento"
+. PIC_OMG2_TUDO
+.TITULO 2 "Somente perímetro de" "uma área preenchida"
+. PIC_OMG2_GOOD
+.SECAO 1 "Implementação"
+.SECAO 2 "Utilização do" "conversor"
+.TITULO 3 "Geração de código-fonte"
+.SP
+.SP
+.SP
+.SP
+.LS 24
+.TS BOXED CENTER
+box center;
+lp-10 1 lfC p-10.
+.so death/gen2.txt
+.TE
+.TITULO 3 "Símbolos da interface gerada"
+. SBULLET API gerada é no máximo cinco funções
+.  SNUM Inicialização e liberação de memória
+.  MNUM Renderização de um quadro
+.  ENUM Dados da animação e transformação inicial
+. MBULLET Quatro constantes
+.  SBULLET Taxa de atualização de quadros
+.  MBULLET Total de quadros
+.  EBULLET Largura e altura
+. LIST OFF
+.TITULO 3 "Compilação condicional"
+. SBULLET Macros decidem quais APIs usar
+.  SBULLET \fC-DFEAT_CAIRO\fP
+.  MBULLET \fC-DFEAT_PLUTOVG\fP
+.  MBULLET \fC-DFEAT_HTML5\fP
+.  MBULLET \fC-DFEAT_JAVASCRIPT\fP
+.  EBULLET \fC-DFEAT_NO_DATA\fP
+. MBULLET Diretivas \fC#ifdef\fP e \fC#endif\fP
+.  OBULLET Compilação condicional
+. LIST OFF
+.TITULO 3 "Exercício da solução"
+. SBULLET Carregamento dinâmico de símbolos
+. MBULLET Conversor de Flash para PDF
+. EBULLET \fIPlayer\fP de animação
+.TITULO 2 "Funcionamento do conversor"
+. SBULLET Escolhida a biblioteca \fCswf\fP em Rust
+.  OBULLET Portanto, o conversor é escrito em Rust
+. MBULLET Cairo
+.  SBULLET Disponível em gerenciadores de pacotes
+.  EBULLET Permite exportar para PDF
+. MBULLET Ler partes relevantes do arquivo SWF
+. EBULLET Imprimir código C 
+.SECAO 2 "Representação" "dos dados do" "Flash em C"
+.TITULO 3 "Análise de objeto simples"
+. SBULLET Objeto 137 da animação There She Is!!!
+. MBULLET Dois estilos de área, um estilo de contorno
+. EBULLET 27 arestas
+. PIC_HEART SCALE 400
+.TITULO 3 "Macros X"
+. SBULLET Técnica de pré-processador
+. MBULLET Dados armazenados em listas de macros
+. MBULLET Expande macros várias vezes
+. MBULLET Semelhante a um banco de dados relacional
+. MBULLET Trivial gerar código para várias APIs
+. EBULLET Evita inflar tamanho do código-fonte
+.SECAO 1 "Resultados"
+.TITULO 2 "There She Is!!!" "Quadro 2150"
+.PS
+define alone {
+box invis wid $2/72 ht $2*$4/$3/72 $5
+sprintf("\X'pdf: pdfpic $1.pdf -L %f 0'", $2) at last box.nw+(0,2/72)
+}
+[
+alone(work/there_she_is_2150,((25.4-1.75-1.75)*72/2.54/2-7.2),550,281)
+alone(res/there_cute,((25.4-1.75-1.75)*72/2.54/2-7.2),550,281, with .nw at last box.ne + (0.2,0))
+]
+.PE
+.TITULO 2 "Miss.Dynamite X" "Quadro 3430"
+.PS
+define alone {
+box invis wid $2/72 ht $2*$4/$3/72 $5
+sprintf("\X'pdf: pdfpic $1.pdf -L %f 0'", $2) at last box.nw+(0,2/72)
+}
+[
+alone(work/miss_dynamite_x_3430,((25.4-1.75-1.75)*72/2.54/2-7.2),780,400)
+alone(res/impala,((25.4-1.75-1.75)*72/2.54/2-7.2),780,400, with .nw at last box.ne + (0.2,0))
+]
+.PE
+.TITULO 2 "Miss.Dynamite X" "Quadro 4174"
+.PS
+define alone {
+box invis wid $2/72 ht $2*$4/$3/72 $5
+sprintf("\X'pdf: pdfpic $1.pdf -L %f 0'", $2) at last box.nw+(0,2/72)
+}
+[
+alone(work/miss_dynamite_x_4174,((25.4-1.75-1.75)*72/2.54/2-7.2),780,400)
+alone(res/inter,((25.4-1.75-1.75)*72/2.54/2-7.2),780,400, with .nw at last box.ne + (0.2,0))
+]
+.PE
+.TITULO 2 "Miss.Dynamite XIV" "Quadro 1817"
+.PS
+define alone {
+box invis wid $2/72 ht $2*$4/$3/72 $5
+sprintf("\X'pdf: pdfpic $1.pdf -L %f 0'", $2) at last box.nw+(0,2/72)
+}
+[
+alone(work/miss_dynamite_xiv_1817,((25.4-1.75-1.75)*72/2.54/2-7.2),750,329)
+alone(res/1817,((25.4-1.75-1.75)*72/2.54/2-7.2),750,329, with .nw at last box.ne + (0.2,0))
+]
+.PE
+.TITULO 2 "Miss.Dynamite Halloween" "Quadro 1369"
+.PS
+define alone {
+box invis wid $2/72 ht $2*$4/$3/72 $5
+sprintf("\X'pdf: pdfpic $1.pdf -L %f 0'", $2) at last box.nw+(0,2/72)
+}
+[
+alone(work/miss_dynamite_halloween_1369,((25.4-1.75-1.75)*72/2.54/2-7.2),780,400)
+alone(res/monster,((25.4-1.75-1.75)*72/2.54/2-7.2),780,400, with .nw at last box.ne + (0.2,0))
+]
+.PE
+.TITULO 2 "Dad's Home" "Quadro 880"
+.PS
+define alone {
+box invis wid $2/72 ht $2*$4/$3/72 $5
+sprintf("\X'pdf: pdfpic $1.pdf -L %f 0'", $2) at last box.nw+(0,2/72)
+}
+[
+alone(work/dad_s_home_880,((25.4-1.75-1.75)*72/2.54/2-7.2),550,400)
+alone(res/bagun,((25.4-1.75-1.75)*72/2.54/2-7.2),550,400, with .nw at last box.ne + (0.2,0))
+]
+.PE
+.TITULO 2 "Dad's Home" "Quadro 3604"
+.PS
+define alone {
+box invis wid $2/72 ht $2*$4/$3/72 $5
+sprintf("\X'pdf: pdfpic $1.pdf -L %f 0'", $2) at last box.nw+(0,2/72)
+}
+[
+alone(work/dad_s_home_3604,((25.4-1.75-1.75)*72/2.54/2-7.2),550,400)
+alone(res/policia,((25.4-1.75-1.75)*72/2.54/2-7.2),550,400, with .nw at last box.ne + (0.2,0))
+]
+.PE
+.TITULO 1 "Conclusão"
+. SBULLET Algoritmo testado com animações reais
+. MBULLET Resultados satisfatórios para casos simples
+. MBULLET Viabilidade de extrair dados do Flash
+. MBULLET Veiculação da arte vetorial
+. MBULLET Propriedade intelectual do Flash Player
+. EBULLET Aplicações em jogos de computador
+.TITULO 2 "Trabalhos futuros"
+. SBULLET Implementar gradiente e \fIbitmap\fP
+. MBULLET Interface para \fIsprites\fP e quadros individuais
+. MBULLET Mais bibliotecas de gráficos vetoriais
+. MBULLET Física automática
+.  OBULLET Bibliotecas Box2D e Chipmunk2D
+. EBULLET Áudio
+.SECAO 1 "Obrigado" "pela atenção"
+.HEADER_SIZE +16
+.DOC_PT_SIZE 24
+.NTITULO 1 "Referências" 14
+.de RefTit
+. da
+. di gay
+. RefTit2 \\$@
+. di
+. PP
+. gay
+..
+.de Link1
+. BR
+. PDF_WWW_LINK "\\$*" "\\*[LeTitle]"
+. SP
+. da Bibliografia
+..
+.de Link2
+..
+.de PTITULO2
+. da
+. PTITULO
+. da Bibliografia
+..
+.ds RefSPECIAL
+.so bib2.txt
+.\" vim: syntax=groff tw=70

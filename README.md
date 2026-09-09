@@ -83,6 +83,9 @@ Maybe a generic API will be provided too.
 - [Live2D](https://www.live2d.com)
 - [GameMaker](https://manual.gamemaker.io/lts/en/Settings/Texture_Information/Non-Bitmap_Sprites.htm#h)
 - Whatever this is: https://github.com/colin-i/actionswf
+- Upcoming "blast" editor: https://bill.newgrounds.com/news
+- [Umoupen](https://umoupen.app)
+- [Kanvon](https://www.kanvon.com/)
 
 Rigged bones:
 
@@ -241,3 +244,11 @@ The Gnash wiki is a goldmine, but unfortunately it is offline and can only be br
 - https://sembiance.com/fileFormatSamples/archive/swf/
 - https://open-flash.github.io/
 - https://www.loc.gov/preservation/digital/formats/fdd/fdd000629.shtml
+- https://sembiance.com/fileFormatSamples/archive/swf/
+- https://web.archive.org/web/20090122072238/http://coldhardflash.com/2009/01/powerpuff-girls-10th-anniversary-interview-with-creator-craig-mccracken.html
+- https://news.ycombinator.com/item?id=44088216
+- http://www.yeahbutisitflash.com/
+- http://wahlers.com.br/claus/blog/hacking-swf-2-placeobject-and-ratio/
+- https://www.chromium.org/developers/design-documents/graphics-and-skia/
+- https://jacksmack.newgrounds.com/news/post/1243452
+- https://www.fgl.com/mobile/ retention goal
